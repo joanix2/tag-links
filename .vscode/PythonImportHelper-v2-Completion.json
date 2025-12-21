@@ -1,0 +1,2903 @@
+[
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Body",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "OAuth2PasswordRequestForm",
+        "importPath": "fastapi.security",
+        "description": "fastapi.security",
+        "isExtraImport": true,
+        "detail": "fastapi.security",
+        "documentation": {}
+    },
+    {
+        "label": "OAuth2PasswordBearer",
+        "importPath": "fastapi.security",
+        "description": "fastapi.security",
+        "isExtraImport": true,
+        "detail": "fastapi.security",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "verify_password",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_active_user",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "Token",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "TokenData",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "ACCESS_TOKEN_EXPIRE_MINUTES",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_active_user",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "TokenData",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_active_user",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "TokenData",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_password_hash",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreate",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreate",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserUpdate",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserWithContent",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreate",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserUpdate",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserWithContent",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserInDB",
+        "importPath": "src.models.user",
+        "description": "src.models.user",
+        "isExtraImport": true,
+        "detail": "src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "importPath": "src.repositories.user_repository",
+        "description": "src.repositories.user_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "importPath": "src.repositories.user_repository",
+        "description": "src.repositories.user_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "neo4j_connection",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "init_constraints",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "src.models.file",
+        "description": "src.models.file",
+        "isExtraImport": true,
+        "detail": "src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileCreate",
+        "importPath": "src.models.file",
+        "description": "src.models.file",
+        "isExtraImport": true,
+        "detail": "src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileUpdate",
+        "importPath": "src.models.file",
+        "description": "src.models.file",
+        "isExtraImport": true,
+        "detail": "src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileWithTags",
+        "importPath": "src.models.file",
+        "description": "src.models.file",
+        "isExtraImport": true,
+        "detail": "src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "src.models.file",
+        "description": "src.models.file",
+        "isExtraImport": true,
+        "detail": "src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileCreate",
+        "importPath": "src.models.file",
+        "description": "src.models.file",
+        "isExtraImport": true,
+        "detail": "src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileUpdate",
+        "importPath": "src.models.file",
+        "description": "src.models.file",
+        "isExtraImport": true,
+        "detail": "src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileWithTags",
+        "importPath": "src.models.file",
+        "description": "src.models.file",
+        "isExtraImport": true,
+        "detail": "src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileWithUser",
+        "importPath": "src.models.file",
+        "description": "src.models.file",
+        "isExtraImport": true,
+        "detail": "src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileRepository",
+        "importPath": "src.repositories.file_repository",
+        "description": "src.repositories.file_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.file_repository",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "GraphDatabase",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "GraphDatabase",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "GraphDatabase",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Tag",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagCreate",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagUpdate",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagWithRelations",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "Tag",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagCreate",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagUpdate",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagWithRelations",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "Tag",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagCreate",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagUpdate",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagWithRelations",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagCreate",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagUpdate",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "search_by_similarity",
+        "importPath": "src.services.levenshtein_service",
+        "description": "src.services.levenshtein_service",
+        "isExtraImport": true,
+        "detail": "src.services.levenshtein_service",
+        "documentation": {}
+    },
+    {
+        "label": "search_by_similarity",
+        "importPath": "src.services.levenshtein_service",
+        "description": "src.services.levenshtein_service",
+        "isExtraImport": true,
+        "detail": "src.services.levenshtein_service",
+        "documentation": {}
+    },
+    {
+        "label": "levenshtein_distance",
+        "importPath": "src.services.levenshtein_service",
+        "description": "src.services.levenshtein_service",
+        "isExtraImport": true,
+        "detail": "src.services.levenshtein_service",
+        "documentation": {}
+    },
+    {
+        "label": "levenshtein_similarity",
+        "importPath": "src.services.levenshtein_service",
+        "description": "src.services.levenshtein_service",
+        "isExtraImport": true,
+        "detail": "src.services.levenshtein_service",
+        "documentation": {}
+    },
+    {
+        "label": "search_by_similarity",
+        "importPath": "src.services.levenshtein_service",
+        "description": "src.services.levenshtein_service",
+        "isExtraImport": true,
+        "detail": "src.services.levenshtein_service",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "EmailStr",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLCreate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLUpdate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLCreate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLUpdate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithUser",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLRepository",
+        "importPath": "src.repositories.url_repository",
+        "description": "src.repositories.url_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.url_repository",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "neo4j.time",
+        "description": "neo4j.time",
+        "isExtraImport": true,
+        "detail": "neo4j.time",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "neo4j.time",
+        "description": "neo4j.time",
+        "isExtraImport": true,
+        "detail": "neo4j.time",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "neo4j.time",
+        "description": "neo4j.time",
+        "isExtraImport": true,
+        "detail": "neo4j.time",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "neo4j.time",
+        "description": "neo4j.time",
+        "isExtraImport": true,
+        "detail": "neo4j.time",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "JWTError",
+        "importPath": "jose",
+        "description": "jose",
+        "isExtraImport": true,
+        "detail": "jose",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "importPath": "jose",
+        "description": "jose",
+        "isExtraImport": true,
+        "detail": "jose",
+        "documentation": {}
+    },
+    {
+        "label": "CryptContext",
+        "importPath": "passlib.context",
+        "description": "passlib.context",
+        "isExtraImport": true,
+        "detail": "passlib.context",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "BaseSettings",
+        "importPath": "pydantic_settings",
+        "description": "pydantic_settings",
+        "isExtraImport": true,
+        "detail": "pydantic_settings",
+        "documentation": {}
+    },
+    {
+        "label": "lru_cache",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "get_settings",
+        "importPath": "src.config",
+        "description": "src.config",
+        "isExtraImport": true,
+        "detail": "src.config",
+        "documentation": {}
+    },
+    {
+        "label": "get_settings",
+        "importPath": "src.config",
+        "description": "src.config",
+        "isExtraImport": true,
+        "detail": "src.config",
+        "documentation": {}
+    },
+    {
+        "label": "get_settings",
+        "importPath": "src.config",
+        "description": "src.config",
+        "isExtraImport": true,
+        "detail": "src.config",
+        "documentation": {}
+    },
+    {
+        "label": "get_settings",
+        "importPath": "src.config",
+        "description": "src.config",
+        "isExtraImport": true,
+        "detail": "src.config",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "TestClient",
+        "importPath": "fastapi.testclient",
+        "description": "fastapi.testclient",
+        "isExtraImport": true,
+        "detail": "fastapi.testclient",
+        "documentation": {}
+    },
+    {
+        "label": "TestClient",
+        "importPath": "fastapi.testclient",
+        "description": "fastapi.testclient",
+        "isExtraImport": true,
+        "detail": "fastapi.testclient",
+        "documentation": {}
+    },
+    {
+        "label": "TestClient",
+        "importPath": "fastapi.testclient",
+        "description": "fastapi.testclient",
+        "isExtraImport": true,
+        "detail": "fastapi.testclient",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "asynccontextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "tag_router",
+        "importPath": "src.controllers",
+        "description": "src.controllers",
+        "isExtraImport": true,
+        "detail": "src.controllers",
+        "documentation": {}
+    },
+    {
+        "label": "user_router",
+        "importPath": "src.controllers",
+        "description": "src.controllers",
+        "isExtraImport": true,
+        "detail": "src.controllers",
+        "documentation": {}
+    },
+    {
+        "label": "url_router",
+        "importPath": "src.controllers",
+        "description": "src.controllers",
+        "isExtraImport": true,
+        "detail": "src.controllers",
+        "documentation": {}
+    },
+    {
+        "label": "file_router",
+        "importPath": "src.controllers",
+        "description": "src.controllers",
+        "isExtraImport": true,
+        "detail": "src.controllers",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "src.controllers.auth_controller",
+        "description": "src.controllers.auth_controller",
+        "isExtraImport": true,
+        "detail": "src.controllers.auth_controller",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "stringify",
+        "importPath": "flatted",
+        "description": "flatted",
+        "isExtraImport": true,
+        "detail": "flatted",
+        "documentation": {}
+    },
+    {
+        "label": "parse",
+        "importPath": "flatted",
+        "description": "flatted",
+        "isExtraImport": true,
+        "detail": "flatted",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_repository",
+        "kind": 2,
+        "importPath": "back.src.controllers.auth_controller",
+        "description": "back.src.controllers.auth_controller",
+        "peekOfCode": "def get_user_repository():\n    \"\"\"Dependency to get user repository\"\"\"\n    driver = get_driver()\n    return UserRepository(driver)\n@router.post(\"/register\", response_model=User, status_code=status.HTTP_201_CREATED)\nasync def register(\n    user: UserCreate,\n    user_repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Register a new user\"\"\"",
+        "detail": "back.src.controllers.auth_controller",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "back.src.controllers.auth_controller",
+        "description": "back.src.controllers.auth_controller",
+        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Authentication\"])\ndef get_user_repository():\n    \"\"\"Dependency to get user repository\"\"\"\n    driver = get_driver()\n    return UserRepository(driver)\n@router.post(\"/register\", response_model=User, status_code=status.HTTP_201_CREATED)\nasync def register(\n    user: UserCreate,\n    user_repo: UserRepository = Depends(get_user_repository)\n):",
+        "detail": "back.src.controllers.auth_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_file_repository",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def get_file_repository(driver: Driver = Depends(get_db)) -> FileRepository:\n    return FileRepository(driver)\n@router.post(\"/\", response_model=File, status_code=status.HTTP_201_CREATED)\ndef create_file(\n    file: FileCreate,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Create a new file\"\"\"\n    try:\n        return repo.create(file)",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "create_file",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def create_file(\n    file: FileCreate,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Create a new file\"\"\"\n    try:\n        return repo.create(file)\n    except Exception as e:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_files",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def get_files(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Get all files with pagination\"\"\"\n    return repo.get_all(skip=skip, limit=limit)\n@router.get(\"/by-user/{user_id}\", response_model=List[File])\ndef get_files_by_user(\n    user_id: str,",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_files_by_user",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def get_files_by_user(\n    user_id: str,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Get all files owned by a user\"\"\"\n    return repo.get_by_user(user_id)\n@router.get(\"/by-tag/{tag_id}\", response_model=List[File])\ndef get_files_by_tag(\n    tag_id: str,\n    repo: FileRepository = Depends(get_file_repository)",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_files_by_tag",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def get_files_by_tag(\n    tag_id: str,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Get all files with a specific tag\"\"\"\n    return repo.get_by_tag(tag_id)\n@router.get(\"/{file_id}\", response_model=File)\ndef get_file(\n    file_id: str,\n    repo: FileRepository = Depends(get_file_repository)",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_file",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def get_file(\n    file_id: str,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Get a file by ID\"\"\"\n    file = repo.get_by_id(file_id)\n    if not file:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"File with id {file_id} not found\"",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_file_with_tags",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def get_file_with_tags(\n    file_id: str,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Get a file with all its tags\"\"\"\n    file = repo.get_with_tags(file_id)\n    if not file:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"File with id {file_id} not found\"",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "update_file",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def update_file(\n    file_id: str,\n    file: FileUpdate,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Update a file\"\"\"\n    updated_file = repo.update(file_id, file)\n    if not updated_file:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "delete_file",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def delete_file(\n    file_id: str,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Delete a file\"\"\"\n    if not repo.delete(file_id):\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"File with id {file_id} not found\"\n        )",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "add_tag_to_file",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def add_tag_to_file(\n    file_id: str,\n    tag_id: str,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Add a tag to a file\"\"\"\n    if not repo.add_tag(file_id, tag_id):\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=\"File or Tag not found\"",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "remove_tag_from_file",
+        "kind": 2,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "def remove_tag_from_file(\n    file_id: str,\n    tag_id: str,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Remove a tag from a file\"\"\"\n    if not repo.remove_tag(file_id, tag_id):\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=\"Tag not found on this file\"",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "back.src.controllers.file_controller",
+        "description": "back.src.controllers.file_controller",
+        "peekOfCode": "router = APIRouter(prefix=\"/files\", tags=[\"files\"])\ndef get_file_repository(driver: Driver = Depends(get_db)) -> FileRepository:\n    return FileRepository(driver)\n@router.post(\"/\", response_model=File, status_code=status.HTTP_201_CREATED)\ndef create_file(\n    file: FileCreate,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Create a new file\"\"\"\n    try:",
+        "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "NewTagData",
+        "kind": 6,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "class NewTagData(BaseModel):\n    name: str\n    color: str\nclass MergeTagsRequest(BaseModel):\n    source_tag_ids: List[str]\n    target_tag_id: NewTagData\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\n@router.post(\"/\", response_model=Tag, status_code=status.HTTP_201_CREATED)\ndef create_tag(",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "MergeTagsRequest",
+        "kind": 6,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "class MergeTagsRequest(BaseModel):\n    source_tag_ids: List[str]\n    target_tag_id: NewTagData\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\n@router.post(\"/\", response_model=Tag, status_code=status.HTTP_201_CREATED)\ndef create_tag(\n    tag: TagCreate,\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_tag_repository",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\n@router.post(\"/\", response_model=Tag, status_code=status.HTTP_201_CREATED)\ndef create_tag(\n    tag: TagCreate,\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Create a new tag linked to the authenticated user\"\"\"\n    # Override user_id with the authenticated user's ID",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "create_tag",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def create_tag(\n    tag: TagCreate,\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Create a new tag linked to the authenticated user\"\"\"\n    # Override user_id with the authenticated user's ID\n    tag.user_id = current_user.user_id\n    return repo.create(tag)\n@router.get(\"/\", response_model=List[Tag])",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_tags",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def get_tags(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all tags for the authenticated user with pagination\"\"\"\n    return repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)\n@router.get(\"/search/\", response_model=List[Tag])\ndef search_tags(",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "search_tags",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def search_tags(\n    q: str = Query(..., min_length=1, description=\"Search query\"),\n    threshold: float = Query(0.6, ge=0.0, le=1.0, description=\"Minimum similarity threshold (0.0 to 1.0)\"),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Search tags by name using Levenshtein distance for fuzzy matching.\n    Returns tags sorted by similarity to the query (most similar first).",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_tag",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def get_tag(\n    tag_id: str,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Get a tag by ID\"\"\"\n    tag = repo.get_by_id(tag_id)\n    if not tag:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"Tag with id {tag_id} not found\"",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_tag_with_relations",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def get_tag_with_relations(\n    tag_id: str,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Get a tag with all its relationships\"\"\"\n    tag = repo.get_with_relations(tag_id)\n    if not tag:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"Tag with id {tag_id} not found\"",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "update_tag",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def update_tag(\n    tag_id: str,\n    tag: TagUpdate,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Update a tag\"\"\"\n    updated_tag = repo.update(tag_id, tag)\n    if not updated_tag:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "delete_tag",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def delete_tag(\n    tag_id: str,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Delete a tag\"\"\"\n    if not repo.delete(tag_id):\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"Tag with id {tag_id} not found\"\n        )",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "create_parent_of_relation",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def create_parent_of_relation(\n    parent_id: str,\n    child_id: str,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Create a PARENT_OF relationship between two tags\"\"\"\n    if parent_id == child_id:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Cannot create relationship with itself\"",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "create_composed_of_relation",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def create_composed_of_relation(\n    whole_id: str,\n    part_id: str,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Create a COMPOSED_OF relationship between two tags\"\"\"\n    if whole_id == part_id:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Cannot create relationship with itself\"",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "create_related_to_relation",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def create_related_to_relation(\n    tag1_id: str,\n    tag2_id: str,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Create a RELATED_TO relationship between two tags\"\"\"\n    if tag1_id == tag2_id:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Cannot create relationship with itself\"",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "delete_relation",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def delete_relation(\n    from_id: str,\n    to_id: str,\n    relation_type: str,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Delete a specific relationship between tags\"\"\"\n    valid_types = [\"PARENT_OF\", \"COMPOSED_OF\", \"RELATED_TO\"]\n    if relation_type not in valid_types:\n        raise HTTPException(",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "merge_tags",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def merge_tags(\n    request: MergeTagsRequest,\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Merge multiple source tags into one.\n    All URLs linked to source tags will be linked to the first tag.\n    The first tag will be renamed and recolored.\n    Other source tags will be deleted.",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "router = APIRouter(prefix=\"/tags\", tags=[\"tags\"])\nclass NewTagData(BaseModel):\n    name: str\n    color: str\nclass MergeTagsRequest(BaseModel):\n    source_tag_ids: List[str]\n    target_tag_id: NewTagData\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\n@router.post(\"/\", response_model=Tag, status_code=status.HTTP_201_CREATED)",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "CSVLinkImport",
+        "kind": 6,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "class CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):\n    links: List[CSVLinkImport]\nclass BulkImportResponse(BaseModel):\n    success: int\n    errors: List[dict]",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "BulkImportRequest",
+        "kind": 6,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "class BulkImportRequest(BaseModel):\n    links: List[CSVLinkImport]\nclass BulkImportResponse(BaseModel):\n    success: int\n    errors: List[dict]\n@router.post(\"/bulk-import\", response_model=BulkImportResponse)\ndef bulk_import_urls(\n    request: BulkImportRequest,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "BulkImportResponse",
+        "kind": 6,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "class BulkImportResponse(BaseModel):\n    success: int\n    errors: List[dict]\n@router.post(\"/bulk-import\", response_model=BulkImportResponse)\ndef bulk_import_urls(\n    request: BulkImportRequest,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_url_repository",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_tag_repository",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):\n    links: List[CSVLinkImport]\nclass BulkImportResponse(BaseModel):",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "bulk_import_urls",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def bulk_import_urls(\n    request: BulkImportRequest,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Import multiple URLs from CSV data\"\"\"\n    success_count = 0\n    errors = []\n    # Get all user's tags once",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "create_url",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def create_url(\n    url: URLCreate,\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Create a new URL linked to the authenticated user\"\"\"\n    # Override user_id with the authenticated user's ID\n    url.user_id = current_user.user_id\n    try:\n        return repo.create(url)",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_urls",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def get_urls(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all URLs for the authenticated user with pagination\"\"\"\n    return repo.get_by_user_with_tags(user_id=current_user.user_id, skip=skip, limit=limit)\n@router.get(\"/search/\", response_model=List[URLWithTags])\ndef search_urls(",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "search_urls",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def search_urls(\n    q: str = Query(..., min_length=1, description=\"Search query\"),\n    threshold: float = Query(0.3, ge=0.0, le=1.0, description=\"Minimum similarity threshold (0.0 to 1.0)\"),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Search URLs by title, description, or URL using Levenshtein distance for fuzzy matching.\n    Returns URLs sorted by similarity to the query (most similar first).",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_urls_by_user",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def get_urls_by_user(\n    user_id: str,\n    repo: URLRepository = Depends(get_url_repository)\n):\n    \"\"\"Get all URLs owned by a user\"\"\"\n    return repo.get_by_user(user_id)\n@router.get(\"/by-tag/{tag_id}\", response_model=List[URL])\ndef get_urls_by_tag(\n    tag_id: str,\n    repo: URLRepository = Depends(get_url_repository)",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_urls_by_tag",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def get_urls_by_tag(\n    tag_id: str,\n    repo: URLRepository = Depends(get_url_repository)\n):\n    \"\"\"Get all URLs with a specific tag\"\"\"\n    return repo.get_by_tag(tag_id)\n@router.get(\"/{url_id}\", response_model=URL)\ndef get_url(\n    url_id: str,\n    repo: URLRepository = Depends(get_url_repository)",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_url",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def get_url(\n    url_id: str,\n    repo: URLRepository = Depends(get_url_repository)\n):\n    \"\"\"Get a URL by ID\"\"\"\n    url = repo.get_by_id(url_id)\n    if not url:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"URL with id {url_id} not found\"",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_url_with_tags",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def get_url_with_tags(\n    url_id: str,\n    repo: URLRepository = Depends(get_url_repository)\n):\n    \"\"\"Get a URL with all its tags\"\"\"\n    url = repo.get_with_tags(url_id)\n    if not url:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"URL with id {url_id} not found\"",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "update_url",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def update_url(\n    url_id: str,\n    url: URLUpdate,\n    repo: URLRepository = Depends(get_url_repository)\n):\n    \"\"\"Update a URL\"\"\"\n    updated_url = repo.update(url_id, url)\n    if not updated_url:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "delete_url",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def delete_url(\n    url_id: str,\n    repo: URLRepository = Depends(get_url_repository)\n):\n    \"\"\"Delete a URL\"\"\"\n    if not repo.delete(url_id):\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"URL with id {url_id} not found\"\n        )",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "add_tag_to_url",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def add_tag_to_url(\n    url_id: str,\n    tag_id: str,\n    repo: URLRepository = Depends(get_url_repository)\n):\n    \"\"\"Add a tag to a URL\"\"\"\n    if not repo.add_tag(url_id, tag_id):\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=\"URL or Tag not found\"",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "remove_tag_from_url",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def remove_tag_from_url(\n    url_id: str,\n    tag_id: str,\n    repo: URLRepository = Depends(get_url_repository)\n):\n    \"\"\"Remove a tag from a URL\"\"\"\n    if not repo.remove_tag(url_id, tag_id):\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=\"Tag not found on this URL\"",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    created_at: str | None = None",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_repository",
+        "kind": 2,
+        "importPath": "back.src.controllers.user_controller",
+        "description": "back.src.controllers.user_controller",
+        "peekOfCode": "def get_user_repository(driver: Driver = Depends(get_db)) -> UserRepository:\n    return UserRepository(driver)\n@router.post(\"/\", response_model=User, status_code=status.HTTP_201_CREATED)\ndef create_user(\n    user: UserCreate,\n    repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Create a new user\"\"\"\n    # Check if username already exists\n    existing = repo.get_by_username(user.username)",
+        "detail": "back.src.controllers.user_controller",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "kind": 2,
+        "importPath": "back.src.controllers.user_controller",
+        "description": "back.src.controllers.user_controller",
+        "peekOfCode": "def create_user(\n    user: UserCreate,\n    repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Create a new user\"\"\"\n    # Check if username already exists\n    existing = repo.get_by_username(user.username)\n    if existing:\n        raise HTTPException(\n            status_code=status.HTTP_409_CONFLICT,",
+        "detail": "back.src.controllers.user_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_users",
+        "kind": 2,
+        "importPath": "back.src.controllers.user_controller",
+        "description": "back.src.controllers.user_controller",
+        "peekOfCode": "def get_users(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Get all users with pagination\"\"\"\n    return repo.get_all(skip=skip, limit=limit)\n@router.get(\"/{user_id}\", response_model=User)\ndef get_user(\n    user_id: str,",
+        "detail": "back.src.controllers.user_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_user",
+        "kind": 2,
+        "importPath": "back.src.controllers.user_controller",
+        "description": "back.src.controllers.user_controller",
+        "peekOfCode": "def get_user(\n    user_id: str,\n    repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Get a user by ID\"\"\"\n    user = repo.get_by_id(user_id)\n    if not user:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"User with id {user_id} not found\"",
+        "detail": "back.src.controllers.user_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_with_content",
+        "kind": 2,
+        "importPath": "back.src.controllers.user_controller",
+        "description": "back.src.controllers.user_controller",
+        "peekOfCode": "def get_user_with_content(\n    user_id: str,\n    repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Get a user with all their URLs and Files\"\"\"\n    user = repo.get_with_content(user_id)\n    if not user:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"User with id {user_id} not found\"",
+        "detail": "back.src.controllers.user_controller",
+        "documentation": {}
+    },
+    {
+        "label": "update_user",
+        "kind": 2,
+        "importPath": "back.src.controllers.user_controller",
+        "description": "back.src.controllers.user_controller",
+        "peekOfCode": "def update_user(\n    user_id: str,\n    user: UserUpdate,\n    repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Update a user\"\"\"\n    updated_user = repo.update(user_id, user)\n    if not updated_user:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,",
+        "detail": "back.src.controllers.user_controller",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user",
+        "kind": 2,
+        "importPath": "back.src.controllers.user_controller",
+        "description": "back.src.controllers.user_controller",
+        "peekOfCode": "def delete_user(\n    user_id: str,\n    repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Delete a user and all their content\"\"\"\n    if not repo.delete(user_id):\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"User with id {user_id} not found\"\n        )",
+        "detail": "back.src.controllers.user_controller",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "back.src.controllers.user_controller",
+        "description": "back.src.controllers.user_controller",
+        "peekOfCode": "router = APIRouter(prefix=\"/users\", tags=[\"users\"])\ndef get_user_repository(driver: Driver = Depends(get_db)) -> UserRepository:\n    return UserRepository(driver)\n@router.post(\"/\", response_model=User, status_code=status.HTTP_201_CREATED)\ndef create_user(\n    user: UserCreate,\n    repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Create a new user\"\"\"\n    # Check if username already exists",
+        "detail": "back.src.controllers.user_controller",
+        "documentation": {}
+    },
+    {
+        "label": "FileBase",
+        "kind": 6,
+        "importPath": "back.src.models.file",
+        "description": "back.src.models.file",
+        "peekOfCode": "class FileBase(BaseModel):\n    filename: str = Field(..., min_length=1)\n    file_path: str = Field(..., min_length=1)\n    file_type: Optional[str] = None  # mime type\n    file_size: Optional[int] = None  # en bytes\n    description: Optional[str] = None\nclass FileCreate(FileBase):\n    user_id: str  # Le fichier appartient à un user\nclass FileUpdate(BaseModel):\n    filename: Optional[str] = Field(None, min_length=1)",
+        "detail": "back.src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileCreate",
+        "kind": 6,
+        "importPath": "back.src.models.file",
+        "description": "back.src.models.file",
+        "peekOfCode": "class FileCreate(FileBase):\n    user_id: str  # Le fichier appartient à un user\nclass FileUpdate(BaseModel):\n    filename: Optional[str] = Field(None, min_length=1)\n    description: Optional[str] = None\nclass File(FileBase):\n    id: str\n    user_id: str\n    created_at: datetime\n    updated_at: datetime",
+        "detail": "back.src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileUpdate",
+        "kind": 6,
+        "importPath": "back.src.models.file",
+        "description": "back.src.models.file",
+        "peekOfCode": "class FileUpdate(BaseModel):\n    filename: Optional[str] = Field(None, min_length=1)\n    description: Optional[str] = None\nclass File(FileBase):\n    id: str\n    user_id: str\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True",
+        "detail": "back.src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "kind": 6,
+        "importPath": "back.src.models.file",
+        "description": "back.src.models.file",
+        "peekOfCode": "class File(FileBase):\n    id: str\n    user_id: str\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass FileWithTags(File):\n    \"\"\"File with its tags\"\"\"\n    tags: List['Tag'] = []",
+        "detail": "back.src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileWithTags",
+        "kind": 6,
+        "importPath": "back.src.models.file",
+        "description": "back.src.models.file",
+        "peekOfCode": "class FileWithTags(File):\n    \"\"\"File with its tags\"\"\"\n    tags: List['Tag'] = []\n    class Config:\n        from_attributes = True\nclass FileWithUser(File):\n    \"\"\"File with its owner\"\"\"\n    user: Optional['User'] = None\n    tags: List['Tag'] = []\n    class Config:",
+        "detail": "back.src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "FileWithUser",
+        "kind": 6,
+        "importPath": "back.src.models.file",
+        "description": "back.src.models.file",
+        "peekOfCode": "class FileWithUser(File):\n    \"\"\"File with its owner\"\"\"\n    user: Optional['User'] = None\n    tags: List['Tag'] = []\n    class Config:\n        from_attributes = True\n# Avoid circular imports\nfrom .tag import Tag\nfrom .user import User\nFileWithTags.model_rebuild()",
+        "detail": "back.src.models.file",
+        "documentation": {}
+    },
+    {
+        "label": "TagBase",
+        "kind": 6,
+        "importPath": "back.src.models.tag",
+        "description": "back.src.models.tag",
+        "peekOfCode": "class TagBase(BaseModel):\n    name: str = Field(..., min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None\nclass TagCreate(TagBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\nclass TagUpdate(BaseModel):\n    name: Optional[str] = Field(None, min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None",
+        "detail": "back.src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagCreate",
+        "kind": 6,
+        "importPath": "back.src.models.tag",
+        "description": "back.src.models.tag",
+        "peekOfCode": "class TagCreate(TagBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\nclass TagUpdate(BaseModel):\n    name: Optional[str] = Field(None, min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None\nclass Tag(TagBase):\n    id: str\n    user_id: str  # User ID of the tag owner\n    created_at: datetime",
+        "detail": "back.src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagUpdate",
+        "kind": 6,
+        "importPath": "back.src.models.tag",
+        "description": "back.src.models.tag",
+        "peekOfCode": "class TagUpdate(BaseModel):\n    name: Optional[str] = Field(None, min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None\nclass Tag(TagBase):\n    id: str\n    user_id: str  # User ID of the tag owner\n    created_at: datetime\n    updated_at: datetime\n    class Config:",
+        "detail": "back.src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "Tag",
+        "kind": 6,
+        "importPath": "back.src.models.tag",
+        "description": "back.src.models.tag",
+        "peekOfCode": "class Tag(TagBase):\n    id: str\n    user_id: str  # User ID of the tag owner\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass TagRelation(BaseModel):\n    \"\"\"Represents a tag with its relationship type\"\"\"\n    tag: Tag",
+        "detail": "back.src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagRelation",
+        "kind": 6,
+        "importPath": "back.src.models.tag",
+        "description": "back.src.models.tag",
+        "peekOfCode": "class TagRelation(BaseModel):\n    \"\"\"Represents a tag with its relationship type\"\"\"\n    tag: Tag\n    relationship_type: str  # PARENT_OF, COMPOSED_OF, RELATED_TO\nclass TagWithRelations(Tag):\n    \"\"\"Tag with all its relationships\"\"\"\n    parents: List[Tag] = []\n    children: List[Tag] = []\n    composed_of: List[Tag] = []\n    part_of: List[Tag] = []",
+        "detail": "back.src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagWithRelations",
+        "kind": 6,
+        "importPath": "back.src.models.tag",
+        "description": "back.src.models.tag",
+        "peekOfCode": "class TagWithRelations(Tag):\n    \"\"\"Tag with all its relationships\"\"\"\n    parents: List[Tag] = []\n    children: List[Tag] = []\n    composed_of: List[Tag] = []\n    part_of: List[Tag] = []\n    related_to: List[Tag] = []\n    class Config:\n        from_attributes = True",
+        "detail": "back.src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "URLBase",
+        "kind": 6,
+        "importPath": "back.src.models.url",
+        "description": "back.src.models.url",
+        "peekOfCode": "class URLBase(BaseModel):\n    url: str = Field(..., min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\nclass URLCreate(URLBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    tag_ids: List[str] = []  # Liste des IDs de tags à associer\n    created_at: Optional[datetime] = None  # Optional, pour les imports CSV avec date personnalisée\nclass URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)",
+        "detail": "back.src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLCreate",
+        "kind": 6,
+        "importPath": "back.src.models.url",
+        "description": "back.src.models.url",
+        "peekOfCode": "class URLCreate(URLBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    tag_ids: List[str] = []  # Liste des IDs de tags à associer\n    created_at: Optional[datetime] = None  # Optional, pour les imports CSV avec date personnalisée\nclass URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)\nclass URL(URLBase):",
+        "detail": "back.src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLUpdate",
+        "kind": 6,
+        "importPath": "back.src.models.url",
+        "description": "back.src.models.url",
+        "peekOfCode": "class URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)\nclass URL(URLBase):\n    id: str\n    user_id: str\n    created_at: datetime\n    updated_at: datetime",
+        "detail": "back.src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "kind": 6,
+        "importPath": "back.src.models.url",
+        "description": "back.src.models.url",
+        "peekOfCode": "class URL(URLBase):\n    id: str\n    user_id: str\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass URLWithTags(URL):\n    \"\"\"URL with its tags\"\"\"\n    tags: List['Tag'] = []",
+        "detail": "back.src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "kind": 6,
+        "importPath": "back.src.models.url",
+        "description": "back.src.models.url",
+        "peekOfCode": "class URLWithTags(URL):\n    \"\"\"URL with its tags\"\"\"\n    tags: List['Tag'] = []\n    class Config:\n        from_attributes = True\nclass URLWithUser(URL):\n    \"\"\"URL with its owner\"\"\"\n    user: Optional['User'] = None\n    tags: List['Tag'] = []\n    class Config:",
+        "detail": "back.src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithUser",
+        "kind": 6,
+        "importPath": "back.src.models.url",
+        "description": "back.src.models.url",
+        "peekOfCode": "class URLWithUser(URL):\n    \"\"\"URL with its owner\"\"\"\n    user: Optional['User'] = None\n    tags: List['Tag'] = []\n    class Config:\n        from_attributes = True\n# Avoid circular imports\nfrom .tag import Tag\nfrom .user import User\nURLWithTags.model_rebuild()",
+        "detail": "back.src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "UserBase",
+        "kind": 6,
+        "importPath": "back.src.models.user",
+        "description": "back.src.models.user",
+        "peekOfCode": "class UserBase(BaseModel):\n    username: str = Field(..., min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\nclass UserCreate(UserBase):\n    password: str = Field(..., min_length=6)\nclass UserLogin(BaseModel):\n    username: str\n    password: str\nclass UserUpdate(BaseModel):",
+        "detail": "back.src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreate",
+        "kind": 6,
+        "importPath": "back.src.models.user",
+        "description": "back.src.models.user",
+        "peekOfCode": "class UserCreate(UserBase):\n    password: str = Field(..., min_length=6)\nclass UserLogin(BaseModel):\n    username: str\n    password: str\nclass UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)",
+        "detail": "back.src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserLogin",
+        "kind": 6,
+        "importPath": "back.src.models.user",
+        "description": "back.src.models.user",
+        "peekOfCode": "class UserLogin(BaseModel):\n    username: str\n    password: str\nclass UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)\nclass User(UserBase):\n    id: str",
+        "detail": "back.src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserUpdate",
+        "kind": 6,
+        "importPath": "back.src.models.user",
+        "description": "back.src.models.user",
+        "peekOfCode": "class UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)\nclass User(UserBase):\n    id: str\n    is_active: bool = True\n    created_at: datetime\n    updated_at: datetime",
+        "detail": "back.src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "back.src.models.user",
+        "description": "back.src.models.user",
+        "peekOfCode": "class User(UserBase):\n    id: str\n    is_active: bool = True\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass UserInDB(User):\n    \"\"\"User model with hashed password (for internal use)\"\"\"\n    hashed_password: str",
+        "detail": "back.src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserInDB",
+        "kind": 6,
+        "importPath": "back.src.models.user",
+        "description": "back.src.models.user",
+        "peekOfCode": "class UserInDB(User):\n    \"\"\"User model with hashed password (for internal use)\"\"\"\n    hashed_password: str\nclass UserWithContent(User):\n    \"\"\"User with their URLs and Files\"\"\"\n    urls: List['URL'] = []\n    files: List['File'] = []\n    class Config:\n        from_attributes = True\n# Avoid circular imports",
+        "detail": "back.src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserWithContent",
+        "kind": 6,
+        "importPath": "back.src.models.user",
+        "description": "back.src.models.user",
+        "peekOfCode": "class UserWithContent(User):\n    \"\"\"User with their URLs and Files\"\"\"\n    urls: List['URL'] = []\n    files: List['File'] = []\n    class Config:\n        from_attributes = True\n# Avoid circular imports\nfrom .url import URL\nfrom .file import File\nUserWithContent.model_rebuild()",
+        "detail": "back.src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "FileRepository",
+        "kind": 6,
+        "importPath": "back.src.repositories.file_repository",
+        "description": "back.src.repositories.file_repository",
+        "peekOfCode": "class FileRepository:\n    def __init__(self, driver: Driver):\n        self.driver = driver\n    def create(self, file: FileCreate) -> File:\n        \"\"\"Create a new file\"\"\"\n        with self.driver.session() as session:\n            # Create file and link to user\n            result = session.run(\"\"\"\n                MATCH (u:User {id: $user_id})\n                CREATE (f:File {",
+        "detail": "back.src.repositories.file_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "kind": 6,
+        "importPath": "back.src.repositories.tag_repository",
+        "description": "back.src.repositories.tag_repository",
+        "peekOfCode": "class TagRepository:\n    def __init__(self, driver: Driver):\n        self.driver = driver\n    def create(self, tag: TagCreate) -> Tag:\n        \"\"\"Create a new tag and link it to the user\"\"\"\n        with self.driver.session() as session:\n            result = session.run(\"\"\"\n                MATCH (u:User {id: $user_id})\n                CREATE (t:Tag {\n                    id: $id,",
+        "detail": "back.src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "URLRepository",
+        "kind": 6,
+        "importPath": "back.src.repositories.url_repository",
+        "description": "back.src.repositories.url_repository",
+        "peekOfCode": "class URLRepository:\n    def __init__(self, driver: Driver):\n        self.driver = driver\n    def create(self, url: URLCreate) -> URL:\n        \"\"\"Create a new URL and link it to tags\"\"\"\n        with self.driver.session() as session:\n            url_id = str(uuid.uuid4())\n            # Prepare parameters with custom or current datetime\n            params = {\n                \"id\": url_id,",
+        "detail": "back.src.repositories.url_repository",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "kind": 6,
+        "importPath": "back.src.repositories.user_repository",
+        "description": "back.src.repositories.user_repository",
+        "peekOfCode": "class UserRepository:\n    def __init__(self, driver: Driver):\n        self.driver = driver\n    def create(self, user: UserCreate) -> User:\n        \"\"\"Create a new user with hashed password\"\"\"\n        hashed_password = get_password_hash(user.password)\n        with self.driver.session() as session:\n            result = session.run(\"\"\"\n                CREATE (u:User {\n                    id: $id,",
+        "detail": "back.src.repositories.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "levenshtein_distance",
+        "kind": 2,
+        "importPath": "back.src.services.levenshtein_service",
+        "description": "back.src.services.levenshtein_service",
+        "peekOfCode": "def levenshtein_distance(s1: str, s2: str) -> int:\n    \"\"\"\n    Calculate the Levenshtein distance between two strings.\n    The Levenshtein distance is the minimum number of single-character edits\n    (insertions, deletions, or substitutions) required to change one string into another.\n    Args:\n        s1: First string\n        s2: Second string\n    Returns:\n        The Levenshtein distance between s1 and s2",
+        "detail": "back.src.services.levenshtein_service",
+        "documentation": {}
+    },
+    {
+        "label": "levenshtein_similarity",
+        "kind": 2,
+        "importPath": "back.src.services.levenshtein_service",
+        "description": "back.src.services.levenshtein_service",
+        "peekOfCode": "def levenshtein_similarity(query: str, text: str) -> float:\n    \"\"\"\n    Calculate similarity score between two strings based on Levenshtein distance.\n    Truncates the longer string to match the query length for better partial matching.\n    Returns a score between 0.0 (completely different) and 1.0 (identical).\n    Args:\n        query: The search query string\n        text: The text to compare against\n    Returns:\n        Similarity score between 0.0 and 1.0",
+        "detail": "back.src.services.levenshtein_service",
+        "documentation": {}
+    },
+    {
+        "label": "search_by_similarity",
+        "kind": 2,
+        "importPath": "back.src.services.levenshtein_service",
+        "description": "back.src.services.levenshtein_service",
+        "peekOfCode": "def search_by_similarity(query: str, items: list[tuple[str, any]], threshold: float = 0.6) -> list[tuple[any, float]]:\n    \"\"\"\n    Search items by similarity to query string using Levenshtein distance.\n    Args:\n        query: The search query string\n        items: List of tuples (text_to_match, item_data)\n        threshold: Minimum similarity score to include (0.0 to 1.0)\n    Returns:\n        List of tuples (item_data, similarity_score) sorted by similarity (highest first)\n    \"\"\"",
+        "detail": "back.src.services.levenshtein_service",
+        "documentation": {}
+    },
+    {
+        "label": "Token",
+        "kind": 6,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "class Token(BaseModel):\n    access_token: str\n    token_type: str\nclass TokenData(BaseModel):\n    username: Optional[str] = None\n    user_id: Optional[str] = None\ndef verify_password(plain_password: str, hashed_password: str) -> bool:\n    \"\"\"Verify a password against a hash\"\"\"\n    return pwd_context.verify(plain_password, hashed_password)\ndef get_password_hash(password: str) -> str:",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "TokenData",
+        "kind": 6,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "class TokenData(BaseModel):\n    username: Optional[str] = None\n    user_id: Optional[str] = None\ndef verify_password(plain_password: str, hashed_password: str) -> bool:\n    \"\"\"Verify a password against a hash\"\"\"\n    return pwd_context.verify(plain_password, hashed_password)\ndef get_password_hash(password: str) -> str:\n    \"\"\"Hash a password\"\"\"\n    return pwd_context.hash(password)\ndef create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "verify_password",
+        "kind": 2,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "def verify_password(plain_password: str, hashed_password: str) -> bool:\n    \"\"\"Verify a password against a hash\"\"\"\n    return pwd_context.verify(plain_password, hashed_password)\ndef get_password_hash(password: str) -> str:\n    \"\"\"Hash a password\"\"\"\n    return pwd_context.hash(password)\ndef create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:\n    \"\"\"Create a JWT access token\"\"\"\n    to_encode = data.copy()\n    if expires_delta:",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_password_hash",
+        "kind": 2,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "def get_password_hash(password: str) -> str:\n    \"\"\"Hash a password\"\"\"\n    return pwd_context.hash(password)\ndef create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:\n    \"\"\"Create a JWT access token\"\"\"\n    to_encode = data.copy()\n    if expires_delta:\n        expire = datetime.utcnow() + expires_delta\n    else:\n        expire = datetime.utcnow() + timedelta(minutes=15)",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "kind": 2,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:\n    \"\"\"Create a JWT access token\"\"\"\n    to_encode = data.copy()\n    if expires_delta:\n        expire = datetime.utcnow() + expires_delta\n    else:\n        expire = datetime.utcnow() + timedelta(minutes=15)\n    to_encode.update({\"exp\": expire})\n    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)\n    return encoded_jwt",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "decode_access_token",
+        "kind": 2,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "def decode_access_token(token: str) -> TokenData:\n    \"\"\"Decode and verify a JWT token\"\"\"\n    credentials_exception = HTTPException(\n        status_code=status.HTTP_401_UNAUTHORIZED,\n        detail=\"Could not validate credentials\",\n        headers={\"WWW-Authenticate\": \"Bearer\"},\n    )\n    try:\n        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n        username: str = payload.get(\"sub\")",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "SECRET_KEY = os.getenv(\"SECRET_KEY\", \"your-secret-key-change-this-in-production-123456789\")\nALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 30\n# Password hashing\npwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")\n# OAuth2 scheme\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"/auth/login\")\nclass Token(BaseModel):\n    access_token: str\n    token_type: str",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "ALGORITHM",
+        "kind": 5,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "ALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 30\n# Password hashing\npwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")\n# OAuth2 scheme\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"/auth/login\")\nclass Token(BaseModel):\n    access_token: str\n    token_type: str\nclass TokenData(BaseModel):",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "ACCESS_TOKEN_EXPIRE_MINUTES",
+        "kind": 5,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "ACCESS_TOKEN_EXPIRE_MINUTES = 30\n# Password hashing\npwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")\n# OAuth2 scheme\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"/auth/login\")\nclass Token(BaseModel):\n    access_token: str\n    token_type: str\nclass TokenData(BaseModel):\n    username: Optional[str] = None",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "pwd_context",
+        "kind": 5,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")\n# OAuth2 scheme\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"/auth/login\")\nclass Token(BaseModel):\n    access_token: str\n    token_type: str\nclass TokenData(BaseModel):\n    username: Optional[str] = None\n    user_id: Optional[str] = None\ndef verify_password(plain_password: str, hashed_password: str) -> bool:",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "oauth2_scheme",
+        "kind": 5,
+        "importPath": "back.src.auth",
+        "description": "back.src.auth",
+        "peekOfCode": "oauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"/auth/login\")\nclass Token(BaseModel):\n    access_token: str\n    token_type: str\nclass TokenData(BaseModel):\n    username: Optional[str] = None\n    user_id: Optional[str] = None\ndef verify_password(plain_password: str, hashed_password: str) -> bool:\n    \"\"\"Verify a password against a hash\"\"\"\n    return pwd_context.verify(plain_password, hashed_password)",
+        "detail": "back.src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "Settings",
+        "kind": 6,
+        "importPath": "back.src.config",
+        "description": "back.src.config",
+        "peekOfCode": "class Settings(BaseSettings):\n    # Neo4j Configuration\n    NEO4J_URI: str\n    NEO4J_USER: str\n    NEO4J_PASSWORD: str\n    # Application Configuration\n    APP_NAME: str = \"TagLink API\"\n    APP_VERSION: str = \"1.0.0\"\n    DEBUG: bool = True\n    class Config:",
+        "detail": "back.src.config",
+        "documentation": {}
+    },
+    {
+        "label": "get_settings",
+        "kind": 2,
+        "importPath": "back.src.config",
+        "description": "back.src.config",
+        "peekOfCode": "def get_settings() -> Settings:\n    return Settings()",
+        "detail": "back.src.config",
+        "documentation": {}
+    },
+    {
+        "label": "Neo4jConnection",
+        "kind": 6,
+        "importPath": "back.src.database",
+        "description": "back.src.database",
+        "peekOfCode": "class Neo4jConnection:\n    def __init__(self):\n        self._driver: Optional[GraphDatabase.driver] = None\n    def connect(self):\n        \"\"\"Establish connection to Neo4j database\"\"\"\n        self._driver = GraphDatabase.driver(\n            settings.NEO4J_URI,\n            auth=(settings.NEO4J_USER, settings.NEO4J_PASSWORD)\n        )\n        return self._driver",
+        "detail": "back.src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "back.src.database",
+        "description": "back.src.database",
+        "peekOfCode": "def get_db():\n    \"\"\"Dependency for getting database connection\"\"\"\n    return neo4j_connection.get_driver()\ndef get_driver():\n    \"\"\"Get the Neo4j driver instance\"\"\"\n    return neo4j_connection.get_driver()\ndef init_constraints():\n    \"\"\"Initialize database constraints and indexes\"\"\"\n    driver = neo4j_connection.get_driver()\n    with driver.session() as session:",
+        "detail": "back.src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
+        "kind": 2,
+        "importPath": "back.src.database",
+        "description": "back.src.database",
+        "peekOfCode": "def get_driver():\n    \"\"\"Get the Neo4j driver instance\"\"\"\n    return neo4j_connection.get_driver()\ndef init_constraints():\n    \"\"\"Initialize database constraints and indexes\"\"\"\n    driver = neo4j_connection.get_driver()\n    with driver.session() as session:\n        # Tag constraints\n        session.run(\"\"\"\n            CREATE CONSTRAINT tag_id_unique IF NOT EXISTS",
+        "detail": "back.src.database",
+        "documentation": {}
+    },
+    {
+        "label": "init_constraints",
+        "kind": 2,
+        "importPath": "back.src.database",
+        "description": "back.src.database",
+        "peekOfCode": "def init_constraints():\n    \"\"\"Initialize database constraints and indexes\"\"\"\n    driver = neo4j_connection.get_driver()\n    with driver.session() as session:\n        # Tag constraints\n        session.run(\"\"\"\n            CREATE CONSTRAINT tag_id_unique IF NOT EXISTS\n            FOR (t:Tag) REQUIRE t.id IS UNIQUE\n        \"\"\")\n        session.run(\"\"\"",
+        "detail": "back.src.database",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 5,
+        "importPath": "back.src.database",
+        "description": "back.src.database",
+        "peekOfCode": "settings = get_settings()\nclass Neo4jConnection:\n    def __init__(self):\n        self._driver: Optional[GraphDatabase.driver] = None\n    def connect(self):\n        \"\"\"Establish connection to Neo4j database\"\"\"\n        self._driver = GraphDatabase.driver(\n            settings.NEO4J_URI,\n            auth=(settings.NEO4J_USER, settings.NEO4J_PASSWORD)\n        )",
+        "detail": "back.src.database",
+        "documentation": {}
+    },
+    {
+        "label": "neo4j_connection",
+        "kind": 5,
+        "importPath": "back.src.database",
+        "description": "back.src.database",
+        "peekOfCode": "neo4j_connection = Neo4jConnection()\ndef get_db():\n    \"\"\"Dependency for getting database connection\"\"\"\n    return neo4j_connection.get_driver()\ndef get_driver():\n    \"\"\"Get the Neo4j driver instance\"\"\"\n    return neo4j_connection.get_driver()\ndef init_constraints():\n    \"\"\"Initialize database constraints and indexes\"\"\"\n    driver = neo4j_connection.get_driver()",
+        "detail": "back.src.database",
+        "documentation": {}
+    },
+    {
+        "label": "test_db",
+        "kind": 2,
+        "importPath": "back.tests.conftest",
+        "description": "back.tests.conftest",
+        "peekOfCode": "def test_db():\n    \"\"\"Setup test database connection\"\"\"\n    driver = GraphDatabase.driver(\n        settings.NEO4J_URI,\n        auth=(settings.NEO4J_USER, settings.NEO4J_PASSWORD)\n    )\n    yield driver\n    # Cleanup after all tests\n    with driver.session() as session:\n        session.run(\"MATCH (n) DETACH DELETE n\")",
+        "detail": "back.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 2,
+        "importPath": "back.tests.conftest",
+        "description": "back.tests.conftest",
+        "peekOfCode": "def client():\n    \"\"\"Create a test client\"\"\"\n    return TestClient(app)\n@pytest.fixture(scope=\"function\", autouse=True)\ndef clean_db(test_db):\n    \"\"\"Clean database before each test\"\"\"\n    with test_db.session() as session:\n        session.run(\"MATCH (n) DETACH DELETE n\")\n    yield\n    # Clean after test as well",
+        "detail": "back.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "clean_db",
+        "kind": 2,
+        "importPath": "back.tests.conftest",
+        "description": "back.tests.conftest",
+        "peekOfCode": "def clean_db(test_db):\n    \"\"\"Clean database before each test\"\"\"\n    with test_db.session() as session:\n        session.run(\"MATCH (n) DETACH DELETE n\")\n    yield\n    # Clean after test as well\n    with test_db.session() as session:\n        session.run(\"MATCH (n) DETACH DELETE n\")",
+        "detail": "back.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 5,
+        "importPath": "back.tests.conftest",
+        "description": "back.tests.conftest",
+        "peekOfCode": "settings = get_settings()\n@pytest.fixture(scope=\"session\")\ndef test_db():\n    \"\"\"Setup test database connection\"\"\"\n    driver = GraphDatabase.driver(\n        settings.NEO4J_URI,\n        auth=(settings.NEO4J_USER, settings.NEO4J_PASSWORD)\n    )\n    yield driver\n    # Cleanup after all tests",
+        "detail": "back.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "test_levenshtein_distance_identical",
+        "kind": 2,
+        "importPath": "back.tests.test_levenshtein",
+        "description": "back.tests.test_levenshtein",
+        "peekOfCode": "def test_levenshtein_distance_identical():\n    \"\"\"Test that identical strings have distance 0\"\"\"\n    assert levenshtein_distance(\"hello\", \"hello\") == 0\n    assert levenshtein_distance(\"Python\", \"python\") == 0  # Case insensitive\ndef test_levenshtein_distance_one_edit():\n    \"\"\"Test single character edits\"\"\"\n    assert levenshtein_distance(\"cat\", \"bat\") == 1  # substitution\n    assert levenshtein_distance(\"cat\", \"cats\") == 1  # insertion\n    assert levenshtein_distance(\"cats\", \"cat\") == 1  # deletion\ndef test_levenshtein_distance_multiple_edits():",
+        "detail": "back.tests.test_levenshtein",
+        "documentation": {}
+    },
+    {
+        "label": "test_levenshtein_distance_one_edit",
+        "kind": 2,
+        "importPath": "back.tests.test_levenshtein",
+        "description": "back.tests.test_levenshtein",
+        "peekOfCode": "def test_levenshtein_distance_one_edit():\n    \"\"\"Test single character edits\"\"\"\n    assert levenshtein_distance(\"cat\", \"bat\") == 1  # substitution\n    assert levenshtein_distance(\"cat\", \"cats\") == 1  # insertion\n    assert levenshtein_distance(\"cats\", \"cat\") == 1  # deletion\ndef test_levenshtein_distance_multiple_edits():\n    \"\"\"Test multiple character edits\"\"\"\n    assert levenshtein_distance(\"kitten\", \"sitting\") == 3\n    assert levenshtein_distance(\"saturday\", \"sunday\") == 3\ndef test_levenshtein_similarity():",
+        "detail": "back.tests.test_levenshtein",
+        "documentation": {}
+    },
+    {
+        "label": "test_levenshtein_distance_multiple_edits",
+        "kind": 2,
+        "importPath": "back.tests.test_levenshtein",
+        "description": "back.tests.test_levenshtein",
+        "peekOfCode": "def test_levenshtein_distance_multiple_edits():\n    \"\"\"Test multiple character edits\"\"\"\n    assert levenshtein_distance(\"kitten\", \"sitting\") == 3\n    assert levenshtein_distance(\"saturday\", \"sunday\") == 3\ndef test_levenshtein_similarity():\n    \"\"\"Test similarity score calculation\"\"\"\n    # Identical strings should have similarity 1.0\n    assert levenshtein_similarity(\"hello\", \"hello\") == 1.0\n    # Completely different strings should have low similarity\n    similarity = levenshtein_similarity(\"abc\", \"xyz\")",
+        "detail": "back.tests.test_levenshtein",
+        "documentation": {}
+    },
+    {
+        "label": "test_levenshtein_similarity",
+        "kind": 2,
+        "importPath": "back.tests.test_levenshtein",
+        "description": "back.tests.test_levenshtein",
+        "peekOfCode": "def test_levenshtein_similarity():\n    \"\"\"Test similarity score calculation\"\"\"\n    # Identical strings should have similarity 1.0\n    assert levenshtein_similarity(\"hello\", \"hello\") == 1.0\n    # Completely different strings should have low similarity\n    similarity = levenshtein_similarity(\"abc\", \"xyz\")\n    assert 0.0 <= similarity < 0.5\n    # Similar strings should have high similarity\n    similarity = levenshtein_similarity(\"javascript\", \"javascrip\")\n    assert similarity > 0.8",
+        "detail": "back.tests.test_levenshtein",
+        "documentation": {}
+    },
+    {
+        "label": "test_search_by_similarity",
+        "kind": 2,
+        "importPath": "back.tests.test_levenshtein",
+        "description": "back.tests.test_levenshtein",
+        "peekOfCode": "def test_search_by_similarity():\n    \"\"\"Test fuzzy search functionality\"\"\"\n    items = [\n        (\"javascript\", {\"id\": 1, \"name\": \"JavaScript\"}),\n        (\"python\", {\"id\": 2, \"name\": \"Python\"}),\n        (\"typescript\", {\"id\": 3, \"name\": \"TypeScript\"}),\n        (\"java\", {\"id\": 4, \"name\": \"Java\"}),\n    ]\n    # Search for \"javascrip\" should match \"javascript\" and \"typescript\"\n    results = search_by_similarity(\"javascrip\", items, threshold=0.7)",
+        "detail": "back.tests.test_levenshtein",
+        "documentation": {}
+    },
+    {
+        "label": "test_search_by_similarity_no_matches",
+        "kind": 2,
+        "importPath": "back.tests.test_levenshtein",
+        "description": "back.tests.test_levenshtein",
+        "peekOfCode": "def test_search_by_similarity_no_matches():\n    \"\"\"Test search with no matches above threshold\"\"\"\n    items = [\n        (\"apple\", {\"id\": 1}),\n        (\"banana\", {\"id\": 2}),\n    ]\n    results = search_by_similarity(\"xyz\", items, threshold=0.9)\n    assert len(results) == 0\ndef test_search_by_similarity_threshold():\n    \"\"\"Test that threshold filtering works correctly\"\"\"",
+        "detail": "back.tests.test_levenshtein",
+        "documentation": {}
+    },
+    {
+        "label": "test_search_by_similarity_threshold",
+        "kind": 2,
+        "importPath": "back.tests.test_levenshtein",
+        "description": "back.tests.test_levenshtein",
+        "peekOfCode": "def test_search_by_similarity_threshold():\n    \"\"\"Test that threshold filtering works correctly\"\"\"\n    items = [\n        (\"test\", {\"id\": 1}),\n        (\"testing\", {\"id\": 2}),\n        (\"completely different\", {\"id\": 3}),\n    ]\n    # Low threshold should include more results\n    results_low = search_by_similarity(\"test\", items, threshold=0.3)\n    results_high = search_by_similarity(\"test\", items, threshold=0.8)",
+        "detail": "back.tests.test_levenshtein",
+        "documentation": {}
+    },
+    {
+        "label": "test_levenshtein_similarity_substring",
+        "kind": 2,
+        "importPath": "back.tests.test_levenshtein",
+        "description": "back.tests.test_levenshtein",
+        "peekOfCode": "def test_levenshtein_similarity_substring():\n    \"\"\"Test similarity with substring matching (truncation)\"\"\"\n    # Query \"java\" should match well with \"javascript\" by finding the best substring\n    similarity = levenshtein_similarity(\"java\", \"javascript\")\n    assert similarity == 1.0  # \"java\" matches perfectly with first 4 chars of \"javascript\"\n    # Query \"script\" should match well with \"javascript\" \n    similarity = levenshtein_similarity(\"script\", \"javascript\")\n    assert similarity == 1.0  # \"script\" matches perfectly with last 6 chars\n    # Query \"reac\" should match well with \"react-tutorial\"\n    similarity = levenshtein_similarity(\"reac\", \"react-tutorial\")",
+        "detail": "back.tests.test_levenshtein",
+        "documentation": {}
+    },
+    {
+        "label": "test_levenshtein_similarity_longer_query",
+        "kind": 2,
+        "importPath": "back.tests.test_levenshtein",
+        "description": "back.tests.test_levenshtein",
+        "peekOfCode": "def test_levenshtein_similarity_longer_query():\n    \"\"\"Test that longer queries still work correctly\"\"\"\n    # If query is longer than text, should use full comparison\n    similarity = levenshtein_similarity(\"javascript\", \"java\")\n    assert 0.0 < similarity < 0.5  # Should have low similarity",
+        "detail": "back.tests.test_levenshtein",
+        "documentation": {}
+    },
+    {
+        "label": "test_health_check",
+        "kind": 2,
+        "importPath": "back.tests.test_main",
+        "description": "back.tests.test_main",
+        "peekOfCode": "def test_health_check(client: TestClient):\n    \"\"\"Test health check endpoint\"\"\"\n    response = client.get(\"/health\")\n    assert response.status_code == 200\n    data = response.json()\n    assert \"status\" in data\n    assert \"neo4j\" in data\ndef test_root_endpoint(client: TestClient):\n    \"\"\"Test root endpoint\"\"\"\n    response = client.get(\"/\")",
+        "detail": "back.tests.test_main",
+        "documentation": {}
+    },
+    {
+        "label": "test_root_endpoint",
+        "kind": 2,
+        "importPath": "back.tests.test_main",
+        "description": "back.tests.test_main",
+        "peekOfCode": "def test_root_endpoint(client: TestClient):\n    \"\"\"Test root endpoint\"\"\"\n    response = client.get(\"/\")\n    assert response.status_code == 200\n    data = response.json()\n    assert \"message\" in data\n    assert \"version\" in data\n    assert \"docs\" in data",
+        "detail": "back.tests.test_main",
+        "documentation": {}
+    },
+    {
+        "label": "TestTagModels",
+        "kind": 6,
+        "importPath": "back.tests.test_models",
+        "description": "back.tests.test_models",
+        "peekOfCode": "class TestTagModels:\n    \"\"\"Test Tag Pydantic models\"\"\"\n    def test_tag_create_minimal(self):\n        \"\"\"Test creating a tag with minimal data\"\"\"\n        tag = TagCreate(name=\"Test Tag\")\n        assert tag.name == \"Test Tag\"\n        assert tag.description is None\n        assert tag.color is None\n        assert tag.url is None\n    def test_tag_create_full(self):",
+        "detail": "back.tests.test_models",
+        "documentation": {}
+    },
+    {
+        "label": "TestTagRepository",
+        "kind": 6,
+        "importPath": "back.tests.test_repository",
+        "description": "back.tests.test_repository",
+        "peekOfCode": "class TestTagRepository:\n    \"\"\"Test TagRepository database operations\"\"\"\n    def test_create_tag(self, repo: TagRepository):\n        \"\"\"Test creating a tag in database\"\"\"\n        tag_data = TagCreate(name=\"Test Tag\", description=\"Test\")\n        tag = repo.create(tag_data)\n        assert tag.id is not None\n        assert tag.name == \"Test Tag\"\n        assert tag.description == \"Test\"\n        assert tag.created_at is not None",
+        "detail": "back.tests.test_repository",
+        "documentation": {}
+    },
+    {
+        "label": "repo",
+        "kind": 2,
+        "importPath": "back.tests.test_repository",
+        "description": "back.tests.test_repository",
+        "peekOfCode": "def repo():\n    \"\"\"Create a repository instance for testing\"\"\"\n    driver = GraphDatabase.driver(\n        settings.NEO4J_URI,\n        auth=(settings.NEO4J_USER, settings.NEO4J_PASSWORD)\n    )\n    # Clean database before test\n    with driver.session() as session:\n        session.run(\"MATCH (n) DETACH DELETE n\")\n    repository = TagRepository(driver)",
+        "detail": "back.tests.test_repository",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 5,
+        "importPath": "back.tests.test_repository",
+        "description": "back.tests.test_repository",
+        "peekOfCode": "settings = get_settings()\n@pytest.fixture\ndef repo():\n    \"\"\"Create a repository instance for testing\"\"\"\n    driver = GraphDatabase.driver(\n        settings.NEO4J_URI,\n        auth=(settings.NEO4J_USER, settings.NEO4J_PASSWORD)\n    )\n    # Clean database before test\n    with driver.session() as session:",
+        "detail": "back.tests.test_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TestTagCRUD",
+        "kind": 6,
+        "importPath": "back.tests.test_tags",
+        "description": "back.tests.test_tags",
+        "peekOfCode": "class TestTagCRUD:\n    \"\"\"Test Tag CRUD operations\"\"\"\n    def test_create_tag(self, client: TestClient):\n        \"\"\"Test creating a tag\"\"\"\n        tag_data = {\n            \"name\": \"Python\",\n            \"description\": \"Programming language\",\n            \"color\": \"#3776ab\"\n        }\n        response = client.post(\"/tags/\", json=tag_data)",
+        "detail": "back.tests.test_tags",
+        "documentation": {}
+    },
+    {
+        "label": "TestTagWithURL",
+        "kind": 6,
+        "importPath": "back.tests.test_tags",
+        "description": "back.tests.test_tags",
+        "peekOfCode": "class TestTagWithURL:\n    \"\"\"Test Tag operations with URLs\"\"\"\n    def test_get_tags_with_url(self, client: TestClient):\n        \"\"\"Test getting only tags with URLs\"\"\"\n        # Create tags with and without URLs\n        client.post(\"/tags/\", json={\"name\": \"Tag without URL\"})\n        client.post(\"/tags/\", json={\n            \"name\": \"Tag with URL\",\n            \"url\": \"https://example.com\"\n        })",
+        "detail": "back.tests.test_tags",
+        "documentation": {}
+    },
+    {
+        "label": "TestTagRelations",
+        "kind": 6,
+        "importPath": "back.tests.test_tags",
+        "description": "back.tests.test_tags",
+        "peekOfCode": "class TestTagRelations:\n    \"\"\"Test Tag relationship operations\"\"\"\n    def test_create_parent_of_relation(self, client: TestClient):\n        \"\"\"Test creating PARENT_OF relationship\"\"\"\n        # Create two tags\n        parent_response = client.post(\"/tags/\", json={\"name\": \"Parent\"})\n        child_response = client.post(\"/tags/\", json={\"name\": \"Child\"})\n        parent_id = parent_response.json()[\"id\"]\n        child_id = child_response.json()[\"id\"]\n        # Create relationship",
+        "detail": "back.tests.test_tags",
+        "documentation": {}
+    },
+    {
+        "label": "TestTagPagination",
+        "kind": 6,
+        "importPath": "back.tests.test_tags",
+        "description": "back.tests.test_tags",
+        "peekOfCode": "class TestTagPagination:\n    \"\"\"Test pagination\"\"\"\n    def test_pagination(self, client: TestClient):\n        \"\"\"Test pagination with skip and limit\"\"\"\n        # Create 10 tags\n        for i in range(10):\n            client.post(\"/tags/\", json={\"name\": f\"Tag {i:02d}\"})\n        # Get first page\n        response = client.get(\"/tags/?skip=0&limit=5\")\n        assert response.status_code == 200",
+        "detail": "back.tests.test_tags",
+        "documentation": {}
+    },
+    {
+        "label": "read_root",
+        "kind": 2,
+        "importPath": "back.main",
+        "description": "back.main",
+        "peekOfCode": "def read_root():\n    return {\n        \"message\": \"Welcome to TagLink API\",\n        \"version\": settings.APP_VERSION,\n        \"docs\": \"/docs\"\n    }\n@app.get(\"/health\")\ndef health_check():\n    \"\"\"Health check endpoint\"\"\"\n    is_connected = neo4j_connection.verify_connectivity()",
+        "detail": "back.main",
+        "documentation": {}
+    },
+    {
+        "label": "health_check",
+        "kind": 2,
+        "importPath": "back.main",
+        "description": "back.main",
+        "peekOfCode": "def health_check():\n    \"\"\"Health check endpoint\"\"\"\n    is_connected = neo4j_connection.verify_connectivity()\n    return {\n        \"status\": \"healthy\" if is_connected else \"unhealthy\",\n        \"neo4j\": \"connected\" if is_connected else \"disconnected\"\n    }\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(",
+        "detail": "back.main",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 5,
+        "importPath": "back.main",
+        "description": "back.main",
+        "peekOfCode": "settings = get_settings()\n@asynccontextmanager\nasync def lifespan(app: FastAPI):\n    # Startup\n    print(\"Starting up...\")\n    neo4j_connection.connect()\n    if neo4j_connection.verify_connectivity():\n        print(\"✓ Connected to Neo4j successfully\")\n        init_constraints()\n    else:",
+        "detail": "back.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "back.main",
+        "description": "back.main",
+        "peekOfCode": "app = FastAPI(\n    title=settings.APP_NAME,\n    version=settings.APP_VERSION,\n    lifespan=lifespan\n)\n# CORS middleware\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],  # Configure properly in production\n    allow_credentials=True,",
+        "detail": "back.main",
+        "documentation": {}
+    },
+    {
+        "label": "_Known",
+        "kind": 6,
+        "importPath": "front.node_modules.flatted.python.flatted",
+        "description": "front.node_modules.flatted.python.flatted",
+        "peekOfCode": "class _Known:\n    def __init__(self):\n        self.key = []\n        self.value = []\nclass _String:\n    def __init__(self, value):\n        self.value = value\ndef _array_keys(value):\n    keys = []\n    i = 0",
+        "detail": "front.node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "_String",
+        "kind": 6,
+        "importPath": "front.node_modules.flatted.python.flatted",
+        "description": "front.node_modules.flatted.python.flatted",
+        "peekOfCode": "class _String:\n    def __init__(self, value):\n        self.value = value\ndef _array_keys(value):\n    keys = []\n    i = 0\n    for _ in value:\n        keys.append(i)\n        i += 1\n    return keys",
+        "detail": "front.node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "parse",
+        "kind": 2,
+        "importPath": "front.node_modules.flatted.python.flatted",
+        "description": "front.node_modules.flatted.python.flatted",
+        "peekOfCode": "def parse(value, *args, **kwargs):\n    json = _json.loads(value, *args, **kwargs)\n    wrapped = []\n    for value in json:\n        wrapped.append(_wrap(value))\n    input = []\n    for value in wrapped:\n        if isinstance(value, _String):\n            input.append(value.value)\n        else:",
+        "detail": "front.node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "stringify",
+        "kind": 2,
+        "importPath": "front.node_modules.flatted.python.flatted",
+        "description": "front.node_modules.flatted.python.flatted",
+        "peekOfCode": "def stringify(value, *args, **kwargs):\n    known = _Known()\n    input = []\n    output = []\n    i = int(_index(known, input, value))\n    while i < len(input):\n        output.append(_transform(known, input, input[i]))\n        i += 1\n    return _json.dumps(output, *args, **kwargs)",
+        "detail": "front.node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "stringify",
+        "kind": 2,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "def stringify(value):\n    return _stringify(value, separators=(',', ':'))\nassert stringify([None, None]) == '[[null,null]]'\na = []\no = {}\nassert stringify(a) == '[[]]'\nassert stringify(o) == '[{}]'\na.append(a)\no['o'] = o\nassert stringify(a) == '[[\"0\"]]'",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "a = []\no = {}\nassert stringify(a) == '[[]]'\nassert stringify(o) == '[{}]'\na.append(a)\no['o'] = o\nassert stringify(a) == '[[\"0\"]]'\nassert stringify(o) == '[{\"o\":\"0\"}]'\nb = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "o = {}\nassert stringify(a) == '[[]]'\nassert stringify(o) == '[{}]'\na.append(a)\no['o'] = o\nassert stringify(a) == '[[\"0\"]]'\nassert stringify(o) == '[{\"o\":\"0\"}]'\nb = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b\na.append(1)",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['o']",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "o['o'] = o\nassert stringify(a) == '[[\"0\"]]'\nassert stringify(o) == '[{\"o\":\"0\"}]'\nb = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b\na.append(1)\na.append('two')\na.append(True)\no['one'] = 1\no['two'] = 'two'",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "b = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b\na.append(1)\na.append('two')\na.append(True)\no['one'] = 1\no['two'] = 'two'\no['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['one']",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "o['one'] = 1\no['two'] = 'two'\no['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'\na.append(o)\no['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['two']",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "o['two'] = 'two'\no['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'\na.append(o)\no['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})\na.append([1, 2, 3])",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['three']",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "o['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'\na.append(o)\no['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})\na.append([1, 2, 3])\no['test'] = {'test': 'OK'}",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['a']",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "o['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})\na.append([1, 2, 3])\no['test'] = {'test': 'OK'}\no['array'] = [1, 2, 3]\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\",\"3\",\"4\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\",\"test\":\"3\",\"array\":\"4\"},{\"test\":\"5\"},[1,2,3],\"OK\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\",\"test\":\"3\",\"array\":\"4\"},\"two\",[\"2\",1,\"1\",true,\"0\",\"3\",\"4\"],{\"test\":\"5\"},[1,2,3],\"OK\"]'\na2 = parse(stringify(a));",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['test']",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "o['test'] = {'test': 'OK'}\no['array'] = [1, 2, 3]\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\",\"3\",\"4\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\",\"test\":\"3\",\"array\":\"4\"},{\"test\":\"5\"},[1,2,3],\"OK\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\",\"test\":\"3\",\"array\":\"4\"},\"two\",[\"2\",1,\"1\",true,\"0\",\"3\",\"4\"],{\"test\":\"5\"},[1,2,3],\"OK\"]'\na2 = parse(stringify(a));\no2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['array']",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "o['array'] = [1, 2, 3]\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\",\"3\",\"4\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\",\"test\":\"3\",\"array\":\"4\"},{\"test\":\"5\"},[1,2,3],\"OK\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\",\"test\":\"3\",\"array\":\"4\"},\"two\",[\"2\",1,\"1\",true,\"0\",\"3\",\"4\"],{\"test\":\"5\"},[1,2,3],\"OK\"]'\na2 = parse(stringify(a));\no2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']\nstr = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "a2",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "a2 = parse(stringify(a));\no2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']\nstr = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')\nassert str['b']['t']['a'] == 'sup' and str['a'][1]['b'][0]['c'] == str['b']['t']\noo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o2",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "o2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']\nstr = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')\nassert str['b']['t']['a'] == 'sup' and str['a'][1]['b'][0]['c'] == str['b']['t']\noo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']\nprint('OK')",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "str",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "str = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')\nassert str['b']['t']['a'] == 'sup' and str['a'][1]['b'][0]['c'] == str['b']['t']\noo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']\nprint('OK')",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "oo",
+        "kind": 5,
+        "importPath": "front.node_modules.flatted.python.test",
+        "description": "front.node_modules.flatted.python.test",
+        "peekOfCode": "oo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']\nprint('OK')",
+        "detail": "front.node_modules.flatted.python.test",
+        "documentation": {}
+    }
+]

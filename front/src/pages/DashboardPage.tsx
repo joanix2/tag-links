@@ -1,0 +1,253 @@
+import { useState, useEffect, useMemo } from "react";
+import { AppLayout } from "@/components/layouts/AppLayout";
+import { Link, Tag } from "@/types";
+import LinksView from "@/components/LinksView";
+import GraphView from "@/components/graph";
+import { CSVUpload, CSVLinkData } from "@/components/CSVUpload";
+import { useApi } from "@/hooks/useApi";
+import { useAuth } from "@/contexts/AuthContext";
+import { useAppLayout } from "@/hooks/useAppLayout";
+import { levenshteinSimilarity } from "@/lib/levenshtein";
+
+function DashboardContent() {
+  const { fetchApi } = useApi();
+  const { user } = useAuth();
+  const { tags, selectedTags, currentView, showUntagged, reloadTags } = useAppLayout();
+
+  // State
+  const [links, setLinks] = useState<Link[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "none">("none");
+
+  // Load data on mount
+  useEffect(() => {
+    loadLinks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const loadLinks = async () => {
+    setLoading(true);
+    try {
+      const linksData = await fetchApi("/urls/", { method: "GET" });
+
+      setLinks(
+        linksData.map((l: { id: string; title: string; url: string; description?: string; tags: Tag[]; created_at: string }) => ({
+          id: l.id,
+          title: l.title,
+          url: l.url,
+          description: l.description,
+          tags: l.tags ? l.tags.map((t: Tag) => t.id) : [], // Extract tag IDs from tags array
+          createdAt: new Date(l.created_at),
+        }))
+      );
+    } catch (error) {
+      console.error("Failed to load links:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Link handlers
+  const handleLinkSubmit = async (linkData: Omit<Link, "id" | "createdAt"> | Link) => {
+    try {
+      // Check if it's an edit (has id) or a new link
+      const isEdit = "id" in linkData;
+
+      if (isEdit) {
+        // Update existing link
+        const updatedLink = await fetchApi(`/urls/${linkData.id}`, {
+          method: "PUT",
+          body: JSON.stringify({
+            url: linkData.url,
+            title: linkData.title,
+            description: linkData.description,
+            tag_ids: linkData.tags,
+          }),
+        });
+
+        // Update the link in the list using functional update
+        setLinks((prevLinks) =>
+          prevLinks.map((link) =>
+            link.id === linkData.id
+              ? {
+                  id: updatedLink.id,
+                  title: updatedLink.title,
+                  url: updatedLink.url,
+                  description: updatedLink.description,
+                  tags: linkData.tags,
+                  createdAt: new Date(updatedLink.created_at),
+                }
+              : link
+          )
+        );
+      } else {
+        // Create new link
+        const newLink = await fetchApi("/urls/", {
+          method: "POST",
+          body: JSON.stringify({
+            url: linkData.url,
+            title: linkData.title,
+            description: linkData.description,
+            user_id: user?.id,
+            tag_ids: linkData.tags,
+          }),
+        });
+
+        // Add new link to the list using functional update
+        setLinks((prevLinks) => [
+          {
+            id: newLink.id,
+            title: newLink.title,
+            url: newLink.url,
+            description: newLink.description,
+            tags: linkData.tags,
+            createdAt: new Date(newLink.created_at),
+          },
+          ...prevLinks,
+        ]);
+      }
+    } catch (error) {
+      console.error("Failed to save link:", error);
+    }
+  };
+
+  const handleLinkEdit = () => {
+    // Handled in LinksView
+  };
+
+  const handleLinkDelete = async (linkId: string) => {
+    try {
+      await fetchApi(`/urls/${linkId}`, {
+        method: "DELETE",
+      });
+
+      // Update state immediately after successful deletion using functional update
+      setLinks((prevLinks) => prevLinks.filter((link) => link.id !== linkId));
+    } catch (error) {
+      console.error("Failed to delete link:", error);
+      // Optionally reload links if deletion failed
+      loadLinks();
+    }
+  };
+
+  const handleCSVUpload = async (data: CSVLinkData[]) => {
+    try {
+      const response = await fetchApi("/urls/bulk-import", {
+        method: "POST",
+        body: JSON.stringify({ links: data }),
+      });
+
+      // Reload links and tags to get the newly imported ones
+      await Promise.all([loadLinks(), reloadTags()]);
+
+      if (response.errors && response.errors.length > 0) {
+        console.error("Some imports failed:", response.errors);
+      }
+    } catch (error) {
+      console.error("Failed to import CSV:", error);
+      throw error;
+    }
+  };
+
+  // Filtered links
+  const filteredLinks = useMemo(() => {
+    let filtered = links;
+
+    // Filter by untagged if requested
+    if (showUntagged) {
+      filtered = filtered.filter((link) => link.tags.length === 0);
+    } else {
+      // Filter by selected tags (OR logic with sorting by match count)
+      if (selectedTags.length > 0) {
+        // Filter links that have at least one of the selected tags
+        filtered = filtered.filter((link) => selectedTags.some((tagId) => link.tags.includes(tagId)));
+
+        // Sort by number of matching tags (descending)
+        filtered = filtered.sort((a, b) => {
+          const aMatches = selectedTags.filter((tagId) => a.tags.includes(tagId)).length;
+          const bMatches = selectedTags.filter((tagId) => b.tags.includes(tagId)).length;
+          return bMatches - aMatches;
+        });
+      }
+    }
+
+    // Filter by search term using Levenshtein distance
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      const threshold = 0.3; // Minimum similarity threshold
+
+      filtered = filtered
+        .map((link) => {
+          // Check exact match first (highest priority)
+          const titleLower = link.title.toLowerCase();
+          const descLower = link.description?.toLowerCase() || "";
+          const urlLower = link.url.toLowerCase();
+
+          if (titleLower.includes(term) || descLower.includes(term) || urlLower.includes(term)) {
+            return { link, similarity: 1.0 }; // Exact match gets max score
+          }
+
+          // Calculate Levenshtein similarity for fuzzy matching
+          const titleSimilarity = levenshteinSimilarity(term, titleLower);
+          const descSimilarity = levenshteinSimilarity(term, descLower);
+          const urlSimilarity = levenshteinSimilarity(term, urlLower);
+
+          // Use the best similarity score
+          const bestSimilarity = Math.max(titleSimilarity, descSimilarity, urlSimilarity);
+
+          return { link, similarity: bestSimilarity };
+        })
+        .filter(({ similarity }) => similarity >= threshold)
+        .sort((a, b) => b.similarity - a.similarity)
+        .map(({ link }) => link);
+    }
+
+    // Sort by date if requested
+    if (sortOrder !== "none") {
+      filtered = [...filtered].sort((a, b) => {
+        const dateA = new Date(a.createdAt).getTime();
+        const dateB = new Date(b.createdAt).getTime();
+        return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
+      });
+    }
+
+    return filtered;
+  }, [links, selectedTags, searchTerm, sortOrder, showUntagged]);
+
+  if (loading) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  return currentView === "links" ? (
+    <LinksView
+      links={filteredLinks}
+      tags={tags}
+      selectedTags={selectedTags}
+      searchTerm={searchTerm}
+      onSearch={setSearchTerm}
+      onLinkEdit={handleLinkEdit}
+      onLinkDelete={handleLinkDelete}
+      onLinkSubmit={handleLinkSubmit}
+      onCSVUpload={handleCSVUpload}
+      sortOrder={sortOrder}
+      onSortChange={setSortOrder}
+    />
+  ) : (
+    <div className="w-full h-full">
+      <GraphView links={filteredLinks} tags={tags} selectedTags={selectedTags} />
+    </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <AppLayout>
+      <DashboardContent />
+    </AppLayout>
+  );
+}

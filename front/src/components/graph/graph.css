@@ -1,0 +1,45 @@
+/* Graph Visualization Styles - Neo4j Bloom inspired */
+
+.graph-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.graph-svg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+}
+
+.dark .graph-svg {
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+}
+
+.graph-node {
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.graph-node:hover {
+  filter: brightness(1.1) !important;
+}
+
+.graph-link {
+  transition: stroke 0.2s ease, stroke-width 0.2s ease, opacity 0.2s ease;
+}
+
+.graph-label {
+  pointer-events: none;
+  user-select: none;
+}
+
+.graph-info-panel {
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark .graph-info-panel {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}

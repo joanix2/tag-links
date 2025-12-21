@@ -1,0 +1,63 @@
+title,url,tags,created_at
+Capteur musculaire,https://wiki.dfrobot.com/Analog_EMG_Sensor_by_OYMotion_SKU_SEN0240,Arduino;microcontroller;electronics;iot;esp8266;sensor;capteur;musculaire;wiki,
+Relais WiFi - ESP8266,https://mytectutor.com/how-to-connect-esp8266-to-mysql-database-using-php-and-arduino-ide/,Arduino;microcontroller;electronics;iot;esp8266;sensor;relais;wifi;mytectutor,2023-02-07
+Conception de bases de données,https://stph.scenari-community.org/bdd/0/co/json02.html,Base de donnees;database;sql;schema;modeling;erd;base;donnees;conception;bases;stph,2023-02-10
+Schema et relation entre tables,https://dbdiagram.io/d,Base de donnees;database;sql;schema;modeling;erd;base;donnees;relation;entre;tables;dbdiagram,2024-08-21
+Api mongo,https://github.com/joanix2/TagLinks,Classification par tags;tagging;metadata;search;api;mongodb;classification;par;tags;mongo;github,2025-02-02
+Fabrication,http://chadichabib.com/fabrication-rs-cnc32/,CNC;gcode;grbl;machining;fabrication;chadichabib,2022-09-10
+Logiciel Esticam,https://www.makerfr.com/cnc/grbl-32bits-board-v2/du-dxf-au-gcode-et-premiere-utilisation-grbl32bits-board-v2-0/,CNC;gcode;grbl;machining;logiciel;esticam;makerfr,2022-09-10
+Compilateur basique en ligne pour divers langages,https://www.mycompiler.io/fr,compilateur;compiler;ide;online;basique;ligne;divers;mycompiler,2024-09-20
+Calculateur,https://minerstat.com/coin/ETH?lang=fr,Crypto Mining;crypto;mining;ethereum;calculator;exchange;calculateur;minerstat,2021-09-10
+Coinbase,https://www.coinbase.com/signin,Crypto Mining;crypto;mining;ethereum;calculator;exchange;coinbase,2021-09-10
+CPU DOGE Mining,https://www.youtube.com/watch?v=Ng-OU38-RjY,Crypto Mining;crypto;mining;ethereum;calculator;exchange;cpu;doge;youtube,2021-09-10
+CPU phone Mining,https://www.youtube.com/watch?v=AZJ6QFsydR8,Crypto Mining;crypto;mining;ethereum;calculator;exchange;cpu;phone;youtube,2021-09-10
+unmineable,https://unmineable.com/,Crypto Mining;crypto;mining;ethereum;calculator;exchange;unmineable,2021-09-10
+Blockchain,https://www.larevolutionblockchain.com,Culture Numérique;culture;digital;blockchain;ascii;numerique;larevolutionblockchain,
+Caractères Windows,http://sebastienguillon.com/test/jeux-de-caracteres/windows-ascii-fr.html,Culture Numérique;culture;digital;blockchain;ascii;numerique;caracteres;windows;sebastienguillon,2021-10-22
+Exemples OpenScad,https://files.openscad.org/examples/Functions/recursion.html,Dessin 3D;3d;openscad;modeling;dessin;exemples;files,2021-01-31
+Microsoft,https://www.futura-sciences.com/tech/actualites/informatique-bureau-tele-travail-microsoft-peut-surveiller-votre-productivite-84380/#xtor%3DRSS-8,Divers;misc;microsoft;futura-sciences,
+Musée virtuel,https://www.futura-sciences.com/tech/actualites/realite-virtuelle-premier-musee-virtuel-voma-ouvre-demain-82462/#xtor%3DRSS-8,Divers;misc;musee;virtuel;futura-sciences,
+Liste des formations Master IA,https://www.etudes-intelligence-artificielle.com/,Formation / Scolarité;education;formation;master;learning;mindmap;scolarite;liste;formations;etudes-intelligence-artificielle,2021-09-19
+mindmaps,https://www.mindmaps.app/?utm_source=bdmtools&utm_medium=siteweb&utm_campaign=mindmaps-app,Formation / Scolarité;education;formation;master;learning;mindmap;scolarite;mindmaps,2023-10-22
+GAN 64x64x3 github,https://github.com/nikhilroxtomar/DCGAN-on-Anime-Faces/blob/master/gan.py,GAN;deep-learning;tensorflow;ai;64x64x3;github,2021-09-07
+Tensor flow Reconaissance vocale,https://www.tensorflow.org/tutorials/audio/simple_audio,GAN;deep-learning;tensorflow;ai;tensor;flow;reconaissance;vocale,2022-08-20
+Élévation de privilèges Linux,https://youtu.be/3XZJH2t4LA8,Hack;security;linux;privilege-escalation;elevation;privileges;youtu,2021-10-17
+Ask Wizard,https://ask-wizard.com/,IA;ai;llm;openai;tokenizer;ask;wizard;ask-wizard,2025-03-19
+Tokenizer,https://platform.openai.com/tokenizer,IA;ai;llm;openai;tokenizer;platform,2025-02-09
+CERN,https://home.cern/fr/news/announcement/computing/online-introductory-lectures-quantum-computing-6-november,Informatique Quantique;quantum;ibm;cern;qiskit;informatique;quantique;home,2021-09-07
+IBM,https://quantum-computing.ibm.com/,Informatique Quantique;quantum;ibm;cern;qiskit;informatique;quantique;quantum-computing,2021-09-07
+Send JSON Javascript,https://www.geeksforgeeks.org/how-to-send-a-json-object-to-a-server-using-javascript/,Javascript;web;json;send;geeksforgeeks,2022-12-14
+Obsidian GitHUb Html,https://github.com/obsidian-html/obsidian-html,Obsidian;notes;markdown;github;html,2023-02-20
+Obsidian HTML,https://obsidian-html.github.io/index.html,Obsidian;notes;markdown;html;obsidian-html,2023-02-20
+API Rest,https://waytolearnx.com/2019/07/creer-et-utiliser-une-api-rest-en-php.html,PHP;rest;api;waytolearnx,2024-01-16
+Bonnes pratiques API REST -Python,https://www.pythoniste.fr/python/fastapi/les-bonnes-pratiques-pour-construire-un-api-rest/,Python;api;fastapi;rest;bonnes;pratiques;pythoniste,2024-09-29
+QR code générateur,https://www.zebulon.fr/outils/creer-flashcode-qr-code.html,QR code;qrcode;generator;python;csharp;snapchat;code;generateur;zebulon,2021-03-24
+Construire un QR Code,http://tpe-codebarre2d.e-monsite.com/pages/page.html#page1,QR code;qrcode;generator;python;csharp;snapchat;code;construire;tpe-codebarre2d,2021-03-28
+Entreprise Configurateur HTML5,https://www.configurateurvisuel.fr/fr/html5/520-t-shirt-a-personnaliser-html5.html,QR code;qrcode;generator;python;csharp;snapchat;code;html5;entreprise;configurateur;configurateurvisuel,2021-03-28
+Programmer QR Code C#,https://openclassrooms.com/forum/sujet/creer-un-generateur-de-qr-code,QR code;qrcode;generator;python;csharp;snapchat;code;programmer;openclassrooms,2021-03-28
+Python et QR Code,https://www.it-connect.fr/generez-vos-propres-qr-codes/,QR code;qrcode;generator;python;csharp;snapchat;code;it-connect,2021-03-28
+QR Code Projet clé en main,https://blog.david-dahan.com/g%C3%A9n%C3%A9rer-des-cartes-%C3%A0-qr-code-unique-avec-python-5ae0e353f525,QR code;qrcode;generator;python;csharp;snapchat;code;projet;cle;main;blog,2021-03-28
+QR code snap,https://feelinsonice.appspot.com/web/deeplink/snapcode?username=joandussauld&size=400&type=PNG,QR code;qrcode;generator;python;csharp;snapchat;code;snap;feelinsonice,2021-06-11
+QR code snap Bitmoji,https://app.snapchat.com/web/deeplink/snapcode?username=joandussauld&type=SVG&bitmoji=enable,QR code;qrcode;generator;python;csharp;snapchat;code;snap;bitmoji;app,2021-06-11
+install opencv (sudo apt-get install python3-opencv),https://youtu.be/QRe0QzS079s,Raspberry Pi;raspberrypi;linux;ssh;opencv;raspberry;python3;install;sudo;apt;get;youtu,2021-10-07
+Installer raspbian,https://www.raspberry-lab.fr/Debuter-sur-Raspberry-Francais/Installation-Raspbian-et-premier-demarrage-Raspberry-Pi-Francais/,Raspberry Pi;raspberrypi;linux;ssh;opencv;raspberry;installer;raspbian;raspberry-lab,2024-10-16
+Raspberry pi sftp server,https://youtu.be/v6V-iwcTaNE,Raspberry Pi;raspberrypi;linux;ssh;opencv;raspberry;sftp;server;youtu,2021-10-07
+Raspberry Pi ssh connexion,https://youtu.be/lZ3AMFr9oMQ,Raspberry Pi;raspberrypi;linux;ssh;opencv;raspberry;connexion;youtu,2021-10-07
+robots modulaires,https://link.springer.com/article/10.1007/s10514-021-09977-6,Robots;robotics;modular;modulaires;link,2022-10-21
+Configuration Ver Num,https://www.numetopia.fr/activer-la-touche-verr-num-au-demarrage-sur-ubuntu/,Shell Linux;linux;shell;ubuntu;flatpak;vm;configuration;ver;num;numetopia,2021-07-03
+Flatpak,https://flatpak.org/setup/Ubuntu/,Shell Linux;linux;shell;ubuntu;flatpak;vm,2021-11-15
+Jeu pour apprendre les commandes du shell Linux,https://github.com/phyver/GameShell,Shell Linux;linux;shell;ubuntu;flatpak;vm;jeu;apprendre;commandes;github,2021-03-30
+Linux sur Surface Pro,https://fr.windows10updater.com/how-install-linux-ubuntu-surface-pro-tablets,Shell Linux;linux;shell;ubuntu;flatpak;vm;surface;pro;fr,2023-02-20
+sreenshotOCR,https://github.com/joanix2/screenshotOCR,Shell Linux;linux;shell;ubuntu;flatpak;vm;sreenshotocr;github,2023-10-10
+VM Mac OS sous LInux,https://korben.info/installer-macos-linux-sosumi.html,Shell Linux;linux;shell;ubuntu;flatpak;vm;mac;korben,2021-09-29
+freezCam,https://dyrk.org/2020/08/31/visio-webconf-freezer-sa-camera/,smart;webcam;videocall;freezcam;dyrk,
+Animated Brownian Motion in Python,https://github.com/IlievskiV/Amusive-Blogging-N-Coding/blob/master/Random%20Processes/brownian_motion_animation.ipynb,Trading Bot;trading;bot;python;stochastic;animated;brownian;motion;github,2021-05-24
+Grub config,https://www.linuxtricks.fr/wiki/grub-configurer-le-demarrage-du-pc,Ubuntu config;ubuntu;grub;boot;config;linuxtricks,2024-01-19
+Salesforce,https://www.salesforce.com/fr/campaign/sem/sales-cloud/?d=7013y000000ZgHWAA0&dcmp=FR&ef_id=CjwKCAjwq7aGBhADEiwA6uGZp3zdbFrkXFZF5CApMwPJqUUI_gwW2nvyU5fnKzhINV5eFvhsuEJjNBoCiugQAvD_BwE:G:s&s_kwcid=AL!7501!3!508670551424!p!!g!!logiciel%20ventes&mkwid=s&pcrid=508670551424&pkw=logiciel%20ventes&pmt=p&pdv=m&gclid=CjwKCAjwq7aGBhADEiwA6uGZp3zdbFrkXFZF5CApMwPJqUUI_gwW2nvyU5fnKzhINV5eFvhsuEJjNBoCiugQAvD_BwE,Vente de logiciels;crm;sales;salesforce;vente;logiciels,2021-06-19
+Effet sur image en css,https://www.web-eau.net/blog/15-effets-css3-pour-vos-images,Web design;webdesign;css;icons;palette;images;web;design;effet;image;web-eau,2022-06-19
+Icones Google (Flutter),https://fonts.google.com/icons?selected=Material+Icons:sync_alt:,Web design;webdesign;css;icons;palette;images;web;design;icones;google;flutter;fonts,2023-06-28
+Palette couleur image,https://imagecolorpicker.com/fr,Web design;webdesign;css;icons;palette;images;web;design;couleur;image;imagecolorpicker,2022-06-19
+Retailler des images en ligne,https://www.birme.net/,Web design;webdesign;css;icons;palette;images;web;design;retailler;ligne;birme,2023-02-07
+Doodly (création de vidéos),https://www.doodly.com,Youtube;video;tutorial;doodly;creation;videos,2021-01-02
+High Frequency Trading,https://youtu.be/z4nCTdQlH8w,Youtube;video;tutorial;high;frequency;trading;youtu,2020-12-21
+Tuto pour appli smartphone Automate,https://www.youtube.com/watch?v=51IwPVBFqyA,Youtube;video;tutorial;tuto;appli;smartphone;automate,2021-11-20
