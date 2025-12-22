@@ -1,6 +1,5 @@
 import { useAuth } from "@/contexts/AuthContext";
-
-const API_URL = "http://localhost:8000";
+import { API_URL } from "@/config/env";
 
 interface FetchOptions extends RequestInit {
   requiresAuth?: boolean;

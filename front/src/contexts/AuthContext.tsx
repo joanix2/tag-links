@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useToast } from "@/components/ui/use-toast";
-
-const API_URL = "http://localhost:8000";
+import { API_URL, API_ENDPOINTS } from "@/config/env";
 
 export type User = {
   id: string;
@@ -33,7 +32,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const storedToken = localStorage.getItem("token");
       if (storedToken) {
         try {
-          const response = await fetch(`${API_URL}/auth/me`, {
+          const response = await fetch(`${API_URL}${API_ENDPOINTS.AUTH_ME}`, {
             headers: {
               Authorization: `Bearer ${storedToken}`,
             },
@@ -67,7 +66,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       formData.append("username", username);
       formData.append("password", password);
 
-      const response = await fetch(`${API_URL}/auth/login`, {
+      const response = await fetch(`${API_URL}${API_ENDPOINTS.AUTH_LOGIN}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -86,7 +85,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       localStorage.setItem("token", accessToken);
       setToken(accessToken);
 
-      const userResponse = await fetch(`${API_URL}/auth/me`, {
+      const userResponse = await fetch(`${API_URL}${API_ENDPOINTS.AUTH_ME}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -116,7 +115,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/auth/register`, {
+      const response = await fetch(`${API_URL}${API_ENDPOINTS.AUTH_REGISTER}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

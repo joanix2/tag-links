@@ -44,7 +44,7 @@ async def register(
     return new_user
 
 
-@router.post("/login", response_model=Token)
+@router.post("/token", response_model=Token)
 async def login(
     form_data: OAuth2PasswordRequestForm = Depends(),
     user_repo: UserRepository = Depends(get_user_repository)
