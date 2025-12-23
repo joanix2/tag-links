@@ -43,12 +43,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
-app.include_router(auth_router)
-app.include_router(tag_router)
-app.include_router(user_router)
-app.include_router(url_router)
-app.include_router(file_router)
+# Include routers with /api prefix
+app.include_router(auth_router, prefix="/api")
+app.include_router(tag_router, prefix="/api")
+app.include_router(user_router, prefix="/api")
+app.include_router(url_router, prefix="/api")
+app.include_router(file_router, prefix="/api")
 
 
 @app.get("/")
