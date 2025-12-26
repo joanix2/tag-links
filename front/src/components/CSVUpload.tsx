@@ -12,6 +12,7 @@ export interface CSVLinkData {
   title: string;
   url: string;
   tags: string[];
+  description?: string;
   created_at?: string;
 }
 
@@ -63,7 +64,8 @@ export const CSVUpload = ({ onUpload }: CSVUploadProps) => {
       const title = values[0].replace(/^"|"$/g, "");
       const url = values[1].replace(/^"|"$/g, "");
       const tagsStr = values[2] ? values[2].replace(/^"|"$/g, "") : "";
-      const created_at = values[3] ? values[3].replace(/^"|"$/g, "").trim() : undefined;
+      const description = values[3] ? values[3].replace(/^"|"$/g, "").trim() : undefined;
+      const created_at = values[4] ? values[4].replace(/^"|"$/g, "").trim() : undefined;
 
       // Parse tags - can be separated by ; or |
       const tags = tagsStr
@@ -76,6 +78,7 @@ export const CSVUpload = ({ onUpload }: CSVUploadProps) => {
           title,
           url,
           tags,
+          description: description && description.length > 0 ? description : undefined,
           created_at: created_at && created_at.length > 0 ? created_at : undefined,
         });
       }
@@ -122,10 +125,10 @@ export const CSVUpload = ({ onUpload }: CSVUploadProps) => {
   };
 
   const downloadTemplate = () => {
-    const template = `title,url,tags,created_at
-My Website,https://example.com,web;dev,2024-01-01
-YouTube Video,https://youtube.com/watch?v=xyz,video;learning,
-GitHub Repo,https://github.com/user/repo,code|opensource,2024-12-15`;
+    const template = `title,url,tags,description,created_at
+My Website,https://example.com,web;dev,A great website for learning,2024-01-01
+YouTube Video,https://youtube.com/watch?v=xyz,video;learning,Tutorial about React hooks,
+GitHub Repo,https://github.com/user/repo,code|opensource,Open source project,2024-12-15`;
 
     const blob = new Blob([template], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
@@ -156,7 +159,7 @@ GitHub Repo,https://github.com/user/repo,code|opensource,2024-12-15`;
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle>Import Links from CSV</DialogTitle>
-          <DialogDescription>Upload a CSV file with your links. The file should have columns: title, url, tags, created_at (optional).</DialogDescription>
+          <DialogDescription>Upload a CSV file with your links. The file should have columns: title, url, tags, description (optional), created_at (optional).</DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4 py-4">

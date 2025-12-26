@@ -64,7 +64,79 @@
         "documentation": {}
     },
     {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Header",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -232,6 +304,454 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "APIToken",
+        "importPath": "src.models.api_token",
+        "description": "src.models.api_token",
+        "isExtraImport": true,
+        "detail": "src.models.api_token",
+        "documentation": {}
+    },
+    {
+        "label": "APITokenCreate",
+        "importPath": "src.models.api_token",
+        "description": "src.models.api_token",
+        "isExtraImport": true,
+        "detail": "src.models.api_token",
+        "documentation": {}
+    },
+    {
+        "label": "APIToken",
+        "importPath": "src.models.api_token",
+        "description": "src.models.api_token",
+        "isExtraImport": true,
+        "detail": "src.models.api_token",
+        "documentation": {}
+    },
+    {
+        "label": "APITokenCreate",
+        "importPath": "src.models.api_token",
+        "description": "src.models.api_token",
+        "isExtraImport": true,
+        "detail": "src.models.api_token",
+        "documentation": {}
+    },
+    {
+        "label": "APITokenRepository",
+        "importPath": "src.repositories.api_token_repository",
+        "description": "src.repositories.api_token_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.api_token_repository",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "neo4j_connection",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "init_constraints",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_active_user",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "TokenData",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "verify_password",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_active_user",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "Token",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "TokenData",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "ACCESS_TOKEN_EXPIRE_MINUTES",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_from_api_token",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_active_user",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "TokenData",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_active_user",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "TokenData",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_password_hash",
+        "importPath": "src.auth",
+        "description": "src.auth",
+        "isExtraImport": true,
+        "detail": "src.auth",
+        "documentation": {}
+    },
+    {
         "label": "OAuth2PasswordRequestForm",
         "importPath": "fastapi.security",
         "description": "fastapi.security",
@@ -328,7 +848,7 @@
         "documentation": {}
     },
     {
-        "label": "timedelta",
+        "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
         "isExtraImport": true,
@@ -336,91 +856,19 @@
         "documentation": {}
     },
     {
-        "label": "verify_password",
-        "importPath": "src.auth",
-        "description": "src.auth",
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
         "isExtraImport": true,
-        "detail": "src.auth",
+        "detail": "datetime",
         "documentation": {}
     },
     {
-        "label": "create_access_token",
-        "importPath": "src.auth",
-        "description": "src.auth",
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
         "isExtraImport": true,
-        "detail": "src.auth",
-        "documentation": {}
-    },
-    {
-        "label": "get_current_active_user",
-        "importPath": "src.auth",
-        "description": "src.auth",
-        "isExtraImport": true,
-        "detail": "src.auth",
-        "documentation": {}
-    },
-    {
-        "label": "Token",
-        "importPath": "src.auth",
-        "description": "src.auth",
-        "isExtraImport": true,
-        "detail": "src.auth",
-        "documentation": {}
-    },
-    {
-        "label": "TokenData",
-        "importPath": "src.auth",
-        "description": "src.auth",
-        "isExtraImport": true,
-        "detail": "src.auth",
-        "documentation": {}
-    },
-    {
-        "label": "ACCESS_TOKEN_EXPIRE_MINUTES",
-        "importPath": "src.auth",
-        "description": "src.auth",
-        "isExtraImport": true,
-        "detail": "src.auth",
-        "documentation": {}
-    },
-    {
-        "label": "get_current_active_user",
-        "importPath": "src.auth",
-        "description": "src.auth",
-        "isExtraImport": true,
-        "detail": "src.auth",
-        "documentation": {}
-    },
-    {
-        "label": "TokenData",
-        "importPath": "src.auth",
-        "description": "src.auth",
-        "isExtraImport": true,
-        "detail": "src.auth",
-        "documentation": {}
-    },
-    {
-        "label": "get_current_active_user",
-        "importPath": "src.auth",
-        "description": "src.auth",
-        "isExtraImport": true,
-        "detail": "src.auth",
-        "documentation": {}
-    },
-    {
-        "label": "TokenData",
-        "importPath": "src.auth",
-        "description": "src.auth",
-        "isExtraImport": true,
-        "detail": "src.auth",
-        "documentation": {}
-    },
-    {
-        "label": "get_password_hash",
-        "importPath": "src.auth",
-        "description": "src.auth",
-        "isExtraImport": true,
-        "detail": "src.auth",
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -525,238 +973,6 @@
         "description": "src.repositories.user_repository",
         "isExtraImport": true,
         "detail": "src.repositories.user_repository",
-        "documentation": {}
-    },
-    {
-        "label": "get_driver",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "neo4j_connection",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "init_constraints",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
         "documentation": {}
     },
     {
@@ -904,7 +1120,7 @@
         "documentation": {}
     },
     {
-        "label": "GraphDatabase",
+        "label": "Driver",
         "importPath": "neo4j",
         "description": "neo4j",
         "isExtraImport": true,
@@ -925,6 +1141,150 @@
         "description": "neo4j",
         "isExtraImport": true,
         "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "GraphDatabase",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLCreate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLUpdate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLCreate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLUpdate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithUser",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLRepository",
+        "importPath": "src.repositories.url_repository",
+        "description": "src.repositories.url_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.url_repository",
+        "documentation": {}
+    },
+    {
+        "label": "URLRepository",
+        "importPath": "src.repositories.url_repository",
+        "description": "src.repositories.url_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.url_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
         "documentation": {}
     },
     {
@@ -1037,30 +1397,6 @@
         "description": "src.models.tag",
         "isExtraImport": true,
         "detail": "src.models.tag",
-        "documentation": {}
-    },
-    {
-        "label": "TagRepository",
-        "importPath": "src.repositories.tag_repository",
-        "description": "src.repositories.tag_repository",
-        "isExtraImport": true,
-        "detail": "src.repositories.tag_repository",
-        "documentation": {}
-    },
-    {
-        "label": "TagRepository",
-        "importPath": "src.repositories.tag_repository",
-        "description": "src.repositories.tag_repository",
-        "isExtraImport": true,
-        "detail": "src.repositories.tag_repository",
-        "documentation": {}
-    },
-    {
-        "label": "TagRepository",
-        "importPath": "src.repositories.tag_repository",
-        "description": "src.repositories.tag_repository",
-        "isExtraImport": true,
-        "detail": "src.repositories.tag_repository",
         "documentation": {}
     },
     {
@@ -1184,6 +1520,22 @@
         "documentation": {}
     },
     {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "EmailStr",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -1200,83 +1552,21 @@
         "documentation": {}
     },
     {
-        "label": "URL",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
+        "label": "secrets",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "src.models.url",
+        "importPath": "secrets",
+        "description": "secrets",
+        "detail": "secrets",
         "documentation": {}
     },
     {
-        "label": "URLCreate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
+        "label": "hashlib",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLUpdate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithTags",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URL",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLCreate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLUpdate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithTags",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithUser",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLRepository",
-        "importPath": "src.repositories.url_repository",
-        "description": "src.repositories.url_repository",
-        "isExtraImport": true,
-        "detail": "src.repositories.url_repository",
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "detail": "hashlib",
         "documentation": {}
     },
     {
@@ -1499,6 +1789,22 @@
         "documentation": {}
     },
     {
+        "label": "router",
+        "importPath": "src.controllers.api_token_controller",
+        "description": "src.controllers.api_token_controller",
+        "isExtraImport": true,
+        "detail": "src.controllers.api_token_controller",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "src.controllers.public_api_controller",
+        "description": "src.controllers.public_api_controller",
+        "isExtraImport": true,
+        "detail": "src.controllers.public_api_controller",
+        "documentation": {}
+    },
+    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
@@ -1521,6 +1827,24 @@
         "description": "flatted",
         "isExtraImport": true,
         "detail": "flatted",
+        "documentation": {}
+    },
+    {
+        "label": "get_token_repository",
+        "kind": 2,
+        "importPath": "back.src.controllers.api_token_controller",
+        "description": "back.src.controllers.api_token_controller",
+        "peekOfCode": "def get_token_repository():\n    \"\"\"Dependency to get token repository\"\"\"\n    driver = get_driver()\n    return APITokenRepository(driver)\n@router.post(\"/\", response_model=APIToken, status_code=status.HTTP_201_CREATED)\nasync def create_api_token(\n    token_data: APITokenCreate,\n    current_user: TokenData = Depends(get_current_active_user),\n    token_repo: APITokenRepository = Depends(get_token_repository)\n):",
+        "detail": "back.src.controllers.api_token_controller",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "back.src.controllers.api_token_controller",
+        "description": "back.src.controllers.api_token_controller",
+        "peekOfCode": "router = APIRouter(prefix=\"/api-tokens\", tags=[\"API Tokens\"])\ndef get_token_repository():\n    \"\"\"Dependency to get token repository\"\"\"\n    driver = get_driver()\n    return APITokenRepository(driver)\n@router.post(\"/\", response_model=APIToken, status_code=status.HTTP_201_CREATED)\nasync def create_api_token(\n    token_data: APITokenCreate,\n    current_user: TokenData = Depends(get_current_active_user),\n    token_repo: APITokenRepository = Depends(get_token_repository)",
+        "detail": "back.src.controllers.api_token_controller",
         "documentation": {}
     },
     {
@@ -1647,6 +1971,33 @@
         "description": "back.src.controllers.file_controller",
         "peekOfCode": "router = APIRouter(prefix=\"/files\", tags=[\"files\"])\ndef get_file_repository(driver: Driver = Depends(get_db)) -> FileRepository:\n    return FileRepository(driver)\n@router.post(\"/\", response_model=File, status_code=status.HTTP_201_CREATED)\ndef create_file(\n    file: FileCreate,\n    repo: FileRepository = Depends(get_file_repository)\n):\n    \"\"\"Create a new file\"\"\"\n    try:",
         "detail": "back.src.controllers.file_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_url_repository",
+        "kind": 2,
+        "importPath": "back.src.controllers.public_api_controller",
+        "description": "back.src.controllers.public_api_controller",
+        "peekOfCode": "def get_url_repository():\n    driver = get_driver()\n    return URLRepository(driver)\ndef get_tag_repository():\n    driver = get_driver()\n    return TagRepository(driver)\nasync def verify_api_token(authorization: Optional[str] = Header(None)) -> str:\n    \"\"\"Dependency to verify API token and get user_id\"\"\"\n    if not authorization:\n        raise HTTPException(",
+        "detail": "back.src.controllers.public_api_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_tag_repository",
+        "kind": 2,
+        "importPath": "back.src.controllers.public_api_controller",
+        "description": "back.src.controllers.public_api_controller",
+        "peekOfCode": "def get_tag_repository():\n    driver = get_driver()\n    return TagRepository(driver)\nasync def verify_api_token(authorization: Optional[str] = Header(None)) -> str:\n    \"\"\"Dependency to verify API token and get user_id\"\"\"\n    if not authorization:\n        raise HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"Authorization header missing\",\n            headers={\"WWW-Authenticate\": \"Bearer\"},",
+        "detail": "back.src.controllers.public_api_controller",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "back.src.controllers.public_api_controller",
+        "description": "back.src.controllers.public_api_controller",
+        "peekOfCode": "router = APIRouter(prefix=\"/public\", tags=[\"Public API\"])\ndef get_url_repository():\n    driver = get_driver()\n    return URLRepository(driver)\ndef get_tag_repository():\n    driver = get_driver()\n    return TagRepository(driver)\nasync def verify_api_token(authorization: Optional[str] = Header(None)) -> str:\n    \"\"\"Dependency to verify API token and get user_id\"\"\"\n    if not authorization:",
+        "detail": "back.src.controllers.public_api_controller",
         "documentation": {}
     },
     {
@@ -1798,7 +2149,7 @@
         "kind": 6,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "class CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):\n    links: List[CSVLinkImport]\nclass BulkImportResponse(BaseModel):\n    success: int\n    errors: List[dict]",
+        "peekOfCode": "class CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):\n    links: List[CSVLinkImport]\nclass BulkImportResponse(BaseModel):\n    success: int",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -1825,7 +2176,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):",
+        "peekOfCode": "def get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None\n    created_at: str | None = None",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -1834,7 +2185,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):\n    links: List[CSVLinkImport]\nclass BulkImportResponse(BaseModel):",
+        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):\n    links: List[CSVLinkImport]",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -1951,7 +2302,7 @@
         "kind": 5,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    created_at: str | None = None",
+        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2025,6 +2376,42 @@
         "description": "back.src.controllers.user_controller",
         "peekOfCode": "router = APIRouter(prefix=\"/users\", tags=[\"users\"])\ndef get_user_repository(driver: Driver = Depends(get_db)) -> UserRepository:\n    return UserRepository(driver)\n@router.post(\"/\", response_model=User, status_code=status.HTTP_201_CREATED)\ndef create_user(\n    user: UserCreate,\n    repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Create a new user\"\"\"\n    # Check if username already exists",
         "detail": "back.src.controllers.user_controller",
+        "documentation": {}
+    },
+    {
+        "label": "APITokenBase",
+        "kind": 6,
+        "importPath": "back.src.models.api_token",
+        "description": "back.src.models.api_token",
+        "peekOfCode": "class APITokenBase(BaseModel):\n    name: str = Field(..., min_length=1, max_length=100)\nclass APITokenCreate(APITokenBase):\n    user_id: Optional[str] = None  # Will be set from auth context\nclass APIToken(APITokenBase):\n    id: str\n    user_id: str\n    token: str  # The actual token (only shown once at creation)\n    created_at: datetime\n    last_used_at: Optional[datetime] = None",
+        "detail": "back.src.models.api_token",
+        "documentation": {}
+    },
+    {
+        "label": "APITokenCreate",
+        "kind": 6,
+        "importPath": "back.src.models.api_token",
+        "description": "back.src.models.api_token",
+        "peekOfCode": "class APITokenCreate(APITokenBase):\n    user_id: Optional[str] = None  # Will be set from auth context\nclass APIToken(APITokenBase):\n    id: str\n    user_id: str\n    token: str  # The actual token (only shown once at creation)\n    created_at: datetime\n    last_used_at: Optional[datetime] = None\n    class Config:\n        from_attributes = True",
+        "detail": "back.src.models.api_token",
+        "documentation": {}
+    },
+    {
+        "label": "APIToken",
+        "kind": 6,
+        "importPath": "back.src.models.api_token",
+        "description": "back.src.models.api_token",
+        "peekOfCode": "class APIToken(APITokenBase):\n    id: str\n    user_id: str\n    token: str  # The actual token (only shown once at creation)\n    created_at: datetime\n    last_used_at: Optional[datetime] = None\n    class Config:\n        from_attributes = True\nclass APITokenInDB(APIToken):\n    \"\"\"Model with hashed token for database storage\"\"\"",
+        "detail": "back.src.models.api_token",
+        "documentation": {}
+    },
+    {
+        "label": "APITokenInDB",
+        "kind": 6,
+        "importPath": "back.src.models.api_token",
+        "description": "back.src.models.api_token",
+        "peekOfCode": "class APITokenInDB(APIToken):\n    \"\"\"Model with hashed token for database storage\"\"\"\n    hashed_token: str",
+        "detail": "back.src.models.api_token",
         "documentation": {}
     },
     {
@@ -2250,6 +2637,15 @@
         "description": "back.src.models.user",
         "peekOfCode": "class UserWithContent(User):\n    \"\"\"User with their URLs and Files\"\"\"\n    urls: List['URL'] = []\n    files: List['File'] = []\n    class Config:\n        from_attributes = True\n# Avoid circular imports\nfrom .url import URL\nfrom .file import File\nUserWithContent.model_rebuild()",
         "detail": "back.src.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "APITokenRepository",
+        "kind": 6,
+        "importPath": "back.src.repositories.api_token_repository",
+        "description": "back.src.repositories.api_token_repository",
+        "peekOfCode": "class APITokenRepository:\n    def __init__(self, driver: Driver):\n        self.driver = driver\n    def _hash_token(self, token: str) -> str:\n        \"\"\"Hash a token for secure storage\"\"\"\n        return hashlib.sha256(token.encode()).hexdigest()\n    def _generate_token(self) -> str:\n        \"\"\"Generate a secure random token\"\"\"\n        return secrets.token_urlsafe(32)\n    def create(self, token_data: APITokenCreate) -> tuple[APIToken, str]:",
+        "detail": "back.src.repositories.api_token_repository",
         "documentation": {}
     },
     {

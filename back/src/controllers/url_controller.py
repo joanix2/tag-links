@@ -24,6 +24,7 @@ class CSVLinkImport(BaseModel):
     title: str
     url: str
     tags: List[str]
+    description: str | None = None
     created_at: str | None = None
 
 
@@ -87,6 +88,7 @@ def bulk_import_urls(
             url_create = URLCreate(
                 title=link_data.title,
                 url=link_data.url,
+                description=link_data.description,
                 user_id=current_user.user_id,
                 tag_ids=tag_ids,
                 created_at=created_at

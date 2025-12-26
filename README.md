@@ -83,8 +83,8 @@ docker-compose -f docker-compose.neo4j.yml up -d
 uvicorn main:app --reload
 ```
 
-Le backend sera accessible sur `http://localhost:8000`
-Documentation API : `http://localhost:8000/docs`
+Le backend sera accessible sur `http://localhost:8000/api`
+Documentation API : `http://localhost:8000/api/docs`
 
 ### Frontend
 

@@ -45,8 +45,8 @@ case $ACTION in
         echo "🌐 Access points:"
         if [ "$ENVIRONMENT" = "dev" ]; then
             echo "  Frontend:    http://localhost:3000"
-            echo "  Backend API: http://localhost:8000"
-            echo "  API Docs:    http://localhost:8000/docs"
+            echo "  Backend API: http://localhost:8000/api"
+            echo "  API Docs:    http://localhost:8000/api/docs"
             echo "  Neo4j:       http://localhost:7474"
         else
             echo "  Application: http://your-domain.com"

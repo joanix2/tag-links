@@ -5,6 +5,8 @@ from src.config import get_settings
 from src.database import neo4j_connection, init_constraints
 from src.controllers import tag_router, user_router, url_router, file_router
 from src.controllers.auth_controller import router as auth_router
+from src.controllers.api_token_controller import router as api_token_router
+from src.controllers.public_api_controller import router as public_api_router
 
 settings = get_settings()
 
@@ -49,6 +51,8 @@ app.include_router(tag_router, prefix="/api")
 app.include_router(user_router, prefix="/api")
 app.include_router(url_router, prefix="/api")
 app.include_router(file_router, prefix="/api")
+app.include_router(api_token_router, prefix="/api")
+app.include_router(public_api_router, prefix="/api")
 
 
 @app.get("/")

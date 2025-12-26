@@ -173,9 +173,9 @@ python main.py
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-L'API sera accessible sur: http://localhost:8000
+L'API sera accessible sur: http://localhost:8000/api
 
-Documentation interactive: http://localhost:8000/docs
+Documentation interactive: http://localhost:8000/api/docs
 
 ## Endpoints API
 
@@ -219,7 +219,7 @@ Documentation interactive: http://localhost:8000/docs
 ### Créer un tag
 
 ```bash
-curl -X POST "http://localhost:8000/tags/" \
+curl -X POST "http://localhost:8000/api/tags/" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Python",
@@ -231,7 +231,7 @@ curl -X POST "http://localhost:8000/tags/" \
 ### Créer un tag avec URL
 
 ```bash
-curl -X POST "http://localhost:8000/tags/" \
+curl -X POST "http://localhost:8000/api/tags/" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Python Official",
@@ -245,7 +245,7 @@ curl -X POST "http://localhost:8000/tags/" \
 ### Créer une relation PARENT_OF
 
 ```bash
-curl -X POST "http://localhost:8000/tags/{parent_id}/parent-of/{child_id}"
+curl -X POST "http://localhost:8000/api/tags/{parent_id}/parent-of/{child_id}"
 ```
 
 ## 🧪 Tests

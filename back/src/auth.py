@@ -82,3 +82,23 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> TokenData:
 async def get_current_active_user(current_user: TokenData = Depends(get_current_user)) -> TokenData:
     """Get current active user (can be extended to check user status in DB)"""
     return current_user
+
+
+async def get_user_from_api_token(authorization: str) -> Optional[str]:
+    """
+    Verify an API token from Authorization header and return user_id
+    Format: Bearer <token>
+    """
+    if not authorization or not authorization.startswith("Bearer "):
+        return None
+    
+    token = authorization.replace("Bearer ", "").strip()
+    
+    from src.database import get_driver
+    from src.repositories.api_token_repository import APITokenRepository
+    
+    driver = get_driver()
+    token_repo = APITokenRepository(driver)
+    
+    user_id = token_repo.verify_token(token)
+    return user_id

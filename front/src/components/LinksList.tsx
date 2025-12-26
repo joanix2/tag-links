@@ -2,19 +2,22 @@ import { useState } from "react";
 import { Link, Tag } from "@/types";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash2, ExternalLink } from "lucide-react";
+import { Edit, Trash2, ExternalLink, Heart, Share2 } from "lucide-react";
 import TagBadge from "./TagBadge";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { useAppLayout } from "@/hooks/useAppLayout";
+import { hasSpecialTag } from "@/services/tagService";
 
 interface LinksListProps {
   links: Link[];
   tags: Tag[];
   onLinkEdit: (link: Link) => void;
   onLinkDelete: (linkId: string) => void;
+  onToggleFavorite: (linkId: string) => void;
+  onToggleShare: (linkId: string) => void;
 }
 
-const LinksList = ({ links, tags, onLinkEdit, onLinkDelete }: LinksListProps) => {
+const LinksList = ({ links, tags, onLinkEdit, onLinkDelete, onToggleFavorite, onToggleShare }: LinksListProps) => {
   const [linkToDelete, setLinkToDelete] = useState<string | null>(null);
   const { handleTagSelect } = useAppLayout();
 
@@ -28,6 +31,14 @@ const LinksList = ({ links, tags, onLinkEdit, onLinkDelete }: LinksListProps) =>
 
   const getTagsForLink = (link: Link) => {
     return tags.filter((tag) => link.tags.includes(tag.id));
+  };
+
+  const isFavorite = (link: Link) => {
+    return hasSpecialTag(link, tags, "Favoris");
+  };
+
+  const isShared = (link: Link) => {
+    return hasSpecialTag(link, tags, "Partage");
   };
 
   const confirmDelete = (id: string) => {
@@ -62,6 +73,24 @@ const LinksList = ({ links, tags, onLinkEdit, onLinkDelete }: LinksListProps) =>
                     </a>
                   </CardTitle>
                   <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className={`h-8 w-8 ${isFavorite(link) ? "text-red-500 hover:text-red-600" : "hover:text-red-500"} hover:bg-red-50 dark:hover:bg-red-950`}
+                      onClick={() => onToggleFavorite(link.id)}
+                      title={isFavorite(link) ? "Unlike" : "Like"}
+                    >
+                      <Heart size={14} fill={isFavorite(link) ? "currentColor" : "none"} />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className={`h-8 w-8 ${isShared(link) ? "text-amber-700 hover:text-amber-800" : "hover:text-amber-700"} hover:bg-amber-50 dark:hover:bg-amber-950`}
+                      onClick={() => onToggleShare(link.id)}
+                      title={isShared(link) ? "Unshare" : "Share"}
+                    >
+                      <Share2 size={14} fill={isShared(link) ? "currentColor" : "none"} />
+                    </Button>
                     <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-primary/10" onClick={() => onLinkEdit(link)}>
                       <Edit size={14} />
                     </Button>

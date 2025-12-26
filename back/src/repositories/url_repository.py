@@ -233,6 +233,50 @@ class URLRepository:
             """, tag_id=tag_id)
             return [self._node_to_url(record["url"]) for record in result]
     
+    def get_by_user_and_tag_name(self, user_id: str, tag_name: str, skip: int = 0, limit: int = 1000) -> List[URLWithTags]:
+        """Get all URLs owned by a user with a specific tag name"""
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL)-[:HAS_TAG]->(tag:Tag {name: $tag_name})
+                OPTIONAL MATCH (url)-[:HAS_TAG]->(all_tags:Tag)
+                WITH url, collect(DISTINCT all_tags) as tags
+                RETURN url, tags
+                ORDER BY url.created_at DESC
+                SKIP $skip
+                LIMIT $limit
+            """, user_id=user_id, tag_name=tag_name, skip=skip, limit=limit)
+            
+            urls_with_tags = []
+            for record in result:
+                url = self._node_to_url(record["url"])
+                tags = [self._node_to_tag(t) for t in record["tags"] if t]
+                urls_with_tags.append(URLWithTags(**url.model_dump(), tags=tags))
+            
+            return urls_with_tags
+    
+    def get_by_user_and_tag_names(self, user_id: str, tag_names: List[str], skip: int = 0, limit: int = 1000) -> List[URLWithTags]:
+        """Get all URLs owned by a user that have ALL specified tags (AND logic)"""
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL)
+                WHERE ALL(tag_name IN $tag_names 
+                    WHERE EXISTS((url)-[:HAS_TAG]->(:Tag {name: tag_name})))
+                OPTIONAL MATCH (url)-[:HAS_TAG]->(all_tags:Tag)
+                WITH url, collect(DISTINCT all_tags) as tags
+                RETURN url, tags
+                ORDER BY url.created_at DESC
+                SKIP $skip
+                LIMIT $limit
+            """, user_id=user_id, tag_names=tag_names, skip=skip, limit=limit)
+            
+            urls_with_tags = []
+            for record in result:
+                url = self._node_to_url(record["url"])
+                tags = [self._node_to_tag(t) for t in record["tags"] if t]
+                urls_with_tags.append(URLWithTags(**url.model_dump(), tags=tags))
+            
+            return urls_with_tags
+    
     @staticmethod
     def _node_to_url(node) -> URL:
         """Convert Neo4j node to URL model"""

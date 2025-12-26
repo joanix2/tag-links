@@ -34,6 +34,22 @@
 
 # TODO
 
+✅ Import des descriptions
+✅ ajout des favoris
+✅ ajout du partage
+✅ API (tokens + documentation)
+
+type de document
+Augmenter la limite des liens
+Logo arbre
+Photo de profile
+
+fix merge
+espace entre les tags
+ajoute un mode non éditable pour les tags
+bouton favoris et et partage
+recherche ET / OU
+
 géréer le proxy (NPM)
 créer une CD
 responsive

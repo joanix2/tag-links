@@ -8,6 +8,7 @@ import { useApi } from "@/hooks/useApi";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAppLayout } from "@/hooks/useAppLayout";
 import { levenshteinSimilarity } from "@/lib/levenshtein";
+import { toggleSpecialTag } from "@/services/tagService";
 
 function DashboardContent() {
   const { fetchApi } = useApi();
@@ -131,6 +132,60 @@ function DashboardContent() {
     }
   };
 
+  const toggleFavorite = async (linkId: string) => {
+    try {
+      const link = links.find((l) => l.id === linkId);
+      if (!link) return;
+
+      const result = await toggleSpecialTag({
+        linkId,
+        link,
+        tags,
+        tagName: "Favoris",
+        tagColor: "#EF4444", // Red
+        fetchApi,
+        userId: user?.id,
+      });
+
+      // Reload tags if a new tag was created
+      if (result.needsTagReload) {
+        await reloadTags();
+      }
+
+      // Update local state
+      setLinks((prevLinks) => prevLinks.map((l) => (l.id === linkId ? { ...l, tags: result.updatedTags } : l)));
+    } catch (error) {
+      console.error("Failed to toggle favorite:", error);
+    }
+  };
+
+  const toggleShare = async (linkId: string) => {
+    try {
+      const link = links.find((l) => l.id === linkId);
+      if (!link) return;
+
+      const result = await toggleSpecialTag({
+        linkId,
+        link,
+        tags,
+        tagName: "Partage",
+        tagColor: "#92400E", // Brown (amber-800)
+        fetchApi,
+        userId: user?.id,
+      });
+
+      // Reload tags if a new tag was created
+      if (result.needsTagReload) {
+        await reloadTags();
+      }
+
+      // Update local state
+      setLinks((prevLinks) => prevLinks.map((l) => (l.id === linkId ? { ...l, tags: result.updatedTags } : l)));
+    } catch (error) {
+      console.error("Failed to toggle share:", error);
+    }
+  };
+
   const handleCSVUpload = async (data: CSVLinkData[]) => {
     try {
       const response = await fetchApi("/urls/bulk-import", {
@@ -233,6 +288,8 @@ function DashboardContent() {
       onLinkEdit={handleLinkEdit}
       onLinkDelete={handleLinkDelete}
       onLinkSubmit={handleLinkSubmit}
+      onToggleFavorite={toggleFavorite}
+      onToggleShare={toggleShare}
       onCSVUpload={handleCSVUpload}
       sortOrder={sortOrder}
       onSortChange={setSortOrder}

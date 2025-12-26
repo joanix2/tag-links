@@ -12,4 +12,4 @@ database:
 	docker compose -f docker-compose.neo4j.yml up -d
 
 serve:
-	uvicorn main:app --reload --host 0.0.0.0 --port 8000
+	./venv/bin/uvicorn main:app --reload --host 0.0.0.0 --port 8000

@@ -19,12 +19,28 @@ interface LinksViewProps {
   onLinkEdit: (link: Link) => void;
   onLinkDelete: (linkId: string) => void;
   onLinkSubmit: (link: Omit<Link, "id" | "createdAt"> | Link) => void;
+  onToggleFavorite: (linkId: string) => void;
+  onToggleShare: (linkId: string) => void;
   onCSVUpload?: (data: CSVLinkData[]) => Promise<void>;
   sortOrder: "newest" | "oldest" | "none";
   onSortChange: (order: "newest" | "oldest" | "none") => void;
 }
 
-const LinksView = ({ links, tags, selectedTags, searchTerm, onSearch, onLinkEdit, onLinkDelete, onLinkSubmit, onCSVUpload, sortOrder, onSortChange }: LinksViewProps) => {
+const LinksView = ({
+  links,
+  tags,
+  selectedTags,
+  searchTerm,
+  onSearch,
+  onLinkEdit,
+  onLinkDelete,
+  onLinkSubmit,
+  onToggleFavorite,
+  onToggleShare,
+  onCSVUpload,
+  sortOrder,
+  onSortChange,
+}: LinksViewProps) => {
   const [isLinkFormOpen, setIsLinkFormOpen] = useState(false);
   const [editingLink, setEditingLink] = useState<Link | null>(null);
 
@@ -117,7 +133,7 @@ const LinksView = ({ links, tags, selectedTags, searchTerm, onSearch, onLinkEdit
           </div>
 
           {/* Links Grid */}
-          <LinksList links={links} tags={tags} onLinkEdit={handleEdit} onLinkDelete={onLinkDelete} />
+          <LinksList links={links} tags={tags} onLinkEdit={handleEdit} onLinkDelete={onLinkDelete} onToggleFavorite={onToggleFavorite} onToggleShare={onToggleShare} />
         </div>
 
         {/* Link Form Dialog */}
