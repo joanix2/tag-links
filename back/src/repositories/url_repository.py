@@ -21,7 +21,8 @@ class URLRepository:
                 "user_id": url.user_id,
                 "url": url.url,
                 "title": url.title,
-                "description": url.description if url.description and url.description.strip() else None
+                "description": url.description if url.description and url.description.strip() else None,
+                "document_type": url.document_type
             }
             
             # Use custom created_at if provided, otherwise use current datetime
@@ -40,6 +41,7 @@ class URLRepository:
                     url: $url,
                     title: $title,
                     description: $description,
+                    document_type: $document_type,
                     created_at: {cypher_created_at},
                     updated_at: datetime()
                 }})
@@ -133,6 +135,9 @@ class URLRepository:
             updates.append("u.description = $description")
             # Convert empty string to None to clear the description
             params["description"] = url.description if url.description.strip() else None
+        if url.document_type is not None:
+            updates.append("u.document_type = $document_type")
+            params["document_type"] = url.document_type
         
         if not updates and url.tag_ids is None:
             return self.get_by_id(url_id)
@@ -294,6 +299,7 @@ class URLRepository:
             url=node["url"],
             title=node.get("title"),
             description=node.get("description"),
+            document_type=node.get("document_type"),
             created_at=created_at,
             updated_at=updated_at
         )

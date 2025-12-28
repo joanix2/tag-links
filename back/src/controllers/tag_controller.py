@@ -5,10 +5,14 @@ from src.repositories.tag_repository import TagRepository
 from src.database import get_db
 from src.auth import get_current_active_user, TokenData
 from src.services.levenshtein_service import search_by_similarity
+from src.models.url import DOCUMENT_TYPES
 from neo4j import Driver
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/tags", tags=["tags"])
+
+# Color for document type tags
+DOCUMENT_TYPE_TAG_COLOR = "#92400E"
 
 
 class NewTagData(BaseModel):
@@ -46,6 +50,35 @@ def get_tags(
 ):
     """Get all tags for the authenticated user with pagination"""
     return repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)
+
+
+@router.post("/initialize-document-types", status_code=status.HTTP_201_CREATED)
+def initialize_document_type_tags(
+    repo: TagRepository = Depends(get_tag_repository),
+    current_user: TokenData = Depends(get_current_active_user)
+):
+    """Initialize all document type tags for the current user if they don't exist"""
+    # Get existing tags to avoid duplicates
+    existing_tags = repo.get_all_by_user(current_user.user_id, skip=0, limit=1000)
+    existing_tag_names = {tag.name for tag in existing_tags}
+    
+    # Create missing document type tags
+    created_tags = []
+    for doc_type in DOCUMENT_TYPES:
+        if doc_type not in existing_tag_names:
+            new_tag = repo.create(TagCreate(
+                name=doc_type,
+                description=f"Type de document : {doc_type}",
+                color=DOCUMENT_TYPE_TAG_COLOR,
+                user_id=current_user.user_id
+            ))
+            created_tags.append(new_tag.name)
+    
+    return {
+        "message": f"Document type tags initialized",
+        "created": created_tags,
+        "total_document_types": len(DOCUMENT_TYPES)
+    }
 
 
 @router.get("/search/", response_model=List[Tag])

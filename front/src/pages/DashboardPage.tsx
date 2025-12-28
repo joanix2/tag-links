@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { AppLayout } from "@/components/layouts/AppLayout";
-import { Link, Tag } from "@/types";
+import { Link, Tag, DocumentType } from "@/types";
 import LinksView from "@/components/LinksView";
 import GraphView from "@/components/graph";
 import { CSVUpload, CSVLinkData } from "@/components/CSVUpload";
@@ -9,6 +9,33 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useAppLayout } from "@/hooks/useAppLayout";
 import { levenshteinSimilarity } from "@/lib/levenshtein";
 import { toggleSpecialTag } from "@/services/tagService";
+
+// Document types - must match backend DOCUMENT_TYPES
+const DOCUMENT_TYPES: DocumentType[] = [
+  "Page",
+  "Image",
+  "Vidéo",
+  "Son",
+  "Texte",
+  "PDF",
+  "Présentation",
+  "3D",
+  "Formulaire",
+  "Carte",
+  "Tableau",
+  "Graphique",
+  "Animation",
+  "Jeu",
+  "Quiz",
+  "Simulation",
+  "Autre",
+];
+
+// Helper function to extract document_type from tags
+const extractDocumentType = (linkTags: Tag[]): DocumentType | undefined => {
+  const docTypeTag = linkTags.find((tag) => DOCUMENT_TYPES.includes(tag.name as DocumentType));
+  return docTypeTag ? (docTypeTag.name as DocumentType) : undefined;
+};
 
 function DashboardContent() {
   const { fetchApi } = useApi();
@@ -38,6 +65,7 @@ function DashboardContent() {
           title: l.title,
           url: l.url,
           description: l.description,
+          document_type: extractDocumentType(l.tags), // Extract from tags
           tags: l.tags ? l.tags.map((t: Tag) => t.id) : [], // Extract tag IDs from tags array
           createdAt: new Date(l.created_at),
         }))
@@ -63,9 +91,15 @@ function DashboardContent() {
             url: linkData.url,
             title: linkData.title,
             description: linkData.description,
+            document_type: linkData.document_type,
             tag_ids: linkData.tags,
           }),
         });
+
+        // Reload tags if document_type was set (might have created a new tag)
+        if (linkData.document_type) {
+          await reloadTags();
+        }
 
         // Update the link in the list using functional update
         setLinks((prevLinks) =>
@@ -76,7 +110,8 @@ function DashboardContent() {
                   title: updatedLink.title,
                   url: updatedLink.url,
                   description: updatedLink.description,
-                  tags: linkData.tags,
+                  document_type: extractDocumentType(updatedLink.tags), // Extract from tags
+                  tags: updatedLink.tags ? updatedLink.tags.map((t: Tag) => t.id) : [],
                   createdAt: new Date(updatedLink.created_at),
                 }
               : link
@@ -90,10 +125,16 @@ function DashboardContent() {
             url: linkData.url,
             title: linkData.title,
             description: linkData.description,
+            document_type: linkData.document_type,
             user_id: user?.id,
             tag_ids: linkData.tags,
           }),
         });
+
+        // Reload tags if document_type was set (might have created a new tag)
+        if (linkData.document_type) {
+          await reloadTags();
+        }
 
         // Add new link to the list using functional update
         setLinks((prevLinks) => [
@@ -102,7 +143,8 @@ function DashboardContent() {
             title: newLink.title,
             url: newLink.url,
             description: newLink.description,
-            tags: linkData.tags,
+            document_type: extractDocumentType(newLink.tags), // Extract from tags
+            tags: newLink.tags ? newLink.tags.map((t: Tag) => t.id) : [],
             createdAt: new Date(newLink.created_at),
           },
           ...prevLinks,

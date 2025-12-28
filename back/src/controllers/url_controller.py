@@ -20,6 +20,65 @@ def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:
     return TagRepository(driver)
 
 
+def manage_document_type_tag(
+    url_id: str,
+    old_document_type: str | None,
+    new_document_type: str | None,
+    user_id: str,
+    url_repo: URLRepository,
+    tag_repo: TagRepository
+):
+    """
+    Manage document type tags automatically with ontological disjoint rule.
+    Ensures that a URL has AT MOST ONE document type tag.
+    
+    - Removes ALL existing document type tags
+    - Adds the new document type tag if specified
+    """
+    from src.models.url import DOCUMENT_TYPES, URLUpdate
+    from src.models.tag import TagCreate
+    
+    DOCUMENT_TYPE_COLOR = "#92400E"
+    
+    # Get current URL tags
+    url_with_tags = url_repo.get_with_tags(url_id)
+    if not url_with_tags:
+        return
+    
+    # Get all user's tags
+    user_tags = tag_repo.get_all_by_user(user_id)
+    
+    # Identify all document type tag IDs
+    document_type_tag_ids = {
+        tag.id for tag in user_tags 
+        if tag.name in DOCUMENT_TYPES
+    }
+    
+    # Remove ALL document type tags from current tags (enforce disjoint rule)
+    current_tag_ids = [
+        t.id for t in url_with_tags.tags 
+        if t.id not in document_type_tag_ids
+    ]
+    
+    # Add new document type tag if specified
+    if new_document_type:
+        # Find or create the new document type tag
+        new_tag = next((t for t in user_tags if t.name == new_document_type), None)
+        if not new_tag:
+            new_tag = tag_repo.create(TagCreate(
+                name=new_document_type,
+                description=f"Type de document : {new_document_type}",
+                color=DOCUMENT_TYPE_COLOR,
+                user_id=user_id
+            ))
+        
+        # Add the new document type tag
+        current_tag_ids.append(new_tag.id)
+    
+    # Update URL with new tag_ids (enforcing disjoint rule)
+    url_repo.update(url_id, URLUpdate(tag_ids=current_tag_ids))
+
+
 class CSVLinkImport(BaseModel):
     title: str
     url: str
@@ -106,17 +165,50 @@ def bulk_import_urls(
     return BulkImportResponse(success=success_count, errors=errors)
 
 
-@router.post("/", response_model=URL, status_code=status.HTTP_201_CREATED)
+@router.post("/", response_model=URLWithTags, status_code=status.HTTP_201_CREATED)
 def create_url(
     url: URLCreate,
-    repo: URLRepository = Depends(get_url_repository),
+    url_repo: URLRepository = Depends(get_url_repository),
+    tag_repo: TagRepository = Depends(get_tag_repository),
     current_user: TokenData = Depends(get_current_active_user)
 ):
     """Create a new URL linked to the authenticated user"""
+    from src.models.url import DOCUMENT_TYPES
+    
     # Override user_id with the authenticated user's ID
     url.user_id = current_user.user_id
+    
+    # Filter out document type tags from tag_ids if provided
+    # because manage_document_type_tag will handle them
+    if url.tag_ids:
+        user_tags = tag_repo.get_all_by_user(current_user.user_id)
+        document_type_tag_ids = {
+            tag.id for tag in user_tags 
+            if tag.name in DOCUMENT_TYPES
+        }
+        # Keep only non-document-type tags
+        url.tag_ids = [tag_id for tag_id in url.tag_ids if tag_id not in document_type_tag_ids]
+    
     try:
-        return repo.create(url)
+        created_url = url_repo.create(url)
+        
+        # Manage document type tag if specified
+        if url.document_type:
+            manage_document_type_tag(
+                created_url.id,
+                None,  # No old document type
+                url.document_type,
+                current_user.user_id,
+                url_repo,
+                tag_repo
+            )
+        
+        # Return URL with tags
+        url_with_tags = url_repo.get_with_tags(created_url.id)
+        if not url_with_tags:
+            return created_url  # Fallback to URL without tags
+        
+        return url_with_tags
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -127,7 +219,7 @@ def create_url(
 @router.get("/", response_model=List[URLWithTags])
 def get_urls(
     skip: int = Query(0, ge=0),
-    limit: int = Query(100, ge=1, le=1000),
+    limit: int = Query(1000, ge=1, le=10000),
     repo: URLRepository = Depends(get_url_repository),
     current_user: TokenData = Depends(get_current_active_user)
 ):
@@ -139,7 +231,7 @@ def get_urls(
 def search_urls(
     q: str = Query(..., min_length=1, description="Search query"),
     threshold: float = Query(0.3, ge=0.0, le=1.0, description="Minimum similarity threshold (0.0 to 1.0)"),
-    limit: int = Query(100, ge=1, le=1000),
+    limit: int = Query(1000, ge=1, le=10000),
     repo: URLRepository = Depends(get_url_repository),
     current_user: TokenData = Depends(get_current_active_user)
 ):
@@ -149,7 +241,7 @@ def search_urls(
     Returns URLs sorted by similarity to the query (most similar first).
     """
     # Get all user's URLs
-    all_urls = repo.get_by_user_with_tags(user_id=current_user.user_id, skip=0, limit=1000)
+    all_urls = repo.get_by_user_with_tags(user_id=current_user.user_id, skip=0, limit=10000)
     
     # Prepare items for similarity search: (searchable_text, url_object)
     items = []
@@ -215,20 +307,63 @@ def get_url_with_tags(
     return url
 
 
-@router.put("/{url_id}", response_model=URL)
+@router.put("/{url_id}", response_model=URLWithTags)
 def update_url(
     url_id: str,
     url: URLUpdate,
-    repo: URLRepository = Depends(get_url_repository)
+    url_repo: URLRepository = Depends(get_url_repository),
+    tag_repo: TagRepository = Depends(get_tag_repository),
+    current_user: TokenData = Depends(get_current_active_user)
 ):
     """Update a URL"""
-    updated_url = repo.update(url_id, url)
+    from src.models.url import DOCUMENT_TYPES
+    
+    # Get the old URL to check document_type change
+    old_url = url_repo.get_by_id(url_id)
+    if not old_url:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"URL with id {url_id} not found"
+        )
+    
+    # If tag_ids are provided, filter out document type tags from the request
+    # because manage_document_type_tag will handle them
+    if url.tag_ids is not None:
+        user_tags = tag_repo.get_all_by_user(current_user.user_id)
+        document_type_tag_ids = {
+            tag.id for tag in user_tags 
+            if tag.name in DOCUMENT_TYPES
+        }
+        # Keep only non-document-type tags from the request
+        url.tag_ids = [tag_id for tag_id in url.tag_ids if tag_id not in document_type_tag_ids]
+    
+    # Update the URL (without document type tags)
+    updated_url = url_repo.update(url_id, url)
     if not updated_url:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"URL with id {url_id} not found"
         )
-    return updated_url
+    
+    # Manage document type tag (adds the correct one if specified)
+    manage_document_type_tag(
+        url_id,
+        old_url.document_type,
+        url.document_type,
+        current_user.user_id,
+        url_repo,
+        tag_repo
+    )
+    
+    # Return URL with tags
+    url_with_tags = url_repo.get_with_tags(url_id)
+    if not url_with_tags:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"URL with id {url_id} not found"
+        )
+    
+    return url_with_tags
 
 
 @router.delete("/{url_id}", status_code=status.HTTP_204_NO_CONTENT)

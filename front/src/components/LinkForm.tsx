@@ -1,11 +1,32 @@
 import { useEffect, useState } from "react";
-import { Link, Tag } from "@/types";
+import { Link, Tag, DocumentType } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import TagSelector from "@/components/TagSelector";
+
+const DOCUMENT_TYPES: DocumentType[] = [
+  "Page",
+  "Image",
+  "Vidéo",
+  "Son",
+  "Texte",
+  "PDF",
+  "Présentation",
+  "3D",
+  "Formulaire",
+  "Carte",
+  "Tableau",
+  "Graphique",
+  "Animation",
+  "Jeu",
+  "Quiz",
+  "Simulation",
+  "Autre",
+];
 
 interface LinkFormProps {
   isOpen: boolean;
@@ -19,6 +40,7 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onCancel }: LinkFormProps) => 
   const [title, setTitle] = useState(link?.title || "");
   const [url, setUrl] = useState(link?.url || "");
   const [description, setDescription] = useState(link?.description || "");
+  const [documentType, setDocumentType] = useState<DocumentType | undefined>(link?.document_type);
   const [selectedTagIds, setSelectedTagIds] = useState<string[]>(link?.tags || []);
 
   useEffect(() => {
@@ -26,11 +48,13 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onCancel }: LinkFormProps) => 
       setTitle(link.title);
       setUrl(link.url);
       setDescription(link.description || "");
+      setDocumentType(link.document_type);
       setSelectedTagIds(link.tags);
     } else {
       setTitle("");
       setUrl("");
       setDescription("");
+      setDocumentType(undefined);
       setSelectedTagIds([]);
     }
   }, [link, isOpen]);
@@ -44,6 +68,7 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onCancel }: LinkFormProps) => 
       title: title.trim(),
       url: url.trim().startsWith("http") ? url.trim() : `https://${url.trim()}`,
       description: description.trim(), // Send empty string instead of undefined to allow clearing
+      document_type: documentType,
       tags: selectedTagIds,
     });
   };
@@ -80,6 +105,25 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onCancel }: LinkFormProps) => 
                 Description
               </Label>
               <Textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Optional description" className="col-span-3" rows={2} />
+            </div>
+
+            <div className="grid grid-cols-4 items-center gap-2">
+              <Label htmlFor="document-type" className="text-right">
+                Type
+              </Label>
+              <Select value={documentType || "none"} onValueChange={(value) => setDocumentType(value === "none" ? undefined : (value as DocumentType))}>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select document type (optional)" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">None</SelectItem>
+                  {DOCUMENT_TYPES.map((type) => (
+                    <SelectItem key={type} value={type}>
+                      {type}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="grid grid-cols-4 gap-2">

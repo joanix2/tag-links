@@ -416,6 +416,22 @@
         "documentation": {}
     },
     {
+        "label": "Literal",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "get_args",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Optional",
         "importPath": "typing",
         "description": "typing",
@@ -617,6 +633,14 @@
     },
     {
         "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
         "importPath": "src.database",
         "description": "src.database",
         "isExtraImport": true,
@@ -976,6 +1000,174 @@
         "documentation": {}
     },
     {
+        "label": "UserRepository",
+        "importPath": "src.repositories.user_repository",
+        "description": "src.repositories.user_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TagRepository",
+        "importPath": "src.repositories.tag_repository",
+        "description": "src.repositories.tag_repository",
+        "isExtraImport": true,
+        "detail": "src.repositories.tag_repository",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPES",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPES",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLCreate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLUpdate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLCreate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLUpdate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithUser",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPES",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
         "label": "File",
         "importPath": "src.models.file",
         "description": "src.models.file",
@@ -1152,94 +1344,6 @@
         "documentation": {}
     },
     {
-        "label": "URL",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithTags",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URL",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLCreate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLUpdate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithTags",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URL",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLCreate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLUpdate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithTags",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithUser",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
         "label": "URLRepository",
         "importPath": "src.repositories.url_repository",
         "description": "src.repositories.url_repository",
@@ -1256,38 +1360,6 @@
         "documentation": {}
     },
     {
-        "label": "TagRepository",
-        "importPath": "src.repositories.tag_repository",
-        "description": "src.repositories.tag_repository",
-        "isExtraImport": true,
-        "detail": "src.repositories.tag_repository",
-        "documentation": {}
-    },
-    {
-        "label": "TagRepository",
-        "importPath": "src.repositories.tag_repository",
-        "description": "src.repositories.tag_repository",
-        "isExtraImport": true,
-        "detail": "src.repositories.tag_repository",
-        "documentation": {}
-    },
-    {
-        "label": "TagRepository",
-        "importPath": "src.repositories.tag_repository",
-        "description": "src.repositories.tag_repository",
-        "isExtraImport": true,
-        "detail": "src.repositories.tag_repository",
-        "documentation": {}
-    },
-    {
-        "label": "TagRepository",
-        "importPath": "src.repositories.tag_repository",
-        "description": "src.repositories.tag_repository",
-        "isExtraImport": true,
-        "detail": "src.repositories.tag_repository",
-        "documentation": {}
-    },
-    {
         "label": "Tag",
         "importPath": "src.models.tag",
         "description": "src.models.tag",
@@ -1393,6 +1465,14 @@
     },
     {
         "label": "TagUpdate",
+        "importPath": "src.models.tag",
+        "description": "src.models.tag",
+        "isExtraImport": true,
+        "detail": "src.models.tag",
+        "documentation": {}
+    },
+    {
+        "label": "TagCreate",
         "importPath": "src.models.tag",
         "description": "src.models.tag",
         "isExtraImport": true,
@@ -1852,7 +1932,25 @@
         "kind": 2,
         "importPath": "back.src.controllers.auth_controller",
         "description": "back.src.controllers.auth_controller",
-        "peekOfCode": "def get_user_repository():\n    \"\"\"Dependency to get user repository\"\"\"\n    driver = get_driver()\n    return UserRepository(driver)\n@router.post(\"/register\", response_model=User, status_code=status.HTTP_201_CREATED)\nasync def register(\n    user: UserCreate,\n    user_repo: UserRepository = Depends(get_user_repository)\n):\n    \"\"\"Register a new user\"\"\"",
+        "peekOfCode": "def get_user_repository():\n    \"\"\"Dependency to get user repository\"\"\"\n    driver = get_driver()\n    return UserRepository(driver)\ndef get_tag_repository():\n    \"\"\"Dependency to get tag repository\"\"\"\n    driver = get_driver()\n    return TagRepository(driver)\ndef initialize_document_type_tags(user_id: str, tag_repo: TagRepository):\n    \"\"\"Create all document type tags for a new user\"\"\"",
+        "detail": "back.src.controllers.auth_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_tag_repository",
+        "kind": 2,
+        "importPath": "back.src.controllers.auth_controller",
+        "description": "back.src.controllers.auth_controller",
+        "peekOfCode": "def get_tag_repository():\n    \"\"\"Dependency to get tag repository\"\"\"\n    driver = get_driver()\n    return TagRepository(driver)\ndef initialize_document_type_tags(user_id: str, tag_repo: TagRepository):\n    \"\"\"Create all document type tags for a new user\"\"\"\n    from src.models.tag import TagCreate\n    # Get existing tags to avoid duplicates\n    existing_tags = tag_repo.get_all_by_user(user_id)\n    existing_tag_names = {tag.name for tag in existing_tags}",
+        "detail": "back.src.controllers.auth_controller",
+        "documentation": {}
+    },
+    {
+        "label": "initialize_document_type_tags",
+        "kind": 2,
+        "importPath": "back.src.controllers.auth_controller",
+        "description": "back.src.controllers.auth_controller",
+        "peekOfCode": "def initialize_document_type_tags(user_id: str, tag_repo: TagRepository):\n    \"\"\"Create all document type tags for a new user\"\"\"\n    from src.models.tag import TagCreate\n    # Get existing tags to avoid duplicates\n    existing_tags = tag_repo.get_all_by_user(user_id)\n    existing_tag_names = {tag.name for tag in existing_tags}\n    # Create missing document type tags\n    for doc_type in DOCUMENT_TYPES:\n        if doc_type not in existing_tag_names:\n            tag_repo.create(TagCreate(",
         "detail": "back.src.controllers.auth_controller",
         "documentation": {}
     },
@@ -1861,7 +1959,16 @@
         "kind": 5,
         "importPath": "back.src.controllers.auth_controller",
         "description": "back.src.controllers.auth_controller",
-        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Authentication\"])\ndef get_user_repository():\n    \"\"\"Dependency to get user repository\"\"\"\n    driver = get_driver()\n    return UserRepository(driver)\n@router.post(\"/register\", response_model=User, status_code=status.HTTP_201_CREATED)\nasync def register(\n    user: UserCreate,\n    user_repo: UserRepository = Depends(get_user_repository)\n):",
+        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Authentication\"])\n# Color for document type tags\nDOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\ndef get_user_repository():\n    \"\"\"Dependency to get user repository\"\"\"\n    driver = get_driver()\n    return UserRepository(driver)\ndef get_tag_repository():\n    \"\"\"Dependency to get tag repository\"\"\"\n    driver = get_driver()",
+        "detail": "back.src.controllers.auth_controller",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPE_TAG_COLOR",
+        "kind": 5,
+        "importPath": "back.src.controllers.auth_controller",
+        "description": "back.src.controllers.auth_controller",
+        "peekOfCode": "DOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\ndef get_user_repository():\n    \"\"\"Dependency to get user repository\"\"\"\n    driver = get_driver()\n    return UserRepository(driver)\ndef get_tag_repository():\n    \"\"\"Dependency to get tag repository\"\"\"\n    driver = get_driver()\n    return TagRepository(driver)\ndef initialize_document_type_tags(user_id: str, tag_repo: TagRepository):",
         "detail": "back.src.controllers.auth_controller",
         "documentation": {}
     },
@@ -2041,7 +2148,16 @@
         "kind": 2,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "def get_tags(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all tags for the authenticated user with pagination\"\"\"\n    return repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)\n@router.get(\"/search/\", response_model=List[Tag])\ndef search_tags(",
+        "peekOfCode": "def get_tags(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all tags for the authenticated user with pagination\"\"\"\n    return repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)\n@router.post(\"/initialize-document-types\", status_code=status.HTTP_201_CREATED)\ndef initialize_document_type_tags(",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "initialize_document_type_tags",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def initialize_document_type_tags(\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Initialize all document type tags for the current user if they don't exist\"\"\"\n    # Get existing tags to avoid duplicates\n    existing_tags = repo.get_all_by_user(current_user.user_id, skip=0, limit=1000)\n    existing_tag_names = {tag.name for tag in existing_tags}\n    # Create missing document type tags\n    created_tags = []",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2140,7 +2256,16 @@
         "kind": 5,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "router = APIRouter(prefix=\"/tags\", tags=[\"tags\"])\nclass NewTagData(BaseModel):\n    name: str\n    color: str\nclass MergeTagsRequest(BaseModel):\n    source_tag_ids: List[str]\n    target_tag_id: NewTagData\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\n@router.post(\"/\", response_model=Tag, status_code=status.HTTP_201_CREATED)",
+        "peekOfCode": "router = APIRouter(prefix=\"/tags\", tags=[\"tags\"])\n# Color for document type tags\nDOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\nclass NewTagData(BaseModel):\n    name: str\n    color: str\nclass MergeTagsRequest(BaseModel):\n    source_tag_ids: List[str]\n    target_tag_id: NewTagData\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPE_TAG_COLOR",
+        "kind": 5,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "DOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\nclass NewTagData(BaseModel):\n    name: str\n    color: str\nclass MergeTagsRequest(BaseModel):\n    source_tag_ids: List[str]\n    target_tag_id: NewTagData\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\n@router.post(\"/\", response_model=Tag, status_code=status.HTTP_201_CREATED)",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2176,7 +2301,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None\n    created_at: str | None = None",
+        "peekOfCode": "def get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\ndef manage_document_type_tag(\n    url_id: str,\n    old_document_type: str | None,\n    new_document_type: str | None,\n    user_id: str,\n    url_repo: URLRepository,",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2185,7 +2310,16 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):\n    links: List[CSVLinkImport]",
+        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\ndef manage_document_type_tag(\n    url_id: str,\n    old_document_type: str | None,\n    new_document_type: str | None,\n    user_id: str,\n    url_repo: URLRepository,\n    tag_repo: TagRepository\n):",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "manage_document_type_tag",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def manage_document_type_tag(\n    url_id: str,\n    old_document_type: str | None,\n    new_document_type: str | None,\n    user_id: str,\n    url_repo: URLRepository,\n    tag_repo: TagRepository\n):\n    \"\"\"\n    Manage document type tags automatically with ontological disjoint rule.",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2203,7 +2337,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def create_url(\n    url: URLCreate,\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Create a new URL linked to the authenticated user\"\"\"\n    # Override user_id with the authenticated user's ID\n    url.user_id = current_user.user_id\n    try:\n        return repo.create(url)",
+        "peekOfCode": "def create_url(\n    url: URLCreate,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Create a new URL linked to the authenticated user\"\"\"\n    from src.models.url import DOCUMENT_TYPES\n    # Override user_id with the authenticated user's ID\n    url.user_id = current_user.user_id",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2212,7 +2346,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_urls(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all URLs for the authenticated user with pagination\"\"\"\n    return repo.get_by_user_with_tags(user_id=current_user.user_id, skip=skip, limit=limit)\n@router.get(\"/search/\", response_model=List[URLWithTags])\ndef search_urls(",
+        "peekOfCode": "def get_urls(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(1000, ge=1, le=10000),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all URLs for the authenticated user with pagination\"\"\"\n    return repo.get_by_user_with_tags(user_id=current_user.user_id, skip=skip, limit=limit)\n@router.get(\"/search/\", response_model=List[URLWithTags])\ndef search_urls(",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2221,7 +2355,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def search_urls(\n    q: str = Query(..., min_length=1, description=\"Search query\"),\n    threshold: float = Query(0.3, ge=0.0, le=1.0, description=\"Minimum similarity threshold (0.0 to 1.0)\"),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Search URLs by title, description, or URL using Levenshtein distance for fuzzy matching.\n    Returns URLs sorted by similarity to the query (most similar first).",
+        "peekOfCode": "def search_urls(\n    q: str = Query(..., min_length=1, description=\"Search query\"),\n    threshold: float = Query(0.3, ge=0.0, le=1.0, description=\"Minimum similarity threshold (0.0 to 1.0)\"),\n    limit: int = Query(1000, ge=1, le=10000),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Search URLs by title, description, or URL using Levenshtein distance for fuzzy matching.\n    Returns URLs sorted by similarity to the query (most similar first).",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2266,7 +2400,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def update_url(\n    url_id: str,\n    url: URLUpdate,\n    repo: URLRepository = Depends(get_url_repository)\n):\n    \"\"\"Update a URL\"\"\"\n    updated_url = repo.update(url_id, url)\n    if not updated_url:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,",
+        "peekOfCode": "def update_url(\n    url_id: str,\n    url: URLUpdate,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Update a URL\"\"\"\n    from src.models.url import DOCUMENT_TYPES\n    # Get the old URL to check document_type change",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2302,7 +2436,7 @@
         "kind": 5,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None",
+        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\ndef manage_document_type_tag(\n    url_id: str,\n    old_document_type: str | None,\n    new_document_type: str | None,\n    user_id: str,",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2527,7 +2661,7 @@
         "kind": 6,
         "importPath": "back.src.models.url",
         "description": "back.src.models.url",
-        "peekOfCode": "class URLBase(BaseModel):\n    url: str = Field(..., min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\nclass URLCreate(URLBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    tag_ids: List[str] = []  # Liste des IDs de tags à associer\n    created_at: Optional[datetime] = None  # Optional, pour les imports CSV avec date personnalisée\nclass URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)",
+        "peekOfCode": "class URLBase(BaseModel):\n    url: str = Field(..., min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    document_type: Optional[DocumentType] = None\nclass URLCreate(URLBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    tag_ids: List[str] = []  # Liste des IDs de tags à associer\n    created_at: Optional[datetime] = None  # Optional, pour les imports CSV avec date personnalisée\nclass URLUpdate(BaseModel):",
         "detail": "back.src.models.url",
         "documentation": {}
     },
@@ -2536,7 +2670,7 @@
         "kind": 6,
         "importPath": "back.src.models.url",
         "description": "back.src.models.url",
-        "peekOfCode": "class URLCreate(URLBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    tag_ids: List[str] = []  # Liste des IDs de tags à associer\n    created_at: Optional[datetime] = None  # Optional, pour les imports CSV avec date personnalisée\nclass URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)\nclass URL(URLBase):",
+        "peekOfCode": "class URLCreate(URLBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    tag_ids: List[str] = []  # Liste des IDs de tags à associer\n    created_at: Optional[datetime] = None  # Optional, pour les imports CSV avec date personnalisée\nclass URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    document_type: Optional[DocumentType] = None\n    tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)",
         "detail": "back.src.models.url",
         "documentation": {}
     },
@@ -2545,7 +2679,7 @@
         "kind": 6,
         "importPath": "back.src.models.url",
         "description": "back.src.models.url",
-        "peekOfCode": "class URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)\nclass URL(URLBase):\n    id: str\n    user_id: str\n    created_at: datetime\n    updated_at: datetime",
+        "peekOfCode": "class URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    document_type: Optional[DocumentType] = None\n    tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)\nclass URL(URLBase):\n    id: str\n    user_id: str\n    created_at: datetime",
         "detail": "back.src.models.url",
         "documentation": {}
     },
@@ -2573,6 +2707,24 @@
         "importPath": "back.src.models.url",
         "description": "back.src.models.url",
         "peekOfCode": "class URLWithUser(URL):\n    \"\"\"URL with its owner\"\"\"\n    user: Optional['User'] = None\n    tags: List['Tag'] = []\n    class Config:\n        from_attributes = True\n# Avoid circular imports\nfrom .tag import Tag\nfrom .user import User\nURLWithTags.model_rebuild()",
+        "detail": "back.src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPES",
+        "kind": 5,
+        "importPath": "back.src.models.url",
+        "description": "back.src.models.url",
+        "peekOfCode": "DOCUMENT_TYPES = [\n    \"Page\",\n    \"Image\",\n    \"Vidéo\",\n    \"Son\",\n    \"Texte\",\n    \"PDF\",\n    \"Présentation\",\n    \"3D\",\n    \"Formulaire\",",
+        "detail": "back.src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "DocumentType",
+        "kind": 5,
+        "importPath": "back.src.models.url",
+        "description": "back.src.models.url",
+        "peekOfCode": "DocumentType = Literal[\n    \"Page\",\n    \"Image\",\n    \"Vidéo\",\n    \"Son\",\n    \"Texte\",\n    \"PDF\",\n    \"Présentation\",\n    \"3D\",\n    \"Formulaire\",",
         "detail": "back.src.models.url",
         "documentation": {}
     },
@@ -3087,6 +3239,24 @@
         "description": "back.tests.test_tags",
         "peekOfCode": "class TestTagPagination:\n    \"\"\"Test pagination\"\"\"\n    def test_pagination(self, client: TestClient):\n        \"\"\"Test pagination with skip and limit\"\"\"\n        # Create 10 tags\n        for i in range(10):\n            client.post(\"/tags/\", json={\"name\": f\"Tag {i:02d}\"})\n        # Get first page\n        response = client.get(\"/tags/?skip=0&limit=5\")\n        assert response.status_code == 200",
         "detail": "back.tests.test_tags",
+        "documentation": {}
+    },
+    {
+        "label": "initialize_all_users_document_tags",
+        "kind": 2,
+        "importPath": "back.init_document_tags",
+        "description": "back.init_document_tags",
+        "peekOfCode": "def initialize_all_users_document_tags():\n    \"\"\"Initialize document type tags for all existing users\"\"\"\n    driver = get_driver()\n    user_repo = UserRepository(driver)\n    tag_repo = TagRepository(driver)\n    print(\"🚀 Starting document type tags initialization...\")\n    # Get all users (using a high limit to get all)\n    all_users = user_repo.get_all(skip=0, limit=10000)\n    print(f\"Found {len(all_users)} users\")\n    for user in all_users:",
+        "detail": "back.init_document_tags",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPE_TAG_COLOR",
+        "kind": 5,
+        "importPath": "back.init_document_tags",
+        "description": "back.init_document_tags",
+        "peekOfCode": "DOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\ndef initialize_all_users_document_tags():\n    \"\"\"Initialize document type tags for all existing users\"\"\"\n    driver = get_driver()\n    user_repo = UserRepository(driver)\n    tag_repo = TagRepository(driver)\n    print(\"🚀 Starting document type tags initialization...\")\n    # Get all users (using a high limit to get all)\n    all_users = user_repo.get_all(skip=0, limit=10000)\n    print(f\"Found {len(all_users)} users\")",
+        "detail": "back.init_document_tags",
         "documentation": {}
     },
     {

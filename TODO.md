@@ -38,22 +38,22 @@
 ✅ ajout des favoris
 ✅ ajout du partage
 ✅ API (tokens + documentation)
+✅ type de document (csv type du document, règle ontologique disjointe)
 
-type de document
 Augmenter la limite des liens
-Logo arbre
-Photo de profile
-
 fix merge
-espace entre les tags
+recherche ET / OU
 ajoute un mode non éditable pour les tags
 bouton favoris et et partage
-recherche ET / OU
+
+Logo arbre
+Photo de profile
+espace entre les tags
+choix d'un theme de couleur dans le profile
 
 géréer le proxy (NPM)
 créer une CD
 responsive
-graphe
 reset password
 téléchargement des données en csv
 chargement de tous les tags dans le front (bof bof)
