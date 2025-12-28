@@ -174,6 +174,30 @@ function DashboardContent() {
     }
   };
 
+  const handleBulkDelete = async (linkIds: string[]) => {
+    try {
+      const response = await fetchApi("/urls/bulk-delete", {
+        method: "POST",
+        body: JSON.stringify({ url_ids: linkIds }),
+      });
+
+      // Update state to remove deleted links
+      setLinks((prevLinks) => prevLinks.filter((link) => !linkIds.includes(link.id)));
+
+      // Log errors if any
+      if (response.errors && response.errors.length > 0) {
+        console.error("Some deletions failed:", response.errors);
+      }
+
+      return response;
+    } catch (error) {
+      console.error("Failed to bulk delete links:", error);
+      // Optionally reload links if deletion failed
+      loadLinks();
+      throw error;
+    }
+  };
+
   const toggleFavorite = async (linkId: string) => {
     try {
       const link = links.find((l) => l.id === linkId);
@@ -329,6 +353,7 @@ function DashboardContent() {
       onSearch={setSearchTerm}
       onLinkEdit={handleLinkEdit}
       onLinkDelete={handleLinkDelete}
+      onBulkDelete={handleBulkDelete}
       onLinkSubmit={handleLinkSubmit}
       onToggleFavorite={toggleFavorite}
       onToggleShare={toggleShare}

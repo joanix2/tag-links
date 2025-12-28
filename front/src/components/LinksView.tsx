@@ -19,6 +19,7 @@ interface LinksViewProps {
   onSearch: (term: string) => void;
   onLinkEdit: (link: Link) => void;
   onLinkDelete: (linkId: string) => void;
+  onBulkDelete: (linkIds: string[]) => Promise<{ deleted: number; errors: unknown[] }>;
   onLinkSubmit: (link: Omit<Link, "id" | "createdAt"> | Link) => void;
   onToggleFavorite: (linkId: string) => void;
   onToggleShare: (linkId: string) => void;
@@ -35,6 +36,7 @@ const LinksView = ({
   onSearch,
   onLinkEdit,
   onLinkDelete,
+  onBulkDelete,
   onLinkSubmit,
   onToggleFavorite,
   onToggleShare,
@@ -84,12 +86,15 @@ const LinksView = ({
     }
   };
 
-  const handleBulkDelete = async () => {
-    for (const linkId of selectedLinks) {
-      await onLinkDelete(linkId);
+  const handleBulkDeleteConfirm = async () => {
+    try {
+      await onBulkDelete(selectedLinks);
+      setSelectedLinks([]);
+      setShowDeleteDialog(false);
+    } catch (error) {
+      console.error("Bulk delete failed:", error);
+      // Keep the dialog open and selection in case of error
     }
-    setSelectedLinks([]);
-    setShowDeleteDialog(false);
   };
 
   const allSelected = links.length > 0 && selectedLinks.length === links.length;
@@ -214,7 +219,7 @@ const LinksView = ({
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={handleBulkDelete} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+              <AlertDialogAction onClick={handleBulkDeleteConfirm} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
                 Delete
               </AlertDialogAction>
             </AlertDialogFooter>

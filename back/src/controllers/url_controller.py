@@ -379,6 +379,60 @@ def delete_url(
         )
 
 
+class BulkDeleteRequest(BaseModel):
+    url_ids: List[str]
+
+
+class BulkDeleteResponse(BaseModel):
+    deleted: int
+    errors: List[dict]
+
+
+@router.post("/bulk-delete", response_model=BulkDeleteResponse)
+def bulk_delete_urls(
+    request: BulkDeleteRequest,
+    repo: URLRepository = Depends(get_url_repository),
+    current_user: TokenData = Depends(get_current_active_user)
+):
+    """Delete multiple URLs at once"""
+    deleted_count = 0
+    errors = []
+
+    for url_id in request.url_ids:
+        try:
+            # Verify the URL belongs to the current user before deleting
+            url = repo.get_by_id(url_id)
+            if not url:
+                errors.append({
+                    "url_id": url_id,
+                    "error": "URL not found"
+                })
+                continue
+            
+            if url.user_id != current_user.user_id:
+                errors.append({
+                    "url_id": url_id,
+                    "error": "Unauthorized - URL belongs to another user"
+                })
+                continue
+            
+            # Delete the URL
+            if repo.delete(url_id):
+                deleted_count += 1
+            else:
+                errors.append({
+                    "url_id": url_id,
+                    "error": "Failed to delete"
+                })
+        except Exception as e:
+            errors.append({
+                "url_id": url_id,
+                "error": str(e)
+            })
+
+    return BulkDeleteResponse(deleted=deleted_count, errors=errors)
+
+
 @router.post("/{url_id}/tags/{tag_id}", status_code=status.HTTP_201_CREATED)
 def add_tag_to_url(
     url_id: str,

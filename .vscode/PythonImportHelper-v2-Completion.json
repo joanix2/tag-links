@@ -2297,6 +2297,24 @@
         "documentation": {}
     },
     {
+        "label": "BulkDeleteRequest",
+        "kind": 6,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "class BulkDeleteRequest(BaseModel):\n    url_ids: List[str]\nclass BulkDeleteResponse(BaseModel):\n    deleted: int\n    errors: List[dict]\n@router.post(\"/bulk-delete\", response_model=BulkDeleteResponse)\ndef bulk_delete_urls(\n    request: BulkDeleteRequest,\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "BulkDeleteResponse",
+        "kind": 6,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "class BulkDeleteResponse(BaseModel):\n    deleted: int\n    errors: List[dict]\n@router.post(\"/bulk-delete\", response_model=BulkDeleteResponse)\ndef bulk_delete_urls(\n    request: BulkDeleteRequest,\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Delete multiple URLs at once\"\"\"",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
         "label": "get_url_repository",
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
@@ -2410,6 +2428,15 @@
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
         "peekOfCode": "def delete_url(\n    url_id: str,\n    repo: URLRepository = Depends(get_url_repository)\n):\n    \"\"\"Delete a URL\"\"\"\n    if not repo.delete(url_id):\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"URL with id {url_id} not found\"\n        )",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "bulk_delete_urls",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def bulk_delete_urls(\n    request: BulkDeleteRequest,\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Delete multiple URLs at once\"\"\"\n    deleted_count = 0\n    errors = []\n    for url_id in request.url_ids:\n        try:",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
