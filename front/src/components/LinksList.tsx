@@ -3,6 +3,7 @@ import { Link, Tag } from "@/types";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Edit, Trash2, ExternalLink, Heart, Share2 } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import TagBadge from "./TagBadge";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { useAppLayout } from "@/hooks/useAppLayout";
@@ -15,9 +16,11 @@ interface LinksListProps {
   onLinkDelete: (linkId: string) => void;
   onToggleFavorite: (linkId: string) => void;
   onToggleShare: (linkId: string) => void;
+  selectedLinks: string[];
+  onToggleSelection: (linkId: string) => void;
 }
 
-const LinksList = ({ links, tags, onLinkEdit, onLinkDelete, onToggleFavorite, onToggleShare }: LinksListProps) => {
+const LinksList = ({ links, tags, onLinkEdit, onLinkDelete, onToggleFavorite, onToggleShare, selectedLinks, onToggleSelection }: LinksListProps) => {
   const [linkToDelete, setLinkToDelete] = useState<string | null>(null);
   const { handleTagSelect } = useAppLayout();
 
@@ -63,16 +66,21 @@ const LinksList = ({ links, tags, onLinkEdit, onLinkDelete, onToggleFavorite, on
           {links.map((link) => (
             <Card
               key={link.id}
-              className="group overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 border-muted/40 hover:border-primary/20 bg-card/80 backdrop-blur-sm"
+              className={`group overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 border-muted/40 hover:border-primary/20 bg-card/80 backdrop-blur-sm ${
+                selectedLinks.includes(link.id) ? "ring-2 ring-primary" : ""
+              }`}
             >
               <CardHeader className="p-4 pb-3 space-y-2">
                 <div className="flex justify-between items-start gap-2">
-                  <CardTitle className="text-base sm:text-lg font-semibold line-clamp-2 flex-1">
-                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 group/link transition-colors">
-                      <span className="group-hover/link:underline decoration-2">{link.title}</span>
-                    </a>
-                  </CardTitle>
-                  <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-start gap-2 flex-1 min-w-0">
+                    <Checkbox checked={selectedLinks.includes(link.id)} onCheckedChange={() => onToggleSelection(link.id)} className="mt-1 flex-shrink-0" />
+                    <CardTitle className="text-base sm:text-lg font-semibold line-clamp-2 flex-1 min-w-0">
+                      <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 group/link transition-colors">
+                        <span className="group-hover/link:underline decoration-2">{link.title}</span>
+                      </a>
+                    </CardTitle>
+                  </div>
+                  <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
                     <Button
                       variant="ghost"
                       size="icon"

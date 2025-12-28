@@ -40,6 +40,10 @@
 ✅ API (tokens + documentation)
 ✅ type de document (csv type du document, règle ontologique disjointe)
 
+merge l'hors de l'import
+import du type via csv
+meilleurs erreurs lors de l'import du csv
+suppression de masse
 Augmenter la limite des liens
 fix merge
 recherche ET / OU

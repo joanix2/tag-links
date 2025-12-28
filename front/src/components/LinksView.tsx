@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Plus, Trash2, CheckSquare, Square } from "lucide-react";
 import { Link, Tag } from "@/types";
 import SearchBar from "@/components/SearchBar";
 import LinksList from "@/components/LinksList";
@@ -9,6 +9,7 @@ import Sidebar from "@/components/Sidebar";
 import { CSVUpload, CSVLinkData } from "@/components/CSVUpload";
 import { useAppLayout } from "@/hooks/useAppLayout";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 
 interface LinksViewProps {
   links: Link[];
@@ -43,6 +44,8 @@ const LinksView = ({
 }: LinksViewProps) => {
   const [isLinkFormOpen, setIsLinkFormOpen] = useState(false);
   const [editingLink, setEditingLink] = useState<Link | null>(null);
+  const [selectedLinks, setSelectedLinks] = useState<string[]>([]);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   // Use context for tag management
   const { handleTagCreate, handleTagUpdate, handleTagDelete, handleTagSelect } = useAppLayout();
@@ -69,6 +72,28 @@ const LinksView = ({
     setEditingLink(null);
   };
 
+  const handleToggleSelection = (linkId: string) => {
+    setSelectedLinks((prev) => (prev.includes(linkId) ? prev.filter((id) => id !== linkId) : [...prev, linkId]));
+  };
+
+  const handleToggleSelectAll = () => {
+    if (selectedLinks.length === links.length) {
+      setSelectedLinks([]);
+    } else {
+      setSelectedLinks(links.map((link) => link.id));
+    }
+  };
+
+  const handleBulkDelete = async () => {
+    for (const linkId of selectedLinks) {
+      await onLinkDelete(linkId);
+    }
+    setSelectedLinks([]);
+    setShowDeleteDialog(false);
+  };
+
+  const allSelected = links.length > 0 && selectedLinks.length === links.length;
+
   return (
     <div className="flex flex-1 h-full overflow-hidden bg-gradient-to-br from-background to-muted/20">
       {/* Desktop Sidebar */}
@@ -91,6 +116,13 @@ const LinksView = ({
 
           {/* Action Buttons */}
           <div className="flex gap-2 justify-end items-center">
+            {selectedLinks.length > 0 && (
+              <Button variant="destructive" size="sm" onClick={() => setShowDeleteDialog(true)} className="shadow-sm">
+                <Trash2 size={16} className="mr-2" />
+                <span className="hidden sm:inline">Delete ({selectedLinks.length})</span>
+                <span className="sm:hidden">Delete</span>
+              </Button>
+            )}
             {onCSVUpload && <CSVUpload onUpload={onCSVUpload} />}
             <Button onClick={handleNewLink} className="shadow-sm hover:shadow transition-all">
               <Plus size={18} className="mr-2" />
@@ -105,6 +137,12 @@ const LinksView = ({
           {/* Stats and Sort Row */}
           <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="text-sm sm:text-base text-muted-foreground">
+              {selectedLinks.length > 0 ? (
+                <>
+                  <span className="font-semibold text-foreground">{selectedLinks.length}</span> selected
+                  {" / "}
+                </>
+              ) : null}
               <span className="font-semibold text-foreground">{links.length}</span> {links.length === 1 ? "link" : "links"}
               {selectedTags.length > 0 && (
                 <>
@@ -120,20 +158,37 @@ const LinksView = ({
                 </>
               )}
             </div>
-            <Select value={sortOrder} onValueChange={onSortChange}>
-              <SelectTrigger className="w-full sm:w-[180px] shadow-sm">
-                <SelectValue placeholder="Sort by..." />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="none">No sorting</SelectItem>
-                <SelectItem value="newest">Newest first</SelectItem>
-                <SelectItem value="oldest">Oldest first</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="flex gap-2 items-center w-full sm:w-auto">
+              {links.length > 0 && (
+                <Button variant="outline" size="sm" onClick={handleToggleSelectAll} className="shadow-sm flex-1 sm:flex-initial">
+                  {allSelected ? <CheckSquare size={16} className="mr-2" /> : <Square size={16} className="mr-2" />}
+                  <span>{allSelected ? "Deselect All" : "Select All"}</span>
+                </Button>
+              )}
+              <Select value={sortOrder} onValueChange={onSortChange}>
+                <SelectTrigger className="w-full sm:w-[180px] shadow-sm">
+                  <SelectValue placeholder="Sort by..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">No sorting</SelectItem>
+                  <SelectItem value="newest">Newest first</SelectItem>
+                  <SelectItem value="oldest">Oldest first</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           {/* Links Grid */}
-          <LinksList links={links} tags={tags} onLinkEdit={handleEdit} onLinkDelete={onLinkDelete} onToggleFavorite={onToggleFavorite} onToggleShare={onToggleShare} />
+          <LinksList
+            links={links}
+            tags={tags}
+            onLinkEdit={handleEdit}
+            onLinkDelete={onLinkDelete}
+            onToggleFavorite={onToggleFavorite}
+            onToggleShare={onToggleShare}
+            selectedLinks={selectedLinks}
+            onToggleSelection={handleToggleSelection}
+          />
         </div>
 
         {/* Link Form Dialog */}
@@ -147,6 +202,24 @@ const LinksView = ({
             setEditingLink(null);
           }}
         />
+
+        {/* Bulk Delete Confirmation Dialog */}
+        <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Delete {selectedLinks.length} links?</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to delete {selectedLinks.length} selected {selectedLinks.length === 1 ? "link" : "links"}? This action cannot be undone.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handleBulkDelete} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+                Delete
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </div>
   );
