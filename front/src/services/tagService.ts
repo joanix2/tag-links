@@ -16,6 +16,7 @@ export interface ToggleTagOptions {
 
 export interface ToggleTagResult {
   updatedTags: string[];
+  updatedTagObjects: Tag[];
   createdTag?: Tag;
   needsTagReload: boolean;
 }
@@ -52,7 +53,7 @@ export async function toggleSpecialTag(options: ToggleTagOptions): Promise<Toggl
   const updatedTags = hasTag ? link.tags.filter((tagId) => tagId !== specialTag.id) : [...link.tags, specialTag.id];
 
   // Update the link with new tags
-  await fetchApi(`/urls/${linkId}`, {
+  const updatedLink = (await fetchApi(`/urls/${linkId}`, {
     method: "PUT",
     body: JSON.stringify({
       url: link.url,
@@ -60,10 +61,11 @@ export async function toggleSpecialTag(options: ToggleTagOptions): Promise<Toggl
       description: link.description,
       tag_ids: updatedTags,
     }),
-  });
+  })) as { tags: Tag[] };
 
   return {
     updatedTags,
+    updatedTagObjects: updatedLink.tags || [],
     createdTag,
     needsTagReload,
   };

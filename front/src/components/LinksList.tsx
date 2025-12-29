@@ -33,6 +33,10 @@ const LinksList = ({ links, tags, onLinkEdit, onLinkDelete, onToggleFavorite, on
   };
 
   const getTagsForLink = (link: Link) => {
+    // Use tagObjects if available (from API), otherwise fall back to filtering tags list
+    if (link.tagObjects && link.tagObjects.length > 0) {
+      return link.tagObjects;
+    }
     return tags.filter((tag) => link.tags.includes(tag.id));
   };
 

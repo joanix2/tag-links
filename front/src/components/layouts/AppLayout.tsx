@@ -27,6 +27,7 @@ export function AppLayout({ children }: AppLayoutProps) {
   const [currentView, setCurrentView] = useState<"links" | "graph">("links");
   const [showUntagged, setShowUntagged] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [allTagsMap, setAllTagsMap] = useState<Map<string, Tag>>(new Map());
 
   // Check if we're on the dashboard page
   const isDashboard = location.pathname === "/dashboard";
@@ -63,6 +64,30 @@ export function AppLayout({ children }: AppLayoutProps) {
     enabled: true,
     threshold: 200,
   });
+
+  // Update allTagsMap whenever tags change
+  useEffect(() => {
+    setAllTagsMap((prevMap) => {
+      const newMap = new Map(prevMap);
+      tags.forEach((tag) => {
+        newMap.set(tag.id, tag);
+      });
+      return newMap;
+    });
+  }, [tags]);
+
+  // Function to register tags from links
+  const registerTagsFromLinks = useCallback((linkTags: Tag[]) => {
+    setAllTagsMap((prevMap) => {
+      const newMap = new Map(prevMap);
+      linkTags.forEach((tag) => {
+        if (!newMap.has(tag.id)) {
+          newMap.set(tag.id, tag);
+        }
+      });
+      return newMap;
+    });
+  }, []);
 
   // Tag handlers
   const handleTagCreate = async (tagData: Omit<Tag, "id">): Promise<Tag> => {
@@ -153,6 +178,9 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   const showSidebar = tags.length > 0;
 
+  // Get selected tags data from the allTagsMap
+  const selectedTagsData = selectedTags.map((id) => allTagsMap.get(id)).filter((tag): tag is Tag => tag !== undefined);
+
   const contextValue: AppLayoutContextType = {
     tags,
     tagsLoading,
@@ -160,6 +188,7 @@ export function AppLayout({ children }: AppLayoutProps) {
     totalTags,
     tagsScrollContainerRef,
     selectedTags,
+    selectedTagsData,
     currentView,
     showUntagged,
     setCurrentView,
@@ -170,6 +199,7 @@ export function AppLayout({ children }: AppLayoutProps) {
     handleTagMerge,
     toggleUntagged,
     reloadTags,
+    registerTagsFromLinks,
   };
 
   return (

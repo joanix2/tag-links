@@ -30,7 +30,7 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isMergeDialogOpen, setIsMergeDialogOpen] = useState(false);
 
-  const { showUntagged, toggleUntagged, handleTagMerge } = useAppLayout();
+  const { showUntagged, toggleUntagged, handleTagMerge, selectedTagsData } = useAppLayout();
 
   const handleNewTag = () => {
     setEditingTag(null);
@@ -68,8 +68,6 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
     (tag) => tag.name,
     0.3 // Lower threshold for more flexible matching
   );
-
-  const selectedTagsData = tags.filter((tag) => selectedTags.includes(tag.id));
 
   return (
     <div className="relative flex flex-col h-full w-80 border-r bg-gradient-to-b from-muted/30 to-muted/10">

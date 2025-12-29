@@ -14,7 +14,7 @@ import { toggleSpecialTag } from "@/services/tagService";
 function DashboardContent() {
   const { fetchApi } = useApi();
   const { user } = useAuth();
-  const { tags, selectedTags, currentView, showUntagged, reloadTags, tagsLoading, hasMoreTags, totalTags, tagsScrollContainerRef } = useAppLayout();
+  const { tags, selectedTags, currentView, showUntagged, reloadTags, tagsLoading, hasMoreTags, totalTags, tagsScrollContainerRef, registerTagsFromLinks } = useAppLayout();
 
   // State
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,6 +31,7 @@ function DashboardContent() {
           url: l.url,
           description: l.description,
           tags: l.tags ? l.tags.map((t: Tag) => t.id) : [],
+          tagObjects: l.tags || [],
           createdAt: new Date(l.created_at),
         })),
         total: response.total,
@@ -54,6 +55,19 @@ function DashboardContent() {
     enabled: true,
     threshold: 500,
   });
+
+  // Register all tags from links into the global tags map
+  useEffect(() => {
+    const allLinkTags: Tag[] = [];
+    links.forEach((link) => {
+      if (link.tagObjects) {
+        allLinkTags.push(...link.tagObjects);
+      }
+    });
+    if (allLinkTags.length > 0) {
+      registerTagsFromLinks(allLinkTags);
+    }
+  }, [links, registerTagsFromLinks]);
 
   // Link handlers
   const handleLinkSubmit = async (linkData: Omit<Link, "id" | "createdAt"> | Link) => {
@@ -83,6 +97,7 @@ function DashboardContent() {
                   url: updatedLink.url,
                   description: updatedLink.description,
                   tags: updatedLink.tags ? updatedLink.tags.map((t: Tag) => t.id) : [],
+                  tagObjects: updatedLink.tags || [],
                   createdAt: new Date(updatedLink.created_at),
                 }
               : link
@@ -109,6 +124,7 @@ function DashboardContent() {
             url: newLink.url,
             description: newLink.description,
             tags: newLink.tags ? newLink.tags.map((t: Tag) => t.id) : [],
+            tagObjects: newLink.tags || [],
             createdAt: new Date(newLink.created_at),
           },
           ...prevLinks,
@@ -183,7 +199,7 @@ function DashboardContent() {
       }
 
       // Update local state
-      setLinks((prevLinks) => prevLinks.map((l) => (l.id === linkId ? { ...l, tags: result.updatedTags } : l)));
+      setLinks((prevLinks) => prevLinks.map((l) => (l.id === linkId ? { ...l, tags: result.updatedTags, tagObjects: result.updatedTagObjects } : l)));
     } catch (error) {
       console.error("Failed to toggle favorite:", error);
     }
@@ -210,7 +226,7 @@ function DashboardContent() {
       }
 
       // Update local state
-      setLinks((prevLinks) => prevLinks.map((l) => (l.id === linkId ? { ...l, tags: result.updatedTags } : l)));
+      setLinks((prevLinks) => prevLinks.map((l) => (l.id === linkId ? { ...l, tags: result.updatedTags, tagObjects: result.updatedTagObjects } : l)));
     } catch (error) {
       console.error("Failed to toggle share:", error);
     }

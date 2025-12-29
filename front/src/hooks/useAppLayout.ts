@@ -8,6 +8,7 @@ export interface AppLayoutContextType {
   totalTags: number;
   tagsScrollContainerRef: (node: HTMLDivElement | null) => void;
   selectedTags: string[];
+  selectedTagsData: Tag[];
   currentView: "links" | "graph";
   showUntagged: boolean;
   setCurrentView: (view: "links" | "graph") => void;
@@ -18,6 +19,7 @@ export interface AppLayoutContextType {
   handleTagMerge: (sourceTagIds: string[], targetTag: { name: string; color: string }) => Promise<void>;
   toggleUntagged: () => void;
   reloadTags: () => void;
+  registerTagsFromLinks: (linkTags: Tag[]) => void;
 }
 
 export const AppLayoutContext = createContext<AppLayoutContextType | null>(null);

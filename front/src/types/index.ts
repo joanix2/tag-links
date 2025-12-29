@@ -10,5 +10,6 @@ export interface Link {
   url: string;
   description?: string;
   tags: string[]; // Array of tag IDs
+  tagObjects?: Tag[]; // Full tag objects from API
   createdAt: Date;
 }
