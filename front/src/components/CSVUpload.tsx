@@ -5,7 +5,7 @@ import { Upload, Download, AlertCircle, CheckCircle2, X } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface CSVUploadProps {
-  onUpload: (data: CSVLinkData[]) => Promise<void>;
+  onUpload: (data: CSVLinkData[]) => Promise<{ success: number; errors: ImportError[] }>;
 }
 
 export interface CSVLinkData {
@@ -16,9 +16,16 @@ export interface CSVLinkData {
   created_at?: string;
 }
 
+export interface ImportError {
+  line: number;
+  url?: string;
+  title?: string;
+  error: string;
+}
+
 interface UploadResult {
   success: number;
-  errors: { line: number; error: string }[];
+  errors: ImportError[];
 }
 
 export const CSVUpload = ({ onUpload }: CSVUploadProps) => {
@@ -111,11 +118,15 @@ export const CSVUpload = ({ onUpload }: CSVUploadProps) => {
         return;
       }
 
-      await onUpload(data);
-      setResult({ success: data.length, errors: [] });
-      setFile(null);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
+      const uploadResult = await onUpload(data);
+      setResult(uploadResult);
+
+      // Only clear file if there were no errors
+      if (uploadResult.errors.length === 0) {
+        setFile(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
       }
     } catch (error) {
       setResult({ success: 0, errors: [{ line: 0, error: error instanceof Error ? error.message : "Upload failed" }] });
@@ -219,13 +230,21 @@ GitHub Repo,https://github.com/user/repo,code|opensource,Open source project,202
               )}
               {result.errors.length > 0 && (
                 <Alert variant="destructive">
-                  <X className="h-4 w-4" />
+                  <AlertCircle className="h-4 w-4" />
                   <AlertDescription>
-                    {result.errors.map((err, idx) => (
-                      <div key={idx}>
-                        Line {err.line}: {err.error}
-                      </div>
-                    ))}
+                    <div className="font-semibold mb-2">
+                      {result.errors.length} error{result.errors.length > 1 ? "s" : ""} occurred:
+                    </div>
+                    <div className="max-h-48 overflow-y-auto space-y-2">
+                      {result.errors.map((err, idx) => (
+                        <div key={idx} className="text-xs border-l-2 border-red-300 pl-2 py-1">
+                          <div className="font-medium">Line {err.line}</div>
+                          {err.title && <div className="text-muted-foreground">Title: {err.title}</div>}
+                          {err.url && <div className="text-muted-foreground truncate">URL: {err.url}</div>}
+                          <div className="text-red-700 dark:text-red-300 mt-1">⚠ {err.error}</div>
+                        </div>
+                      ))}
+                    </div>
                   </AlertDescription>
                 </Alert>
               )}

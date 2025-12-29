@@ -6,7 +6,7 @@ import SearchBar from "@/components/SearchBar";
 import LinksList from "@/components/LinksList";
 import LinkForm from "@/components/LinkForm";
 import Sidebar from "@/components/Sidebar";
-import { CSVUpload, CSVLinkData } from "@/components/CSVUpload";
+import { CSVUpload, CSVLinkData, ImportError } from "@/components/CSVUpload";
 import { useAppLayout } from "@/hooks/useAppLayout";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -23,7 +23,7 @@ interface LinksViewProps {
   onLinkSubmit: (link: Omit<Link, "id" | "createdAt"> | Link) => void;
   onToggleFavorite: (linkId: string) => void;
   onToggleShare: (linkId: string) => void;
-  onCSVUpload?: (data: CSVLinkData[]) => Promise<void>;
+  onCSVUpload?: (data: CSVLinkData[]) => Promise<{ success: number; errors: ImportError[] }>;
   sortOrder: "newest" | "oldest" | "none";
   onSortChange: (order: "newest" | "oldest" | "none") => void;
 }

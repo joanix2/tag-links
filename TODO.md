@@ -41,10 +41,13 @@
 ✅ type de document (csv type du document, règle ontologique disjointe)
 
 ✅ merge l'hors de l'import
-import du type via csv
-meilleurs erreurs lors de l'import du csv
-suppression de masse (dans le profile)
-Augmenter la limite des liens
+✅ import du type via csv
+✅ meilleurs erreurs lors de l'import du csv
+
+suppression de masse (dans le profile) : dans la page profile de l'utilisateur, peut tu rajouter un bouton pour qu'il supprime toute ses données personnels ?
+
+Augmenter la limite des liens : pour la limite est à
+
 fix merge
 recherche ET / OU
 ajoute un mode non éditable pour les tags

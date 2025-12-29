@@ -53,7 +53,27 @@ def bulk_import_urls(
     tag_map = {tag.name.lower(): tag.id for tag in user_tags}
 
     for idx, link_data in enumerate(request.links):
+        line_number = idx + 2  # +2 because: +1 for 0-index, +1 for header row
         try:
+            # Validate required fields
+            if not link_data.title or not link_data.title.strip():
+                errors.append({
+                    "line": line_number,
+                    "url": link_data.url or "N/A",
+                    "title": link_data.title or "N/A",
+                    "error": "Title is required and cannot be empty"
+                })
+                continue
+            
+            if not link_data.url or not link_data.url.strip():
+                errors.append({
+                    "line": line_number,
+                    "url": "N/A",
+                    "title": link_data.title,
+                    "error": "URL is required and cannot be empty"
+                })
+                continue
+
             # Find or create tags
             tag_ids = []
             for tag_name in link_data.tags:
@@ -102,9 +122,14 @@ def bulk_import_urls(
                         from datetime import datetime
                         # Try to parse ISO format date
                         created_at = datetime.fromisoformat(link_data.created_at.replace('Z', '+00:00'))
-                    except (ValueError, AttributeError):
-                        # If parsing fails, use None (will use current datetime)
-                        pass
+                    except (ValueError, AttributeError) as e:
+                        # If parsing fails, log warning but continue with current datetime
+                        errors.append({
+                            "line": line_number,
+                            "url": link_data.url,
+                            "title": link_data.title,
+                            "error": f"Invalid date format '{link_data.created_at}', using current date instead"
+                        })
 
                 # Create URL
                 url_create = URLCreate(
@@ -120,9 +145,18 @@ def bulk_import_urls(
                 success_count += 1
 
         except Exception as e:
+            error_message = str(e)
+            # Try to extract more specific error information
+            if "duplicate" in error_message.lower():
+                error_message = "Duplicate URL detected"
+            elif "validation" in error_message.lower():
+                error_message = f"Validation error: {error_message}"
+            
             errors.append({
-                "line": idx + 1,
-                "error": str(e)
+                "line": line_number,
+                "url": link_data.url if hasattr(link_data, 'url') else "N/A",
+                "title": link_data.title if hasattr(link_data, 'title') else "N/A",
+                "error": error_message
             })
 
     return BulkImportResponse(success=success_count, errors=errors)

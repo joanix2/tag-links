@@ -3,7 +3,7 @@ import { AppLayout } from "@/components/layouts/AppLayout";
 import { Link, Tag } from "@/types";
 import LinksView from "@/components/LinksView";
 import GraphView from "@/components/graph";
-import { CSVUpload, CSVLinkData } from "@/components/CSVUpload";
+import { CSVUpload, CSVLinkData, ImportError } from "@/components/CSVUpload";
 import { useApi } from "@/hooks/useApi";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAppLayout } from "@/hooks/useAppLayout";
@@ -210,7 +210,7 @@ function DashboardContent() {
     }
   };
 
-  const handleCSVUpload = async (data: CSVLinkData[]) => {
+  const handleCSVUpload = async (data: CSVLinkData[]): Promise<{ success: number; errors: ImportError[] }> => {
     try {
       const response = await fetchApi("/urls/bulk-import", {
         method: "POST",
@@ -220,9 +220,10 @@ function DashboardContent() {
       // Reload links and tags to get the newly imported ones
       await Promise.all([loadLinks(), reloadTags()]);
 
-      if (response.errors && response.errors.length > 0) {
-        console.error("Some imports failed:", response.errors);
-      }
+      return {
+        success: response.success || 0,
+        errors: response.errors || [],
+      };
     } catch (error) {
       console.error("Failed to import CSV:", error);
       throw error;
