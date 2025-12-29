@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tag } from "@/types";
 import { Plus, Search, TagIcon, Merge, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,8 +8,8 @@ import TagsList from "./TagsList";
 import TagForm from "./TagForm";
 import TagBadge from "./TagBadge";
 import TagMergeDialog from "./TagMergeDialog";
-import { fuzzySearch } from "@/lib/levenshtein";
 import { useAppLayout } from "@/hooks/useAppLayout";
+import { useApi } from "@/hooks/useApi";
 
 interface SidebarProps {
   tags: Tag[];
@@ -29,8 +29,11 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
   const [tagSearchTerm, setTagSearchTerm] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isMergeDialogOpen, setIsMergeDialogOpen] = useState(false);
+  const [searchResults, setSearchResults] = useState<Tag[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
 
   const { showUntagged, toggleUntagged, handleTagMerge, selectedTagsData } = useAppLayout();
+  const { fetchApi } = useApi();
 
   const handleNewTag = () => {
     setEditingTag(null);
@@ -62,12 +65,35 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
     setIsMergeDialogOpen(false);
   };
 
-  const filteredTags = fuzzySearch(
-    tagSearchTerm,
-    tags,
-    (tag) => tag.name,
-    0.3 // Lower threshold for more flexible matching
-  );
+  // Debounced search effect
+  useEffect(() => {
+    if (!tagSearchTerm.trim()) {
+      setSearchResults([]);
+      setIsSearching(false);
+      return;
+    }
+
+    setIsSearching(true);
+    const timeoutId = setTimeout(async () => {
+      try {
+        const results = await fetchApi(`/tags/search/?q=${encodeURIComponent(tagSearchTerm)}&threshold=0.3&limit=100`, {
+          method: "GET",
+        });
+        setSearchResults(results as Tag[]);
+      } catch (error) {
+        console.error("Failed to search tags:", error);
+        setSearchResults([]);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 300); // 300ms debounce
+
+    return () => clearTimeout(timeoutId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tagSearchTerm]); // Only depend on tagSearchTerm, not fetchApi
+
+  // Use search results if searching, otherwise use loaded tags
+  const filteredTags = tagSearchTerm.trim() ? searchResults : tags;
 
   return (
     <div className="relative flex flex-col h-full w-80 border-r bg-gradient-to-b from-muted/30 to-muted/10">
@@ -105,7 +131,8 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
               onChange={(e) => setTagSearchTerm(e.target.value)}
               className="pl-8 h-9 text-sm focus:ring-2 focus:ring-primary/20 transition-all"
             />
-            {tagSearchTerm && (
+            {isSearching && <Loader2 className="absolute right-8 top-2.5 h-4 w-4 text-muted-foreground animate-spin" />}
+            {tagSearchTerm && !isSearching && (
               <Button variant="ghost" size="sm" className="absolute right-1 top-1 h-7 w-7 p-0" onClick={() => setTagSearchTerm("")}>
                 <X size={14} />
               </Button>
@@ -131,11 +158,11 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
 
         {/* Tags Counter */}
         <p className="text-xs text-muted-foreground px-1 mb-2 flex-shrink-0">
-          {tagSearchTerm ? `${filteredTags.length} tag${filteredTags.length !== 1 ? "s" : ""}` : `${totalTags || tags.length} tag${(totalTags || tags.length) !== 1 ? "s" : ""}`}
+          {tagSearchTerm ? `${filteredTags.length} result${filteredTags.length !== 1 ? "s" : ""}` : `${totalTags || tags.length} tag${(totalTags || tags.length) !== 1 ? "s" : ""}`}
         </p>
 
         {/* Tags List - This is the scrollable container */}
-        <div id="tags-scroll-container" ref={tagsScrollContainerRef} className="flex-1 min-h-0 overflow-auto pb-4 scrollbar-hide">
+        <div id="tags-scroll-container" ref={tagSearchTerm ? undefined : tagsScrollContainerRef} className="flex-1 min-h-0 overflow-auto pb-4 scrollbar-hide">
           <TagsList tags={filteredTags} selectedTags={selectedTags} onTagSelect={onTagSelect} onTagEdit={handleEditTag} onTagDelete={onTagDelete} />
 
           {/* Loading indicator */}

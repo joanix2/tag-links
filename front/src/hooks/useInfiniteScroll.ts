@@ -12,6 +12,7 @@ interface UseInfiniteScrollOptions<T> {
   limit?: number;
   enabled?: boolean;
   threshold?: number;
+  maxItems?: number; // Maximum items to keep in memory (for performance)
 }
 
 interface UseInfiniteScrollResult<T> {
@@ -28,7 +29,7 @@ interface UseInfiniteScrollResult<T> {
  * Hook for infinite scroll functionality
  * Uses a callback ref for stable DOM element reference
  */
-export function useInfiniteScroll<T>({ fetchData, limit = 50, enabled = true, threshold = 200 }: UseInfiniteScrollOptions<T>): UseInfiniteScrollResult<T> {
+export function useInfiniteScroll<T>({ fetchData, limit = 50, enabled = true, threshold = 200, maxItems = 5000 }: UseInfiniteScrollOptions<T>): UseInfiniteScrollResult<T> {
   // State
   const [items, setItems] = useState<T[]>([]);
   const [loading, setLoading] = useState(false);
@@ -77,7 +78,16 @@ export function useInfiniteScroll<T>({ fetchData, limit = 50, enabled = true, th
       setItems((prev) => {
         const existingIds = new Set(prev.map((item) => (item as { id: string }).id));
         const newItems = response.items.filter((item) => !existingIds.has((item as { id: string }).id));
-        return [...prev, ...newItems];
+        const combined = [...prev, ...newItems];
+
+        // Limit total items in memory for performance
+        // Keep the most recent items if we exceed maxItems
+        if (combined.length > maxItems) {
+          console.warn(`[useInfiniteScroll] Reached max items limit (${maxItems}). Some older items will be removed.`);
+          return combined.slice(-maxItems);
+        }
+
+        return combined;
       });
 
       setHasMore(response.has_more);
@@ -89,7 +99,7 @@ export function useInfiniteScroll<T>({ fetchData, limit = 50, enabled = true, th
       loadingRef.current = false;
       setLoading(false);
     }
-  }, [fetchData, limit]);
+  }, [fetchData, limit, maxItems]);
 
   // Keep loadMore ref updated
   const loadMoreRef = useRef(loadMore);

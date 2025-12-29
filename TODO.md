@@ -46,12 +46,14 @@
 
 ✅ suppression de masse (dans le profile) : dans la page profile de l'utilisateur, peut tu rajouter un bouton pour qu'il supprime toute ses données personnels ?
 
-Augmenter la limite des liens : pour la récupération des tags et des url, la limite est fixé à 10000 mais ce n'est pas une bonne pratique, il faut plutot mettre en place un scoll infinit avec un traitement par batch. ainsi plus de logique doit être déplacé coté serveur
--> est ce que le scroll inifinit se fait dans les deux sens, on décharge les premiers éléments une fois arrivé à la fin ?
--> supprimer les bar
--> recherche par tags
--> recherche via la bar de recherche
--> liste des tags associé aux urls reste complète
+✅ Augmenter la limite des liens : pour la récupération des tags et des url, la limite est fixé à 10000 mais ce n'est pas une bonne pratique, il faut plutot mettre en place un scoll infinit avec un traitement par batch. ainsi plus de logique doit être déplacé coté serveur
+✅ -> scroll infini bidirectionnel avec limite de 5000 éléments en mémoire (garde les plus récents)
+✅ -> supprimer les bar
+✅ -> recherche via la bar de recherche tags (serveur avec Levenshtein + debouncing 300ms)
+✅ -> recherche par tags (filtrage côté serveur avec mode OR/AND)
+✅ -> priorisation du titre dans la recherche de liens (pondération 70% titre vs 30% texte complet)
+✅ -> recherche via la bar de recherche liens (serveur avec Levenshtein + debouncing 300ms)
+✅ -> liste des tags associé aux urls reste complète
 
 ✅ corriger la suppression des token api + lien avec le user
 

@@ -19,11 +19,30 @@ function DashboardContent() {
   // State
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "none">("none");
+  const [searchResults, setSearchResults] = useState<Link[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
 
   // Infinite scroll for links
   const fetchLinks = useCallback(
     async (skip: number, limit: number) => {
-      const response = await fetchApi(`/urls/?skip=${skip}&limit=${limit}`, { method: "GET" });
+      // Build query params
+      const params = new URLSearchParams({
+        skip: skip.toString(),
+        limit: limit.toString(),
+      });
+
+      // Add tag filtering if tags are selected
+      if (selectedTags.length > 0) {
+        params.append("tag_ids", selectedTags.join(","));
+        params.append("match_mode", "OR"); // Can be made configurable later
+      }
+
+      // Add untagged filter
+      if (showUntagged) {
+        params.append("show_untagged", "true");
+      }
+
+      const response = await fetchApi(`/urls/?${params.toString()}`, { method: "GET" });
       return {
         items: response.items.map((l: { id: string; title: string; url: string; description?: string; tags: Tag[]; created_at: string }) => ({
           id: l.id,
@@ -38,7 +57,7 @@ function DashboardContent() {
         has_more: response.has_more,
       };
     },
-    [fetchApi]
+    [fetchApi, selectedTags, showUntagged]
   );
 
   const {
@@ -56,6 +75,12 @@ function DashboardContent() {
     threshold: 500,
   });
 
+  // Reload links when filters change (selectedTags or showUntagged)
+  useEffect(() => {
+    reloadLinks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedTags, showUntagged]); // Only trigger on filter changes, not on reloadLinks
+
   // Register all tags from links into the global tags map
   useEffect(() => {
     const allLinkTags: Tag[] = [];
@@ -68,6 +93,45 @@ function DashboardContent() {
       registerTagsFromLinks(allLinkTags);
     }
   }, [links, registerTagsFromLinks]);
+
+  // Debounced search effect for links
+  useEffect(() => {
+    if (!searchTerm.trim()) {
+      setSearchResults([]);
+      setIsSearching(false);
+      return;
+    }
+
+    setIsSearching(true);
+    const timeoutId = setTimeout(async () => {
+      try {
+        const results = await fetchApi(`/urls/search/?q=${encodeURIComponent(searchTerm)}&threshold=0.3&limit=1000`, {
+          method: "GET",
+        });
+
+        // Transform results to Link format
+        const transformedResults = (results as Array<{ id: string; title: string; url: string; description?: string; tags: Tag[]; created_at: string }>).map((l) => ({
+          id: l.id,
+          title: l.title,
+          url: l.url,
+          description: l.description,
+          tags: l.tags ? l.tags.map((t: Tag) => t.id) : [],
+          tagObjects: l.tags || [],
+          createdAt: new Date(l.created_at),
+        }));
+
+        setSearchResults(transformedResults);
+      } catch (error) {
+        console.error("Failed to search links:", error);
+        setSearchResults([]);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 300); // 300ms debounce
+
+    return () => clearTimeout(timeoutId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm]); // Only depend on searchTerm
 
   // Link handlers
   const handleLinkSubmit = async (linkData: Omit<Link, "id" | "createdAt"> | Link) => {
@@ -254,56 +318,12 @@ function DashboardContent() {
 
   // Filtered links
   const filteredLinks = useMemo(() => {
-    let filtered = links;
+    // Use search results if searching, otherwise use loaded links
+    // Note: Tag filtering and untagged filtering are now handled server-side via fetchLinks
+    let filtered = searchTerm.trim() ? searchResults : links;
 
-    // Filter by untagged if requested
-    if (showUntagged) {
-      filtered = filtered.filter((link) => link.tags.length === 0);
-    } else {
-      // Filter by selected tags (OR logic with sorting by match count)
-      if (selectedTags.length > 0) {
-        // Filter links that have at least one of the selected tags
-        filtered = filtered.filter((link) => selectedTags.some((tagId) => link.tags.includes(tagId)));
-
-        // Sort by number of matching tags (descending)
-        filtered = filtered.sort((a, b) => {
-          const aMatches = selectedTags.filter((tagId) => a.tags.includes(tagId)).length;
-          const bMatches = selectedTags.filter((tagId) => b.tags.includes(tagId)).length;
-          return bMatches - aMatches;
-        });
-      }
-    }
-
-    // Filter by search term using Levenshtein distance
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      const threshold = 0.3; // Minimum similarity threshold
-
-      filtered = filtered
-        .map((link) => {
-          // Check exact match first (highest priority)
-          const titleLower = link.title.toLowerCase();
-          const descLower = link.description?.toLowerCase() || "";
-          const urlLower = link.url.toLowerCase();
-
-          if (titleLower.includes(term) || descLower.includes(term) || urlLower.includes(term)) {
-            return { link, similarity: 1.0 }; // Exact match gets max score
-          }
-
-          // Calculate Levenshtein similarity for fuzzy matching
-          const titleSimilarity = levenshteinSimilarity(term, titleLower);
-          const descSimilarity = levenshteinSimilarity(term, descLower);
-          const urlSimilarity = levenshteinSimilarity(term, urlLower);
-
-          // Use the best similarity score
-          const bestSimilarity = Math.max(titleSimilarity, descSimilarity, urlSimilarity);
-
-          return { link, similarity: bestSimilarity };
-        })
-        .filter(({ similarity }) => similarity >= threshold)
-        .sort((a, b) => b.similarity - a.similarity)
-        .map(({ link }) => link);
-    }
+    // No need for local tag filtering - already done by the API
+    // The links array already contains the filtered results from the server
 
     // Sort by date if requested
     if (sortOrder !== "none") {
@@ -315,7 +335,7 @@ function DashboardContent() {
     }
 
     return filtered;
-  }, [links, selectedTags, searchTerm, sortOrder, showUntagged]);
+  }, [links, searchTerm, sortOrder, searchResults]);
 
   return currentView === "links" ? (
     <LinksView
@@ -333,7 +353,7 @@ function DashboardContent() {
       onCSVUpload={handleCSVUpload}
       sortOrder={sortOrder}
       onSortChange={setSortOrder}
-      loading={loading}
+      loading={loading || isSearching}
       totalLinks={totalLinks}
       scrollContainerRef={scrollContainerRef}
       tagsLoading={tagsLoading}

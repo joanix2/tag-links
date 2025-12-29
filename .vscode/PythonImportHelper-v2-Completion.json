@@ -352,6 +352,14 @@
         "documentation": {}
     },
     {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -2365,7 +2373,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_urls(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(50, ge=1, le=100),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all URLs for the authenticated user with pagination\"\"\"\n    items = repo.get_by_user_with_tags(user_id=current_user.user_id, skip=skip, limit=limit)\n    total = repo.count_by_user(user_id=current_user.user_id)\n    has_more = (skip + limit) < total",
+        "peekOfCode": "def get_urls(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(50, ge=1, le=100),\n    tag_ids: Optional[str] = Query(None, description=\"Comma-separated tag IDs to filter by\"),\n    match_mode: str = Query(\"OR\", regex=\"^(OR|AND)$\", description=\"Tag matching mode: OR or AND\"),\n    show_untagged: bool = Query(False, description=\"Show only untagged URLs\"),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2374,7 +2382,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def search_urls(\n    q: str = Query(..., min_length=1, description=\"Search query\"),\n    threshold: float = Query(0.3, ge=0.0, le=1.0, description=\"Minimum similarity threshold (0.0 to 1.0)\"),\n    limit: int = Query(1000, ge=1, le=10000),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Search URLs by title, description, or URL using Levenshtein distance for fuzzy matching.\n    Returns URLs sorted by similarity to the query (most similar first).",
+        "peekOfCode": "def search_urls(\n    q: str = Query(..., min_length=1, description=\"Search query\"),\n    threshold: float = Query(0.3, ge=0.0, le=1.0, description=\"Minimum similarity threshold (0.0 to 1.0)\"),\n    limit: int = Query(1000, ge=1, le=10000),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Search URLs by title, description, or URL using Levenshtein distance for fuzzy matching.\n    Prioritizes matches in the title over matches in description or URL.",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },

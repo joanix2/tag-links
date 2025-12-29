@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
-from typing import List
+from typing import List, Optional
 from src.models.url import URL, URLCreate, URLUpdate, URLWithTags
 from src.repositories.url_repository import URLRepository
 from src.repositories.tag_repository import TagRepository
@@ -202,12 +202,40 @@ def create_url(
 def get_urls(
     skip: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=100),
+    tag_ids: Optional[str] = Query(None, description="Comma-separated tag IDs to filter by"),
+    match_mode: str = Query("OR", regex="^(OR|AND)$", description="Tag matching mode: OR or AND"),
+    show_untagged: bool = Query(False, description="Show only untagged URLs"),
     repo: URLRepository = Depends(get_url_repository),
     current_user: TokenData = Depends(get_current_active_user)
 ):
-    """Get all URLs for the authenticated user with pagination"""
-    items = repo.get_by_user_with_tags(user_id=current_user.user_id, skip=skip, limit=limit)
-    total = repo.count_by_user(user_id=current_user.user_id)
+    """
+    Get URLs for the authenticated user with optional tag filtering.
+    
+    - **tag_ids**: Comma-separated tag IDs (e.g., "id1,id2,id3")
+    - **match_mode**: "OR" (any tag) or "AND" (all tags) - default is "OR"
+    - **show_untagged**: If true, only return URLs without any tags
+    - **skip/limit**: Pagination parameters
+    """
+    # Parse tag_ids if provided
+    tag_id_list = []
+    if tag_ids and tag_ids.strip():
+        tag_id_list = [tid.strip() for tid in tag_ids.split(",") if tid.strip()]
+    
+    # If filtering by tags or untagged
+    if tag_id_list or show_untagged:
+        items, total = repo.filter_by_tags(
+            user_id=current_user.user_id,
+            tag_ids=tag_id_list,
+            match_mode=match_mode,
+            skip=skip,
+            limit=limit,
+            show_untagged=show_untagged
+        )
+    else:
+        # No filtering - get all URLs
+        items = repo.get_by_user_with_tags(user_id=current_user.user_id, skip=skip, limit=limit)
+        total = repo.count_by_user(user_id=current_user.user_id)
+    
     has_more = (skip + limit) < total
     
     return PaginatedURLResponse(
@@ -217,6 +245,7 @@ def get_urls(
         limit=limit,
         has_more=has_more
     )
+
 
 
 @router.get("/search/", response_model=List[URLWithTags])
@@ -229,23 +258,39 @@ def search_urls(
 ):
     """
     Search URLs by title, description, or URL using Levenshtein distance for fuzzy matching.
+    Prioritizes matches in the title over matches in description or URL.
     
     Returns URLs sorted by similarity to the query (most similar first).
     """
+    from src.services.levenshtein_service import levenshtein_similarity
+    
     # Get all user's URLs
     all_urls = repo.get_by_user_with_tags(user_id=current_user.user_id, skip=0, limit=10000)
     
-    # Prepare items for similarity search: (searchable_text, url_object)
-    items = []
+    # Calculate weighted similarity for each URL
+    results = []
     for url in all_urls:
-        # Combine title, description, and URL for searching
-        searchable_text = f"{url.title} {url.description or ''} {url.url}".strip()
-        items.append((searchable_text, url))
+        # Calculate similarity for title (weight: 3x)
+        title_similarity = levenshtein_similarity(q, url.title)
+        
+        # Calculate similarity for full text (title + description + URL)
+        full_text = f"{url.title} {url.description or ''} {url.url}".strip()
+        full_similarity = levenshtein_similarity(q, full_text)
+        
+        # Weighted score: prioritize title matches heavily
+        # If title matches well (>0.5), boost the score significantly
+        if title_similarity > 0.5:
+            weighted_similarity = title_similarity * 0.7 + full_similarity * 0.3
+        else:
+            weighted_similarity = title_similarity * 0.4 + full_similarity * 0.6
+        
+        if weighted_similarity >= threshold:
+            results.append((url, weighted_similarity))
     
-    # Search using Levenshtein distance
-    results = search_by_similarity(q, items, threshold=threshold)
+    # Sort by weighted similarity (highest first)
+    results.sort(key=lambda x: x[1], reverse=True)
     
-    # Extract URLs from results and apply limit
+    # Extract URLs and apply limit
     matching_urls = [url for url, similarity in results[:limit]]
     
     return matching_urls

@@ -313,6 +313,103 @@ class URLRepository:
             
             return urls_with_tags
     
+    def filter_by_tags(
+        self, 
+        user_id: str, 
+        tag_ids: List[str], 
+        match_mode: str = "OR",
+        skip: int = 0, 
+        limit: int = 100,
+        show_untagged: bool = False
+    ) -> tuple[List[URLWithTags], int]:
+        """
+        Filter URLs by tags with OR/AND logic.
+        
+        Args:
+            user_id: User ID
+            tag_ids: List of tag IDs to filter by
+            match_mode: "OR" (any tag) or "AND" (all tags)
+            skip: Pagination offset
+            limit: Max results
+            show_untagged: If True, return only URLs without tags
+            
+        Returns:
+            Tuple of (filtered URLs, total count)
+        """
+        with self.driver.session() as session:
+            if show_untagged:
+                # Get URLs without any tags
+                result = session.run("""
+                    MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL)
+                    WHERE NOT EXISTS((url)-[:HAS_TAG]->(:Tag))
+                    RETURN url, [] as tags, 0 as match_count
+                    ORDER BY url.created_at DESC
+                    SKIP $skip
+                    LIMIT $limit
+                """, user_id=user_id, skip=skip, limit=limit)
+                
+                count_result = session.run("""
+                    MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL)
+                    WHERE NOT EXISTS((url)-[:HAS_TAG]->(:Tag))
+                    RETURN count(url) as total
+                """, user_id=user_id)
+                
+            elif match_mode == "AND":
+                # Get URLs that have ALL specified tags
+                result = session.run("""
+                    MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL)
+                    WHERE ALL(tag_id IN $tag_ids 
+                        WHERE EXISTS((url)-[:HAS_TAG]->(:Tag {id: tag_id})))
+                    OPTIONAL MATCH (url)-[:HAS_TAG]->(all_tags:Tag)
+                    WITH url, collect(DISTINCT all_tags) as tags, size($tag_ids) as match_count
+                    RETURN url, tags, match_count
+                    ORDER BY url.created_at DESC
+                    SKIP $skip
+                    LIMIT $limit
+                """, user_id=user_id, tag_ids=tag_ids, skip=skip, limit=limit)
+                
+                count_result = session.run("""
+                    MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL)
+                    WHERE ALL(tag_id IN $tag_ids 
+                        WHERE EXISTS((url)-[:HAS_TAG]->(:Tag {id: tag_id})))
+                    RETURN count(url) as total
+                """, user_id=user_id, tag_ids=tag_ids)
+                
+            else:  # OR logic
+                # Get URLs that have ANY of the specified tags, sorted by match count
+                result = session.run("""
+                    MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL)
+                    MATCH (url)-[:HAS_TAG]->(matched_tag:Tag)
+                    WHERE matched_tag.id IN $tag_ids
+                    WITH url, collect(DISTINCT matched_tag) as matched_tags
+                    OPTIONAL MATCH (url)-[:HAS_TAG]->(all_tags:Tag)
+                    WITH url, matched_tags, collect(DISTINCT all_tags) as tags, size(matched_tags) as match_count
+                    RETURN url, tags, match_count
+                    ORDER BY match_count DESC, url.created_at DESC
+                    SKIP $skip
+                    LIMIT $limit
+                """, user_id=user_id, tag_ids=tag_ids, skip=skip, limit=limit)
+                
+                count_result = session.run("""
+                    MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL)
+                    MATCH (url)-[:HAS_TAG]->(matched_tag:Tag)
+                    WHERE matched_tag.id IN $tag_ids
+                    RETURN count(DISTINCT url) as total
+                """, user_id=user_id, tag_ids=tag_ids)
+            
+            # Get total count
+            count_record = count_result.single()
+            total = count_record["total"] if count_record else 0
+            
+            # Build results
+            urls_with_tags = []
+            for record in result:
+                url = self._node_to_url(record["url"])
+                tags = [self._node_to_tag(t) for t in record["tags"] if t]
+                urls_with_tags.append(URLWithTags(**url.model_dump(), tags=tags))
+            
+            return urls_with_tags, total
+    
     @staticmethod
     def _node_to_url(node) -> URL:
         """Convert Neo4j node to URL model"""
