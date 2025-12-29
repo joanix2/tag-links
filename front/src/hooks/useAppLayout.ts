@@ -4,6 +4,9 @@ import { Tag } from "@/types";
 export interface AppLayoutContextType {
   tags: Tag[];
   tagsLoading: boolean;
+  hasMoreTags: boolean;
+  totalTags: number;
+  tagsScrollContainerRef: (node: HTMLDivElement | null) => void;
   selectedTags: string[];
   currentView: "links" | "graph";
   showUntagged: boolean;
@@ -14,7 +17,7 @@ export interface AppLayoutContextType {
   handleTagDelete: (tagId: string) => Promise<void>;
   handleTagMerge: (sourceTagIds: string[], targetTag: { name: string; color: string }) => Promise<void>;
   toggleUntagged: () => void;
-  reloadTags: () => Promise<void>;
+  reloadTags: () => void;
 }
 
 export const AppLayoutContext = createContext<AppLayoutContextType | null>(null);

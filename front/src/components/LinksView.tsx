@@ -28,8 +28,10 @@ interface LinksViewProps {
   onSortChange: (order: "newest" | "oldest" | "none") => void;
   loading?: boolean;
   totalLinks?: number;
-  scrollContainerRef: React.RefObject<HTMLDivElement>;
+  scrollContainerRef: (node: HTMLDivElement | null) => void;
   tagsLoading?: boolean;
+  tagsScrollContainerRef?: (node: HTMLDivElement | null) => void;
+  totalTags?: number;
 }
 
 const LinksView = ({
@@ -51,6 +53,8 @@ const LinksView = ({
   totalLinks,
   scrollContainerRef,
   tagsLoading,
+  tagsScrollContainerRef,
+  totalTags,
 }: LinksViewProps) => {
   const [isLinkFormOpen, setIsLinkFormOpen] = useState(false);
   const [editingLink, setEditingLink] = useState<Link | null>(null);
@@ -109,8 +113,8 @@ const LinksView = ({
 
   return (
     <div className="flex flex-1 h-full overflow-hidden bg-gradient-to-br from-background to-muted/20">
-      {/* Desktop Sidebar */}
-      <div className="hidden md:block">
+      {/* Sidebar */}
+      <div className="h-full">
         <Sidebar
           tags={tags}
           selectedTags={selectedTags}
@@ -119,25 +123,14 @@ const LinksView = ({
           onTagUpdate={handleTagUpdate}
           onTagDelete={handleTagDelete}
           tagsLoading={tagsLoading}
+          tagsScrollContainerRef={tagsScrollContainerRef}
+          totalTags={totalTags}
         />
       </div>
 
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden px-3 sm:px-4 lg:px-6">
         {/* Header Bar */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 p-3 border-b bg-card/50 backdrop-blur-sm">
-          {/* Mobile Drawer */}
-          <div className="md:hidden">
-            <Sidebar
-              tags={tags}
-              selectedTags={selectedTags}
-              onTagSelect={handleTagSelect}
-              onTagCreate={handleTagCreate}
-              onTagUpdate={handleTagUpdate}
-              onTagDelete={handleTagDelete}
-              tagsLoading={tagsLoading}
-            />
-          </div>
-
           {/* Search Bar */}
           <div className="flex-1">
             <SearchBar searchTerm={searchTerm} onSearch={onSearch} />
@@ -162,9 +155,9 @@ const LinksView = ({
         </div>
 
         {/* Content Area */}
-        <div className="flex-1 overflow-auto p-3 sm:p-4 lg:p-6 custom-scrollbar">
+        <div className="flex flex-col py-4">
           {/* Stats and Sort Row */}
-          <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-3 sm:px-4 lg:px-6">
             <div className="text-sm sm:text-base text-muted-foreground">
               {selectedLinks.length > 0 ? (
                 <>

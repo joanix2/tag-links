@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Tag } from "@/types";
-import { Plus, ArrowLeft, ArrowRight, Search, TagIcon, Merge, X, Loader2 } from "lucide-react";
+import { Plus, Search, TagIcon, Merge, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -19,10 +19,11 @@ interface SidebarProps {
   onTagUpdate: (tag: Tag) => void;
   onTagDelete: (tagId: string) => void;
   tagsLoading?: boolean;
+  tagsScrollContainerRef?: (node: HTMLDivElement | null) => void;
+  totalTags?: number;
 }
 
-const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, onTagDelete, tagsLoading }: SidebarProps) => {
-  const [collapsed, setCollapsed] = useState(false);
+const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, onTagDelete, tagsLoading, tagsScrollContainerRef, totalTags }: SidebarProps) => {
   const [showForm, setShowForm] = useState(false);
   const [editingTag, setEditingTag] = useState<Tag | null>(null);
   const [tagSearchTerm, setTagSearchTerm] = useState("");
@@ -30,21 +31,6 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
   const [isMergeDialogOpen, setIsMergeDialogOpen] = useState(false);
 
   const { showUntagged, toggleUntagged, handleTagMerge } = useAppLayout();
-
-  // Auto-collapse on mobile
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setCollapsed(true);
-      } else {
-        setCollapsed(false);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const handleNewTag = () => {
     setEditingTag(null);
@@ -86,10 +72,10 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
   const selectedTagsData = tags.filter((tag) => selectedTags.includes(tag.id));
 
   return (
-    <div className={`relative flex flex-col h-full border-r bg-gradient-to-b from-muted/30 to-muted/10 transition-all duration-300 ${collapsed ? "w-14 md:w-16" : "w-72 sm:w-80"}`}>
-      {/* Selected Tags Section - Hidden when collapsed */}
-      {!collapsed && selectedTagsData.length > 0 && (
-        <div className="flex flex-col p-2 sm:p-3 border-b bg-primary/5 gap-1 animate-in slide-in-from-top duration-200">
+    <div className="relative flex flex-col h-full w-80 border-r bg-gradient-to-b from-muted/30 to-muted/10">
+      {/* Selected Tags Section */}
+      {selectedTagsData.length > 0 && (
+        <div className="flex flex-col p-3 border-b bg-primary/5 gap-1">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-semibold text-muted-foreground flex items-center gap-1">
               <TagIcon size={12} />
@@ -110,97 +96,57 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
       )}
 
       {/* Main Content Area */}
-      <div className="flex-1 min-h-0 p-2 sm:p-3 flex flex-col">
-        {collapsed ? (
-          // Collapsed View - Circular Tag Icons
-          <div className="flex flex-col items-center space-y-2.5 overflow-auto custom-scrollbar scrollbar-hide">
-            <Button variant="ghost" size="icon" onClick={handleNewTag} title="Add new tag" className="h-8 w-8 rounded-full hover:bg-primary/10 transition-all">
-              <Plus size={16} />
-            </Button>
-            {tags.slice(0, 14).map((tag) => (
-              <div
-                key={tag.id}
-                onClick={() => onTagSelect(tag.id)}
-                style={{ backgroundColor: tag.color }}
-                className={`w-7 h-7 rounded-full cursor-pointer transition-all hover:scale-110 hover:shadow-md ${selectedTags.includes(tag.id) ? "ring-2 ring-primary ring-offset-2 scale-105" : ""}`}
-                title={tag.name}
-              />
-            ))}
-          </div>
-        ) : (
-          // Expanded View
-          <>
-            {/* Search + Add Button */}
-            <div className="flex gap-2 flex-shrink-0 mb-3">
-              <div className="relative flex-1">
-                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground pointer-events-none" />
-                <Input
-                  placeholder="Search tags..."
-                  value={tagSearchTerm}
-                  onChange={(e) => setTagSearchTerm(e.target.value)}
-                  className="pl-8 h-9 text-sm focus:ring-2 focus:ring-primary/20 transition-all"
-                />
-                {tagSearchTerm && (
-                  <Button variant="ghost" size="sm" className="absolute right-1 top-1 h-7 w-7 p-0" onClick={() => setTagSearchTerm("")}>
-                    <X size={14} />
-                  </Button>
-                )}
-              </div>
-              <Button variant="default" size="icon" onClick={handleNewTag} title="Add new tag" className="h-9 w-9 shadow-sm hover:shadow transition-all">
-                <Plus size={16} />
+      <div id="sidebar-main-content" className="flex-1 min-h-0 p-3 flex flex-col">
+        {/* Search + Add Button */}
+        <div className="flex gap-2 flex-shrink-0 mb-3">
+          <div className="relative flex-1">
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground pointer-events-none" />
+            <Input
+              placeholder="Search tags..."
+              value={tagSearchTerm}
+              onChange={(e) => setTagSearchTerm(e.target.value)}
+              className="pl-8 h-9 text-sm focus:ring-2 focus:ring-primary/20 transition-all"
+            />
+            {tagSearchTerm && (
+              <Button variant="ghost" size="sm" className="absolute right-1 top-1 h-7 w-7 p-0" onClick={() => setTagSearchTerm("")}>
+                <X size={14} />
               </Button>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex gap-2 items-center flex-shrink-0 mb-3">
-              {/* Untagged Links Button */}
-              <Button variant={showUntagged ? "default" : "outline"} className="flex-1 justify-start gap-2 text-sm h-9 shadow-sm hover:shadow transition-all" onClick={toggleUntagged}>
-                <TagIcon size={16} />
-                <span className="truncate">Untagged</span>
-              </Button>
-              {/* Merge Tags Button */}
-              <Button variant="outline" size="icon" onClick={() => setIsMergeDialogOpen(true)} title="Merge tags" className="h-9 w-9 shadow-sm hover:shadow transition-all" disabled={tags.length < 2}>
-                <Merge size={16} />
-              </Button>
-            </div>
-
-            {/* Tags Counter */}
-            {tagSearchTerm ? (
-              <p className="text-xs text-muted-foreground px-1 mb-2 flex-shrink-0">
-                Found {filteredTags.length} tag{filteredTags.length !== 1 ? "s" : ""}
-              </p>
-            ) : (
-              <p className="text-xs text-muted-foreground px-1 mb-2 flex-shrink-0">
-                {tags.length} tag{tags.length !== 1 ? "s" : ""}
-              </p>
             )}
+          </div>
+          <Button variant="default" size="icon" onClick={handleNewTag} title="Add new tag" className="h-9 w-9 shadow-sm hover:shadow transition-all">
+            <Plus size={16} />
+          </Button>
+        </div>
 
-            {/* Tags List - Simple Scrollable Container */}
-            <div className="flex-1 overflow-auto scrollbar-hide space-y-2 pb-4">
-              <TagsList tags={filteredTags} selectedTags={selectedTags} onTagSelect={onTagSelect} onTagEdit={handleEditTag} onTagDelete={onTagDelete} />
+        {/* Action Buttons */}
+        <div className="flex gap-2 items-center flex-shrink-0 mb-3">
+          {/* Untagged Links Button */}
+          <Button variant={showUntagged ? "default" : "outline"} className="flex-1 justify-start gap-2 text-sm h-9 shadow-sm hover:shadow transition-all" onClick={toggleUntagged}>
+            <TagIcon size={16} />
+            <span className="truncate">Untagged</span>
+          </Button>
+          {/* Merge Tags Button */}
+          <Button variant="outline" size="icon" onClick={() => setIsMergeDialogOpen(true)} title="Merge tags" className="h-9 w-9 shadow-sm hover:shadow transition-all" disabled={tags.length < 2}>
+            <Merge size={16} />
+          </Button>
+        </div>
 
-              {/* Loading indicator */}
-              {tagsLoading && !tagSearchTerm && (
-                <div className="flex items-center justify-center py-2">
-                  <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
-                </div>
-              )}
+        {/* Tags Counter */}
+        <p className="text-xs text-muted-foreground px-1 mb-2 flex-shrink-0">
+          {tagSearchTerm ? `${filteredTags.length} tag${filteredTags.length !== 1 ? "s" : ""}` : `${totalTags || tags.length} tag${(totalTags || tags.length) !== 1 ? "s" : ""}`}
+        </p>
+
+        {/* Tags List - This is the scrollable container */}
+        <div id="tags-scroll-container" ref={tagsScrollContainerRef} className="flex-1 min-h-0 overflow-auto pb-4 scrollbar-hide">
+          <TagsList tags={filteredTags} selectedTags={selectedTags} onTagSelect={onTagSelect} onTagEdit={handleEditTag} onTagDelete={onTagDelete} />
+
+          {/* Loading indicator */}
+          {tagsLoading && !tagSearchTerm && (
+            <div className="flex items-center justify-center py-2">
+              <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
             </div>
-          </>
-        )}
-      </div>
-
-      {/* Toggle Button */}
-      <div className="border-t p-2">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setCollapsed(!collapsed)}
-          className="w-full justify-center hover:bg-primary/10 transition-all"
-          title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-        >
-          {collapsed ? <ArrowRight size={18} /> : <ArrowLeft size={18} />}
-        </Button>
+          )}
+        </div>
       </div>
 
       {/* Dialog for creating/editing tags */}

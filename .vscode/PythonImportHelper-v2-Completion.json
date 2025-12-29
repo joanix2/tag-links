@@ -1336,14 +1336,6 @@
         "documentation": {}
     },
     {
-        "label": "GraphDatabase",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
         "label": "URLRepository",
         "importPath": "src.repositories.url_repository",
         "description": "src.repositories.url_repository",
@@ -1772,14 +1764,6 @@
         "documentation": {}
     },
     {
-        "label": "get_settings",
-        "importPath": "src.config",
-        "description": "src.config",
-        "isExtraImport": true,
-        "detail": "src.config",
-        "documentation": {}
-    },
-    {
         "label": "pytest",
         "kind": 6,
         "isExtraImport": true,
@@ -1890,15 +1874,6 @@
         "description": "src.controllers.public_api_controller",
         "isExtraImport": true,
         "detail": "src.controllers.public_api_controller",
-        "documentation": {}
-    },
-    {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
         "documentation": {}
     },
     {
@@ -3346,15 +3321,6 @@
         "description": "back.main",
         "peekOfCode": "app = FastAPI(\n    title=settings.APP_NAME,\n    version=settings.APP_VERSION,\n    lifespan=lifespan\n)\n# CORS middleware\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],  # Configure properly in production\n    allow_credentials=True,",
         "detail": "back.main",
-        "documentation": {}
-    },
-    {
-        "label": "migrate_api_tokens",
-        "kind": 2,
-        "importPath": "back.migrate_api_tokens",
-        "description": "back.migrate_api_tokens",
-        "peekOfCode": "def migrate_api_tokens():\n    \"\"\"\n    Migrate APIToken nodes to use OWNS relationship instead of user_id property\n    \"\"\"\n    settings = get_settings()\n    driver = GraphDatabase.driver(\n        settings.neo4j_uri,\n        auth=(settings.neo4j_user, settings.neo4j_password)\n    )\n    print(\"🔄 Starting APIToken migration...\")",
-        "detail": "back.migrate_api_tokens",
         "documentation": {}
     },
     {

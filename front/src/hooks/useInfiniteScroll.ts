@@ -21,75 +21,144 @@ interface UseInfiniteScrollResult<T> {
   total: number;
   reload: () => void;
   setItems: React.Dispatch<React.SetStateAction<T[]>>;
-  scrollContainerRef: React.RefObject<HTMLDivElement>;
+  scrollContainerRef: (node: HTMLDivElement | null) => void;
 }
 
+/**
+ * Hook for infinite scroll functionality
+ * Uses a callback ref for stable DOM element reference
+ */
 export function useInfiniteScroll<T>({ fetchData, limit = 50, enabled = true, threshold = 200 }: UseInfiniteScrollOptions<T>): UseInfiniteScrollResult<T> {
+  // State
   const [items, setItems] = useState<T[]>([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [total, setTotal] = useState(0);
-  const [skip, setSkip] = useState(0);
+
+  // Refs for DOM and mutable values
+  const containerNodeRef = useRef<HTMLDivElement | null>(null);
+  const skipRef = useRef(0);
   const initialLoadDone = useRef(false);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  // Refs to track latest state values without causing re-renders
+  const loadingRef = useRef(loading);
+  const hasMoreRef = useRef(hasMore);
+  const enabledRef = useRef(enabled);
+  const thresholdRef = useRef(threshold);
+
+  // Sync refs with state
+  useEffect(() => {
+    loadingRef.current = loading;
+  }, [loading]);
+  useEffect(() => {
+    hasMoreRef.current = hasMore;
+  }, [hasMore]);
+  useEffect(() => {
+    enabledRef.current = enabled;
+  }, [enabled]);
+  useEffect(() => {
+    thresholdRef.current = threshold;
+  }, [threshold]);
+
+  /**
+   * Load more items from the data source
+   */
   const loadMore = useCallback(async () => {
-    if (loading || !hasMore || !enabled) return;
+    if (loadingRef.current || !hasMoreRef.current || !enabledRef.current) {
+      return;
+    }
 
+    loadingRef.current = true;
     setLoading(true);
+
     try {
-      const response = await fetchData(skip, limit);
+      const response = await fetchData(skipRef.current, limit);
 
       setItems((prev) => {
         const existingIds = new Set(prev.map((item) => (item as { id: string }).id));
         const newItems = response.items.filter((item) => !existingIds.has((item as { id: string }).id));
         return [...prev, ...newItems];
       });
+
       setHasMore(response.has_more);
       setTotal(response.total);
-      setSkip((prev) => prev + limit);
+      skipRef.current += limit;
     } catch (error) {
-      console.error("Failed to load more items:", error);
+      console.error("[useInfiniteScroll] Failed to load more items:", error);
     } finally {
+      loadingRef.current = false;
       setLoading(false);
     }
-  }, [fetchData, skip, limit, loading, hasMore, enabled]);
+  }, [fetchData, limit]);
 
-  const reload = useCallback(async () => {
+  // Keep loadMore ref updated
+  const loadMoreRef = useRef(loadMore);
+  useEffect(() => {
+    loadMoreRef.current = loadMore;
+  }, [loadMore]);
+
+  /**
+   * Reset all state to initial values
+   */
+  const reload = useCallback(() => {
     setItems([]);
-    setSkip(0);
-    setHasMore(true);
     setTotal(0);
+    setHasMore(true);
+    skipRef.current = 0;
     initialLoadDone.current = false;
   }, []);
 
-  // Initial load
+  /**
+   * Stable scroll handler (never changes identity)
+   * Reads current state from refs to avoid stale closures
+   */
+  const handleScroll = useCallback(() => {
+    const el = containerNodeRef.current;
+    if (!el) return;
+
+    const { scrollTop, scrollHeight, clientHeight } = el;
+
+    // Skip if container hasn't been laid out yet
+    if (clientHeight === 0) return;
+
+    const distanceToBottom = scrollHeight - scrollTop - clientHeight;
+
+    if (distanceToBottom < thresholdRef.current) {
+      loadMoreRef.current();
+    }
+  }, []);
+
+  /**
+   * Callback ref - called by React when the DOM element is mounted/unmounted
+   * This is more reliable than useRef for tracking DOM elements
+   */
+  const scrollContainerRef = useCallback((node: HTMLDivElement | null) => {
+    containerNodeRef.current = node;
+  }, []);
+
+  /**
+   * Attach/detach scroll listener
+   * Uses AbortController for clean automatic cleanup
+   */
+  useEffect(() => {
+    const el = containerNodeRef.current;
+    if (!el || !enabled) return;
+
+    const controller = new AbortController();
+    el.addEventListener("scroll", handleScroll, { signal: controller.signal });
+
+    return () => controller.abort();
+  }, [enabled, handleScroll]);
+
+  /**
+   * Initial data load
+   */
   useEffect(() => {
     if (enabled && !initialLoadDone.current) {
       initialLoadDone.current = true;
       loadMore();
     }
   }, [enabled, loadMore]);
-
-  // Scroll event listener
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container || !enabled) return;
-
-    const handleScroll = () => {
-      if (loading || !hasMore) return;
-
-      const { scrollTop, scrollHeight, clientHeight } = container;
-      const distanceToBottom = scrollHeight - scrollTop - clientHeight;
-
-      if (distanceToBottom < threshold) {
-        loadMore();
-      }
-    };
-
-    container.addEventListener("scroll", handleScroll);
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, [loading, hasMore, loadMore, enabled, threshold]);
 
   return {
     items,

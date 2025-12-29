@@ -32,12 +32,12 @@ const TagsList = ({ tags, selectedTags, onTagSelect, onTagEdit, onTagDelete }: T
   };
 
   return (
-    <div className="space-y-1">
+    <div>
       {tags.length > 0 ? (
         tags.map((tag) => (
           <div
             key={tag.id}
-            className={`flex items-center justify-between p-1.5 rounded-md transition-colors ${selectedTags.includes(tag.id) ? "bg-accent shadow-sm border border-border" : "hover:bg-accent/20"}`}
+            className={`flex items-center justify-between p-1 rounded-md transition-colors ${selectedTags.includes(tag.id) ? "bg-accent shadow-sm border border-border" : "hover:bg-accent/20"}`}
           >
             <div className="flex items-center gap-2 flex-1 cursor-pointer" onClick={() => onTagSelect(tag.id)}>
               <TagBadge tag={tag} isSelected={selectedTags.includes(tag.id)} size="sm" showIcon />

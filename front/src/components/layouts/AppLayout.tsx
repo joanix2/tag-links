@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import { Tag } from "@/types";
 import { useApi } from "@/hooks/useApi";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { AppLayoutContext, AppLayoutContextType } from "@/hooks/useAppLayout";
 
 interface AppLayoutProps {
@@ -22,8 +23,6 @@ export function AppLayout({ children }: AppLayoutProps) {
   const location = useLocation();
 
   // State
-  const [tags, setTags] = useState<Tag[]>([]);
-  const [tagsLoading, setTagsLoading] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [currentView, setCurrentView] = useState<"links" | "graph">("links");
   const [showUntagged, setShowUntagged] = useState(false);
@@ -31,63 +30,39 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   // Check if we're on the dashboard page
   const isDashboard = location.pathname === "/dashboard";
-  const tagsLoadedRef = useRef(false);
 
-  // Load all tags
-  useEffect(() => {
-    if (!isDashboard || tagsLoadedRef.current) return;
-
-    tagsLoadedRef.current = true;
-    let isMounted = true;
-
-    const loadTags = async () => {
-      setTagsLoading(true);
-      try {
-        const response = await fetchApi("/tags/", { method: "GET" });
-        if (isMounted) {
-          setTags(
-            response.items.map((t: { id: string; name: string; color?: string }) => ({
-              id: t.id,
-              name: t.name,
-              color: t.color || "#4c1d95",
-            }))
-          );
-        }
-      } catch (error) {
-        console.error("Failed to load tags:", error);
-      } finally {
-        if (isMounted) {
-          setTagsLoading(false);
-        }
-      }
-    };
-
-    loadTags();
-
-    return () => {
-      isMounted = false;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDashboard]);
-
-  // Reload tags function
-  const reloadTags = useCallback(async () => {
-    setTagsLoading(true);
-    try {
-      const response = await fetchApi("/tags/", { method: "GET" });
-      setTags(
-        response.items.map((t: { id: string; name: string; color?: string }) => ({
+  // Fetch function for tags (memoized like links)
+  const fetchTags = useCallback(
+    async (skip: number, limit: number) => {
+      const response = await fetchApi(`/tags/?skip=${skip}&limit=${limit}`, { method: "GET" });
+      return {
+        items: response.items.map((t: { id: string; name: string; color?: string }) => ({
           id: t.id,
           name: t.name,
           color: t.color || "#4c1d95",
-        }))
-      );
-    } catch (error) {
-      console.error("Failed to load tags:", error);
-    } finally {
-      setTagsLoading(false);
-    }
-  }, [fetchApi]);
+        })),
+        total: response.total,
+        has_more: response.has_more,
+      };
+    },
+    [fetchApi]
+  );
+
+  // Infinite scroll for tags
+  const {
+    items: tags,
+    loading: tagsLoading,
+    hasMore: hasMoreTags,
+    total: totalTags,
+    reload: reloadTags,
+    setItems: setTags,
+    scrollContainerRef: tagsScrollContainerRef,
+  } = useInfiniteScroll<Tag>({
+    fetchData: fetchTags,
+    limit: 50,
+    enabled: true,
+    threshold: 200,
+  });
 
   // Tag handlers
   const handleTagCreate = async (tagData: Omit<Tag, "id">): Promise<Tag> => {
@@ -181,6 +156,9 @@ export function AppLayout({ children }: AppLayoutProps) {
   const contextValue: AppLayoutContextType = {
     tags,
     tagsLoading,
+    hasMoreTags,
+    totalTags,
+    tagsScrollContainerRef,
     selectedTags,
     currentView,
     showUntagged,

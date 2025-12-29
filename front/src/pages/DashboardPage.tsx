@@ -14,7 +14,7 @@ import { toggleSpecialTag } from "@/services/tagService";
 function DashboardContent() {
   const { fetchApi } = useApi();
   const { user } = useAuth();
-  const { tags, selectedTags, currentView, showUntagged, reloadTags, tagsLoading } = useAppLayout();
+  const { tags, selectedTags, currentView, showUntagged, reloadTags, tagsLoading, hasMoreTags, totalTags, tagsScrollContainerRef } = useAppLayout();
 
   // State
   const [searchTerm, setSearchTerm] = useState("");
@@ -321,6 +321,8 @@ function DashboardContent() {
       totalLinks={totalLinks}
       scrollContainerRef={scrollContainerRef}
       tagsLoading={tagsLoading}
+      tagsScrollContainerRef={tagsScrollContainerRef}
+      totalTags={totalTags}
     />
   ) : (
     <div className="w-full h-full">

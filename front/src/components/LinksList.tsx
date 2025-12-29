@@ -62,7 +62,7 @@ const LinksList = ({ links, tags, onLinkEdit, onLinkDelete, onToggleFavorite, on
   return (
     <>
       {links.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 p-3 sm:p-4 lg:p-6">
           {links.map((link) => (
             <Card
               key={link.id}

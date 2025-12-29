@@ -17,7 +17,7 @@ interface LinkFormProps {
   onSubmit: (link: Omit<Link, "id" | "createdAt">) => void;
   onTagCreate: (tag: Omit<Tag, "id">) => Promise<Tag>;
   onCancel: () => void;
-  reloadTags?: () => Promise<void>;
+  reloadTags?: () => void;
 }
 
 const LinkForm = ({ isOpen, link, tags, onSubmit, onTagCreate, onCancel, reloadTags }: LinkFormProps) => {
