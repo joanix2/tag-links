@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { AppLayout } from "@/components/layouts/AppLayout";
 import { Link, Tag } from "@/types";
 import LinksView from "@/components/LinksView";
@@ -7,47 +7,53 @@ import { CSVUpload, CSVLinkData, ImportError } from "@/components/CSVUpload";
 import { useApi } from "@/hooks/useApi";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAppLayout } from "@/hooks/useAppLayout";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { levenshteinSimilarity } from "@/lib/levenshtein";
 import { toggleSpecialTag } from "@/services/tagService";
 
 function DashboardContent() {
   const { fetchApi } = useApi();
   const { user } = useAuth();
-  const { tags, selectedTags, currentView, showUntagged, reloadTags } = useAppLayout();
+  const { tags, selectedTags, currentView, showUntagged, reloadTags, tagsLoading } = useAppLayout();
 
   // State
-  const [links, setLinks] = useState<Link[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "none">("none");
 
-  // Load data on mount
-  useEffect(() => {
-    loadLinks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const loadLinks = async () => {
-    setLoading(true);
-    try {
-      const linksData = await fetchApi("/urls/", { method: "GET" });
-
-      setLinks(
-        linksData.map((l: { id: string; title: string; url: string; description?: string; tags: Tag[]; created_at: string }) => ({
+  // Infinite scroll for links
+  const fetchLinks = useCallback(
+    async (skip: number, limit: number) => {
+      const response = await fetchApi(`/urls/?skip=${skip}&limit=${limit}`, { method: "GET" });
+      return {
+        items: response.items.map((l: { id: string; title: string; url: string; description?: string; tags: Tag[]; created_at: string }) => ({
           id: l.id,
           title: l.title,
           url: l.url,
           description: l.description,
-          tags: l.tags ? l.tags.map((t: Tag) => t.id) : [], // Extract tag IDs from tags array
+          tags: l.tags ? l.tags.map((t: Tag) => t.id) : [],
           createdAt: new Date(l.created_at),
-        }))
-      );
-    } catch (error) {
-      console.error("Failed to load links:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+        })),
+        total: response.total,
+        has_more: response.has_more,
+      };
+    },
+    [fetchApi]
+  );
+
+  const {
+    items: links,
+    loading,
+    hasMore,
+    total: totalLinks,
+    reload: reloadLinks,
+    setItems: setLinks,
+    scrollContainerRef,
+  } = useInfiniteScroll<Link>({
+    fetchData: fetchLinks,
+    limit: 50,
+    enabled: true,
+    threshold: 500,
+  });
 
   // Link handlers
   const handleLinkSubmit = async (linkData: Omit<Link, "id" | "createdAt"> | Link) => {
@@ -128,7 +134,7 @@ function DashboardContent() {
     } catch (error) {
       console.error("Failed to delete link:", error);
       // Optionally reload links if deletion failed
-      loadLinks();
+      reloadLinks();
     }
   };
 
@@ -151,7 +157,7 @@ function DashboardContent() {
     } catch (error) {
       console.error("Failed to bulk delete links:", error);
       // Optionally reload links if deletion failed
-      loadLinks();
+      reloadLinks();
       throw error;
     }
   };
@@ -218,7 +224,7 @@ function DashboardContent() {
       });
 
       // Reload links and tags to get the newly imported ones
-      await Promise.all([loadLinks(), reloadTags()]);
+      await Promise.all([reloadLinks(), reloadTags()]);
 
       return {
         success: response.success || 0,
@@ -295,14 +301,6 @@ function DashboardContent() {
     return filtered;
   }, [links, selectedTags, searchTerm, sortOrder, showUntagged]);
 
-  if (loading) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-
   return currentView === "links" ? (
     <LinksView
       links={filteredLinks}
@@ -319,6 +317,10 @@ function DashboardContent() {
       onCSVUpload={handleCSVUpload}
       sortOrder={sortOrder}
       onSortChange={setSortOrder}
+      loading={loading}
+      totalLinks={totalLinks}
+      scrollContainerRef={scrollContainerRef}
+      tagsLoading={tagsLoading}
     />
   ) : (
     <div className="w-full h-full">

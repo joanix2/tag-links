@@ -133,3 +133,23 @@ async def read_users_me(
             detail="User not found"
         )
     return user
+
+
+@router.delete("/me", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_account(
+    current_user: TokenData = Depends(get_current_active_user),
+    user_repo: UserRepository = Depends(get_user_repository)
+):
+    """
+    Delete user account and all associated data (URLs, tags, API tokens).
+    This action is irreversible.
+    """
+    try:
+        # Delete user will cascade delete all associated data in Neo4j
+        user_repo.delete(current_user.user_id)
+        return None
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to delete account: {str(e)}"
+        )

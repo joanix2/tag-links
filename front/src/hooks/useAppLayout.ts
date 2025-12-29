@@ -3,6 +3,7 @@ import { Tag } from "@/types";
 
 export interface AppLayoutContextType {
   tags: Tag[];
+  tagsLoading: boolean;
   selectedTags: string[];
   currentView: "links" | "graph";
   showUntagged: boolean;

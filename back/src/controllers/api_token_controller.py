@@ -27,10 +27,7 @@ async def create_api_token(
     Create a new API token for the current user
     The token is only shown once - save it securely!
     """
-    # Set user_id from current user
-    token_data.user_id = current_user.user_id
-    
-    api_token, plain_token = token_repo.create(token_data)
+    api_token, plain_token = token_repo.create(token_data, current_user.user_id)
     
     # Return the token with the plain value (only time it's shown)
     api_token.token = plain_token

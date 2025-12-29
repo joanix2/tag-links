@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Tag } from "@/types";
-import { Plus, ArrowLeft, ArrowRight, Search, TagIcon, Merge, X } from "lucide-react";
+import { Plus, ArrowLeft, ArrowRight, Search, TagIcon, Merge, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -18,9 +18,10 @@ interface SidebarProps {
   onTagCreate: (tag: Omit<Tag, "id">) => void;
   onTagUpdate: (tag: Tag) => void;
   onTagDelete: (tagId: string) => void;
+  tagsLoading?: boolean;
 }
 
-const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, onTagDelete }: SidebarProps) => {
+const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, onTagDelete, tagsLoading }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [editingTag, setEditingTag] = useState<Tag | null>(null);
@@ -109,10 +110,10 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
       )}
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-auto p-2 sm:p-3 custom-scrollbar">
+      <div className="flex-1 min-h-0 p-2 sm:p-3 flex flex-col">
         {collapsed ? (
           // Collapsed View - Circular Tag Icons
-          <div className="flex flex-col items-center space-y-2.5">
+          <div className="flex flex-col items-center space-y-2.5 overflow-auto custom-scrollbar scrollbar-hide">
             <Button variant="ghost" size="icon" onClick={handleNewTag} title="Add new tag" className="h-8 w-8 rounded-full hover:bg-primary/10 transition-all">
               <Plus size={16} />
             </Button>
@@ -128,9 +129,9 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
           </div>
         ) : (
           // Expanded View
-          <div className="space-y-3">
+          <>
             {/* Search + Add Button */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-shrink-0 mb-3">
               <div className="relative flex-1">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground pointer-events-none" />
                 <Input
@@ -151,7 +152,7 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
             </div>
 
             {/* Action Buttons */}
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center flex-shrink-0 mb-3">
               {/* Untagged Links Button */}
               <Button variant={showUntagged ? "default" : "outline"} className="flex-1 justify-start gap-2 text-sm h-9 shadow-sm hover:shadow transition-all" onClick={toggleUntagged}>
                 <TagIcon size={16} />
@@ -163,16 +164,29 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
               </Button>
             </div>
 
-            {/* Tags List */}
-            <div className="space-y-2">
-              {tagSearchTerm && (
-                <p className="text-xs text-muted-foreground px-1">
-                  Found {filteredTags.length} tag{filteredTags.length !== 1 ? "s" : ""}
-                </p>
-              )}
+            {/* Tags Counter */}
+            {tagSearchTerm ? (
+              <p className="text-xs text-muted-foreground px-1 mb-2 flex-shrink-0">
+                Found {filteredTags.length} tag{filteredTags.length !== 1 ? "s" : ""}
+              </p>
+            ) : (
+              <p className="text-xs text-muted-foreground px-1 mb-2 flex-shrink-0">
+                {tags.length} tag{tags.length !== 1 ? "s" : ""}
+              </p>
+            )}
+
+            {/* Tags List - Simple Scrollable Container */}
+            <div className="flex-1 overflow-auto scrollbar-hide space-y-2 pb-4">
               <TagsList tags={filteredTags} selectedTags={selectedTags} onTagSelect={onTagSelect} onTagEdit={handleEditTag} onTagDelete={onTagDelete} />
+
+              {/* Loading indicator */}
+              {tagsLoading && !tagSearchTerm && (
+                <div className="flex items-center justify-center py-2">
+                  <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                </div>
+              )}
             </div>
-          </div>
+          </>
         )}
       </div>
 

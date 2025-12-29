@@ -44,16 +44,26 @@
 ✅ import du type via csv
 ✅ meilleurs erreurs lors de l'import du csv
 
-suppression de masse (dans le profile) : dans la page profile de l'utilisateur, peut tu rajouter un bouton pour qu'il supprime toute ses données personnels ?
+✅ suppression de masse (dans le profile) : dans la page profile de l'utilisateur, peut tu rajouter un bouton pour qu'il supprime toute ses données personnels ?
 
-Augmenter la limite des liens : pour la limite est à
+Augmenter la limite des liens : pour la récupération des tags et des url, la limite est fixé à 10000 mais ce n'est pas une bonne pratique, il faut plutot mettre en place un scoll infinit avec un traitement par batch. ainsi plus de logique doit être déplacé coté serveur
+-> est ce que le scroll inifinit se fait dans les deux sens, on décharge les premiers éléments une fois arrivé à la fin ?
+-> supprimer les bar
+-> recherche par tags
+-> recherche via la bar de recherche
+-> liste des tags associé aux urls reste complète
 
-fix merge
-recherche ET / OU
+✅ corriger la suppression des token api + lien avec le user
+
+fix merge : lors du merge de deux tags et de la création d'un nouveau tag, des données sont perdu, seul un des tags et remplacer
+
+lors de la d'urls par tags, il faut rajouter si on utilise un opérateur ET ou OU recherche ET / OU (pour moi c'est un OU avec un tris par distance mais certains utilisateurs préfère le ET)
+
 ajoute un mode non éditable pour les tags
+
 bouton de recherche favoris et et partage et type
+
 export csv
-corriger la suppression des token api + lien avec le user
 
 Logo arbre
 Photo de profile

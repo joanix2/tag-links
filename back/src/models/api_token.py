@@ -8,12 +8,11 @@ class APITokenBase(BaseModel):
 
 
 class APITokenCreate(APITokenBase):
-    user_id: Optional[str] = None  # Will be set from auth context
+    pass  # user_id will be obtained from auth context
 
 
 class APIToken(APITokenBase):
     id: str
-    user_id: str
     token: str  # The actual token (only shown once at creation)
     created_at: datetime
     last_used_at: Optional[datetime] = None

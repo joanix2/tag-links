@@ -143,6 +143,16 @@ class URLRepository:
             
             return urls_with_tags
 
+    def count_by_user(self, user_id: str) -> int:
+        """Count total URLs owned by a user"""
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL)
+                RETURN count(url) as total
+            """, user_id=user_id)
+            record = result.single()
+            return record["total"] if record else 0
+
     
     def update(self, url_id: str, url: URLUpdate) -> Optional[URL]:
         """Update a URL"""

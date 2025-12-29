@@ -1336,6 +1336,14 @@
         "documentation": {}
     },
     {
+        "label": "GraphDatabase",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
         "label": "URLRepository",
         "importPath": "src.repositories.url_repository",
         "description": "src.repositories.url_repository",
@@ -1764,6 +1772,14 @@
         "documentation": {}
     },
     {
+        "label": "get_settings",
+        "importPath": "src.config",
+        "description": "src.config",
+        "isExtraImport": true,
+        "detail": "src.config",
+        "documentation": {}
+    },
+    {
         "label": "pytest",
         "kind": 6,
         "isExtraImport": true,
@@ -1874,6 +1890,15 @@
         "description": "src.controllers.public_api_controller",
         "isExtraImport": true,
         "detail": "src.controllers.public_api_controller",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
         "documentation": {}
     },
     {
@@ -2100,6 +2125,15 @@
         "documentation": {}
     },
     {
+        "label": "PaginatedTagResponse",
+        "kind": 6,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "class PaginatedTagResponse(BaseModel):\n    \"\"\"Response model for paginated Tag results\"\"\"\n    items: List[Tag]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool\nclass NewTagData(BaseModel):\n    name: str\n    color: str",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
         "label": "NewTagData",
         "kind": 6,
         "importPath": "back.src.controllers.tag_controller",
@@ -2131,7 +2165,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "def create_tag(\n    tag: TagCreate,\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Create a new tag linked to the authenticated user\"\"\"\n    # Override user_id with the authenticated user's ID\n    tag.user_id = current_user.user_id\n    return repo.create(tag)\n@router.get(\"/\", response_model=List[Tag])",
+        "peekOfCode": "def create_tag(\n    tag: TagCreate,\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Create a new tag linked to the authenticated user\"\"\"\n    # Override user_id with the authenticated user's ID\n    tag.user_id = current_user.user_id\n    return repo.create(tag)\n@router.get(\"/\", response_model=PaginatedTagResponse)",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2140,7 +2174,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "def get_tags(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all tags for the authenticated user with pagination\"\"\"\n    return repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)\n@router.post(\"/initialize-document-types\", status_code=status.HTTP_201_CREATED)\ndef initialize_document_type_tags(",
+        "peekOfCode": "def get_tags(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(50, ge=1, le=100),\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all tags for the authenticated user with pagination\"\"\"\n    items = repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)\n    total = repo.count_by_user(user_id=current_user.user_id)\n    has_more = (skip + limit) < total",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2248,7 +2282,7 @@
         "kind": 5,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "router = APIRouter(prefix=\"/tags\", tags=[\"tags\"])\n# Color for document type tags\nDOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\nclass NewTagData(BaseModel):\n    name: str\n    color: str\nclass MergeTagsRequest(BaseModel):\n    source_tag_ids: List[str]\n    target_tag_id: NewTagData\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:",
+        "peekOfCode": "router = APIRouter(prefix=\"/tags\", tags=[\"tags\"])\n# Color for document type tags\nDOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\nclass PaginatedTagResponse(BaseModel):\n    \"\"\"Response model for paginated Tag results\"\"\"\n    items: List[Tag]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2257,8 +2291,17 @@
         "kind": 5,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "DOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\nclass NewTagData(BaseModel):\n    name: str\n    color: str\nclass MergeTagsRequest(BaseModel):\n    source_tag_ids: List[str]\n    target_tag_id: NewTagData\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\n@router.post(\"/\", response_model=Tag, status_code=status.HTTP_201_CREATED)",
+        "peekOfCode": "DOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\nclass PaginatedTagResponse(BaseModel):\n    \"\"\"Response model for paginated Tag results\"\"\"\n    items: List[Tag]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool\nclass NewTagData(BaseModel):\n    name: str",
         "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "PaginatedURLResponse",
+        "kind": 6,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "class PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str",
+        "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
     {
@@ -2311,7 +2354,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None\n    created_at: str | None = None",
+        "peekOfCode": "def get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]\n    total: int\n    skip: int\n    limit: int",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2320,7 +2363,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):\n    links: List[CSVLinkImport]",
+        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool\nclass CSVLinkImport(BaseModel):",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2347,7 +2390,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_urls(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(1000, ge=1, le=10000),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all URLs for the authenticated user with pagination\"\"\"\n    return repo.get_by_user_with_tags(user_id=current_user.user_id, skip=skip, limit=limit)\n@router.get(\"/search/\", response_model=List[URLWithTags])\ndef search_urls(",
+        "peekOfCode": "def get_urls(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(50, ge=1, le=100),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all URLs for the authenticated user with pagination\"\"\"\n    items = repo.get_by_user_with_tags(user_id=current_user.user_id, skip=skip, limit=limit)\n    total = repo.count_by_user(user_id=current_user.user_id)\n    has_more = (skip + limit) < total",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2446,7 +2489,7 @@
         "kind": 5,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None",
+        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]\n    total: int\n    skip: int",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2527,7 +2570,7 @@
         "kind": 6,
         "importPath": "back.src.models.api_token",
         "description": "back.src.models.api_token",
-        "peekOfCode": "class APITokenBase(BaseModel):\n    name: str = Field(..., min_length=1, max_length=100)\nclass APITokenCreate(APITokenBase):\n    user_id: Optional[str] = None  # Will be set from auth context\nclass APIToken(APITokenBase):\n    id: str\n    user_id: str\n    token: str  # The actual token (only shown once at creation)\n    created_at: datetime\n    last_used_at: Optional[datetime] = None",
+        "peekOfCode": "class APITokenBase(BaseModel):\n    name: str = Field(..., min_length=1, max_length=100)\nclass APITokenCreate(APITokenBase):\n    pass  # user_id will be obtained from auth context\nclass APIToken(APITokenBase):\n    id: str\n    token: str  # The actual token (only shown once at creation)\n    created_at: datetime\n    last_used_at: Optional[datetime] = None\n    class Config:",
         "detail": "back.src.models.api_token",
         "documentation": {}
     },
@@ -2536,7 +2579,7 @@
         "kind": 6,
         "importPath": "back.src.models.api_token",
         "description": "back.src.models.api_token",
-        "peekOfCode": "class APITokenCreate(APITokenBase):\n    user_id: Optional[str] = None  # Will be set from auth context\nclass APIToken(APITokenBase):\n    id: str\n    user_id: str\n    token: str  # The actual token (only shown once at creation)\n    created_at: datetime\n    last_used_at: Optional[datetime] = None\n    class Config:\n        from_attributes = True",
+        "peekOfCode": "class APITokenCreate(APITokenBase):\n    pass  # user_id will be obtained from auth context\nclass APIToken(APITokenBase):\n    id: str\n    token: str  # The actual token (only shown once at creation)\n    created_at: datetime\n    last_used_at: Optional[datetime] = None\n    class Config:\n        from_attributes = True\nclass APITokenInDB(APIToken):",
         "detail": "back.src.models.api_token",
         "documentation": {}
     },
@@ -2545,7 +2588,7 @@
         "kind": 6,
         "importPath": "back.src.models.api_token",
         "description": "back.src.models.api_token",
-        "peekOfCode": "class APIToken(APITokenBase):\n    id: str\n    user_id: str\n    token: str  # The actual token (only shown once at creation)\n    created_at: datetime\n    last_used_at: Optional[datetime] = None\n    class Config:\n        from_attributes = True\nclass APITokenInDB(APIToken):\n    \"\"\"Model with hashed token for database storage\"\"\"",
+        "peekOfCode": "class APIToken(APITokenBase):\n    id: str\n    token: str  # The actual token (only shown once at creation)\n    created_at: datetime\n    last_used_at: Optional[datetime] = None\n    class Config:\n        from_attributes = True\nclass APITokenInDB(APIToken):\n    \"\"\"Model with hashed token for database storage\"\"\"\n    hashed_token: str",
         "detail": "back.src.models.api_token",
         "documentation": {}
     },
@@ -2806,7 +2849,7 @@
         "kind": 6,
         "importPath": "back.src.repositories.api_token_repository",
         "description": "back.src.repositories.api_token_repository",
-        "peekOfCode": "class APITokenRepository:\n    def __init__(self, driver: Driver):\n        self.driver = driver\n    def _hash_token(self, token: str) -> str:\n        \"\"\"Hash a token for secure storage\"\"\"\n        return hashlib.sha256(token.encode()).hexdigest()\n    def _generate_token(self) -> str:\n        \"\"\"Generate a secure random token\"\"\"\n        return secrets.token_urlsafe(32)\n    def create(self, token_data: APITokenCreate) -> tuple[APIToken, str]:",
+        "peekOfCode": "class APITokenRepository:\n    def __init__(self, driver: Driver):\n        self.driver = driver\n    def _hash_token(self, token: str) -> str:\n        \"\"\"Hash a token for secure storage\"\"\"\n        return hashlib.sha256(token.encode()).hexdigest()\n    def _generate_token(self) -> str:\n        \"\"\"Generate a secure random token\"\"\"\n        return secrets.token_urlsafe(32)\n    def create(self, token_data: APITokenCreate, user_id: str) -> tuple[APIToken, str]:",
         "detail": "back.src.repositories.api_token_repository",
         "documentation": {}
     },
@@ -3303,6 +3346,15 @@
         "description": "back.main",
         "peekOfCode": "app = FastAPI(\n    title=settings.APP_NAME,\n    version=settings.APP_VERSION,\n    lifespan=lifespan\n)\n# CORS middleware\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],  # Configure properly in production\n    allow_credentials=True,",
         "detail": "back.main",
+        "documentation": {}
+    },
+    {
+        "label": "migrate_api_tokens",
+        "kind": 2,
+        "importPath": "back.migrate_api_tokens",
+        "description": "back.migrate_api_tokens",
+        "peekOfCode": "def migrate_api_tokens():\n    \"\"\"\n    Migrate APIToken nodes to use OWNS relationship instead of user_id property\n    \"\"\"\n    settings = get_settings()\n    driver = GraphDatabase.driver(\n        settings.neo4j_uri,\n        auth=(settings.neo4j_user, settings.neo4j_password)\n    )\n    print(\"🔄 Starting APIToken migration...\")",
+        "detail": "back.migrate_api_tokens",
         "documentation": {}
     },
     {

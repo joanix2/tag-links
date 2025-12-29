@@ -74,6 +74,16 @@ class TagRepository:
             """, user_id=user_id, skip=skip, limit=limit)
             return [self._node_to_tag(record["t"]) for record in result]
     
+    def count_by_user(self, user_id: str) -> int:
+        """Count total tags owned by a user"""
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH (u:User {id: $user_id})-[:OWNS]->(t:Tag)
+                RETURN count(t) as total
+            """, user_id=user_id)
+            record = result.single()
+            return record["total"] if record else 0
+    
     def update(self, tag_id: str, tag: TagUpdate) -> Optional[Tag]:
         """Update a tag"""
         updates = []

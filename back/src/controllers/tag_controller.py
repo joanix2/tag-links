@@ -15,6 +15,15 @@ router = APIRouter(prefix="/tags", tags=["tags"])
 DOCUMENT_TYPE_TAG_COLOR = "#92400E"
 
 
+class PaginatedTagResponse(BaseModel):
+    """Response model for paginated Tag results"""
+    items: List[Tag]
+    total: int
+    skip: int
+    limit: int
+    has_more: bool
+
+
 class NewTagData(BaseModel):
     name: str
     color: str
@@ -41,15 +50,25 @@ def create_tag(
     return repo.create(tag)
 
 
-@router.get("/", response_model=List[Tag])
+@router.get("/", response_model=PaginatedTagResponse)
 def get_tags(
     skip: int = Query(0, ge=0),
-    limit: int = Query(100, ge=1, le=1000),
+    limit: int = Query(50, ge=1, le=100),
     repo: TagRepository = Depends(get_tag_repository),
     current_user: TokenData = Depends(get_current_active_user)
 ):
     """Get all tags for the authenticated user with pagination"""
-    return repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)
+    items = repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)
+    total = repo.count_by_user(user_id=current_user.user_id)
+    has_more = (skip + limit) < total
+    
+    return PaginatedTagResponse(
+        items=items,
+        total=total,
+        skip=skip,
+        limit=limit,
+        has_more=has_more
+    )
 
 
 @router.post("/initialize-document-types", status_code=status.HTTP_201_CREATED)

@@ -20,6 +20,15 @@ def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:
     return TagRepository(driver)
 
 
+class PaginatedURLResponse(BaseModel):
+    """Response model for paginated URL results"""
+    items: List[URLWithTags]
+    total: int
+    skip: int
+    limit: int
+    has_more: bool
+
+
 class CSVLinkImport(BaseModel):
     title: str
     url: str
@@ -189,15 +198,25 @@ def create_url(
         )
 
 
-@router.get("/", response_model=List[URLWithTags])
+@router.get("/", response_model=PaginatedURLResponse)
 def get_urls(
     skip: int = Query(0, ge=0),
-    limit: int = Query(1000, ge=1, le=10000),
+    limit: int = Query(50, ge=1, le=100),
     repo: URLRepository = Depends(get_url_repository),
     current_user: TokenData = Depends(get_current_active_user)
 ):
     """Get all URLs for the authenticated user with pagination"""
-    return repo.get_by_user_with_tags(user_id=current_user.user_id, skip=skip, limit=limit)
+    items = repo.get_by_user_with_tags(user_id=current_user.user_id, skip=skip, limit=limit)
+    total = repo.count_by_user(user_id=current_user.user_id)
+    has_more = (skip + limit) < total
+    
+    return PaginatedURLResponse(
+        items=items,
+        total=total,
+        skip=skip,
+        limit=limit,
+        has_more=has_more
+    )
 
 
 @router.get("/search/", response_model=List[URLWithTags])

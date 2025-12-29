@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus, Trash2, CheckSquare, Square } from "lucide-react";
+import { Plus, Trash2, CheckSquare, Square, Loader2 } from "lucide-react";
 import { Link, Tag } from "@/types";
 import SearchBar from "@/components/SearchBar";
 import LinksList from "@/components/LinksList";
@@ -26,6 +26,10 @@ interface LinksViewProps {
   onCSVUpload?: (data: CSVLinkData[]) => Promise<{ success: number; errors: ImportError[] }>;
   sortOrder: "newest" | "oldest" | "none";
   onSortChange: (order: "newest" | "oldest" | "none") => void;
+  loading?: boolean;
+  totalLinks?: number;
+  scrollContainerRef: React.RefObject<HTMLDivElement>;
+  tagsLoading?: boolean;
 }
 
 const LinksView = ({
@@ -43,6 +47,10 @@ const LinksView = ({
   onCSVUpload,
   sortOrder,
   onSortChange,
+  loading = false,
+  totalLinks,
+  scrollContainerRef,
+  tagsLoading,
 }: LinksViewProps) => {
   const [isLinkFormOpen, setIsLinkFormOpen] = useState(false);
   const [editingLink, setEditingLink] = useState<Link | null>(null);
@@ -103,7 +111,15 @@ const LinksView = ({
     <div className="flex flex-1 h-full overflow-hidden bg-gradient-to-br from-background to-muted/20">
       {/* Desktop Sidebar */}
       <div className="hidden md:block">
-        <Sidebar tags={tags} selectedTags={selectedTags} onTagSelect={handleTagSelect} onTagCreate={handleTagCreate} onTagUpdate={handleTagUpdate} onTagDelete={handleTagDelete} />
+        <Sidebar
+          tags={tags}
+          selectedTags={selectedTags}
+          onTagSelect={handleTagSelect}
+          onTagCreate={handleTagCreate}
+          onTagUpdate={handleTagUpdate}
+          onTagDelete={handleTagDelete}
+          tagsLoading={tagsLoading}
+        />
       </div>
 
       <div className="flex-1 flex flex-col overflow-hidden">
@@ -111,7 +127,15 @@ const LinksView = ({
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 p-3 border-b bg-card/50 backdrop-blur-sm">
           {/* Mobile Drawer */}
           <div className="md:hidden">
-            <Sidebar tags={tags} selectedTags={selectedTags} onTagSelect={handleTagSelect} onTagCreate={handleTagCreate} onTagUpdate={handleTagUpdate} onTagDelete={handleTagDelete} />
+            <Sidebar
+              tags={tags}
+              selectedTags={selectedTags}
+              onTagSelect={handleTagSelect}
+              onTagCreate={handleTagCreate}
+              onTagUpdate={handleTagUpdate}
+              onTagDelete={handleTagDelete}
+              tagsLoading={tagsLoading}
+            />
           </div>
 
           {/* Search Bar */}
@@ -148,7 +172,7 @@ const LinksView = ({
                   {" / "}
                 </>
               ) : null}
-              <span className="font-semibold text-foreground">{links.length}</span> {links.length === 1 ? "link" : "links"}
+              <span className="font-semibold text-foreground">{totalLinks || links.length}</span> {(totalLinks || links.length) === 1 ? "link" : "links"}
               {selectedTags.length > 0 && (
                 <>
                   {" "}
@@ -184,16 +208,25 @@ const LinksView = ({
           </div>
 
           {/* Links Grid */}
-          <LinksList
-            links={links}
-            tags={tags}
-            onLinkEdit={handleEdit}
-            onLinkDelete={onLinkDelete}
-            onToggleFavorite={onToggleFavorite}
-            onToggleShare={onToggleShare}
-            selectedLinks={selectedLinks}
-            onToggleSelection={handleToggleSelection}
-          />
+          <div ref={scrollContainerRef} className="overflow-y-auto scrollbar-hide" style={{ height: "calc(100vh - 200px)" }}>
+            <LinksList
+              links={links}
+              tags={tags}
+              onLinkEdit={handleEdit}
+              onLinkDelete={onLinkDelete}
+              onToggleFavorite={onToggleFavorite}
+              onToggleShare={onToggleShare}
+              selectedLinks={selectedLinks}
+              onToggleSelection={handleToggleSelection}
+            />
+
+            {/* Loading Indicator */}
+            {loading && (
+              <div className="flex justify-center py-8">
+                <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Link Form Dialog */}

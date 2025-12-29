@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { User, LogOut, Link2, Network, Menu, X } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -23,6 +23,7 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   // State
   const [tags, setTags] = useState<Tag[]>([]);
+  const [tagsLoading, setTagsLoading] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [currentView, setCurrentView] = useState<"links" | "graph">("links");
   const [showUntagged, setShowUntagged] = useState(false);
@@ -30,18 +31,52 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   // Check if we're on the dashboard page
   const isDashboard = location.pathname === "/dashboard";
+  const tagsLoadedRef = useRef(false);
 
-  // Load tags on mount
+  // Load all tags
   useEffect(() => {
-    loadTags();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (!isDashboard || tagsLoadedRef.current) return;
 
-  const loadTags = async () => {
+    tagsLoadedRef.current = true;
+    let isMounted = true;
+
+    const loadTags = async () => {
+      setTagsLoading(true);
+      try {
+        const response = await fetchApi("/tags/", { method: "GET" });
+        if (isMounted) {
+          setTags(
+            response.items.map((t: { id: string; name: string; color?: string }) => ({
+              id: t.id,
+              name: t.name,
+              color: t.color || "#4c1d95",
+            }))
+          );
+        }
+      } catch (error) {
+        console.error("Failed to load tags:", error);
+      } finally {
+        if (isMounted) {
+          setTagsLoading(false);
+        }
+      }
+    };
+
+    loadTags();
+
+    return () => {
+      isMounted = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDashboard]);
+
+  // Reload tags function
+  const reloadTags = useCallback(async () => {
+    setTagsLoading(true);
     try {
-      const tagsData = await fetchApi("/tags/?limit=1000", { method: "GET" });
+      const response = await fetchApi("/tags/", { method: "GET" });
       setTags(
-        tagsData.map((t) => ({
+        response.items.map((t: { id: string; name: string; color?: string }) => ({
           id: t.id,
           name: t.name,
           color: t.color || "#4c1d95",
@@ -49,8 +84,10 @@ export function AppLayout({ children }: AppLayoutProps) {
       );
     } catch (error) {
       console.error("Failed to load tags:", error);
+    } finally {
+      setTagsLoading(false);
     }
-  };
+  }, [fetchApi]);
 
   // Tag handlers
   const handleTagCreate = async (tagData: Omit<Tag, "id">): Promise<Tag> => {
@@ -94,7 +131,7 @@ export function AppLayout({ children }: AppLayoutProps) {
     } catch (error) {
       console.error("Failed to delete tag:", error);
       // Optionally reload tags if deletion failed
-      loadTags();
+      reloadTags();
     }
   };
 
@@ -124,7 +161,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       });
 
       // Reload tags to reflect the changes
-      await loadTags();
+      await reloadTags();
 
       // Clear selected tags if any of the merged tags were selected
       setSelectedTags((prev) => prev.filter((id) => !sourceTagIds.includes(id)));
@@ -143,6 +180,7 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   const contextValue: AppLayoutContextType = {
     tags,
+    tagsLoading,
     selectedTags,
     currentView,
     showUntagged,
@@ -153,7 +191,7 @@ export function AppLayout({ children }: AppLayoutProps) {
     handleTagDelete,
     handleTagMerge,
     toggleUntagged,
-    reloadTags: loadTags,
+    reloadTags,
   };
 
   return (
