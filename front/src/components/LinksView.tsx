@@ -50,7 +50,7 @@ const LinksView = ({
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   // Use context for tag management
-  const { handleTagCreate, handleTagUpdate, handleTagDelete, handleTagSelect } = useAppLayout();
+  const { handleTagCreate, handleTagUpdate, handleTagDelete, handleTagSelect, reloadTags } = useAppLayout();
 
   const handleNewLink = () => {
     setEditingLink(null);
@@ -202,6 +202,8 @@ const LinksView = ({
           link={editingLink}
           tags={tags}
           onSubmit={handleSubmit}
+          onTagCreate={handleTagCreate}
+          reloadTags={reloadTags}
           onCancel={() => {
             setIsLinkFormOpen(false);
             setEditingLink(null);

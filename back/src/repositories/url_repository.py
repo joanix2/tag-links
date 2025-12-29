@@ -21,8 +21,7 @@ class URLRepository:
                 "user_id": url.user_id,
                 "url": url.url,
                 "title": url.title,
-                "description": url.description if url.description and url.description.strip() else None,
-                "document_type": url.document_type
+                "description": url.description if url.description and url.description.strip() else None
             }
             
             # Use custom created_at if provided, otherwise use current datetime
@@ -41,7 +40,6 @@ class URLRepository:
                     url: $url,
                     title: $title,
                     description: $description,
-                    document_type: $document_type,
                     created_at: {cypher_created_at},
                     updated_at: datetime()
                 }})
@@ -99,6 +97,32 @@ class URLRepository:
             """, user_id=user_id, skip=skip, limit=limit)
             return [self._node_to_url(record["url"]) for record in result]
     
+    def get_by_url_and_user(self, url: str, user_id: str) -> Optional[URLWithTags]:
+        """Get a URL by its URL string and user_id (to check for duplicates)"""
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL {url: $url})
+                OPTIONAL MATCH (url)-[:HAS_TAG]->(t:Tag)
+                RETURN url, collect(t) as tags
+            """, url=url, user_id=user_id)
+            record = result.single()
+            if record:
+                url_obj = self._node_to_url(record["url"])
+                tags = [self._node_to_tag(tag) for tag in record["tags"] if tag]
+                return URLWithTags(**url_obj.model_dump(), tags=tags)
+            return None
+    
+    def _node_to_tag(self, node):
+        """Convert a Neo4j Tag node to Tag model"""
+        from src.models.tag import Tag
+        return Tag(
+            id=node["id"],
+            name=node["name"],
+            color=node["color"],
+            description=node.get("description"),
+            user_id=node["user_id"]
+        )
+    
     def get_by_user_with_tags(self, user_id: str, skip: int = 0, limit: int = 100) -> List[URLWithTags]:
         """Get all URLs owned by a user with their tags"""
         with self.driver.session() as session:
@@ -135,9 +159,6 @@ class URLRepository:
             updates.append("u.description = $description")
             # Convert empty string to None to clear the description
             params["description"] = url.description if url.description.strip() else None
-        if url.document_type is not None:
-            updates.append("u.document_type = $document_type")
-            params["document_type"] = url.document_type
         
         if not updates and url.tag_ids is None:
             return self.get_by_id(url_id)
@@ -299,7 +320,6 @@ class URLRepository:
             url=node["url"],
             title=node.get("title"),
             description=node.get("description"),
-            document_type=node.get("document_type"),
             created_at=created_at,
             updated_at=updated_at
         )

@@ -40,15 +40,17 @@
 ✅ API (tokens + documentation)
 ✅ type de document (csv type du document, règle ontologique disjointe)
 
-merge l'hors de l'import
+✅ merge l'hors de l'import
 import du type via csv
 meilleurs erreurs lors de l'import du csv
-suppression de masse
+suppression de masse (dans le profile)
 Augmenter la limite des liens
 fix merge
 recherche ET / OU
 ajoute un mode non éditable pour les tags
-bouton favoris et et partage
+bouton de recherche favoris et et partage et type
+export csv
+corriger la suppression des token api + lien avec le user
 
 Logo arbre
 Photo de profile

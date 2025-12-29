@@ -53,16 +53,19 @@ export function AppLayout({ children }: AppLayoutProps) {
   };
 
   // Tag handlers
-  const handleTagCreate = async (tagData: Omit<Tag, "id">) => {
+  const handleTagCreate = async (tagData: Omit<Tag, "id">): Promise<Tag> => {
     try {
       const newTag = await fetchApi("/tags/", {
         method: "POST",
         body: JSON.stringify(tagData),
       });
 
-      setTags([...tags, { id: newTag.id, name: newTag.name, color: newTag.color || "#4c1d95" }]);
+      const createdTag: Tag = { id: newTag.id, name: newTag.name, color: newTag.color || "#4c1d95" };
+      setTags((prevTags) => [...prevTags, createdTag]);
+      return createdTag;
     } catch (error) {
       console.error("Failed to create tag:", error);
+      throw error;
     }
   };
 

@@ -424,14 +424,6 @@
         "documentation": {}
     },
     {
-        "label": "get_args",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "Optional",
         "importPath": "typing",
         "description": "typing",
@@ -2319,7 +2311,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\ndef manage_document_type_tag(\n    url_id: str,\n    old_document_type: str | None,\n    new_document_type: str | None,\n    user_id: str,\n    url_repo: URLRepository,",
+        "peekOfCode": "def get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None\n    created_at: str | None = None",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2328,16 +2320,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\ndef manage_document_type_tag(\n    url_id: str,\n    old_document_type: str | None,\n    new_document_type: str | None,\n    user_id: str,\n    url_repo: URLRepository,\n    tag_repo: TagRepository\n):",
-        "detail": "back.src.controllers.url_controller",
-        "documentation": {}
-    },
-    {
-        "label": "manage_document_type_tag",
-        "kind": 2,
-        "importPath": "back.src.controllers.url_controller",
-        "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def manage_document_type_tag(\n    url_id: str,\n    old_document_type: str | None,\n    new_document_type: str | None,\n    user_id: str,\n    url_repo: URLRepository,\n    tag_repo: TagRepository\n):\n    \"\"\"\n    Manage document type tags automatically with ontological disjoint rule.",
+        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None\n    created_at: str | None = None\nclass BulkImportRequest(BaseModel):\n    links: List[CSVLinkImport]",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2346,7 +2329,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def bulk_import_urls(\n    request: BulkImportRequest,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Import multiple URLs from CSV data\"\"\"\n    success_count = 0\n    errors = []\n    # Get all user's tags once",
+        "peekOfCode": "def bulk_import_urls(\n    request: BulkImportRequest,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Import multiple URLs from CSV data. If a URL already exists, merge tags instead of creating a duplicate.\"\"\"\n    success_count = 0\n    errors = []\n    # Get all user's tags once",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2355,7 +2338,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def create_url(\n    url: URLCreate,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Create a new URL linked to the authenticated user\"\"\"\n    from src.models.url import DOCUMENT_TYPES\n    # Override user_id with the authenticated user's ID\n    url.user_id = current_user.user_id",
+        "peekOfCode": "def create_url(\n    url: URLCreate,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Create a new URL linked to the authenticated user\"\"\"\n    # Override user_id with the authenticated user's ID\n    url.user_id = current_user.user_id\n    try:",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2418,7 +2401,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def update_url(\n    url_id: str,\n    url: URLUpdate,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Update a URL\"\"\"\n    from src.models.url import DOCUMENT_TYPES\n    # Get the old URL to check document_type change",
+        "peekOfCode": "def update_url(\n    url_id: str,\n    url: URLUpdate,\n    url_repo: URLRepository = Depends(get_url_repository),\n    tag_repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Update a URL\"\"\"\n    # Get the old URL to verify it exists\n    old_url = url_repo.get_by_id(url_id)",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2463,7 +2446,7 @@
         "kind": 5,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\ndef manage_document_type_tag(\n    url_id: str,\n    old_document_type: str | None,\n    new_document_type: str | None,\n    user_id: str,",
+        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2688,7 +2671,7 @@
         "kind": 6,
         "importPath": "back.src.models.url",
         "description": "back.src.models.url",
-        "peekOfCode": "class URLBase(BaseModel):\n    url: str = Field(..., min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    document_type: Optional[DocumentType] = None\nclass URLCreate(URLBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    tag_ids: List[str] = []  # Liste des IDs de tags à associer\n    created_at: Optional[datetime] = None  # Optional, pour les imports CSV avec date personnalisée\nclass URLUpdate(BaseModel):",
+        "peekOfCode": "class URLBase(BaseModel):\n    url: str = Field(..., min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\nclass URLCreate(URLBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    tag_ids: List[str] = []  # Liste des IDs de tags à associer\n    created_at: Optional[datetime] = None  # Optional, pour les imports CSV avec date personnalisée\nclass URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)",
         "detail": "back.src.models.url",
         "documentation": {}
     },
@@ -2697,7 +2680,7 @@
         "kind": 6,
         "importPath": "back.src.models.url",
         "description": "back.src.models.url",
-        "peekOfCode": "class URLCreate(URLBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    tag_ids: List[str] = []  # Liste des IDs de tags à associer\n    created_at: Optional[datetime] = None  # Optional, pour les imports CSV avec date personnalisée\nclass URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    document_type: Optional[DocumentType] = None\n    tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)",
+        "peekOfCode": "class URLCreate(URLBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    tag_ids: List[str] = []  # Liste des IDs de tags à associer\n    created_at: Optional[datetime] = None  # Optional, pour les imports CSV avec date personnalisée\nclass URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)\nclass URL(URLBase):",
         "detail": "back.src.models.url",
         "documentation": {}
     },
@@ -2706,7 +2689,7 @@
         "kind": 6,
         "importPath": "back.src.models.url",
         "description": "back.src.models.url",
-        "peekOfCode": "class URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    document_type: Optional[DocumentType] = None\n    tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)\nclass URL(URLBase):\n    id: str\n    user_id: str\n    created_at: datetime",
+        "peekOfCode": "class URLUpdate(BaseModel):\n    url: Optional[str] = Field(None, min_length=1)\n    title: Optional[str] = None\n    description: Optional[str] = None\n    tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)\nclass URL(URLBase):\n    id: str\n    user_id: str\n    created_at: datetime\n    updated_at: datetime",
         "detail": "back.src.models.url",
         "documentation": {}
     },

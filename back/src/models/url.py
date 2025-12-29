@@ -1,8 +1,8 @@
 from pydantic import BaseModel, Field
-from typing import Optional, List, Literal, get_args
+from typing import Optional, List, Literal
 from datetime import datetime
 
-# Document types available
+# Document types available - kept for tag creation/identification
 DOCUMENT_TYPES = [
     "Page",
     "Image",
@@ -23,7 +23,7 @@ DOCUMENT_TYPES = [
     "Autre"
 ]
 
-# Generate DocumentType from DOCUMENT_TYPES
+# DocumentType - kept for backward compatibility
 DocumentType = Literal[
     "Page",
     "Image",
@@ -49,7 +49,6 @@ class URLBase(BaseModel):
     url: str = Field(..., min_length=1)
     title: Optional[str] = None
     description: Optional[str] = None
-    document_type: Optional[DocumentType] = None
 
 
 class URLCreate(URLBase):
@@ -62,7 +61,6 @@ class URLUpdate(BaseModel):
     url: Optional[str] = Field(None, min_length=1)
     title: Optional[str] = None
     description: Optional[str] = None
-    document_type: Optional[DocumentType] = None
     tag_ids: Optional[List[str]] = None  # Liste des IDs de tags à associer (None = pas de changement)
 
 

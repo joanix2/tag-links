@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Tag, DocumentType } from "@/types";
+import { Link, Tag } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,56 +8,87 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import TagSelector from "@/components/TagSelector";
 
-const DOCUMENT_TYPES: DocumentType[] = [
-  "Page",
-  "Image",
-  "Vidéo",
-  "Son",
-  "Texte",
-  "PDF",
-  "Présentation",
-  "3D",
-  "Formulaire",
-  "Carte",
-  "Tableau",
-  "Graphique",
-  "Animation",
-  "Jeu",
-  "Quiz",
-  "Simulation",
-  "Autre",
-];
+const DOCUMENT_TYPES = ["Page", "Image", "Vidéo", "Son", "Texte", "PDF", "Présentation", "3D", "Formulaire", "Carte", "Tableau", "Graphique", "Animation", "Jeu", "Quiz", "Simulation", "Autre"];
 
 interface LinkFormProps {
   isOpen: boolean;
   link: Link | null;
   tags: Tag[];
   onSubmit: (link: Omit<Link, "id" | "createdAt">) => void;
+  onTagCreate: (tag: Omit<Tag, "id">) => Promise<Tag>;
   onCancel: () => void;
+  reloadTags?: () => Promise<void>;
 }
 
-const LinkForm = ({ isOpen, link, tags, onSubmit, onCancel }: LinkFormProps) => {
+const LinkForm = ({ isOpen, link, tags, onSubmit, onTagCreate, onCancel, reloadTags }: LinkFormProps) => {
   const [title, setTitle] = useState(link?.title || "");
   const [url, setUrl] = useState(link?.url || "");
   const [description, setDescription] = useState(link?.description || "");
-  const [documentType, setDocumentType] = useState<DocumentType | undefined>(link?.document_type);
   const [selectedTagIds, setSelectedTagIds] = useState<string[]>(link?.tags || []);
+
+  // Extract current document type from selected tags
+  const getCurrentDocumentType = (): string | undefined => {
+    const documentTypeTags = tags.filter((tag) => DOCUMENT_TYPES.includes(tag.name) && selectedTagIds.includes(tag.id));
+    return documentTypeTags.length > 0 ? documentTypeTags[0].name : undefined;
+  };
+
+  const [documentType, setDocumentType] = useState<string | undefined>(getCurrentDocumentType());
 
   useEffect(() => {
     if (link) {
       setTitle(link.title);
       setUrl(link.url);
       setDescription(link.description || "");
-      setDocumentType(link.document_type);
       setSelectedTagIds(link.tags);
+      // Extract document type from link's tags
+      const docType = tags.find((tag) => DOCUMENT_TYPES.includes(tag.name) && link.tags.includes(tag.id));
+      setDocumentType(docType?.name);
     } else {
       setTitle("");
       setUrl("");
       setDescription("");
-      setDocumentType(undefined);
       setSelectedTagIds([]);
+      setDocumentType(undefined);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [link, isOpen]);
+
+  // Handle document type selection - automatically manage tags
+  const handleDocumentTypeChange = async (value: string) => {
+    // Remove all existing document type tags
+    const nonDocTypeTags = selectedTagIds.filter((tagId) => {
+      const tag = tags.find((t) => t.id === tagId);
+      return tag && !DOCUMENT_TYPES.includes(tag.name);
+    });
+
+    if (value === "none") {
+      // No document type selected - remove all document type tags immediately
+      setDocumentType(undefined);
+      setSelectedTagIds(nonDocTypeTags);
+    } else {
+      // Find the tag corresponding to the selected document type
+      let docTypeTag = tags.find((tag) => tag.name === value);
+
+      // If the tag doesn't exist, create it synchronously
+      if (!docTypeTag) {
+        try {
+          const createdTag = await onTagCreate({
+            name: value,
+            color: "#92400E", // Brown color for document types
+          });
+          // Use the newly created tag immediately
+          docTypeTag = createdTag;
+        } catch (error) {
+          console.error("Failed to create document type tag:", error);
+          return;
+        }
+      }
+
+      // Replace immediately with the tag (existing or just created)
+      setDocumentType(value);
+      setSelectedTagIds([...nonDocTypeTags, docTypeTag.id]);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,13 +99,16 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onCancel }: LinkFormProps) => 
       title: title.trim(),
       url: url.trim().startsWith("http") ? url.trim() : `https://${url.trim()}`,
       description: description.trim(), // Send empty string instead of undefined to allow clearing
-      document_type: documentType,
       tags: selectedTagIds,
     });
   };
 
   const handleTagsChange = (tagIds: string[]) => {
     setSelectedTagIds(tagIds);
+
+    // Update document type based on selected tags
+    const docTypeTag = tags.find((tag) => DOCUMENT_TYPES.includes(tag.name) && tagIds.includes(tag.id));
+    setDocumentType(docTypeTag?.name);
   };
 
   return (
@@ -111,7 +145,7 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onCancel }: LinkFormProps) => 
               <Label htmlFor="document-type" className="text-right">
                 Type
               </Label>
-              <Select value={documentType || "none"} onValueChange={(value) => setDocumentType(value === "none" ? undefined : (value as DocumentType))}>
+              <Select value={documentType || "none"} onValueChange={handleDocumentTypeChange}>
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select document type (optional)" />
                 </SelectTrigger>

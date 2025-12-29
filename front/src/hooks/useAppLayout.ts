@@ -8,7 +8,7 @@ export interface AppLayoutContextType {
   showUntagged: boolean;
   setCurrentView: (view: "links" | "graph") => void;
   handleTagSelect: (tagId: string) => void;
-  handleTagCreate: (tag: Omit<Tag, "id">) => Promise<void>;
+  handleTagCreate: (tag: Omit<Tag, "id">) => Promise<Tag>;
   handleTagUpdate: (tag: Tag) => Promise<void>;
   handleTagDelete: (tagId: string) => Promise<void>;
   handleTagMerge: (sourceTagIds: string[], targetTag: { name: string; color: string }) => Promise<void>;

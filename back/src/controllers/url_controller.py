@@ -20,65 +20,6 @@ def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:
     return TagRepository(driver)
 
 
-def manage_document_type_tag(
-    url_id: str,
-    old_document_type: str | None,
-    new_document_type: str | None,
-    user_id: str,
-    url_repo: URLRepository,
-    tag_repo: TagRepository
-):
-    """
-    Manage document type tags automatically with ontological disjoint rule.
-    Ensures that a URL has AT MOST ONE document type tag.
-    
-    - Removes ALL existing document type tags
-    - Adds the new document type tag if specified
-    """
-    from src.models.url import DOCUMENT_TYPES, URLUpdate
-    from src.models.tag import TagCreate
-    
-    DOCUMENT_TYPE_COLOR = "#92400E"
-    
-    # Get current URL tags
-    url_with_tags = url_repo.get_with_tags(url_id)
-    if not url_with_tags:
-        return
-    
-    # Get all user's tags
-    user_tags = tag_repo.get_all_by_user(user_id)
-    
-    # Identify all document type tag IDs
-    document_type_tag_ids = {
-        tag.id for tag in user_tags 
-        if tag.name in DOCUMENT_TYPES
-    }
-    
-    # Remove ALL document type tags from current tags (enforce disjoint rule)
-    current_tag_ids = [
-        t.id for t in url_with_tags.tags 
-        if t.id not in document_type_tag_ids
-    ]
-    
-    # Add new document type tag if specified
-    if new_document_type:
-        # Find or create the new document type tag
-        new_tag = next((t for t in user_tags if t.name == new_document_type), None)
-        if not new_tag:
-            new_tag = tag_repo.create(TagCreate(
-                name=new_document_type,
-                description=f"Type de document : {new_document_type}",
-                color=DOCUMENT_TYPE_COLOR,
-                user_id=user_id
-            ))
-        
-        # Add the new document type tag
-        current_tag_ids.append(new_tag.id)
-    
-    # Update URL with new tag_ids (enforcing disjoint rule)
-    url_repo.update(url_id, URLUpdate(tag_ids=current_tag_ids))
-
-
 class CSVLinkImport(BaseModel):
     title: str
     url: str
@@ -103,7 +44,7 @@ def bulk_import_urls(
     tag_repo: TagRepository = Depends(get_tag_repository),
     current_user: TokenData = Depends(get_current_active_user)
 ):
-    """Import multiple URLs from CSV data"""
+    """Import multiple URLs from CSV data. If a URL already exists, merge tags instead of creating a duplicate."""
     success_count = 0
     errors = []
 
@@ -132,29 +73,51 @@ def bulk_import_urls(
                     tag_ids.append(new_tag.id)
                     tag_map[tag_name_lower] = new_tag.id
 
-            # Parse created_at if provided
-            created_at = None
-            if link_data.created_at:
-                try:
-                    from datetime import datetime
-                    # Try to parse ISO format date
-                    created_at = datetime.fromisoformat(link_data.created_at.replace('Z', '+00:00'))
-                except (ValueError, AttributeError):
-                    # If parsing fails, use None (will use current datetime)
-                    pass
-
-            # Create URL
-            url_create = URLCreate(
-                title=link_data.title,
-                url=link_data.url,
-                description=link_data.description,
-                user_id=current_user.user_id,
-                tag_ids=tag_ids,
-                created_at=created_at
-            )
+            # Check if URL already exists for this user
+            existing_url = url_repo.get_by_url_and_user(link_data.url, current_user.user_id)
             
-            url_repo.create(url_create)
-            success_count += 1
+            if existing_url:
+                # URL exists - merge tags
+                existing_tag_ids = [tag.id for tag in existing_url.tags]
+                # Combine existing and new tags (no duplicates)
+                merged_tag_ids = list(set(existing_tag_ids + tag_ids))
+                
+                # Update the URL with merged tags and potentially new description
+                from src.models.url import URLUpdate
+                update_data = URLUpdate(tag_ids=merged_tag_ids)
+                
+                # Update description if provided and not empty
+                if link_data.description and link_data.description.strip():
+                    # Keep the existing description if new one is empty
+                    update_data.description = link_data.description
+                
+                url_repo.update(existing_url.id, update_data)
+                success_count += 1
+            else:
+                # URL doesn't exist - create new
+                # Parse created_at if provided
+                created_at = None
+                if link_data.created_at:
+                    try:
+                        from datetime import datetime
+                        # Try to parse ISO format date
+                        created_at = datetime.fromisoformat(link_data.created_at.replace('Z', '+00:00'))
+                    except (ValueError, AttributeError):
+                        # If parsing fails, use None (will use current datetime)
+                        pass
+
+                # Create URL
+                url_create = URLCreate(
+                    title=link_data.title,
+                    url=link_data.url,
+                    description=link_data.description,
+                    user_id=current_user.user_id,
+                    tag_ids=tag_ids,
+                    created_at=created_at
+                )
+                
+                url_repo.create(url_create)
+                success_count += 1
 
         except Exception as e:
             errors.append({
@@ -173,35 +136,11 @@ def create_url(
     current_user: TokenData = Depends(get_current_active_user)
 ):
     """Create a new URL linked to the authenticated user"""
-    from src.models.url import DOCUMENT_TYPES
-    
     # Override user_id with the authenticated user's ID
     url.user_id = current_user.user_id
     
-    # Filter out document type tags from tag_ids if provided
-    # because manage_document_type_tag will handle them
-    if url.tag_ids:
-        user_tags = tag_repo.get_all_by_user(current_user.user_id)
-        document_type_tag_ids = {
-            tag.id for tag in user_tags 
-            if tag.name in DOCUMENT_TYPES
-        }
-        # Keep only non-document-type tags
-        url.tag_ids = [tag_id for tag_id in url.tag_ids if tag_id not in document_type_tag_ids]
-    
     try:
         created_url = url_repo.create(url)
-        
-        # Manage document type tag if specified
-        if url.document_type:
-            manage_document_type_tag(
-                created_url.id,
-                None,  # No old document type
-                url.document_type,
-                current_user.user_id,
-                url_repo,
-                tag_repo
-            )
         
         # Return URL with tags
         url_with_tags = url_repo.get_with_tags(created_url.id)
@@ -316,9 +255,7 @@ def update_url(
     current_user: TokenData = Depends(get_current_active_user)
 ):
     """Update a URL"""
-    from src.models.url import DOCUMENT_TYPES
-    
-    # Get the old URL to check document_type change
+    # Get the old URL to verify it exists
     old_url = url_repo.get_by_id(url_id)
     if not old_url:
         raise HTTPException(
@@ -326,34 +263,13 @@ def update_url(
             detail=f"URL with id {url_id} not found"
         )
     
-    # If tag_ids are provided, filter out document type tags from the request
-    # because manage_document_type_tag will handle them
-    if url.tag_ids is not None:
-        user_tags = tag_repo.get_all_by_user(current_user.user_id)
-        document_type_tag_ids = {
-            tag.id for tag in user_tags 
-            if tag.name in DOCUMENT_TYPES
-        }
-        # Keep only non-document-type tags from the request
-        url.tag_ids = [tag_id for tag_id in url.tag_ids if tag_id not in document_type_tag_ids]
-    
-    # Update the URL (without document type tags)
+    # Update the URL
     updated_url = url_repo.update(url_id, url)
     if not updated_url:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"URL with id {url_id} not found"
         )
-    
-    # Manage document type tag (adds the correct one if specified)
-    manage_document_type_tag(
-        url_id,
-        old_url.document_type,
-        url.document_type,
-        current_user.user_id,
-        url_repo,
-        tag_repo
-    )
     
     # Return URL with tags
     url_with_tags = url_repo.get_with_tags(url_id)
