@@ -62,15 +62,15 @@ const LinksList = ({ links, tags, onLinkEdit, onLinkDelete, onToggleFavorite, on
   return (
     <>
       {links.length > 0 ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 p-3 sm:p-4 lg:p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 p-3 sm:p-4 lg:p-6">
           {links.map((link) => (
             <Card
               key={link.id}
-              className={`group overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 border-muted/40 hover:border-primary/20 bg-card/80 backdrop-blur-sm ${
+              className={`group overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 border-muted/40 hover:border-primary/20 bg-card/80 backdrop-blur-sm flex flex-col ${
                 selectedLinks.includes(link.id) ? "ring-2 ring-primary" : ""
               }`}
             >
-              <CardHeader className="p-4 pb-3 space-y-2">
+              <CardHeader className="p-4 pb-3 flex-shrink-0">
                 <div className="flex justify-between items-start gap-2">
                   <div className="flex items-start gap-2 flex-1 min-w-0">
                     <Checkbox checked={selectedLinks.includes(link.id)} onCheckedChange={() => onToggleSelection(link.id)} className="mt-1 flex-shrink-0" />
@@ -107,10 +107,11 @@ const LinksList = ({ links, tags, onLinkEdit, onLinkDelete, onToggleFavorite, on
                     </Button>
                   </div>
                 </div>
-                {link.description && <p className="text-sm text-muted-foreground line-clamp-2 mt-1">{link.description}</p>}
               </CardHeader>
 
-              <CardContent className="p-4 pt-0">
+              <div className="p-4 pt-0 pb-3 flex-grow">{link.description && <p className="text-sm text-muted-foreground line-clamp-3">{link.description}</p>}</div>
+
+              <CardContent className="p-4 pt-0 flex-shrink-0">
                 <div className="flex flex-wrap gap-1.5">
                   {getTagsForLink(link).map((tag) => (
                     <TagBadge key={tag.id} tag={tag} size="sm" onClick={() => handleTagSelect(tag.id)} />
@@ -119,7 +120,7 @@ const LinksList = ({ links, tags, onLinkEdit, onLinkDelete, onToggleFavorite, on
                 </div>
               </CardContent>
 
-              <CardFooter className="p-4 pt-2 border-t border-muted/30">
+              <CardFooter className="p-4 pt-2 border-t border-muted/30 flex-shrink-0">
                 <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                   <span className="font-medium">Added:</span>
                   <time>{formatDate(link.createdAt)}</time>
