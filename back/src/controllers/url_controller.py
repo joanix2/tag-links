@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from typing import List, Optional
-from src.models.url import URL, URLCreate, URLUpdate, URLWithTags
+from src.models.url import URL, URLCreate, URLUpdate, URLWithTags, DOCUMENT_TYPES
 from src.repositories.url_repository import URLRepository
 from src.repositories.tag_repository import TagRepository
 from src.database import get_db
@@ -10,6 +10,9 @@ from neo4j import Driver
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/urls", tags=["urls"])
+
+# System tag names
+SYSTEM_TAG_NAMES = {"Favoris", "Partage"} | set(DOCUMENT_TYPES)
 
 
 def get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:
@@ -94,10 +97,15 @@ def bulk_import_urls(
                     from src.models.tag import TagCreate
                     import random
                     colors = ["#ef4444", "#f59e0b", "#10b981", "#3b82f6", "#6366f1", "#8b5cf6", "#ec4899"]
+                    
+                    # Check if this is a system tag
+                    is_system = tag_name in SYSTEM_TAG_NAMES
+                    
                     new_tag = tag_repo.create(TagCreate(
                         name=tag_name,
                         color=random.choice(colors),
-                        user_id=current_user.user_id
+                        user_id=current_user.user_id,
+                        is_system=is_system
                     ))
                     tag_ids.append(new_tag.id)
                     tag_map[tag_name_lower] = new_tag.id

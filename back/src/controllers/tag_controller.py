@@ -14,6 +14,12 @@ router = APIRouter(prefix="/tags", tags=["tags"])
 # Color for document type tags
 DOCUMENT_TYPE_TAG_COLOR = "#92400E"
 
+# System tags configuration
+SYSTEM_TAGS = [
+    {"name": "Favoris", "color": "#ef4444", "description": "Tag spécial pour marquer les liens favoris"},
+    {"name": "Partage", "color": "#3b82f6", "description": "Tag spécial pour marquer les liens partagés"}
+]
+
 
 class PaginatedTagResponse(BaseModel):
     """Response model for paginated Tag results"""
@@ -54,11 +60,16 @@ def create_tag(
 def get_tags(
     skip: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=100),
+    include_system: bool = Query(False, description="Include system tags (favoris, partage, type)"),
     repo: TagRepository = Depends(get_tag_repository),
     current_user: TokenData = Depends(get_current_active_user)
 ):
     """Get all tags for the authenticated user with pagination"""
-    items = repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)
+    if include_system:
+        items = repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)
+    else:
+        items = repo.get_all_by_user_non_system(user_id=current_user.user_id, skip=skip, limit=limit)
+    
     total = repo.count_by_user(user_id=current_user.user_id)
     has_more = (skip + limit) < total
     
@@ -89,7 +100,8 @@ def initialize_document_type_tags(
                 name=doc_type,
                 description=f"Type de document : {doc_type}",
                 color=DOCUMENT_TYPE_TAG_COLOR,
-                user_id=current_user.user_id
+                user_id=current_user.user_id,
+                is_system=True  # Mark as system tag
             ))
             created_tags.append(new_tag.name)
     
@@ -100,11 +112,82 @@ def initialize_document_type_tags(
     }
 
 
+@router.post("/initialize-system-tags", status_code=status.HTTP_201_CREATED)
+def initialize_system_tags(
+    repo: TagRepository = Depends(get_tag_repository),
+    current_user: TokenData = Depends(get_current_active_user)
+):
+    """Initialize system tags (Favoris, Partage) for the current user if they don't exist"""
+    # Get existing tags to avoid duplicates
+    existing_tags = repo.get_all_by_user(current_user.user_id, skip=0, limit=1000)
+    existing_tag_names = {tag.name for tag in existing_tags}
+    
+    # Create missing system tags
+    created_tags = []
+    for system_tag in SYSTEM_TAGS:
+        if system_tag["name"] not in existing_tag_names:
+            new_tag = repo.create(TagCreate(
+                name=system_tag["name"],
+                description=system_tag["description"],
+                color=system_tag["color"],
+                user_id=current_user.user_id,
+                is_system=True
+            ))
+            created_tags.append(new_tag.name)
+    
+    return {
+        "message": f"System tags initialized",
+        "created": created_tags,
+        "total_system_tags": len(SYSTEM_TAGS)
+    }
+
+
+@router.post("/migrate-system-tags", status_code=status.HTTP_200_OK)
+def migrate_system_tags(
+    repo: TagRepository = Depends(get_tag_repository),
+    current_user: TokenData = Depends(get_current_active_user)
+):
+    """
+    Mark existing tags as system tags if they match system tag names.
+    This is useful for migrating existing data.
+    """
+    # Get all user's tags
+    existing_tags = repo.get_all_by_user(current_user.user_id, skip=0, limit=1000)
+    
+    # System tag names to mark
+    system_tag_names = {tag["name"] for tag in SYSTEM_TAGS} | set(DOCUMENT_TYPES)
+    
+    # Update tags that match system names but aren't marked as system
+    updated_tags = []
+    for tag in existing_tags:
+        if tag.name in system_tag_names and not tag.is_system:
+            # Update the tag to mark it as system
+            from src.models.tag import TagUpdate
+            repo.update(tag.id, TagUpdate(name=tag.name, description=tag.description, color=tag.color))
+            # Manually update is_system field via Cypher
+            from src.database import get_driver
+            driver = get_driver()
+            with driver.session() as session:
+                session.run("""
+                    MATCH (t:Tag {id: $id})
+                    SET t.is_system = true
+                    RETURN t
+                """, id=tag.id)
+            updated_tags.append(tag.name)
+    
+    return {
+        "message": f"System tags migrated",
+        "updated": updated_tags,
+        "total_updated": len(updated_tags)
+    }
+
+
 @router.get("/search/", response_model=List[Tag])
 def search_tags(
     q: str = Query(..., min_length=1, description="Search query"),
     threshold: float = Query(0.6, ge=0.0, le=1.0, description="Minimum similarity threshold (0.0 to 1.0)"),
     limit: int = Query(100, ge=1, le=1000),
+    include_system: bool = Query(False, description="Include system tags (favoris, partage, type)"),
     repo: TagRepository = Depends(get_tag_repository),
     current_user: TokenData = Depends(get_current_active_user)
 ):
@@ -113,8 +196,11 @@ def search_tags(
     
     Returns tags sorted by similarity to the query (most similar first).
     """
-    # Get all user's tags
-    all_tags = repo.get_all_by_user(user_id=current_user.user_id, skip=0, limit=1000)
+    # Get all user's tags (filtered or not by system tags)
+    if include_system:
+        all_tags = repo.get_all_by_user(user_id=current_user.user_id, skip=0, limit=1000)
+    else:
+        all_tags = repo.get_all_by_user_non_system(user_id=current_user.user_id, skip=0, limit=1000)
     
     # Prepare items for similarity search: (name, tag_object)
     items = [(tag.name, tag) for tag in all_tags]
@@ -165,6 +251,20 @@ def update_tag(
     repo: TagRepository = Depends(get_tag_repository)
 ):
     """Update a tag"""
+    # Check if tag is a system tag
+    existing_tag = repo.get_by_id(tag_id)
+    if not existing_tag:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Tag with id {tag_id} not found"
+        )
+    
+    if existing_tag.is_system:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Cannot modify system tags (favoris, partage, type)"
+        )
+    
     updated_tag = repo.update(tag_id, tag)
     if not updated_tag:
         raise HTTPException(
@@ -180,6 +280,14 @@ def delete_tag(
     repo: TagRepository = Depends(get_tag_repository)
 ):
     """Delete a tag"""
+    # Check if tag is a system tag
+    existing_tag = repo.get_by_id(tag_id)
+    if existing_tag and existing_tag.is_system:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Cannot delete system tags (favoris, partage, type)"
+        )
+    
     if not repo.delete(tag_id):
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -307,6 +415,12 @@ def merge_tags(
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail=f"Source tag {tag_id} does not belong to the current user"
+            )
+        # Prevent merging system tags
+        if tag.is_system:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Cannot merge system tags (favoris, partage, type)"
             )
     
     # Perform the merge

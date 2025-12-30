@@ -10,8 +10,26 @@ class TagRepository:
     def __init__(self, driver: Driver):
         self.driver = driver
     
+    def get_by_name_and_user(self, name: str, user_id: str) -> Optional[Tag]:
+        """Get a tag by name and user ID"""
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH (u:User {id: $user_id})-[:OWNS]->(t:Tag)
+                WHERE t.name = $name
+                RETURN t
+            """, name=name, user_id=user_id)
+            record = result.single()
+            if record:
+                return self._node_to_tag(record["t"])
+            return None
+    
     def create(self, tag: TagCreate) -> Tag:
-        """Create a new tag and link it to the user"""
+        """Create a new tag and link it to the user. If tag with same name exists, return it."""
+        # Check if tag with same name already exists for this user
+        existing_tag = self.get_by_name_and_user(tag.name, tag.user_id)
+        if existing_tag:
+            return existing_tag
+        
         with self.driver.session() as session:
             result = session.run("""
                 MATCH (u:User {id: $user_id})
@@ -21,6 +39,7 @@ class TagRepository:
                     description: $description,
                     color: $color,
                     user_id: $user_id,
+                    is_system: $is_system,
                     created_at: datetime(),
                     updated_at: datetime()
                 })
@@ -31,7 +50,8 @@ class TagRepository:
                 name=tag.name,
                 description=tag.description,
                 color=tag.color,
-                user_id=tag.user_id
+                user_id=tag.user_id,
+                is_system=tag.is_system or False
             )
             record = result.single()
             if not record:
@@ -67,6 +87,19 @@ class TagRepository:
         with self.driver.session() as session:
             result = session.run("""
                 MATCH (u:User {id: $user_id})-[:OWNS]->(t:Tag)
+                RETURN t
+                ORDER BY t.name
+                SKIP $skip
+                LIMIT $limit
+            """, user_id=user_id, skip=skip, limit=limit)
+            return [self._node_to_tag(record["t"]) for record in result]
+    
+    def get_all_by_user_non_system(self, user_id: str, skip: int = 0, limit: int = 100) -> List[Tag]:
+        """Get all non-system tags for a specific user with pagination"""
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH (u:User {id: $user_id})-[:OWNS]->(t:Tag)
+                WHERE NOT COALESCE(t.is_system, false)
                 RETURN t
                 ORDER BY t.name
                 SKIP $skip
@@ -222,7 +255,8 @@ class TagRepository:
             color=node.get("color"),
             user_id=node["user_id"],
             created_at=created_at,
-            updated_at=updated_at
+            updated_at=updated_at,
+            is_system=node.get("is_system", False)
         )
     
     def merge_tags(self, source_tag_ids: List[str], target_tag_id: str, new_name: str, new_color: str) -> dict:

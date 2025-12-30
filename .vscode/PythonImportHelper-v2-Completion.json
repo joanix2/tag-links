@@ -1,5 +1,229 @@
 [
     {
+        "label": "get_driver",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "neo4j_connection",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "init_constraints",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPES",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPES",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPES",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLCreate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLUpdate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPES",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLCreate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLUpdate",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithTags",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "URLWithUser",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
+        "label": "DOCUMENT_TYPES",
+        "importPath": "src.models.url",
+        "description": "src.models.url",
+        "isExtraImport": true,
+        "detail": "src.models.url",
+        "documentation": {}
+    },
+    {
         "label": "APIRouter",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -624,86 +848,6 @@
         "documentation": {}
     },
     {
-        "label": "get_driver",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_driver",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_driver",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "get_driver",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "neo4j_connection",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
-        "label": "init_constraints",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
         "label": "get_current_active_user",
         "importPath": "src.auth",
         "description": "src.auth",
@@ -1093,118 +1237,6 @@
         "description": "src.repositories.tag_repository",
         "isExtraImport": true,
         "detail": "src.repositories.tag_repository",
-        "documentation": {}
-    },
-    {
-        "label": "DOCUMENT_TYPES",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URL",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithTags",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "DOCUMENT_TYPES",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URL",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLCreate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLUpdate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithTags",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URL",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLCreate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLUpdate",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithTags",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "URLWithUser",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
-        "documentation": {}
-    },
-    {
-        "label": "DOCUMENT_TYPES",
-        "importPath": "src.models.url",
-        "description": "src.models.url",
-        "isExtraImport": true,
-        "detail": "src.models.url",
         "documentation": {}
     },
     {
@@ -2015,6 +2047,51 @@
         "documentation": {}
     },
     {
+        "label": "add_unique_constraint",
+        "kind": 2,
+        "importPath": "back.migrations.add_unique_constraint_tags",
+        "description": "back.migrations.add_unique_constraint_tags",
+        "peekOfCode": "def add_unique_constraint():\n    \"\"\"Add unique constraint on Tag(user_id, name)\"\"\"\n    driver = get_driver()\n    with driver.session() as session:\n        # Check if constraint already exists\n        result = session.run(\"SHOW CONSTRAINTS\")\n        constraints = [record[\"name\"] for record in result if \"name\" in record]\n        constraint_name = \"tag_user_name_unique\"\n        if constraint_name not in constraints:\n            print(f\"Creating constraint: {constraint_name}\")",
+        "detail": "back.migrations.add_unique_constraint_tags",
+        "documentation": {}
+    },
+    {
+        "label": "remove_duplicate_tags",
+        "kind": 2,
+        "importPath": "back.migrations.add_unique_constraint_tags",
+        "description": "back.migrations.add_unique_constraint_tags",
+        "peekOfCode": "def remove_duplicate_tags():\n    \"\"\"Remove duplicate tags (keep the oldest one)\"\"\"\n    driver = get_driver()\n    with driver.session() as session:\n        # Find and remove duplicates\n        result = session.run(\"\"\"\n            MATCH (u:User)-[:OWNS]->(t:Tag)\n            WITH u, t.name as tag_name, collect(t) as tags\n            WHERE size(tags) > 1\n            WITH u, tag_name, tags, tags[0] as keep_tag, tail(tags) as delete_tags",
+        "detail": "back.migrations.add_unique_constraint_tags",
+        "documentation": {}
+    },
+    {
+        "label": "mark_system_tags",
+        "kind": 2,
+        "importPath": "back.migrations.cleanup_tags",
+        "description": "back.migrations.cleanup_tags",
+        "peekOfCode": "def mark_system_tags():\n    \"\"\"Mark tags as system if they match system tag names\"\"\"\n    driver = get_driver()\n    with driver.session() as session:\n        result = session.run(\"\"\"\n            MATCH (t:Tag)\n            WHERE t.name IN $system_names AND NOT COALESCE(t.is_system, false)\n            SET t.is_system = true\n            RETURN t.name as name, count(t) as count\n        \"\"\", system_names=list(SYSTEM_TAG_NAMES))",
+        "detail": "back.migrations.cleanup_tags",
+        "documentation": {}
+    },
+    {
+        "label": "remove_duplicate_tags",
+        "kind": 2,
+        "importPath": "back.migrations.cleanup_tags",
+        "description": "back.migrations.cleanup_tags",
+        "peekOfCode": "def remove_duplicate_tags():\n    \"\"\"Remove duplicate tags (keep the oldest one with is_system if exists)\"\"\"\n    driver = get_driver()\n    with driver.session() as session:\n        # Find and remove duplicates, keeping system tags if they exist\n        result = session.run(\"\"\"\n            MATCH (t:Tag)\n            WITH t.user_id as user_id, t.name as tag_name, collect(t) as tags\n            WHERE size(tags) > 1\n            UNWIND tags as tag",
+        "detail": "back.migrations.cleanup_tags",
+        "documentation": {}
+    },
+    {
+        "label": "SYSTEM_TAG_NAMES",
+        "kind": 5,
+        "importPath": "back.migrations.cleanup_tags",
+        "description": "back.migrations.cleanup_tags",
+        "peekOfCode": "SYSTEM_TAG_NAMES = {\"Favoris\", \"Partage\"} | set(DOCUMENT_TYPES)\ndef mark_system_tags():\n    \"\"\"Mark tags as system if they match system tag names\"\"\"\n    driver = get_driver()\n    with driver.session() as session:\n        result = session.run(\"\"\"\n            MATCH (t:Tag)\n            WHERE t.name IN $system_names AND NOT COALESCE(t.is_system, false)\n            SET t.is_system = true\n            RETURN t.name as name, count(t) as count",
+        "detail": "back.migrations.cleanup_tags",
+        "documentation": {}
+    },
+    {
         "label": "get_token_repository",
         "kind": 2,
         "importPath": "back.src.controllers.api_token_controller",
@@ -2262,7 +2339,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "def get_tags(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(50, ge=1, le=100),\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all tags for the authenticated user with pagination\"\"\"\n    items = repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)\n    total = repo.count_by_user(user_id=current_user.user_id)\n    has_more = (skip + limit) < total",
+        "peekOfCode": "def get_tags(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(50, ge=1, le=100),\n    include_system: bool = Query(False, description=\"Include system tags (favoris, partage, type)\"),\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Get all tags for the authenticated user with pagination\"\"\"\n    if include_system:\n        items = repo.get_all_by_user(user_id=current_user.user_id, skip=skip, limit=limit)",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2276,11 +2353,29 @@
         "documentation": {}
     },
     {
+        "label": "initialize_system_tags",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def initialize_system_tags(\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"Initialize system tags (Favoris, Partage) for the current user if they don't exist\"\"\"\n    # Get existing tags to avoid duplicates\n    existing_tags = repo.get_all_by_user(current_user.user_id, skip=0, limit=1000)\n    existing_tag_names = {tag.name for tag in existing_tags}\n    # Create missing system tags\n    created_tags = []",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "migrate_system_tags",
+        "kind": 2,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "def migrate_system_tags(\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Mark existing tags as system tags if they match system tag names.\n    This is useful for migrating existing data.\n    \"\"\"\n    # Get all user's tags\n    existing_tags = repo.get_all_by_user(current_user.user_id, skip=0, limit=1000)",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
         "label": "search_tags",
         "kind": 2,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "def search_tags(\n    q: str = Query(..., min_length=1, description=\"Search query\"),\n    threshold: float = Query(0.6, ge=0.0, le=1.0, description=\"Minimum similarity threshold (0.0 to 1.0)\"),\n    limit: int = Query(100, ge=1, le=1000),\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Search tags by name using Levenshtein distance for fuzzy matching.\n    Returns tags sorted by similarity to the query (most similar first).",
+        "peekOfCode": "def search_tags(\n    q: str = Query(..., min_length=1, description=\"Search query\"),\n    threshold: float = Query(0.6, ge=0.0, le=1.0, description=\"Minimum similarity threshold (0.0 to 1.0)\"),\n    limit: int = Query(100, ge=1, le=1000),\n    include_system: bool = Query(False, description=\"Include system tags (favoris, partage, type)\"),\n    repo: TagRepository = Depends(get_tag_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Search tags by name using Levenshtein distance for fuzzy matching.",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2307,7 +2402,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "def update_tag(\n    tag_id: str,\n    tag: TagUpdate,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Update a tag\"\"\"\n    updated_tag = repo.update(tag_id, tag)\n    if not updated_tag:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,",
+        "peekOfCode": "def update_tag(\n    tag_id: str,\n    tag: TagUpdate,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Update a tag\"\"\"\n    # Check if tag is a system tag\n    existing_tag = repo.get_by_id(tag_id)\n    if not existing_tag:\n        raise HTTPException(",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2316,7 +2411,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "def delete_tag(\n    tag_id: str,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Delete a tag\"\"\"\n    if not repo.delete(tag_id):\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=f\"Tag with id {tag_id} not found\"\n        )",
+        "peekOfCode": "def delete_tag(\n    tag_id: str,\n    repo: TagRepository = Depends(get_tag_repository)\n):\n    \"\"\"Delete a tag\"\"\"\n    # Check if tag is a system tag\n    existing_tag = repo.get_by_id(tag_id)\n    if existing_tag and existing_tag.is_system:\n        raise HTTPException(\n            status_code=status.HTTP_403_FORBIDDEN,",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2370,7 +2465,7 @@
         "kind": 5,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "router = APIRouter(prefix=\"/tags\", tags=[\"tags\"])\n# Color for document type tags\nDOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\nclass PaginatedTagResponse(BaseModel):\n    \"\"\"Response model for paginated Tag results\"\"\"\n    items: List[Tag]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool",
+        "peekOfCode": "router = APIRouter(prefix=\"/tags\", tags=[\"tags\"])\n# Color for document type tags\nDOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\n# System tags configuration\nSYSTEM_TAGS = [\n    {\"name\": \"Favoris\", \"color\": \"#ef4444\", \"description\": \"Tag spécial pour marquer les liens favoris\"},\n    {\"name\": \"Partage\", \"color\": \"#3b82f6\", \"description\": \"Tag spécial pour marquer les liens partagés\"}\n]\nclass PaginatedTagResponse(BaseModel):\n    \"\"\"Response model for paginated Tag results\"\"\"",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2379,7 +2474,16 @@
         "kind": 5,
         "importPath": "back.src.controllers.tag_controller",
         "description": "back.src.controllers.tag_controller",
-        "peekOfCode": "DOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\nclass PaginatedTagResponse(BaseModel):\n    \"\"\"Response model for paginated Tag results\"\"\"\n    items: List[Tag]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool\nclass NewTagData(BaseModel):\n    name: str",
+        "peekOfCode": "DOCUMENT_TYPE_TAG_COLOR = \"#92400E\"\n# System tags configuration\nSYSTEM_TAGS = [\n    {\"name\": \"Favoris\", \"color\": \"#ef4444\", \"description\": \"Tag spécial pour marquer les liens favoris\"},\n    {\"name\": \"Partage\", \"color\": \"#3b82f6\", \"description\": \"Tag spécial pour marquer les liens partagés\"}\n]\nclass PaginatedTagResponse(BaseModel):\n    \"\"\"Response model for paginated Tag results\"\"\"\n    items: List[Tag]\n    total: int",
+        "detail": "back.src.controllers.tag_controller",
+        "documentation": {}
+    },
+    {
+        "label": "SYSTEM_TAGS",
+        "kind": 5,
+        "importPath": "back.src.controllers.tag_controller",
+        "description": "back.src.controllers.tag_controller",
+        "peekOfCode": "SYSTEM_TAGS = [\n    {\"name\": \"Favoris\", \"color\": \"#ef4444\", \"description\": \"Tag spécial pour marquer les liens favoris\"},\n    {\"name\": \"Partage\", \"color\": \"#3b82f6\", \"description\": \"Tag spécial pour marquer les liens partagés\"}\n]\nclass PaginatedTagResponse(BaseModel):\n    \"\"\"Response model for paginated Tag results\"\"\"\n    items: List[Tag]\n    total: int\n    skip: int\n    limit: int",
         "detail": "back.src.controllers.tag_controller",
         "documentation": {}
     },
@@ -2577,7 +2681,16 @@
         "kind": 5,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]\n    total: int\n    skip: int",
+        "peekOfCode": "router = APIRouter(prefix=\"/urls\", tags=[\"urls\"])\n# System tag names\nSYSTEM_TAG_NAMES = {\"Favoris\", \"Partage\"} | set(DOCUMENT_TYPES)\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "SYSTEM_TAG_NAMES",
+        "kind": 5,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "SYSTEM_TAG_NAMES = {\"Favoris\", \"Partage\"} | set(DOCUMENT_TYPES)\ndef get_url_repository(driver: Driver = Depends(get_db)) -> URLRepository:\n    return URLRepository(driver)\ndef get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]\n    total: int\n    skip: int",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2757,7 +2870,7 @@
         "kind": 6,
         "importPath": "back.src.models.tag",
         "description": "back.src.models.tag",
-        "peekOfCode": "class TagBase(BaseModel):\n    name: str = Field(..., min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None\nclass TagCreate(TagBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\nclass TagUpdate(BaseModel):\n    name: Optional[str] = Field(None, min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None",
+        "peekOfCode": "class TagBase(BaseModel):\n    name: str = Field(..., min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None\nclass TagCreate(TagBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    is_system: Optional[bool] = False  # System tags are not editable/visible in lists\nclass TagUpdate(BaseModel):\n    name: Optional[str] = Field(None, min_length=1, max_length=100)\n    description: Optional[str] = None",
         "detail": "back.src.models.tag",
         "documentation": {}
     },
@@ -2766,7 +2879,7 @@
         "kind": 6,
         "importPath": "back.src.models.tag",
         "description": "back.src.models.tag",
-        "peekOfCode": "class TagCreate(TagBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\nclass TagUpdate(BaseModel):\n    name: Optional[str] = Field(None, min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None\nclass Tag(TagBase):\n    id: str\n    user_id: str  # User ID of the tag owner\n    created_at: datetime",
+        "peekOfCode": "class TagCreate(TagBase):\n    user_id: Optional[str] = None  # Optional, will be set by the backend from auth token\n    is_system: Optional[bool] = False  # System tags are not editable/visible in lists\nclass TagUpdate(BaseModel):\n    name: Optional[str] = Field(None, min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None\nclass Tag(TagBase):\n    id: str\n    user_id: str  # User ID of the tag owner",
         "detail": "back.src.models.tag",
         "documentation": {}
     },
@@ -2775,7 +2888,7 @@
         "kind": 6,
         "importPath": "back.src.models.tag",
         "description": "back.src.models.tag",
-        "peekOfCode": "class TagUpdate(BaseModel):\n    name: Optional[str] = Field(None, min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None\nclass Tag(TagBase):\n    id: str\n    user_id: str  # User ID of the tag owner\n    created_at: datetime\n    updated_at: datetime\n    class Config:",
+        "peekOfCode": "class TagUpdate(BaseModel):\n    name: Optional[str] = Field(None, min_length=1, max_length=100)\n    description: Optional[str] = None\n    color: Optional[str] = None\nclass Tag(TagBase):\n    id: str\n    user_id: str  # User ID of the tag owner\n    created_at: datetime\n    updated_at: datetime\n    is_system: bool = False  # System tags (favoris, partage, type) are hidden from normal lists",
         "detail": "back.src.models.tag",
         "documentation": {}
     },
@@ -2784,7 +2897,7 @@
         "kind": 6,
         "importPath": "back.src.models.tag",
         "description": "back.src.models.tag",
-        "peekOfCode": "class Tag(TagBase):\n    id: str\n    user_id: str  # User ID of the tag owner\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass TagRelation(BaseModel):\n    \"\"\"Represents a tag with its relationship type\"\"\"\n    tag: Tag",
+        "peekOfCode": "class Tag(TagBase):\n    id: str\n    user_id: str  # User ID of the tag owner\n    created_at: datetime\n    updated_at: datetime\n    is_system: bool = False  # System tags (favoris, partage, type) are hidden from normal lists\n    class Config:\n        from_attributes = True\nclass TagRelation(BaseModel):\n    \"\"\"Represents a tag with its relationship type\"\"\"",
         "detail": "back.src.models.tag",
         "documentation": {}
     },
@@ -2964,7 +3077,7 @@
         "kind": 6,
         "importPath": "back.src.repositories.tag_repository",
         "description": "back.src.repositories.tag_repository",
-        "peekOfCode": "class TagRepository:\n    def __init__(self, driver: Driver):\n        self.driver = driver\n    def create(self, tag: TagCreate) -> Tag:\n        \"\"\"Create a new tag and link it to the user\"\"\"\n        with self.driver.session() as session:\n            result = session.run(\"\"\"\n                MATCH (u:User {id: $user_id})\n                CREATE (t:Tag {\n                    id: $id,",
+        "peekOfCode": "class TagRepository:\n    def __init__(self, driver: Driver):\n        self.driver = driver\n    def get_by_name_and_user(self, name: str, user_id: str) -> Optional[Tag]:\n        \"\"\"Get a tag by name and user ID\"\"\"\n        with self.driver.session() as session:\n            result = session.run(\"\"\"\n                MATCH (u:User {id: $user_id})-[:OWNS]->(t:Tag)\n                WHERE t.name = $name\n                RETURN t",
         "detail": "back.src.repositories.tag_repository",
         "documentation": {}
     },

@@ -11,6 +11,7 @@ class TagBase(BaseModel):
 
 class TagCreate(TagBase):
     user_id: Optional[str] = None  # Optional, will be set by the backend from auth token
+    is_system: Optional[bool] = False  # System tags are not editable/visible in lists
 
 
 class TagUpdate(BaseModel):
@@ -24,6 +25,7 @@ class Tag(TagBase):
     user_id: str  # User ID of the tag owner
     created_at: datetime
     updated_at: datetime
+    is_system: bool = False  # System tags (favoris, partage, type) are hidden from normal lists
     
     class Config:
         from_attributes = True
