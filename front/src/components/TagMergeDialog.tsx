@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tag } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -21,6 +21,16 @@ const TagMergeDialog = ({ isOpen, tags, onMerge, onCancel }: TagMergeDialogProps
   const [targetTag, setTargetTag] = useState<{ name: string; color: string } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [allKnownTags, setAllKnownTags] = useState<Map<string, Tag>>(new Map());
+
+  // Keep track of all tags (from props - they get updated when TagSelector finds new ones)
+  useEffect(() => {
+    setAllKnownTags((prev) => {
+      const updated = new Map(prev);
+      tags.forEach((tag) => updated.set(tag.id, tag));
+      return updated;
+    });
+  }, [tags]);
 
   const handleSubmit = async () => {
     setError(null);
@@ -61,8 +71,17 @@ const TagMergeDialog = ({ isOpen, tags, onMerge, onCancel }: TagMergeDialogProps
     onCancel();
   };
 
-  // Get tags objects for display
-  const sourceTagsData = tags.filter((tag) => sourceTags.includes(tag.id));
+  // Callback to receive all known tags from TagSelector
+  const handleKnownTagsChange = (knownTags: Tag[]) => {
+    setAllKnownTags((prev) => {
+      const updated = new Map(prev);
+      knownTags.forEach((tag) => updated.set(tag.id, tag));
+      return updated;
+    });
+  };
+
+  // Get tags objects for display from all known tags
+  const sourceTagsData = sourceTags.map((id) => allKnownTags.get(id)).filter((tag): tag is Tag => tag !== undefined);
   const targetTagData = targetTag ? { id: "new", name: targetTag.name, color: targetTag.color } : null;
 
   // Filter tags for source selector
@@ -80,7 +99,7 @@ const TagMergeDialog = ({ isOpen, tags, onMerge, onCancel }: TagMergeDialogProps
           {/* Source Tags */}
           <div className="space-y-2">
             <Label>Source Tags (to be merged and deleted)</Label>
-            <TagSelector tags={availableSourceTags} selectedTagIds={sourceTags} onTagsChange={setSourceTags} placeholder="Select tags to merge..." />
+            <TagSelector tags={availableSourceTags} selectedTagIds={sourceTags} onTagsChange={setSourceTags} onKnownTagsChange={handleKnownTagsChange} placeholder="Select tags to merge..." />
             {sourceTags.length > 0 && (
               <p className="text-xs text-muted-foreground">
                 {sourceTags.length} tag{sourceTags.length > 1 ? "s" : ""} selected

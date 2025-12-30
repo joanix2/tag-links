@@ -57,7 +57,10 @@
 
 ✅ corriger la suppression des token api + lien avec le user
 
-fix merge : lors du merge de deux tags et de la création d'un nouveau tag, des données sont perdu, seul un des tags et remplacer
+✅ fix merge : lors du merge de deux tags et de la création d'un nouveau tag, des données sont perdu, seul un des tags et remplacer
+✅ -> merge aussi dans la liste de selection
+✅ -> recherche côté serveur dans TagSelector
+✅ -> dans la popup de merge des tags, il y a un problème d'affichage les tags qui ne sont pas dans la liste des tags ne sont pas montré
 
 lors de la d'urls par tags, il faut rajouter si on utilise un opérateur ET ou OU recherche ET / OU (pour moi c'est un OU avec un tris par distance mais certains utilisateurs préfère le ET)
 
@@ -77,4 +80,4 @@ créer une CD
 responsive
 reset password
 téléchargement des données en csv
-chargement de tous les tags dans le front (bof bof)
+gérer mieux le graphe

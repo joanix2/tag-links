@@ -152,7 +152,7 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   const handleTagMerge = async (sourceTagIds: string[], targetTag: { name: string; color: string }) => {
     try {
-      await fetchApi("/tags/merge", {
+      const response = await fetchApi("/tags/merge", {
         method: "POST",
         body: JSON.stringify({
           source_tag_ids: sourceTagIds,
@@ -160,11 +160,25 @@ export function AppLayout({ children }: AppLayoutProps) {
         }),
       });
 
+      const mergedTagId = response.target_tag_id;
+
       // Reload tags to reflect the changes
       await reloadTags();
 
-      // Clear selected tags if any of the merged tags were selected
-      setSelectedTags((prev) => prev.filter((id) => !sourceTagIds.includes(id)));
+      // Update selected tags:
+      // - Remove all source tags that were merged
+      // - Add the new merged tag if any of the source tags were selected
+      setSelectedTags((prev) => {
+        const hadSelectedSourceTag = prev.some((id) => sourceTagIds.includes(id));
+        const newSelection = prev.filter((id) => !sourceTagIds.includes(id));
+
+        // If at least one merged tag was selected, add the new merged tag
+        if (hadSelectedSourceTag && !newSelection.includes(mergedTagId)) {
+          newSelection.push(mergedTagId);
+        }
+
+        return newSelection;
+      });
     } catch (error) {
       console.error("Failed to merge tags:", error);
       throw error;

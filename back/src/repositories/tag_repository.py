@@ -238,46 +238,45 @@ class TagRepository:
             other_source_ids = [tag_id for tag_id in source_tag_ids if tag_id != target_tag_id]
             
             result = session.run("""
-                // Get the target tag (first source tag)
+                // Step 1: Get the target tag and update its properties
                 MATCH (targetTag:Tag {id: $target_tag_id})
-                
-                // Update the target tag's name and color
                 SET targetTag.name = $new_name,
                     targetTag.color = $new_color
                 
-                // Get all other source tags
+                // Step 2: Find all URLs that have any source tag (including target)
                 WITH targetTag
-                MATCH (sourceTag:Tag)
-                WHERE sourceTag.id IN $other_source_ids
+                OPTIONAL MATCH (url:URL)-[:HAS_TAG]->(sourceTag:Tag)
+                WHERE sourceTag.id IN $all_source_ids
                 
-                // Find all URLs that have any source tag
-                WITH targetTag, sourceTag
-                MATCH (url:URL)-[r:HAS_TAG]->(sourceTag)
-                
-                // Collect all URLs and source tags before making changes
-                WITH DISTINCT url, targetTag, sourceTag, collect(r) as source_rels
-                
-                // Create relationship to target tag only if it doesn't exist
+                // Step 3: Create relationship to target tag for each URL (if not exists)
+                WITH DISTINCT url, targetTag, collect(DISTINCT sourceTag) as allSourceTags
+                WHERE url IS NOT NULL
                 MERGE (url)-[:HAS_TAG]->(targetTag)
                 
-                // Delete all relationships from this URL to source tags
-                WITH url, targetTag, sourceTag, source_rels
-                UNWIND source_rels as rel
-                DELETE rel
+                // Step 4: Delete old relationships from URL to other source tags
+                WITH url, targetTag, allSourceTags
+                UNWIND allSourceTags as sourceTag
+                WITH url, targetTag, sourceTag
+                WHERE sourceTag.id <> targetTag.id AND sourceTag.id IN $other_source_ids
+                OPTIONAL MATCH (url)-[oldRel:HAS_TAG]->(sourceTag)
+                DELETE oldRel
                 
-                // Count distinct URLs that were updated
+                // Step 5: Count and collect info
                 WITH DISTINCT url, targetTag, sourceTag
                 WITH targetTag, count(DISTINCT url) as urls_updated, collect(DISTINCT sourceTag) as sourceTags
                 
-                // Delete the source tags
-                UNWIND sourceTags as sourceTag
-                DETACH DELETE sourceTag
+                // Step 6: Delete the source tags (not the target)
+                UNWIND sourceTags as st
+                WITH targetTag, urls_updated, st
+                WHERE st.id IN $other_source_ids
+                DETACH DELETE st
                 
-                RETURN count(DISTINCT sourceTag) as tags_merged, 
-                       urls_updated
+                WITH targetTag, urls_updated, count(DISTINCT st) as tags_merged
+                RETURN tags_merged, urls_updated
             """, 
                 target_tag_id=target_tag_id,
-                other_source_ids=other_source_ids,
+                all_source_ids=source_tag_ids,  # All tags including target
+                other_source_ids=other_source_ids,  # Only tags to delete
                 new_name=new_name,
                 new_color=new_color
             )
@@ -287,3 +286,4 @@ class TagRepository:
                 "tags_merged": record["tags_merged"] if record else 0,
                 "urls_updated": record["urls_updated"] if record else 0
             }
+
