@@ -24,6 +24,7 @@ class UserRepository:
                     full_name: $full_name,
                     hashed_password: $hashed_password,
                     is_active: true,
+                    tag_match_mode: 'OR',
                     created_at: datetime(),
                     updated_at: datetime()
                 })
@@ -91,6 +92,9 @@ class UserRepository:
         if user.password is not None:
             updates.append("u.password_hash = $password")
             params["password"] = user.password  # TODO: Hash in production!
+        if user.tag_match_mode is not None:
+            updates.append("u.tag_match_mode = $tag_match_mode")
+            params["tag_match_mode"] = user.tag_match_mode
         
         if not updates:
             return self.get_by_id(user_id)
@@ -172,6 +176,7 @@ class UserRepository:
             email=node.get("email"),
             full_name=node.get("full_name"),
             is_active=node.get("is_active", True),
+            tag_match_mode=node.get("tag_match_mode", "OR"),
             created_at=created_at,
             updated_at=updated_at
         )

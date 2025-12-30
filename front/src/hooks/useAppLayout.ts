@@ -11,7 +11,9 @@ export interface AppLayoutContextType {
   selectedTagsData: Tag[];
   currentView: "links" | "graph";
   showUntagged: boolean;
+  tagMatchMode: "OR" | "AND";
   setCurrentView: (view: "links" | "graph") => void;
+  setTagMatchMode: (mode: "OR" | "AND") => void;
   handleTagSelect: (tagId: string) => void;
   handleTagCreate: (tag: Omit<Tag, "id">) => Promise<Tag>;
   handleTagUpdate: (tag: Tag) => Promise<void>;

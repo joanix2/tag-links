@@ -7,6 +7,7 @@ export type User = {
   username: string;
   email?: string;
   is_active: boolean;
+  tag_match_mode?: "OR" | "AND";
 };
 
 type AuthContextType = {

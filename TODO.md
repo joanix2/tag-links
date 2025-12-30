@@ -62,22 +62,24 @@
 ✅ -> recherche côté serveur dans TagSelector
 ✅ -> dans la popup de merge des tags, il y a un problème d'affichage les tags qui ne sont pas dans la liste des tags ne sont pas montré
 
-lors de la d'urls par tags, il faut rajouter si on utilise un opérateur ET ou OU recherche ET / OU (pour moi c'est un OU avec un tris par distance mais certains utilisateurs préfère le ET)
+✅ lors de la recherche d'urls par tags, il faut rajouter un boutton pour savoir quel opérateur on utilise (ET ou OU) (pour moi c'est un OU avec un tris par distance mais certains utilisateurs préfère le ET)
 
-ajoute un mode non éditable pour les tags
+✅ bouton OR/AND carré entre le + et la barre de recherche, choix persistant dans les paramètres utilisateur
 
-bouton de recherche favoris et et partage et type
+persistance du paramètre
 
-export csv
+✅ bouton de recherche favoris et et partage et type
+
+ajoute un mode non éditable/non visible pour les tags, ce sont pour les tags spéciaux favoris, partage et type de documents, je ne veux pas qu'il soir visible dans la liste des tags (recherche, merge et liste en bas des liens)
 
 Logo arbre
 Photo de profile
-espace entre les tags
+✅ espace entre les tags
 choix d'un theme de couleur dans le profile
+téléchargement des données en csv
 
 géréer le proxy (NPM)
 créer une CD
 responsive
 reset password
-téléchargement des données en csv
 gérer mieux le graphe

@@ -26,8 +26,16 @@ export function AppLayout({ children }: AppLayoutProps) {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [currentView, setCurrentView] = useState<"links" | "graph">("links");
   const [showUntagged, setShowUntagged] = useState(false);
+  const [tagMatchMode, setTagMatchMode] = useState<"OR" | "AND">(user?.tag_match_mode || "OR");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [allTagsMap, setAllTagsMap] = useState<Map<string, Tag>>(new Map());
+
+  // Initialize tagMatchMode from user preferences
+  useEffect(() => {
+    if (user?.tag_match_mode) {
+      setTagMatchMode(user.tag_match_mode as "OR" | "AND");
+    }
+  }, [user]);
 
   // Check if we're on the dashboard page
   const isDashboard = location.pathname === "/dashboard";
@@ -150,6 +158,20 @@ export function AppLayout({ children }: AppLayoutProps) {
     }
   };
 
+  const handleSetTagMatchMode = async (mode: "OR" | "AND") => {
+    setTagMatchMode(mode);
+
+    // Save preference to backend
+    try {
+      await fetchApi(`/users/${user?.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ tag_match_mode: mode }),
+      });
+    } catch (error) {
+      console.error("Failed to save tag match mode preference:", error);
+    }
+  };
+
   const handleTagMerge = async (sourceTagIds: string[], targetTag: { name: string; color: string }) => {
     try {
       const response = await fetchApi("/tags/merge", {
@@ -205,7 +227,9 @@ export function AppLayout({ children }: AppLayoutProps) {
     selectedTagsData,
     currentView,
     showUntagged,
+    tagMatchMode,
     setCurrentView,
+    setTagMatchMode: handleSetTagMatchMode,
     handleTagSelect,
     handleTagCreate,
     handleTagUpdate,

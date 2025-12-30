@@ -14,7 +14,7 @@ import { toggleSpecialTag } from "@/services/tagService";
 function DashboardContent() {
   const { fetchApi } = useApi();
   const { user } = useAuth();
-  const { tags, selectedTags, currentView, showUntagged, reloadTags, tagsLoading, hasMoreTags, totalTags, tagsScrollContainerRef, registerTagsFromLinks } = useAppLayout();
+  const { tags, selectedTags, currentView, showUntagged, tagMatchMode, reloadTags, tagsLoading, hasMoreTags, totalTags, tagsScrollContainerRef, registerTagsFromLinks } = useAppLayout();
 
   // State
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,7 +34,7 @@ function DashboardContent() {
       // Add tag filtering if tags are selected
       if (selectedTags.length > 0) {
         params.append("tag_ids", selectedTags.join(","));
-        params.append("match_mode", "OR"); // Can be made configurable later
+        params.append("match_mode", tagMatchMode); // Use the mode from context
       }
 
       // Add untagged filter
@@ -57,7 +57,7 @@ function DashboardContent() {
         has_more: response.has_more,
       };
     },
-    [fetchApi, selectedTags, showUntagged]
+    [fetchApi, selectedTags, showUntagged, tagMatchMode]
   );
 
   const {
@@ -75,11 +75,11 @@ function DashboardContent() {
     threshold: 500,
   });
 
-  // Reload links when filters change (selectedTags or showUntagged)
+  // Reload links when filters change (selectedTags, showUntagged, or tagMatchMode)
   useEffect(() => {
     reloadLinks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedTags, showUntagged]); // Only trigger on filter changes, not on reloadLinks
+  }, [selectedTags, showUntagged, tagMatchMode]); // Only trigger on filter changes, not on reloadLinks
 
   // Register all tags from links into the global tags map
   useEffect(() => {

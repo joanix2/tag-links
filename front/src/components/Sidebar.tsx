@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Tag } from "@/types";
-import { Plus, Search, TagIcon, Merge, X, Loader2 } from "lucide-react";
+import { Plus, Search, TagIcon, Merge, X, Loader2, Heart, Share2, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import TagsList from "./TagsList";
 import TagForm from "./TagForm";
@@ -31,9 +32,51 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
   const [isMergeDialogOpen, setIsMergeDialogOpen] = useState(false);
   const [searchResults, setSearchResults] = useState<Tag[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [showFavorites, setShowFavorites] = useState(false);
+  const [showShared, setShowShared] = useState(false);
+  const [selectedDocType, setSelectedDocType] = useState<string>("");
 
-  const { showUntagged, toggleUntagged, handleTagMerge, selectedTagsData } = useAppLayout();
+  const { showUntagged, toggleUntagged, handleTagMerge, selectedTagsData, tagMatchMode, setTagMatchMode } = useAppLayout();
   const { fetchApi } = useApi();
+
+  // Document types list (matching backend DOCUMENT_TYPES)
+  const DOCUMENT_TYPES = ["Page", "Image", "Vidéo", "Son", "Texte", "PDF", "Présentation", "3D", "Formulaire", "Carte", "Tableau", "Graphique", "Animation", "Jeu", "Quiz", "Simulation", "Autre"];
+
+  // Find special tags by name
+  const favoritesTag = tags.find((tag) => tag.name.toLowerCase() === "favoris");
+  const sharedTag = tags.find((tag) => tag.name.toLowerCase() === "partage");
+
+  // Find document type tags (tags matching DOCUMENT_TYPES list)
+  const docTypeTags = tags.filter((tag) => DOCUMENT_TYPES.includes(tag.name));
+
+  const handleToggleFavorites = () => {
+    if (favoritesTag) {
+      onTagSelect(favoritesTag.id);
+      setShowFavorites(!showFavorites);
+    }
+  };
+
+  const handleToggleShared = () => {
+    if (sharedTag) {
+      onTagSelect(sharedTag.id);
+      setShowShared(!showShared);
+    }
+  };
+
+  const handleDocTypeChange = (value: string) => {
+    // Clear previous doc type selection if any
+    const currentDocType = docTypeTags.find((tag) => selectedTags.includes(tag.id));
+    if (currentDocType) {
+      onTagSelect(currentDocType.id); // Deselect current
+    }
+
+    if (value && value !== "all") {
+      setSelectedDocType(value);
+      onTagSelect(value); // Select new doc type
+    } else {
+      setSelectedDocType("");
+    }
+  };
 
   const handleNewTag = () => {
     setEditingTag(null);
@@ -121,8 +164,30 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
 
       {/* Main Content Area */}
       <div id="sidebar-main-content" className="flex-1 min-h-0 p-3 flex flex-col">
-        {/* Search + Add Button */}
-        <div className="flex gap-2 flex-shrink-0 mb-3">
+        {/* Document Type Selector */}
+        {docTypeTags.length > 0 && (
+          <div className="flex gap-2 items-center flex-shrink-0 mb-3">
+            <Select value={selectedDocType || "all"} onValueChange={handleDocTypeChange}>
+              <SelectTrigger className="h-9 text-sm shadow-sm hover:shadow transition-all">
+                <div className="flex items-center gap-2">
+                  <FileText size={16} className="text-muted-foreground" />
+                  <SelectValue placeholder="All document types" />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All document types</SelectItem>
+                {docTypeTags.map((tag) => (
+                  <SelectItem key={tag.id} value={tag.id}>
+                    {tag.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        )}
+
+        {/* Search Bar */}
+        <div className="flex gap-2 flex-shrink-0 mb-2">
           <div className="relative flex-1">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground pointer-events-none" />
             <Input
@@ -138,17 +203,50 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
               </Button>
             )}
           </div>
+          {/* Add Button */}
           <Button variant="default" size="icon" onClick={handleNewTag} title="Add new tag" className="h-9 w-9 shadow-sm hover:shadow transition-all">
             <Plus size={16} />
           </Button>
         </div>
 
-        {/* Action Buttons */}
+        {/* Action Buttons Row */}
         <div className="flex gap-2 items-center flex-shrink-0 mb-3">
           {/* Untagged Links Button */}
           <Button variant={showUntagged ? "default" : "outline"} className="flex-1 justify-start gap-2 text-sm h-9 shadow-sm hover:shadow transition-all" onClick={toggleUntagged}>
             <TagIcon size={16} />
             <span className="truncate">Untagged</span>
+          </Button>
+          {/* Favorites Button */}
+          <Button
+            variant={favoritesTag && selectedTags.includes(favoritesTag.id) ? "default" : "outline"}
+            size="icon"
+            onClick={handleToggleFavorites}
+            title="Show favorites"
+            className="h-9 w-9 shadow-sm hover:shadow transition-all"
+            disabled={!favoritesTag}
+          >
+            <Heart size={16} />
+          </Button>
+          {/* Shared Button */}
+          <Button
+            variant={sharedTag && selectedTags.includes(sharedTag.id) ? "default" : "outline"}
+            size="icon"
+            onClick={handleToggleShared}
+            title="Show shared"
+            className="h-9 w-9 shadow-sm hover:shadow transition-all"
+            disabled={!sharedTag}
+          >
+            <Share2 size={16} />
+          </Button>
+          {/* Match Mode Toggle Button */}
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => setTagMatchMode(tagMatchMode === "OR" ? "AND" : "OR")}
+            title={tagMatchMode === "OR" ? "Click to switch to AND mode (all tags)" : "Click to switch to OR mode (any tag)"}
+            className="h-9 w-9 shadow-sm hover:shadow transition-all font-semibold"
+          >
+            {tagMatchMode}
           </Button>
           {/* Merge Tags Button */}
           <Button variant="outline" size="icon" onClick={() => setIsMergeDialogOpen(true)} title="Merge tags" className="h-9 w-9 shadow-sm hover:shadow transition-all" disabled={tags.length < 2}>

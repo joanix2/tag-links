@@ -2787,7 +2787,7 @@
         "kind": 6,
         "importPath": "back.src.models.user",
         "description": "back.src.models.user",
-        "peekOfCode": "class UserLogin(BaseModel):\n    username: str\n    password: str\nclass UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)\nclass User(UserBase):\n    id: str",
+        "peekOfCode": "class UserLogin(BaseModel):\n    username: str\n    password: str\nclass UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)\n    tag_match_mode: Optional[str] = Field(None, pattern=\"^(OR|AND)$\")\nclass User(UserBase):",
         "detail": "back.src.models.user",
         "documentation": {}
     },
@@ -2796,7 +2796,7 @@
         "kind": 6,
         "importPath": "back.src.models.user",
         "description": "back.src.models.user",
-        "peekOfCode": "class UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)\nclass User(UserBase):\n    id: str\n    is_active: bool = True\n    created_at: datetime\n    updated_at: datetime",
+        "peekOfCode": "class UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)\n    tag_match_mode: Optional[str] = Field(None, pattern=\"^(OR|AND)$\")\nclass User(UserBase):\n    id: str\n    is_active: bool = True\n    tag_match_mode: str = \"OR\"  # Default preference for tag filtering",
         "detail": "back.src.models.user",
         "documentation": {}
     },
@@ -2805,7 +2805,7 @@
         "kind": 6,
         "importPath": "back.src.models.user",
         "description": "back.src.models.user",
-        "peekOfCode": "class User(UserBase):\n    id: str\n    is_active: bool = True\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass UserInDB(User):\n    \"\"\"User model with hashed password (for internal use)\"\"\"\n    hashed_password: str",
+        "peekOfCode": "class User(UserBase):\n    id: str\n    is_active: bool = True\n    tag_match_mode: str = \"OR\"  # Default preference for tag filtering\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass UserInDB(User):\n    \"\"\"User model with hashed password (for internal use)\"\"\"",
         "detail": "back.src.models.user",
         "documentation": {}
     },
