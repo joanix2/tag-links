@@ -24,12 +24,14 @@ class UserUpdate(BaseModel):
     full_name: Optional[str] = None
     password: Optional[str] = Field(None, min_length=6)
     tag_match_mode: Optional[str] = Field(None, pattern="^(OR|AND)$")
+    profile_picture: Optional[str] = None  # Relative path to profile picture
 
 
 class User(UserBase):
     id: str
     is_active: bool = True
     tag_match_mode: str = "OR"  # Default preference for tag filtering
+    profile_picture: Optional[str] = None  # Relative path to profile picture
     created_at: datetime
     updated_at: datetime
     

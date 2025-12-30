@@ -73,10 +73,12 @@
 ajoute un mode non éditable/non visible pour les tags, ce sont pour les tags spéciaux favoris, partage et type de documents, je ne veux pas qu'il soir visible dans la liste des tags (recherche, merge et liste en bas des liens)
 
 Logo arbre
-Photo de profile
+✅ Photo de profile
 ✅ espace entre les tags
 choix d'un theme de couleur dans le profile
 téléchargement des données en csv
+
+mettre a jour l'api + doc avec le systhème
 
 géréer le proxy (NPM)
 créer une CD

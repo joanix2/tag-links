@@ -25,6 +25,7 @@ class UserRepository:
                     hashed_password: $hashed_password,
                     is_active: true,
                     tag_match_mode: 'OR',
+                    profile_picture: null,
                     created_at: datetime(),
                     updated_at: datetime()
                 })
@@ -95,6 +96,9 @@ class UserRepository:
         if user.tag_match_mode is not None:
             updates.append("u.tag_match_mode = $tag_match_mode")
             params["tag_match_mode"] = user.tag_match_mode
+        if user.profile_picture is not None:
+            updates.append("u.profile_picture = $profile_picture")
+            params["profile_picture"] = user.profile_picture
         
         if not updates:
             return self.get_by_id(user_id)
@@ -177,6 +181,7 @@ class UserRepository:
             full_name=node.get("full_name"),
             is_active=node.get("is_active", True),
             tag_match_mode=node.get("tag_match_mode", "OR"),
+            profile_picture=node.get("profile_picture"),
             created_at=created_at,
             updated_at=updated_at
         )

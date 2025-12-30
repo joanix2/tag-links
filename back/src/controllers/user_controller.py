@@ -1,7 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Query
+from fastapi import APIRouter, Depends, HTTPException, status, Query, UploadFile, File
+from fastapi.responses import FileResponse
 from typing import List
 from src.models.user import User, UserCreate, UserUpdate, UserWithContent
 from src.repositories.user_repository import UserRepository
+from src.services.image_service import ImageService, get_image_service
 from src.database import get_db
 from neo4j import Driver
 
@@ -95,3 +97,56 @@ def delete_user(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"User with id {user_id} not found"
         )
+
+
+@router.post("/{user_id}/profile-picture", response_model=User)
+async def upload_profile_picture(
+    user_id: str,
+    file: UploadFile = File(...),
+    repo: UserRepository = Depends(get_user_repository),
+    image_service: ImageService = Depends(get_image_service)
+):
+    """Upload a profile picture for a user"""
+    # Check if user exists
+    user = repo.get_by_id(user_id)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User with id {user_id} not found"
+        )
+    
+    # Delete old profile picture if exists
+    if user.profile_picture:
+        image_service.delete_profile_picture(user.profile_picture)
+    
+    # Save new profile picture
+    filename = await image_service.save_profile_picture(file, user_id)
+    
+    # Update user with new profile picture
+    updated_user = repo.update(user_id, UserUpdate(profile_picture=filename))
+    
+    return updated_user
+
+
+@router.delete("/{user_id}/profile-picture", response_model=User)
+def delete_profile_picture(
+    user_id: str,
+    repo: UserRepository = Depends(get_user_repository),
+    image_service: ImageService = Depends(get_image_service)
+):
+    """Delete a user's profile picture"""
+    user = repo.get_by_id(user_id)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User with id {user_id} not found"
+        )
+    
+    # Delete profile picture file
+    if user.profile_picture:
+        image_service.delete_profile_picture(user.profile_picture)
+    
+    # Update user to remove profile picture
+    updated_user = repo.update(user_id, UserUpdate(profile_picture=None))
+    
+    return updated_user

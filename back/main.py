@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
+from pathlib import Path
 from src.config import get_settings
 from src.database import neo4j_connection, init_constraints
 from src.controllers import tag_router, user_router, url_router, file_router
@@ -53,6 +55,11 @@ app.include_router(url_router, prefix="/api")
 app.include_router(file_router, prefix="/api")
 app.include_router(api_token_router, prefix="/api")
 app.include_router(public_api_router, prefix="/api")
+
+# Mount static files for profile pictures
+assets_path = Path("assets")
+assets_path.mkdir(exist_ok=True)
+app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
 
 @app.get("/")

@@ -12,6 +12,7 @@ import { Tag } from "@/types";
 import { useApi } from "@/hooks/useApi";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { AppLayoutContext, AppLayoutContextType } from "@/hooks/useAppLayout";
+import { API_URL } from "@/config/env";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -218,6 +219,17 @@ export function AppLayout({ children }: AppLayoutProps) {
     return username.slice(0, 2).toUpperCase();
   };
 
+  // Get profile picture URL
+  const getProfilePictureUrl = () => {
+    if (user?.profile_picture) {
+      // API_URL already contains /api, so we need to remove it and add /assets
+      const baseUrl = API_URL.replace(/\/api$/, "");
+      // Add timestamp to prevent browser caching
+      return `${baseUrl}/assets/${user.profile_picture}?t=${Date.now()}`;
+    }
+    return undefined;
+  };
+
   const showSidebar = tags.length > 0;
 
   // Get selected tags data from the allTagsMap
@@ -298,6 +310,7 @@ export function AppLayout({ children }: AppLayoutProps) {
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="relative h-9 w-9 sm:h-10 sm:w-10 rounded-full ring-2 ring-transparent hover:ring-primary/20 transition-all">
                           <Avatar className="h-9 w-9 sm:h-10 sm:w-10">
+                            <AvatarImage src={getProfilePictureUrl()} alt={user?.username} />
                             <AvatarFallback className="bg-gradient-to-br from-primary to-purple-600 text-white">{user?.username ? getInitials(user.username) : "U"}</AvatarFallback>
                           </Avatar>
                         </Button>
