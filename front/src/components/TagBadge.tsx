@@ -20,9 +20,9 @@ const TagBadge = ({ tag, isSelected = false, onClick, size = "md", showIcon = fa
       onClick={onClick}
       style={{ backgroundColor: tag.color }}
       className={cn(
-        "rounded-md font-medium shadow-sm cursor-pointer border border-white/20 transition-all text-white",
+        "rounded-md font-medium shadow-sm cursor-pointer border border-primary-foreground/20 transition-all text-white",
         sizeStyles[size],
-        isSelected && "ring-1 ring-white/50",
+        isSelected && "ring-1 ring-primary-foreground/50",
         onClick && "hover:brightness-90 active:scale-95"
       )}
     >

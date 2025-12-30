@@ -26,6 +26,7 @@ class UserRepository:
                     is_active: true,
                     tag_match_mode: 'OR',
                     profile_picture: null,
+                    theme: 'slate',
                     created_at: datetime(),
                     updated_at: datetime()
                 })
@@ -99,6 +100,9 @@ class UserRepository:
         if user.profile_picture is not None:
             updates.append("u.profile_picture = $profile_picture")
             params["profile_picture"] = user.profile_picture
+        if user.theme is not None:
+            updates.append("u.theme = $theme")
+            params["theme"] = user.theme
         
         if not updates:
             return self.get_by_id(user_id)
@@ -182,6 +186,7 @@ class UserRepository:
             is_active=node.get("is_active", True),
             tag_match_mode=node.get("tag_match_mode", "OR"),
             profile_picture=node.get("profile_picture"),
+            theme=node.get("theme", "slate"),
             created_at=created_at,
             updated_at=updated_at
         )

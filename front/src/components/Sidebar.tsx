@@ -260,7 +260,11 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
         </p>
 
         {/* Tags List - This is the scrollable container */}
-        <div id="tags-scroll-container" ref={tagSearchTerm ? undefined : tagsScrollContainerRef} className="flex-1 min-h-0 overflow-auto pb-4 scrollbar-hide">
+        <div
+          id="tags-scroll-container"
+          ref={tagSearchTerm ? undefined : tagsScrollContainerRef}
+          className="flex-1 min-h-0 overflow-auto pb-4 scrollbar-hide bg-primary text-primary-foreground rounded-lg"
+        >
           <TagsList tags={filteredTags} selectedTags={selectedTags} onTagSelect={onTagSelect} onTagEdit={handleEditTag} onTagDelete={onTagDelete} />
 
           {/* Loading indicator */}

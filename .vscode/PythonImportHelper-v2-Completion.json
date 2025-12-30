@@ -2910,7 +2910,7 @@
         "kind": 6,
         "importPath": "back.src.models.user",
         "description": "back.src.models.user",
-        "peekOfCode": "class UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)\n    tag_match_mode: Optional[str] = Field(None, pattern=\"^(OR|AND)$\")\n    profile_picture: Optional[str] = None  # Relative path to profile picture\nclass User(UserBase):\n    id: str\n    is_active: bool = True",
+        "peekOfCode": "class UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)\n    tag_match_mode: Optional[str] = Field(None, pattern=\"^(OR|AND)$\")\n    profile_picture: Optional[str] = None  # Relative path to profile picture\n    theme: Optional[str] = None  # Color theme preference\nclass User(UserBase):\n    id: str",
         "detail": "back.src.models.user",
         "documentation": {}
     },
@@ -2919,7 +2919,7 @@
         "kind": 6,
         "importPath": "back.src.models.user",
         "description": "back.src.models.user",
-        "peekOfCode": "class User(UserBase):\n    id: str\n    is_active: bool = True\n    tag_match_mode: str = \"OR\"  # Default preference for tag filtering\n    profile_picture: Optional[str] = None  # Relative path to profile picture\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass UserInDB(User):",
+        "peekOfCode": "class User(UserBase):\n    id: str\n    is_active: bool = True\n    tag_match_mode: str = \"OR\"  # Default preference for tag filtering\n    profile_picture: Optional[str] = None  # Relative path to profile picture\n    theme: str = \"slate\"  # Default color theme\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True",
         "detail": "back.src.models.user",
         "documentation": {}
     },

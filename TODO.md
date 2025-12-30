@@ -75,7 +75,7 @@ ajoute un mode non éditable/non visible pour les tags, ce sont pour les tags sp
 Logo arbre
 ✅ Photo de profile
 ✅ espace entre les tags
-choix d'un theme de couleur dans le profile
+choix d'un theme de couleur dans le profile (color picker)
 téléchargement des données en csv
 
 mettre a jour l'api + doc avec le systhème

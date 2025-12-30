@@ -1,6 +1,7 @@
 import { AppLayout } from "@/components/layouts/AppLayout";
 import { ProfileInformation } from "@/components/profile/ProfileInformation";
 import { APITokensSection } from "@/components/profile/APITokensSection";
+import { ThemeSettings } from "@/components/profile/ThemeSettings";
 import { DangerZone } from "@/components/profile/DangerZone";
 
 export default function ProfilePage() {
@@ -10,6 +11,10 @@ export default function ProfilePage() {
         <h1 className="text-3xl font-bold mb-6">Your Profile</h1>
 
         <ProfileInformation />
+
+        <div className="mt-6">
+          <ThemeSettings />
+        </div>
 
         <div className="mt-6">
           <APITokensSection />

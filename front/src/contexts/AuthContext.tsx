@@ -9,6 +9,7 @@ export type User = {
   is_active: boolean;
   tag_match_mode?: "OR" | "AND";
   profile_picture?: string;
+  theme?: string;
 };
 
 type AuthContextType = {
@@ -29,6 +30,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+
+  // Apply theme when user changes
+  useEffect(() => {
+    if (user?.theme) {
+      document.documentElement.setAttribute("data-theme", user.theme);
+    }
+  }, [user?.theme]);
 
   useEffect(() => {
     const loadUser = async () => {

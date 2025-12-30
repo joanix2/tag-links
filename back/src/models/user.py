@@ -25,6 +25,7 @@ class UserUpdate(BaseModel):
     password: Optional[str] = Field(None, min_length=6)
     tag_match_mode: Optional[str] = Field(None, pattern="^(OR|AND)$")
     profile_picture: Optional[str] = None  # Relative path to profile picture
+    theme: Optional[str] = None  # Color theme preference
 
 
 class User(UserBase):
@@ -32,6 +33,7 @@ class User(UserBase):
     is_active: bool = True
     tag_match_mode: str = "OR"  # Default preference for tag filtering
     profile_picture: Optional[str] = None  # Relative path to profile picture
+    theme: str = "slate"  # Default color theme
     created_at: datetime
     updated_at: datetime
     

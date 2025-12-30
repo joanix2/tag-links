@@ -37,7 +37,9 @@ const TagsList = ({ tags, selectedTags, onTagSelect, onTagEdit, onTagDelete }: T
         tags.map((tag) => (
           <div
             key={tag.id}
-            className={`flex items-center justify-between p-1 rounded-md transition-colors ${selectedTags.includes(tag.id) ? "bg-accent shadow-sm border border-border" : "hover:bg-accent/20"}`}
+            className={`flex items-center justify-between p-1 rounded-md transition-colors ${
+              selectedTags.includes(tag.id) ? "bg-primary-foreground/20 shadow-sm border border-primary-foreground/30" : "hover:bg-primary-foreground/10"
+            }`}
           >
             <div className="flex items-center gap-2 flex-1 cursor-pointer" onClick={() => onTagSelect(tag.id)}>
               <TagBadge tag={tag} isSelected={selectedTags.includes(tag.id)} size="sm" showIcon />
@@ -46,7 +48,7 @@ const TagsList = ({ tags, selectedTags, onTagSelect, onTagEdit, onTagDelete }: T
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-7 w-7 opacity-50 hover:opacity-100"
+                className="h-7 w-7 opacity-50 hover:opacity-100 text-primary-foreground hover:text-primary-foreground hover:bg-primary-foreground/20"
                 onClick={(e) => {
                   e.stopPropagation();
                   onTagEdit(tag);
@@ -57,7 +59,7 @@ const TagsList = ({ tags, selectedTags, onTagSelect, onTagEdit, onTagDelete }: T
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-7 w-7 opacity-50 hover:opacity-100 hover:text-destructive"
+                className="h-7 w-7 opacity-50 hover:opacity-100 text-primary-foreground hover:text-destructive hover:bg-primary-foreground/20"
                 onClick={(e) => {
                   e.stopPropagation();
                   confirmDelete(tag.id);
