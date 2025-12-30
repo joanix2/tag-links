@@ -41,6 +41,7 @@ export async function toggleSpecialTag(options: ToggleTagOptions): Promise<Toggl
         name: tagName,
         color: tagColor,
         user_id: userId,
+        is_system: true, // Mark special tags as system tags
       }),
     })) as Tag;
     specialTag = newTag;

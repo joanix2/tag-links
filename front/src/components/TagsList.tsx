@@ -44,30 +44,32 @@ const TagsList = ({ tags, selectedTags, onTagSelect, onTagEdit, onTagDelete }: T
             <div className="flex items-center gap-2 flex-1 cursor-pointer" onClick={() => onTagSelect(tag.id)}>
               <TagBadge tag={tag} isSelected={selectedTags.includes(tag.id)} size="sm" showIcon />
             </div>
-            <div className="flex items-center">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-7 w-7 opacity-50 hover:opacity-100 text-primary-foreground hover:text-primary-foreground hover:bg-primary-foreground/20"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onTagEdit(tag);
-                }}
-              >
-                <Edit size={14} />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-7 w-7 opacity-50 hover:opacity-100 text-primary-foreground hover:text-destructive hover:bg-primary-foreground/20"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  confirmDelete(tag.id);
-                }}
-              >
-                <Trash2 size={14} />
-              </Button>
-            </div>
+            {!tag.is_system && (
+              <div className="flex items-center">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-7 w-7 opacity-50 hover:opacity-100 text-primary-foreground hover:text-primary-foreground hover:bg-primary-foreground/20"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onTagEdit(tag);
+                  }}
+                >
+                  <Edit size={14} />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-7 w-7 opacity-50 hover:opacity-100 text-primary-foreground hover:text-destructive hover:bg-primary-foreground/20"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    confirmDelete(tag.id);
+                  }}
+                >
+                  <Trash2 size={14} />
+                </Button>
+              </div>
+            )}
           </div>
         ))
       ) : (

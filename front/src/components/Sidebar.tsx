@@ -119,7 +119,7 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
     setIsSearching(true);
     const timeoutId = setTimeout(async () => {
       try {
-        const results = await fetchApi(`/tags/search/?q=${encodeURIComponent(tagSearchTerm)}&threshold=0.3&limit=100`, {
+        const results = await fetchApi(`/tags/search/?q=${encodeURIComponent(tagSearchTerm)}&threshold=0.3&limit=100&include_system=false`, {
           method: "GET",
         });
         setSearchResults(results as Tag[]);
@@ -136,7 +136,8 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
   }, [tagSearchTerm]); // Only depend on tagSearchTerm, not fetchApi
 
   // Use search results if searching, otherwise use loaded tags
-  const filteredTags = tagSearchTerm.trim() ? searchResults : tags;
+  // Filter out system tags from display (but keep them in the tags array for Favoris/Partage buttons)
+  const filteredTags = (tagSearchTerm.trim() ? searchResults : tags).filter((tag) => !tag.is_system);
 
   return (
     <div className="relative flex flex-col h-full w-80 border-r bg-gradient-to-b from-muted/30 to-muted/10">

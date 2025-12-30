@@ -75,6 +75,7 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onTagCreate, onCancel, reloadT
           const createdTag = await onTagCreate({
             name: value,
             color: "#92400E", // Brown color for document types
+            is_system: true, // Mark document type tags as system tags
           });
           // Use the newly created tag immediately
           docTypeTag = createdTag;

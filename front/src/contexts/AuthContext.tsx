@@ -105,6 +105,34 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (userResponse.ok) {
         const userData = await userResponse.json();
         setUser(userData);
+
+        // Initialize system tags (Favoris, Partage) if they don't exist
+        try {
+          await fetch(`${API_URL}/tags/initialize-system-tags`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          // Initialize document type tags if they don't exist
+          await fetch(`${API_URL}/tags/initialize-document-types`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          // Migrate existing tags to system tags if needed
+          await fetch(`${API_URL}/tags/migrate-system-tags`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+        } catch (initError) {
+          console.error("Failed to initialize tags:", initError);
+          // Don't block login if initialization fails
+        }
+
         toast({
           title: "Login successful",
           description: `Welcome back, ${userData.username}!`,

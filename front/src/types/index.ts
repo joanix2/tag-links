@@ -2,6 +2,7 @@ export interface Tag {
   id: string;
   name: string;
   color: string;
+  is_system?: boolean; // System tags (favoris, partage, type) are hidden from normal lists
 }
 
 export interface Link {

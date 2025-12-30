@@ -47,12 +47,13 @@ export function AppLayout({ children }: AppLayoutProps) {
   // Fetch function for tags (memoized like links)
   const fetchTags = useCallback(
     async (skip: number, limit: number) => {
-      const response = await fetchApi(`/tags/?skip=${skip}&limit=${limit}`, { method: "GET" });
+      const response = await fetchApi(`/tags/?skip=${skip}&limit=${limit}&include_system=true`, { method: "GET" });
       return {
-        items: response.items.map((t: { id: string; name: string; color?: string }) => ({
+        items: response.items.map((t: { id: string; name: string; color?: string; is_system?: boolean }) => ({
           id: t.id,
           name: t.name,
           color: t.color || "#4c1d95",
+          is_system: t.is_system || false,
         })),
         total: response.total,
         has_more: response.has_more,

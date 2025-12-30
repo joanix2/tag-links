@@ -57,7 +57,7 @@ const TagSelector = ({ tags, selectedTagIds, onTagsChange, onCreateTag, onKnownT
     setIsSearching(true);
     const timeoutId = setTimeout(async () => {
       try {
-        const results = await fetchApi(`/tags/search/?q=${encodeURIComponent(searchTerm)}&threshold=0.3&limit=100`, {
+        const results = await fetchApi(`/tags/search/?q=${encodeURIComponent(searchTerm)}&threshold=0.3&limit=100&include_system=false`, {
           method: "GET",
         });
         setSearchResults(results as Tag[]);
