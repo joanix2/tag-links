@@ -128,9 +128,9 @@ const LinksView = ({
         />
       </div>
 
-      <div className="flex-1 flex flex-col overflow-hidden px-3 sm:px-4 lg:px-6">
+      <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header Bar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 p-3 border-b bg-card/50 backdrop-blur-sm">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 p-3 sm:p-4 lg:p-6 border-b bg-card/50 backdrop-blur-sm">
           {/* Search Bar */}
           <div className="flex-1">
             <SearchBar searchTerm={searchTerm} onSearch={onSearch} />

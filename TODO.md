@@ -79,6 +79,7 @@ choix d'un theme de couleur dans le profile (color picker)
 téléchargement des données en csv
 
 mettre a jour l'api + doc avec le systhème
+-> gestion du ET / OU
 
 géréer le proxy (NPM)
 créer une CD
