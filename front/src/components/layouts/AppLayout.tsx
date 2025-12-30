@@ -18,7 +18,7 @@ interface AppLayoutProps {
 }
 
 export function AppLayout({ children }: AppLayoutProps) {
-  const { user, signOut } = useAuth();
+  const { user, signOut, refreshUser } = useAuth();
   const { fetchApi } = useApi();
   const location = useLocation();
 
@@ -26,7 +26,7 @@ export function AppLayout({ children }: AppLayoutProps) {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [currentView, setCurrentView] = useState<"links" | "graph">("links");
   const [showUntagged, setShowUntagged] = useState(false);
-  const [tagMatchMode, setTagMatchMode] = useState<"OR" | "AND">(user?.tag_match_mode || "OR");
+  const [tagMatchMode, setTagMatchMode] = useState<"OR" | "AND">("OR");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [allTagsMap, setAllTagsMap] = useState<Map<string, Tag>>(new Map());
 
@@ -34,8 +34,11 @@ export function AppLayout({ children }: AppLayoutProps) {
   useEffect(() => {
     if (user?.tag_match_mode) {
       setTagMatchMode(user.tag_match_mode as "OR" | "AND");
+    } else {
+      // Default to OR if user preference is not set
+      setTagMatchMode("OR");
     }
-  }, [user]);
+  }, [user?.tag_match_mode]); // Only depend on tag_match_mode, not entire user object
 
   // Check if we're on the dashboard page
   const isDashboard = location.pathname === "/dashboard";
@@ -164,9 +167,12 @@ export function AppLayout({ children }: AppLayoutProps) {
     // Save preference to backend
     try {
       await fetchApi(`/users/${user?.id}`, {
-        method: "PATCH",
+        method: "PUT",
         body: JSON.stringify({ tag_match_mode: mode }),
       });
+
+      // Refresh user data to sync the preference
+      await refreshUser();
     } catch (error) {
       console.error("Failed to save tag match mode preference:", error);
     }

@@ -66,7 +66,7 @@
 
 ✅ bouton OR/AND carré entre le + et la barre de recherche, choix persistant dans les paramètres utilisateur
 
-persistance du paramètre
+✅ persistance du paramètre
 
 ✅ bouton de recherche favoris et et partage et type
 

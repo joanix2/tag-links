@@ -18,6 +18,7 @@ type AuthContextType = {
   signIn: (username: string, password: string) => Promise<void>;
   signUp: (username: string, password: string, email?: string, full_name?: string) => Promise<void>;
   signOut: () => void;
+  refreshUser: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -157,6 +158,26 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const refreshUser = async () => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      try {
+        const response = await fetch(`${API_URL}${API_ENDPOINTS.AUTH_ME}`, {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        });
+
+        if (response.ok) {
+          const userData = await response.json();
+          setUser(userData);
+        }
+      } catch (error) {
+        console.error("Failed to refresh user:", error);
+      }
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -167,6 +188,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         signIn,
         signUp,
         signOut,
+        refreshUser,
       }}
     >
       {children}
