@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     NEO4J_PASSWORD: str
     
     # Application Configuration
-    APP_NAME: str = "TagLink API"
+    APP_NAME: str = "MyLinks API"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = True
     

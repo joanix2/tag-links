@@ -3326,7 +3326,7 @@
         "kind": 6,
         "importPath": "back.src.config",
         "description": "back.src.config",
-        "peekOfCode": "class Settings(BaseSettings):\n    # Neo4j Configuration\n    NEO4J_URI: str\n    NEO4J_USER: str\n    NEO4J_PASSWORD: str\n    # Application Configuration\n    APP_NAME: str = \"TagLink API\"\n    APP_VERSION: str = \"1.0.0\"\n    DEBUG: bool = True\n    class Config:",
+        "peekOfCode": "class Settings(BaseSettings):\n    # Neo4j Configuration\n    NEO4J_URI: str\n    NEO4J_USER: str\n    NEO4J_PASSWORD: str\n    # Application Configuration\n    APP_NAME: str = \"MyLinks API\"\n    APP_VERSION: str = \"1.0.0\"\n    DEBUG: bool = True\n    class Config:",
         "detail": "back.src.config",
         "documentation": {}
     },
@@ -3623,7 +3623,7 @@
         "kind": 2,
         "importPath": "back.main",
         "description": "back.main",
-        "peekOfCode": "def read_root():\n    return {\n        \"message\": \"Welcome to TagLink API\",\n        \"version\": settings.APP_VERSION,\n        \"docs\": \"/docs\"\n    }\n@app.get(\"/health\")\ndef health_check():\n    \"\"\"Health check endpoint\"\"\"\n    is_connected = neo4j_connection.verify_connectivity()",
+        "peekOfCode": "def read_root():\n    return {\n        \"message\": \"Welcome to MyLinks API\",\n        \"version\": settings.APP_VERSION,\n        \"docs\": \"/docs\"\n    }\n@app.get(\"/health\")\ndef health_check():\n    \"\"\"Health check endpoint\"\"\"\n    is_connected = neo4j_connection.verify_connectivity()",
         "detail": "back.main",
         "documentation": {}
     },
@@ -3659,7 +3659,7 @@
         "kind": 5,
         "importPath": "back.main",
         "description": "back.main",
-        "peekOfCode": "assets_path = Path(\"assets\")\nassets_path.mkdir(exist_ok=True)\napp.mount(\"/assets\", StaticFiles(directory=\"assets\"), name=\"assets\")\n@app.get(\"/\")\ndef read_root():\n    return {\n        \"message\": \"Welcome to TagLink API\",\n        \"version\": settings.APP_VERSION,\n        \"docs\": \"/docs\"\n    }",
+        "peekOfCode": "assets_path = Path(\"assets\")\nassets_path.mkdir(exist_ok=True)\napp.mount(\"/assets\", StaticFiles(directory=\"assets\"), name=\"assets\")\n@app.get(\"/\")\ndef read_root():\n    return {\n        \"message\": \"Welcome to MyLinks API\",\n        \"version\": settings.APP_VERSION,\n        \"docs\": \"/docs\"\n    }",
         "detail": "back.main",
         "documentation": {}
     },

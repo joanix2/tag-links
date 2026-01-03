@@ -1,6 +1,6 @@
 # Tests
 
-Ce dossier contient tous les tests pour l'API TagLink.
+Ce dossier contient tous les tests pour l'API MyLinks.
 
 ## Structure
 

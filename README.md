@@ -2,7 +2,7 @@
 
 Application web de gestion de liens avec système de tags et visualisation en graphe.
 
-![Tag Link Logo](front/public/taglink_logo.svg)
+![Tag Link Logo](front/public/root.svg)
 
 ## 🌟 Fonctionnalités
 

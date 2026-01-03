@@ -1,4 +1,4 @@
-# Makefile pour TagLink backend
+# Makefile pour MyLinks backend
 
 .PHONY: api tests database serve
 

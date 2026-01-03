@@ -270,8 +270,8 @@ export function AppLayout({ children }: AppLayoutProps) {
                 <div className="flex items-center justify-between gap-2 sm:gap-4">
                   {/* Logo + Title */}
                   <Link to="/dashboard" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity group">
-                    <img src="/taglink_logo.svg" alt="TagLink Logo" className="h-8 w-8 sm:h-10 sm:w-10 transition-transform group-hover:scale-105" />
-                    <h1 className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">TagLink</h1>
+                    <img src="/root.svg" alt="MyLinks Logo" className="h-8 w-8 sm:h-10 sm:w-10 transition-transform group-hover:scale-105" />
+                    <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-primary">MyLinks</h1>
                   </Link>
 
                   {/* Desktop View Switcher */}

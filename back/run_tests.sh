@@ -151,7 +151,7 @@ trap cleanup EXIT INT TERM
 main() {
     echo ""
     echo "╔════════════════════════════════════════╗"
-    echo "║    TagLink API - Test Runner          ║"
+    echo "║    MyLinks API - Test Runner          ║"
     echo "╚════════════════════════════════════════╝"
     echo ""
     

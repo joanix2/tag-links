@@ -70,22 +70,23 @@
 
 ✅ bouton de recherche favoris et et partage et type
 
-ajoute un mode non éditable/non visible pour les tags, ce sont pour les tags spéciaux favoris, partage et type de documents, je ne veux pas qu'il soir visible dans la liste des tags (recherche et popup de merge)
-
-il faut créer un index sur le nom des tags, quand un nouveau tag est créer merger si ils ont le même nom
-
-Logo arbre
 ✅ Photo de profile
 ✅ espace entre les tags
 ✅ choix d'un theme de couleur dans le profile (color picker)
 
-mettre a jour l'api + doc avec le systhème
--> gestion du ET / OU
+✅ ajoute un mode non éditable/non visible pour les tags, ce sont pour les tags spéciaux favoris, partage et type de documents, je ne veux pas qu'il soir visible dans la liste des tags (recherche et popup de merge)
+
+✅ créer des tags à l'ajout de liens
+✅ téléchargement des données en csv
+
+Logo arbre
 
 fix profile picture
 
-créer des tags à l'ajout de liens
-téléchargement des données en csv
+il faut créer un index sur le nom des tags, quand un nouveau tag est créer merger si ils ont le même nom
+
+mettre a jour l'api + doc avec le systhème
+-> gestion du ET / OU
 
 géréer le proxy (NPM)
 créer une CD

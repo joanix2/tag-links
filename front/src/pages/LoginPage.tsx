@@ -70,7 +70,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">TagLink</CardTitle>
+          <CardTitle className="text-2xl font-bold">MyLinks</CardTitle>
           <CardDescription>Manage your tags, URLs, and files</CardDescription>
         </CardHeader>
         <CardContent>

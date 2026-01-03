@@ -65,7 +65,7 @@ app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 @app.get("/")
 def read_root():
     return {
-        "message": "Welcome to TagLink API",
+        "message": "Welcome to MyLinks API",
         "version": settings.APP_VERSION,
         "docs": "/docs"
     }

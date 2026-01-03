@@ -1,4 +1,4 @@
-# TagLink API Backend
+# MyLinks API Backend
 
 API FastAPI avec base de données Neo4j pour gérer des utilisateurs, tags, URLs et fichiers avec différents types de relations.
 
