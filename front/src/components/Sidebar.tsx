@@ -4,11 +4,10 @@ import { Plus, Search, TagIcon, Merge, X, Loader2, Heart, Share2, FileText } fro
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import TagsList from "./TagsList";
-import TagForm from "./TagForm";
 import TagBadge from "./TagBadge";
 import TagMergeDialog from "./TagMergeDialog";
+import TagFormDialog from "./TagFormDialog";
 import { useAppLayout } from "@/hooks/useAppLayout";
 import { useApi } from "@/hooks/useApi";
 
@@ -278,14 +277,7 @@ const Sidebar = ({ tags, selectedTags, onTagSelect, onTagCreate, onTagUpdate, on
       </div>
 
       {/* Dialog for creating/editing tags */}
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>{editingTag ? "Edit Tag" : "Create New Tag"}</DialogTitle>
-          </DialogHeader>
-          <TagForm tag={editingTag} onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
-        </DialogContent>
-      </Dialog>
+      <TagFormDialog isOpen={isDialogOpen} tag={editingTag} onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
 
       {/* Dialog for merging tags */}
       <TagMergeDialog isOpen={isMergeDialogOpen} tags={tags} onMerge={handleMergeSubmit} onCancel={() => setIsMergeDialogOpen(false)} />

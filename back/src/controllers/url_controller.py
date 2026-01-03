@@ -32,6 +32,12 @@ class PaginatedURLResponse(BaseModel):
     has_more: bool
 
 
+class URLIdsResponse(BaseModel):
+    """Response model for URL IDs only"""
+    ids: List[str]
+    total: int
+
+
 class CSVLinkImport(BaseModel):
     title: str
     url: str
@@ -254,6 +260,70 @@ def get_urls(
         has_more=has_more
     )
 
+
+@router.get("/ids", response_model=URLIdsResponse)
+def get_url_ids(
+    tag_ids: Optional[str] = Query(None, description="Comma-separated tag IDs to filter by"),
+    match_mode: str = Query("OR", regex="^(OR|AND)$", description="Tag matching mode: OR or AND"),
+    show_untagged: bool = Query(False, description="Show only untagged URLs"),
+    search_term: Optional[str] = Query(None, description="Search term for filtering URLs"),
+    repo: URLRepository = Depends(get_url_repository),
+    current_user: TokenData = Depends(get_current_active_user)
+):
+    """
+    Get only the IDs of URLs matching the filters.
+    Useful for bulk operations like "select all".
+    
+    - **tag_ids**: Comma-separated tag IDs (e.g., "id1,id2,id3")
+    - **match_mode**: "OR" (any tag) or "AND" (all tags) - default is "OR"
+    - **show_untagged**: If true, only return URLs without any tags
+    - **search_term**: Optional search term to filter URLs
+    """
+    # Parse tag_ids if provided
+    tag_id_list = []
+    if tag_ids and tag_ids.strip():
+        tag_id_list = [tid.strip() for tid in tag_ids.split(",") if tid.strip()]
+    
+    # Get IDs based on filters
+    if search_term and search_term.strip():
+        # If there's a search term, get all matching URLs first
+        if tag_id_list or show_untagged:
+            urls, _ = repo.filter_by_tags(
+                user_id=current_user.user_id,
+                tag_ids=tag_id_list,
+                match_mode=match_mode,
+                skip=0,
+                limit=10000,  # Get all matching
+                show_untagged=show_untagged
+            )
+        else:
+            urls = repo.get_by_user_with_tags(user_id=current_user.user_id, skip=0, limit=10000)
+        
+        # Filter by search term using Levenshtein
+        filtered_urls = search_by_similarity(urls, search_term, threshold=0.3)
+        url_ids = [url.id for url in filtered_urls]
+        total = len(url_ids)
+    elif tag_id_list or show_untagged:
+        # Get all IDs matching the tag filter
+        urls, total = repo.filter_by_tags(
+            user_id=current_user.user_id,
+            tag_ids=tag_id_list,
+            match_mode=match_mode,
+            skip=0,
+            limit=10000,  # Get all matching IDs
+            show_untagged=show_untagged
+        )
+        url_ids = [url.id for url in urls]
+    else:
+        # No filtering - get all URL IDs
+        urls = repo.get_by_user_with_tags(user_id=current_user.user_id, skip=0, limit=10000)
+        total = repo.count_by_user(user_id=current_user.user_id)
+        url_ids = [url.id for url in urls]
+    
+    return URLIdsResponse(
+        ids=url_ids,
+        total=total
+    )
 
 
 @router.get("/search/", response_model=List[URLWithTags])

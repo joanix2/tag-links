@@ -77,15 +77,15 @@ il faut créer un index sur le nom des tags, quand un nouveau tag est créer mer
 Logo arbre
 ✅ Photo de profile
 ✅ espace entre les tags
-choix d'un theme de couleur dans le profile (color picker)
+✅ choix d'un theme de couleur dans le profile (color picker)
 
 mettre a jour l'api + doc avec le systhème
 -> gestion du ET / OU
 
 fix profile picture
 
-✅ créer des tags à l'ajout de liens
-✅ téléchargement des données en csv
+créer des tags à l'ajout de liens
+téléchargement des données en csv
 
 géréer le proxy (NPM)
 créer une CD

@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* React Colorful styles */
-@import "react-colorful/dist/index.css";
-
 @layer base {
   :root {
     --background: 0 0% 100%;

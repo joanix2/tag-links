@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import TagSelector from "@/components/TagSelector";
+import TagFormDialog from "@/components/TagFormDialog";
+import { Plus } from "lucide-react";
 
 const DOCUMENT_TYPES = ["Page", "Image", "Vidéo", "Son", "Texte", "PDF", "Présentation", "3D", "Formulaire", "Carte", "Tableau", "Graphique", "Animation", "Jeu", "Quiz", "Simulation", "Autre"];
 
@@ -25,6 +27,7 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onTagCreate, onCancel, reloadT
   const [url, setUrl] = useState(link?.url || "");
   const [description, setDescription] = useState(link?.description || "");
   const [selectedTagIds, setSelectedTagIds] = useState<string[]>(link?.tags || []);
+  const [isCreateTagDialogOpen, setIsCreateTagDialogOpen] = useState(false);
 
   // Extract current document type from selected tags
   const getCurrentDocumentType = (): string | undefined => {
@@ -112,6 +115,34 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onTagCreate, onCancel, reloadT
     setDocumentType(docTypeTag?.name);
   };
 
+  const handleCreateTag = async (tagData: Omit<Tag, "id">) => {
+    try {
+      const createdTag = await onTagCreate({
+        name: tagData.name,
+        color: tagData.color,
+        is_system: false,
+      });
+
+      // Reload tags to include the newly created tag
+      if (reloadTags) {
+        await reloadTags();
+      }
+
+      // Add the newly created tag to selection
+      setSelectedTagIds([...selectedTagIds, createdTag.id]);
+
+      // Close dialog
+      setIsCreateTagDialogOpen(false);
+    } catch (error) {
+      console.error("Failed to create tag:", error);
+      throw error; // Let TagForm handle the error display
+    }
+  };
+
+  const handleCancelCreateTag = () => {
+    setIsCreateTagDialogOpen(false);
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onCancel()}>
       <DialogContent className="sm:max-w-[500px]">
@@ -163,9 +194,16 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onTagCreate, onCancel, reloadT
 
             <div className="grid grid-cols-4 gap-2">
               <Label className="text-right pt-2">Tags</Label>
-              <div className="col-span-3">
-                <TagSelector tags={tags} selectedTagIds={selectedTagIds} onTagsChange={handleTagsChange} placeholder="Search and select tags..." />
-                {tags.length === 0 && <p className="text-sm text-muted-foreground mt-2">No tags available. Create some tags first!</p>}
+              <div className="col-span-3 space-y-2">
+                <div className="flex gap-2">
+                  <div className="flex-1">
+                    <TagSelector tags={tags} selectedTagIds={selectedTagIds} onTagsChange={handleTagsChange} placeholder="Search and select tags..." />
+                  </div>
+                  <Button type="button" variant="outline" size="icon" onClick={() => setIsCreateTagDialogOpen(true)} title="Create new tag">
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
+                {tags.length === 0 && <p className="text-sm text-muted-foreground">No tags available. Create some tags first!</p>}
               </div>
             </div>
           </div>
@@ -180,6 +218,9 @@ const LinkForm = ({ isOpen, link, tags, onSubmit, onTagCreate, onCancel, reloadT
           </DialogFooter>
         </form>
       </DialogContent>
+
+      {/* Create Tag Dialog */}
+      <TagFormDialog isOpen={isCreateTagDialogOpen} tag={null} onSubmit={handleCreateTag} onCancel={handleCancelCreateTag} />
     </Dialog>
   );
 };

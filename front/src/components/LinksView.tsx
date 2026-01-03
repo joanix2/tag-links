@@ -8,6 +8,7 @@ import LinkForm from "@/components/LinkForm";
 import Sidebar from "@/components/Sidebar";
 import { CSVUpload, CSVLinkData, ImportError } from "@/components/CSVUpload";
 import { useAppLayout } from "@/hooks/useAppLayout";
+import { useApi } from "@/hooks/useApi";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 
@@ -60,9 +61,12 @@ const LinksView = ({
   const [editingLink, setEditingLink] = useState<Link | null>(null);
   const [selectedLinks, setSelectedLinks] = useState<string[]>([]);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [isSelectingAll, setIsSelectingAll] = useState(false);
+  const [selectAllMode, setSelectAllMode] = useState(false); // true = all matching IDs selected
 
   // Use context for tag management
-  const { handleTagCreate, handleTagUpdate, handleTagDelete, handleTagSelect, reloadTags } = useAppLayout();
+  const { handleTagCreate, handleTagUpdate, handleTagDelete, handleTagSelect, reloadTags, showUntagged, tagMatchMode } = useAppLayout();
+  const { fetchApi } = useApi();
 
   const handleNewLink = () => {
     setEditingLink(null);
@@ -88,13 +92,51 @@ const LinksView = ({
 
   const handleToggleSelection = (linkId: string) => {
     setSelectedLinks((prev) => (prev.includes(linkId) ? prev.filter((id) => id !== linkId) : [...prev, linkId]));
+    // If we're in select all mode and user deselects, exit that mode
+    if (selectAllMode) {
+      setSelectAllMode(false);
+    }
   };
 
-  const handleToggleSelectAll = () => {
-    if (selectedLinks.length === links.length) {
+  const handleToggleSelectAll = async () => {
+    if (selectAllMode || selectedLinks.length > 0) {
+      // Deselect all
       setSelectedLinks([]);
+      setSelectAllMode(false);
     } else {
-      setSelectedLinks(links.map((link) => link.id));
+      // Select all matching the current filters
+      setIsSelectingAll(true);
+      try {
+        const params = new URLSearchParams();
+        
+        if (selectedTags.length > 0) {
+          params.append("tag_ids", selectedTags.join(","));
+          params.append("match_mode", tagMatchMode);
+        }
+        
+        if (showUntagged) {
+          params.append("show_untagged", "true");
+        }
+        
+        if (searchTerm) {
+          params.append("search_term", searchTerm);
+        }
+
+        const response = await fetchApi(`/urls/ids?${params.toString()}`, {
+          method: "GET",
+        });
+
+        const { ids } = response as { ids: string[]; total: number };
+        setSelectedLinks(ids);
+        setSelectAllMode(true);
+      } catch (error) {
+        console.error("Failed to fetch all link IDs:", error);
+        // Fallback to selecting only visible links
+        setSelectedLinks(links.map((link) => link.id));
+        setSelectAllMode(false);
+      } finally {
+        setIsSelectingAll(false);
+      }
     }
   };
 
@@ -102,6 +144,7 @@ const LinksView = ({
     try {
       await onBulkDelete(selectedLinks);
       setSelectedLinks([]);
+      setSelectAllMode(false);
       setShowDeleteDialog(false);
     } catch (error) {
       console.error("Bulk delete failed:", error);
@@ -109,7 +152,8 @@ const LinksView = ({
     }
   };
 
-  const allSelected = links.length > 0 && selectedLinks.length === links.length;
+  const allSelected = selectAllMode || (links.length > 0 && selectedLinks.length === links.length);
+  const hasMoreLinks = totalLinks && totalLinks > links.length;
 
   return (
     <div className="flex flex-1 h-full overflow-hidden bg-gradient-to-br from-background to-muted/20">
@@ -182,9 +226,32 @@ const LinksView = ({
             </div>
             <div className="flex gap-2 items-center w-full sm:w-auto">
               {links.length > 0 && (
-                <Button variant="outline" size="sm" onClick={handleToggleSelectAll} className="shadow-sm flex-1 sm:flex-initial">
-                  {allSelected ? <CheckSquare size={16} className="mr-2" /> : <Square size={16} className="mr-2" />}
-                  <span>{allSelected ? "Deselect All" : "Select All"}</span>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={handleToggleSelectAll} 
+                  className="shadow-sm flex-1 sm:flex-initial"
+                  disabled={isSelectingAll}
+                  title={selectAllMode ? `All ${selectedLinks.length} matching links selected` : hasMoreLinks ? `Select all ${totalLinks} matching links` : undefined}
+                >
+                  {isSelectingAll ? (
+                    <Loader2 size={16} className="mr-2 animate-spin" />
+                  ) : allSelected ? (
+                    <CheckSquare size={16} className="mr-2" />
+                  ) : (
+                    <Square size={16} className="mr-2" />
+                  )}
+                  <span>
+                    {isSelectingAll
+                      ? "Loading..."
+                      : allSelected
+                      ? "Deselect All"
+                      : selectAllMode
+                      ? `All (${selectedLinks.length})`
+                      : hasMoreLinks
+                      ? `Select All (${totalLinks})`
+                      : "Select All"}
+                  </span>
                 </Button>
               )}
               <Select value={sortOrder} onValueChange={onSortChange}>
@@ -243,6 +310,13 @@ const LinksView = ({
               <AlertDialogTitle>Delete {selectedLinks.length} links?</AlertDialogTitle>
               <AlertDialogDescription>
                 Are you sure you want to delete {selectedLinks.length} selected {selectedLinks.length === 1 ? "link" : "links"}? This action cannot be undone.
+                {selectAllMode && (
+                  <>
+                    <br />
+                    <br />
+                    <span className="text-primary font-medium">All matching links are selected ({selectedLinks.length} total).</span>
+                  </>
+                )}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

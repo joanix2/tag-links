@@ -2517,7 +2517,16 @@
         "kind": 6,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "class PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str",
+        "peekOfCode": "class PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool\nclass URLIdsResponse(BaseModel):\n    \"\"\"Response model for URL IDs only\"\"\"\n    ids: List[str]",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "URLIdsResponse",
+        "kind": 6,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "class URLIdsResponse(BaseModel):\n    \"\"\"Response model for URL IDs only\"\"\"\n    ids: List[str]\n    total: int\nclass CSVLinkImport(BaseModel):\n    title: str\n    url: str\n    tags: List[str]\n    description: str | None = None\n    created_at: str | None = None",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2580,7 +2589,7 @@
         "kind": 2,
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
-        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool\nclass CSVLinkImport(BaseModel):",
+        "peekOfCode": "def get_tag_repository(driver: Driver = Depends(get_db)) -> TagRepository:\n    return TagRepository(driver)\nclass PaginatedURLResponse(BaseModel):\n    \"\"\"Response model for paginated URL results\"\"\"\n    items: List[URLWithTags]\n    total: int\n    skip: int\n    limit: int\n    has_more: bool\nclass URLIdsResponse(BaseModel):",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
@@ -2608,6 +2617,15 @@
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
         "peekOfCode": "def get_urls(\n    skip: int = Query(0, ge=0),\n    limit: int = Query(50, ge=1, le=100),\n    tag_ids: Optional[str] = Query(None, description=\"Comma-separated tag IDs to filter by\"),\n    match_mode: str = Query(\"OR\", regex=\"^(OR|AND)$\", description=\"Tag matching mode: OR or AND\"),\n    show_untagged: bool = Query(False, description=\"Show only untagged URLs\"),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "get_url_ids",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def get_url_ids(\n    tag_ids: Optional[str] = Query(None, description=\"Comma-separated tag IDs to filter by\"),\n    match_mode: str = Query(\"OR\", regex=\"^(OR|AND)$\", description=\"Tag matching mode: OR or AND\"),\n    show_untagged: bool = Query(False, description=\"Show only untagged URLs\"),\n    search_term: Optional[str] = Query(None, description=\"Search term for filtering URLs\"),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Get only the IDs of URLs matching the filters.",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },
