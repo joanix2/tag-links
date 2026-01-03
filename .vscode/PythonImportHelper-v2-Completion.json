@@ -1729,11 +1729,37 @@
         "documentation": {}
     },
     {
+        "label": "StreamingResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
         "label": "FileResponse",
         "importPath": "fastapi.responses",
         "description": "fastapi.responses",
         "isExtraImport": true,
         "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
         "documentation": {}
     },
     {
@@ -1833,15 +1859,6 @@
         "description": "PIL",
         "isExtraImport": true,
         "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "io",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "io",
-        "description": "io",
-        "detail": "io",
         "documentation": {}
     },
     {
@@ -2626,6 +2643,15 @@
         "importPath": "back.src.controllers.url_controller",
         "description": "back.src.controllers.url_controller",
         "peekOfCode": "def get_url_ids(\n    tag_ids: Optional[str] = Query(None, description=\"Comma-separated tag IDs to filter by\"),\n    match_mode: str = Query(\"OR\", regex=\"^(OR|AND)$\", description=\"Tag matching mode: OR or AND\"),\n    show_untagged: bool = Query(False, description=\"Show only untagged URLs\"),\n    search_term: Optional[str] = Query(None, description=\"Search term for filtering URLs\"),\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Get only the IDs of URLs matching the filters.",
+        "detail": "back.src.controllers.url_controller",
+        "documentation": {}
+    },
+    {
+        "label": "export_urls_csv",
+        "kind": 2,
+        "importPath": "back.src.controllers.url_controller",
+        "description": "back.src.controllers.url_controller",
+        "peekOfCode": "def export_urls_csv(\n    url_ids: List[str],\n    repo: URLRepository = Depends(get_url_repository),\n    current_user: TokenData = Depends(get_current_active_user)\n):\n    \"\"\"\n    Export selected URLs to CSV format.\n    - **url_ids**: List of URL IDs to export\n    Returns a CSV file with columns: title,url,tags,description,created_at\n    \"\"\"",
         "detail": "back.src.controllers.url_controller",
         "documentation": {}
     },

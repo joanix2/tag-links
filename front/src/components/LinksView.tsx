@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus, Trash2, CheckSquare, Square, Loader2 } from "lucide-react";
+import { Plus, Trash2, CheckSquare, Square, Loader2, Download } from "lucide-react";
 import { Link, Tag } from "@/types";
 import SearchBar from "@/components/SearchBar";
 import LinksList from "@/components/LinksList";
@@ -63,6 +63,7 @@ const LinksView = ({
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [isSelectingAll, setIsSelectingAll] = useState(false);
   const [selectAllMode, setSelectAllMode] = useState(false); // true = all matching IDs selected
+  const [isExporting, setIsExporting] = useState(false);
 
   // Use context for tag management
   const { handleTagCreate, handleTagUpdate, handleTagDelete, handleTagSelect, reloadTags, showUntagged, tagMatchMode } = useAppLayout();
@@ -152,6 +153,48 @@ const LinksView = ({
     }
   };
 
+  const handleExportCSV = async () => {
+    if (selectedLinks.length === 0) return;
+
+    setIsExporting(true);
+    try {
+      const token = localStorage.getItem("token");
+      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
+      // Call backend to generate CSV
+      const response = await fetch(`${API_URL}/urls/export/csv`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(selectedLinks),
+      });
+
+      if (!response.ok) {
+        throw new Error("Export failed");
+      }
+
+      // Get the blob from response
+      const blob = await response.blob();
+
+      // Create download link
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `links_export_${new Date().toISOString().split("T")[0]}.csv`);
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Failed to export CSV:", error);
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
   const allSelected = selectAllMode || (links.length > 0 && selectedLinks.length === links.length);
   const hasMoreLinks = totalLinks && totalLinks > links.length;
 
@@ -183,11 +226,18 @@ const LinksView = ({
           {/* Action Buttons */}
           <div className="flex gap-2 justify-end items-center">
             {selectedLinks.length > 0 && (
-              <Button variant="destructive" size="sm" onClick={() => setShowDeleteDialog(true)} className="shadow-sm">
-                <Trash2 size={16} className="mr-2" />
-                <span className="hidden sm:inline">Delete ({selectedLinks.length})</span>
-                <span className="sm:hidden">Delete</span>
-              </Button>
+              <>
+                <Button variant="outline" size="sm" onClick={handleExportCSV} disabled={isExporting} className="shadow-sm">
+                  {isExporting ? <Loader2 size={16} className="mr-2 animate-spin" /> : <Download size={16} className="mr-2" />}
+                  <span className="hidden sm:inline">Export ({selectedLinks.length})</span>
+                  <span className="sm:hidden">Export</span>
+                </Button>
+                <Button variant="destructive" size="sm" onClick={() => setShowDeleteDialog(true)} className="shadow-sm">
+                  <Trash2 size={16} className="mr-2" />
+                  <span className="hidden sm:inline">Delete ({selectedLinks.length})</span>
+                  <span className="sm:hidden">Delete</span>
+                </Button>
+              </>
             )}
             {onCSVUpload && <CSVUpload onUpload={onCSVUpload} />}
             <Button onClick={handleNewLink} className="shadow-sm hover:shadow transition-all">

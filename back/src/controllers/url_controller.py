@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
+from fastapi.responses import StreamingResponse
 from typing import List, Optional
 from src.models.url import URL, URLCreate, URLUpdate, URLWithTags, DOCUMENT_TYPES
 from src.repositories.url_repository import URLRepository
@@ -8,6 +9,8 @@ from src.auth import get_current_active_user, TokenData
 from src.services.levenshtein_service import search_by_similarity
 from neo4j import Driver
 from pydantic import BaseModel
+import io
+import csv
 
 router = APIRouter(prefix="/urls", tags=["urls"])
 
@@ -323,6 +326,84 @@ def get_url_ids(
     return URLIdsResponse(
         ids=url_ids,
         total=total
+    )
+
+
+@router.post("/export/csv")
+def export_urls_csv(
+    url_ids: List[str],
+    repo: URLRepository = Depends(get_url_repository),
+    current_user: TokenData = Depends(get_current_active_user)
+):
+    """
+    Export selected URLs to CSV format.
+    
+    - **url_ids**: List of URL IDs to export
+    
+    Returns a CSV file with columns: title,url,tags,description,created_at
+    """
+    # Fetch all URLs with their tags in a single query
+    from neo4j import Driver
+    driver = repo.driver
+    
+    with driver.session() as session:
+        result = session.run("""
+            MATCH (u:User {id: $user_id})-[:OWNS]->(url:URL)
+            WHERE url.id IN $url_ids
+            OPTIONAL MATCH (url)-[:HAS_TAG]->(tag:Tag)
+            RETURN url, collect(tag) as tags
+            ORDER BY url.created_at DESC
+        """, user_id=current_user.user_id, url_ids=url_ids)
+        
+        # Create CSV in memory
+        output = io.StringIO()
+        writer = csv.writer(output)
+        
+        # Write header
+        writer.writerow(['title', 'url', 'tags', 'description', 'created_at'])
+        
+        # Write data rows
+        for record in result:
+            url_node = record["url"]
+            tags_nodes = record["tags"]
+            
+            # Get tag names and join with semicolon
+            tag_names = ';'.join([tag["name"] for tag in tags_nodes if tag]) if tags_nodes else ''
+            
+            # Format created_at as YYYY-MM-DD
+            created_at = url_node.get("created_at", "")
+            if created_at:
+                from datetime import datetime
+                if isinstance(created_at, datetime):
+                    created_at = created_at.strftime('%Y-%m-%d')
+                elif isinstance(created_at, str):
+                    # Already a string, try to format it
+                    try:
+                        dt = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+                        created_at = dt.strftime('%Y-%m-%d')
+                    except:
+                        pass
+            
+            writer.writerow([
+                url_node.get("title", ""),
+                url_node.get("url", ""),
+                tag_names,
+                url_node.get("description", ""),
+                created_at
+            ])
+    
+    # Get CSV content
+    csv_content = output.getvalue()
+    output.close()
+    
+    # Return as downloadable file
+    from datetime import datetime
+    filename = f"links_export_{datetime.now().strftime('%Y-%m-%d')}.csv"
+    
+    return StreamingResponse(
+        io.BytesIO(csv_content.encode('utf-8')),
+        media_type="text/csv",
+        headers={"Content-Disposition": f"attachment; filename={filename}"}
     )
 
 
