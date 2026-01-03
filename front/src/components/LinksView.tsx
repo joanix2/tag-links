@@ -108,16 +108,16 @@ const LinksView = ({
       setIsSelectingAll(true);
       try {
         const params = new URLSearchParams();
-        
+
         if (selectedTags.length > 0) {
           params.append("tag_ids", selectedTags.join(","));
           params.append("match_mode", tagMatchMode);
         }
-        
+
         if (showUntagged) {
           params.append("show_untagged", "true");
         }
-        
+
         if (searchTerm) {
           params.append("search_term", searchTerm);
         }
@@ -226,31 +226,17 @@ const LinksView = ({
             </div>
             <div className="flex gap-2 items-center w-full sm:w-auto">
               {links.length > 0 && (
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={handleToggleSelectAll} 
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleToggleSelectAll}
                   className="shadow-sm flex-1 sm:flex-initial"
                   disabled={isSelectingAll}
                   title={selectAllMode ? `All ${selectedLinks.length} matching links selected` : hasMoreLinks ? `Select all ${totalLinks} matching links` : undefined}
                 >
-                  {isSelectingAll ? (
-                    <Loader2 size={16} className="mr-2 animate-spin" />
-                  ) : allSelected ? (
-                    <CheckSquare size={16} className="mr-2" />
-                  ) : (
-                    <Square size={16} className="mr-2" />
-                  )}
+                  {isSelectingAll ? <Loader2 size={16} className="mr-2 animate-spin" /> : allSelected ? <CheckSquare size={16} className="mr-2" /> : <Square size={16} className="mr-2" />}
                   <span>
-                    {isSelectingAll
-                      ? "Loading..."
-                      : allSelected
-                      ? "Deselect All"
-                      : selectAllMode
-                      ? `All (${selectedLinks.length})`
-                      : hasMoreLinks
-                      ? `Select All (${totalLinks})`
-                      : "Select All"}
+                    {isSelectingAll ? "Loading..." : allSelected ? "Deselect All" : selectAllMode ? `All (${selectedLinks.length})` : hasMoreLinks ? `Select All (${totalLinks})` : "Select All"}
                   </span>
                 </Button>
               )}
