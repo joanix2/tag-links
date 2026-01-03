@@ -27,6 +27,8 @@ class UserRepository:
                     tag_match_mode: 'OR',
                     profile_picture: null,
                     theme: 'slate',
+                    customPrimary: null,
+                    customPrimaryForeground: null,
                     created_at: datetime(),
                     updated_at: datetime()
                 })
@@ -103,6 +105,12 @@ class UserRepository:
         if user.theme is not None:
             updates.append("u.theme = $theme")
             params["theme"] = user.theme
+        if user.customPrimary is not None:
+            updates.append("u.customPrimary = $customPrimary")
+            params["customPrimary"] = user.customPrimary
+        if user.customPrimaryForeground is not None:
+            updates.append("u.customPrimaryForeground = $customPrimaryForeground")
+            params["customPrimaryForeground"] = user.customPrimaryForeground
         
         if not updates:
             return self.get_by_id(user_id)
@@ -187,6 +195,8 @@ class UserRepository:
             tag_match_mode=node.get("tag_match_mode", "OR"),
             profile_picture=node.get("profile_picture"),
             theme=node.get("theme", "slate"),
+            customPrimary=node.get("customPrimary"),
+            customPrimaryForeground=node.get("customPrimaryForeground"),
             created_at=created_at,
             updated_at=updated_at
         )

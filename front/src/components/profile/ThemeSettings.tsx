@@ -4,7 +4,8 @@ import { useApi } from "@/hooks/useApi";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Palette, Check } from "lucide-react";
+import { Palette, Check, Sparkles } from "lucide-react";
+import { CustomThemeDialog } from "./CustomThemeDialog";
 
 const themes = [
   { id: "slate", name: "Slate", primary: "222.2 47.4% 11.2%", primaryFg: "210 40% 98%" },
@@ -27,16 +28,40 @@ export function ThemeSettings() {
   const { toast } = useToast();
   const [selectedTheme, setSelectedTheme] = useState(user?.theme || "slate");
   const [isUpdating, setIsUpdating] = useState(false);
+  const [customDialogOpen, setCustomDialogOpen] = useState(false);
+  const [customPrimary, setCustomPrimary] = useState("222.2 47.4% 11.2%");
+  const [customPrimaryForeground, setCustomPrimaryForeground] = useState("210 40% 98%");
 
   useEffect(() => {
     if (user?.theme) {
       setSelectedTheme(user.theme);
-      applyTheme(user.theme);
-    }
-  }, [user?.theme]);
 
-  const applyTheme = (themeId: string) => {
+      // Load custom colors if theme is "custom"
+      if (user.theme === "custom" && user.customPrimary && user.customPrimaryForeground) {
+        setCustomPrimary(user.customPrimary);
+        setCustomPrimaryForeground(user.customPrimaryForeground);
+        applyTheme(user.theme, {
+          primary: user.customPrimary,
+          primaryForeground: user.customPrimaryForeground,
+        });
+      } else {
+        applyTheme(user.theme);
+      }
+    }
+  }, [user?.theme, user?.customPrimary, user?.customPrimaryForeground]);
+
+  const applyTheme = (themeId: string, customColors?: { primary: string; primaryForeground: string }) => {
     document.documentElement.setAttribute("data-theme", themeId);
+
+    // Apply custom colors if theme is "custom"
+    if (themeId === "custom" && customColors) {
+      document.documentElement.style.setProperty("--primary", customColors.primary);
+      document.documentElement.style.setProperty("--primary-foreground", customColors.primaryForeground);
+    } else if (themeId !== "custom") {
+      // Remove custom colors if switching away from custom theme
+      document.documentElement.style.removeProperty("--primary");
+      document.documentElement.style.removeProperty("--primary-foreground");
+    }
   };
 
   const handleThemeChange = async (themeId: string) => {
@@ -44,13 +69,29 @@ export function ThemeSettings() {
     setIsUpdating(true);
 
     try {
+      const payload: Record<string, unknown> = { theme: themeId };
+
+      // If custom theme, don't send custom colors yet (they will be sent separately)
+      if (themeId === "custom") {
+        payload.customPrimary = customPrimary;
+        payload.customPrimaryForeground = customPrimaryForeground;
+      }
+
       await fetchApi(`/users/${user?.id}`, {
         method: "PUT",
-        body: JSON.stringify({ theme: themeId }),
+        body: JSON.stringify(payload),
       });
 
       await refreshUser();
-      applyTheme(themeId);
+
+      if (themeId === "custom") {
+        applyTheme(themeId, {
+          primary: customPrimary,
+          primaryForeground: customPrimaryForeground,
+        });
+      } else {
+        applyTheme(themeId);
+      }
 
       toast({
         title: "Theme updated",
@@ -65,6 +106,44 @@ export function ThemeSettings() {
       });
       // Revert to previous theme
       setSelectedTheme(user?.theme || "slate");
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  const handleSaveCustomColors = async (primary: string, primaryForeground: string) => {
+    setCustomPrimary(primary);
+    setCustomPrimaryForeground(primaryForeground);
+    setIsUpdating(true);
+
+    try {
+      await fetchApi(`/users/${user?.id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          theme: "custom",
+          customPrimary: primary,
+          customPrimaryForeground: primaryForeground,
+        }),
+      });
+
+      await refreshUser();
+      setSelectedTheme("custom");
+      applyTheme("custom", {
+        primary,
+        primaryForeground,
+      });
+
+      toast({
+        title: "Couleurs personnalisées enregistrées",
+        description: "Votre thème personnalisé a été appliqué",
+      });
+    } catch (error) {
+      console.error("Failed to save custom colors:", error);
+      toast({
+        title: "Erreur",
+        description: "Impossible d'enregistrer les couleurs personnalisées",
+        variant: "destructive",
+      });
     } finally {
       setIsUpdating(false);
     }
@@ -104,8 +183,39 @@ export function ThemeSettings() {
                 )}
               </button>
             ))}
+
+            {/* Custom Theme Button */}
+            <button
+              onClick={() => setCustomDialogOpen(true)}
+              disabled={isUpdating}
+              className={`relative flex flex-col items-center gap-2 p-4 rounded-lg border-2 transition-all ${
+                selectedTheme === "custom" ? "border-primary bg-accent" : "border-muted hover:border-primary/50"
+              } ${isUpdating ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+            >
+              <div className="flex gap-1">
+                <div className="w-8 h-8 rounded-full border-2" style={{ backgroundColor: `hsl(${customPrimary})` }}></div>
+                <div className="w-8 h-8 rounded-full border-2" style={{ backgroundColor: `hsl(${customPrimaryForeground})` }}></div>
+              </div>
+              <span className="text-sm font-medium flex items-center gap-1">
+                <Sparkles className="h-3 w-3" />
+                Personnalisé
+              </span>
+              {selectedTheme === "custom" && (
+                <div className="absolute top-2 right-2">
+                  <Check className="h-4 w-4 text-primary" />
+                </div>
+              )}
+            </button>
           </div>
         </div>
+
+        <CustomThemeDialog
+          open={customDialogOpen}
+          onOpenChange={setCustomDialogOpen}
+          onSave={handleSaveCustomColors}
+          initialPrimary={customPrimary}
+          initialPrimaryForeground={customPrimaryForeground}
+        />
       </CardContent>
     </Card>
   );

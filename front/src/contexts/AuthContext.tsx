@@ -10,6 +10,8 @@ export type User = {
   tag_match_mode?: "OR" | "AND";
   profile_picture?: string;
   theme?: string;
+  customPrimary?: string;
+  customPrimaryForeground?: string;
 };
 
 type AuthContextType = {

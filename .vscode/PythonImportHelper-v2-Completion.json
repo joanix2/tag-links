@@ -1,5 +1,126 @@
 [
     {
+        "label": "GraphDatabase",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "Driver",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "GraphDatabase",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "GraphDatabase",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "GraphDatabase",
+        "importPath": "neo4j",
+        "description": "neo4j",
+        "isExtraImport": true,
+        "detail": "neo4j",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
         "label": "get_driver",
         "importPath": "src.database",
         "description": "src.database",
@@ -1320,102 +1441,6 @@
         "documentation": {}
     },
     {
-        "label": "Driver",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "Driver",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "Driver",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "Driver",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "Driver",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "Driver",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "Driver",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "Driver",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "Driver",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "GraphDatabase",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "GraphDatabase",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
-        "label": "GraphDatabase",
-        "importPath": "neo4j",
-        "description": "neo4j",
-        "isExtraImport": true,
-        "detail": "neo4j",
-        "documentation": {}
-    },
-    {
         "label": "URLRepository",
         "importPath": "src.repositories.url_repository",
         "description": "src.repositories.url_repository",
@@ -1787,15 +1812,6 @@
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
         "label": "Path",
         "importPath": "pathlib",
         "description": "pathlib",
@@ -2044,6 +2060,15 @@
         "description": "flatted",
         "isExtraImport": true,
         "detail": "flatted",
+        "documentation": {}
+    },
+    {
+        "label": "add_custom_color_fields",
+        "kind": 2,
+        "importPath": "back.migrations.add_custom_color_fields",
+        "description": "back.migrations.add_custom_color_fields",
+        "peekOfCode": "def add_custom_color_fields():\n    \"\"\"Add customPrimary and customPrimaryForeground fields to all User nodes\"\"\"\n    neo4j_uri = os.getenv(\"NEO4J_URI\", \"bolt://localhost:7687\")\n    neo4j_user = os.getenv(\"NEO4J_USER\", \"neo4j\")\n    neo4j_password = os.getenv(\"NEO4J_PASSWORD\", \"password\")\n    driver = GraphDatabase.driver(neo4j_uri, auth=(neo4j_user, neo4j_password))\n    try:\n        with driver.session() as session:\n            # Add customPrimary and customPrimaryForeground fields to all User nodes if they don't exist\n            result = session.run(\"\"\"",
+        "detail": "back.migrations.add_custom_color_fields",
         "documentation": {}
     },
     {
@@ -3023,7 +3048,7 @@
         "kind": 6,
         "importPath": "back.src.models.user",
         "description": "back.src.models.user",
-        "peekOfCode": "class UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)\n    tag_match_mode: Optional[str] = Field(None, pattern=\"^(OR|AND)$\")\n    profile_picture: Optional[str] = None  # Relative path to profile picture\n    theme: Optional[str] = None  # Color theme preference\nclass User(UserBase):\n    id: str",
+        "peekOfCode": "class UserUpdate(BaseModel):\n    username: Optional[str] = Field(None, min_length=3, max_length=50)\n    email: Optional[EmailStr] = None\n    full_name: Optional[str] = None\n    password: Optional[str] = Field(None, min_length=6)\n    tag_match_mode: Optional[str] = Field(None, pattern=\"^(OR|AND)$\")\n    profile_picture: Optional[str] = None  # Relative path to profile picture\n    theme: Optional[str] = None  # Color theme preference\n    customPrimary: Optional[str] = None  # Custom primary color (HSL format)\n    customPrimaryForeground: Optional[str] = None  # Custom primary foreground color (HSL format)",
         "detail": "back.src.models.user",
         "documentation": {}
     },
@@ -3032,7 +3057,7 @@
         "kind": 6,
         "importPath": "back.src.models.user",
         "description": "back.src.models.user",
-        "peekOfCode": "class User(UserBase):\n    id: str\n    is_active: bool = True\n    tag_match_mode: str = \"OR\"  # Default preference for tag filtering\n    profile_picture: Optional[str] = None  # Relative path to profile picture\n    theme: str = \"slate\"  # Default color theme\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True",
+        "peekOfCode": "class User(UserBase):\n    id: str\n    is_active: bool = True\n    tag_match_mode: str = \"OR\"  # Default preference for tag filtering\n    profile_picture: Optional[str] = None  # Relative path to profile picture\n    theme: str = \"slate\"  # Default color theme\n    customPrimary: Optional[str] = None  # Custom primary color (HSL format)\n    customPrimaryForeground: Optional[str] = None  # Custom primary foreground color (HSL format)\n    created_at: datetime\n    updated_at: datetime",
         "detail": "back.src.models.user",
         "documentation": {}
     },
