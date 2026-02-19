@@ -88,6 +88,13 @@ il faut créer un index sur le nom des tags, quand un nouveau tag est créer mer
 mettre a jour l'api + doc avec le systhème
 -> gestion du ET / OU
 
+- Afficher partage et like (card lien)
+- Les tags dans l'ordre alphabétique
+- Connexion plus long (augmenter le Time Out)
+- problème de refresh lors de la création d'un tag via la modale d'un lien
+- Créer des tags de type (application)
+- Mettre un seuil sur la distance de levensien
+
 géréer le proxy (NPM)
 créer une CD
 responsive
